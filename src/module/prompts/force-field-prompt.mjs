@@ -1,50 +1,70 @@
 import { recursiveUpdate } from '../rolls/roll-helpers.mjs';
-import { WeaponActionData } from '../rolls/action-data.mjs';
 
-export class ForceFieldDialog extends FormApplication {
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
+export class ForceFieldDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(forceFieldData = {}, options = {}) {
-        super(forceFieldData, options);
+        super(options);
         this.data = forceFieldData;
         this.initialized = false;
     }
 
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
+    static DEFAULT_OPTIONS = {
+        id: 'dh-force-field-dialog',
+        tag: 'form',
+        classes: ['dark-heresy-2nd', 'dh-prompt-app'],
+        window: {
             title: 'Force Field',
-            id: 'dh-force-field-dialog',
-            template: 'systems/dark-heresy-2nd/templates/prompt/force-field-prompt.hbs',
+        },
+        position: {
             width: 500,
-            closeOnSubmit: false,
+        },
+        form: {
+            handler: ForceFieldDialog.onSubmitForm,
             submitOnChange: true,
-            classes: ['dialog'],
-        });
-    }
+            closeOnSubmit: false,
+        },
+        actions: {
+            roll: ForceFieldDialog.onRoll,
+            cancel: ForceFieldDialog.onCancel,
+        },
+    };
 
-    activateListeners(html) {
-        super.activateListeners(html);
-        html.find('#roll-force-field').click(async (ev) => await this._rollForceField(ev));
-        html.find('#cancel-prompt').click(async (ev) => await this._cancelPrompt(ev));
-    }
+    static PARTS = {
+        body: {
+            template: 'systems/dark-heresy-2nd/templates/prompt/force-field-prompt.hbs',
+        },
+    };
 
-    async getData() {
+    async _prepareContext() {
         await this.data.update();
         return this.data;
     }
 
-    async _updateObject(event, formData) {
-        game.dh.log('_updateObject', { event, formData });
-        recursiveUpdate(this.data, formData);
-        game.dh.log('_updateObject complete', { 'data': this.data, formData });
-        await this.data.update();
-        this.render(true);
+    _onRender(context, options) {
+        super._onRender(context, options);
+        this.element.setAttribute('autocomplete', 'off');
     }
 
-    async _cancelPrompt(event) {
+    /**
+     * ApplicationV2 form submission handler. `this` is bound to the application instance.
+     * @param event {SubmitEvent|Event}
+     * @param form {HTMLFormElement}
+     * @param formData {FormDataExtended}
+     */
+    static async onSubmitForm(event, form, formData) {
+        game.dh.log('onSubmitForm', { event, formData });
+        recursiveUpdate(this.data, formData?.object ?? formData);
+        game.dh.log('onSubmitForm complete', { 'data': this.data, formData });
+        await this.data.update();
+        this.render();
+    }
+
+    static async onCancel() {
         await this.close();
     }
 
-    async _rollForceField(event) {
+    static async onRoll() {
         if(!this.data.forceField.system.activated) {
             ui.notifications.warn(`Force Field not activated!`);
             return;
@@ -63,5 +83,5 @@ export class ForceFieldDialog extends FormApplication {
 
 export async function prepareForceFieldRoll(forceFieldData) {
     const prompt = new ForceFieldDialog(forceFieldData);
-    prompt.render(true);
+    prompt.render({ force: true });
 }

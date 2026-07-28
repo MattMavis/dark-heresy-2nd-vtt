@@ -13,13 +13,11 @@ export class BasicActionManager {
 
     initializeHooks() {
         // Add show/hide support for chat messages
-        Hooks.on('renderChatMessage', async (message, html, data) => {
-            game.dh.log('renderChatMessage', { message, html, data });
-            html.find('.roll-control__hide-control').click(async (ev) => await this._toggleExpandChatMessage(ev));
-            html.find('.roll-control__refund').click(async (ev) => await this._refundResources(ev));
-            html.find('.roll-control__fate-reroll').click(async (ev) => await this._fateReroll(ev));
-            html.find('.roll-control__assign-damage').click(async (ev) => await this._assignDamage(ev));
-            html.find('.roll-control__apply-damage').click(async (ev) => await this._applyDamage(ev));
+        // V13+ replaces the jQuery-based `renderChatMessage` hook with `renderChatMessageHTML`,
+        // which supplies a plain HTMLElement instead of a jQuery object.
+        Hooks.on('renderChatMessageHTML', (message, element, context) => {
+            game.dh.log('renderChatMessageHTML', { message, element, context });
+            this.activateChatListeners(element);
         });
 
         // Initialize Scene Control Buttons
@@ -41,19 +39,61 @@ export class BasicActionManager {
         });
     }
 
+    /**
+     * Wire up the chat-card controls for a single rendered chat message.
+     * @param {HTMLElement} element The rendered chat message element.
+     */
+    activateChatListeners(element) {
+        const bind = (selector, handler) => {
+            for (const control of element.querySelectorAll(selector)) {
+                control.addEventListener('click', handler);
+            }
+        };
+        bind('.roll-control__hide-control', async (ev) => await this._toggleExpandChatMessage(ev));
+        bind('.roll-control__refund', async (ev) => await this._refundResources(ev));
+        bind('.roll-control__fate-reroll', async (ev) => await this._fateReroll(ev));
+        bind('.roll-control__assign-damage', async (ev) => await this._assignDamage(ev));
+        bind('.roll-control__apply-damage', async (ev) => await this._applyDamage(ev));
+    }
+
+    /**
+     * `element.dataset` values are always strings, whereas the jQuery `.data()` API this
+     * replaced coerced numeric looking values automatically. Restore that coercion.
+     * @param {string|undefined} value
+     * @returns {number|undefined}
+     */
+    _datasetNumber(value) {
+        if (value === undefined || value === null || value === '') return undefined;
+        const parsed = Number(value);
+        return Number.isNaN(parsed) ? undefined : parsed;
+    }
+
+    /**
+     * @param {string|boolean|undefined} value
+     * @returns {boolean}
+     */
+    _datasetBoolean(value) {
+        if (typeof value === 'boolean') return value;
+        return typeof value === 'string' && value.toLowerCase() === 'true';
+    }
+
     async _toggleExpandChatMessage(event) {
         game.dh.log('roll-control-toggle');
         event.preventDefault();
-        const displayToggle = $(event.currentTarget);
-        $('span', displayToggle).toggleClass('active');
-        const target = displayToggle.data('toggle');
-        $('#' + target).toggle();
+        const displayToggle = event.currentTarget;
+        for (const span of displayToggle.querySelectorAll('span')) {
+            span.classList.toggle('active');
+        }
+        const target = displayToggle.dataset.toggle;
+        const panel = target ? document.getElementById(target) : null;
+        if (!panel) return;
+        const isHidden = panel.style.display === 'none' || getComputedStyle(panel).display === 'none';
+        panel.style.display = isHidden ? '' : 'none';
     }
 
     async _refundResources(event) {
         event.preventDefault();
-        const div = $(event.currentTarget);
-        const rollId = div.data('rollId');
+        const rollId = event.currentTarget.dataset.rollId;
         const actionData = this.getActionData(rollId);
 
         if (!actionData) {
@@ -61,22 +101,22 @@ export class BasicActionManager {
             return;
         }
 
-        Dialog.confirm({
-            title: 'Confirm Refund',
+        const confirmed = await foundry.applications.api.DialogV2.confirm({
+            window: { title: 'Confirm Refund' },
             content: '<p>Are you sure you would like to refund ammo, fate, etc for this action?</p>',
-            yes: async () => {
-                await actionData.refundResources();
-                ui.notifications.info(`Resources refunded`);
-            },
-            no: () => {},
-            defaultYes: false,
+            yes: { default: false },
+            no: { default: true },
+            rejectClose: false,
         });
+        if (!confirmed) return;
+
+        await actionData.refundResources();
+        ui.notifications.info(`Resources refunded`);
     }
 
     async _fateReroll(event) {
         event.preventDefault();
-        const div = $(event.currentTarget);
-        const rollId = div.data('rollId');
+        const rollId = event.currentTarget.dataset.rollId;
         const actionData = this.getActionData(rollId);
 
         if (!actionData) {
@@ -89,35 +129,36 @@ export class BasicActionManager {
             return;
         }
 
-        Dialog.confirm({
-            title: 'Confirm Re-Roll',
+        const confirmed = await foundry.applications.api.DialogV2.confirm({
+            window: { title: 'Confirm Re-Roll' },
             content: '<p>Are you sure you would like to use a fate point to re-roll action?</p>',
-            yes: async () => {
-                // Generate new ID for action data
-                actionData.id = uuid();
-                // Use a FP
-                await actionData.rollData.sourceActor.spendFate();
-                // Refund Initial Resources
-                await actionData.refundResources();
-                // Reset
-                actionData.reset();
-                // Run it back
-                await actionData.performActionAndSendToChat();
-            },
-            no: () => {},
-            defaultYes: false,
+            yes: { default: false },
+            no: { default: true },
+            rejectClose: false,
         });
+        if (!confirmed) return;
+
+        // Generate new ID for action data
+        actionData.id = uuid();
+        // Use a FP
+        await actionData.rollData.sourceActor.spendFate();
+        // Refund Initial Resources
+        await actionData.refundResources();
+        // Reset
+        actionData.reset();
+        // Run it back
+        await actionData.performActionAndSendToChat();
     }
 
     async _assignDamage(event) {
         event.preventDefault();
-        const div = $(event.currentTarget);
+        const dataset = event.currentTarget.dataset;
 
-        const location = div.data('location');
-        const totalDamage = div.data('totalDamage');
-        const totalPenetration = div.data('totalPenetration');
-        const totalFatigue = div.data('totalFatigue');
-        const damageType = div.data('damageType');
+        const location = dataset.location;
+        const totalDamage = this._datasetNumber(dataset.totalDamage);
+        const totalPenetration = this._datasetNumber(dataset.totalPenetration);
+        const totalFatigue = this._datasetNumber(dataset.totalFatigue);
+        const damageType = dataset.damageType;
 
         const hitData = new Hit();
         hitData.location = location;
@@ -126,7 +167,7 @@ export class BasicActionManager {
         hitData.totalFatigue = totalFatigue;
         hitData.damageType = damageType;
 
-        const targetUuid = div.data('targetUuid');
+        const targetUuid = dataset.targetUuid;
 
         let targetActor;
         if (targetUuid) {
@@ -152,23 +193,24 @@ export class BasicActionManager {
 
     async _applyDamage(event) {
         event.preventDefault();
-        const div = $(event.currentTarget);
-        console.log(div);
-        const uuid = div.data('uuid');
-        const damageType = div.data('type');
-        const ignoreArmour = div.data('ignoreArmour');
-        const location = div.data('location');
-        const damage = div.data('damage');
-        const penetration = div.data('penetration');
-        const fatigue = div.data('fatigue');
+        const dataset = event.currentTarget.dataset;
+        game.dh.log('roll-control-apply-damage', { dataset });
 
-        const actor = (await fromUuid(uuid)).actor;
+        const actorUuid = dataset.uuid;
+        const damageType = dataset.type;
+        const ignoreArmour = this._datasetBoolean(dataset.ignoreArmour);
+        const location = dataset.location;
+        const damage = this._datasetNumber(dataset.damage);
+        const penetration = this._datasetNumber(dataset.penetration);
+        const fatigue = this._datasetNumber(dataset.fatigue);
+
+        const actor = (await fromUuid(actorUuid))?.actor;
         if (!actor) {
             ui.notifications.warn(`Cannot determine actor to assign hit.`);
             return;
         }
         for(const field of [damage, penetration, fatigue]) {
-            if(field && !Number.isInteger(field)) {
+            if(field !== undefined && !Number.isInteger(field)) {
                 ui.notifications.warn(`Unable to determine damage/penetration/fatigue to assign.`);
                 return;
             }
@@ -176,7 +218,7 @@ export class BasicActionManager {
 
         const assignDamageData = new AssignDamageData();
         assignDamageData.actor = actor;
-        if(ignoreArmour || "true" === ignoreArmour || "TRUE" === ignoreArmour) {
+        if(ignoreArmour) {
             assignDamageData.ignoreArmour = true;
         }
 
@@ -185,13 +227,13 @@ export class BasicActionManager {
             hit.location = location;
         }
         if(damage) {
-            hit.totalDamage = Number.parseInt(damage);
+            hit.totalDamage = damage;
         }
         if(penetration) {
-            hit.totalPenetration = Number.parseInt(penetration);
+            hit.totalPenetration = penetration;
         }
         if(fatigue) {
-            hit.totalFatigue = Number.parseInt(fatigue);
+            hit.totalFatigue = fatigue;
         }
         if(damageType) {
             hit.damageType = damageType;
@@ -235,7 +277,9 @@ export class BasicActionManager {
             user: game.user.id,
             content: html,
             rollMode: game.settings.get('core', 'rollMode'),
-            type: CONST.CHAT_MESSAGE_TYPES.IC,
+            // V12+ renamed the numeric ChatMessage `type` field to `style`, backed by
+            // CONST.CHAT_MESSAGE_STYLES (CONST.CHAT_MESSAGE_TYPES is now the document sub-type).
+            style: CONST.CHAT_MESSAGE_STYLES.IC,
         };
         if (['gmroll', 'blindroll'].includes(chatData.rollMode)) {
             chatData.whisper = ChatMessage.getWhisperRecipients('GM');

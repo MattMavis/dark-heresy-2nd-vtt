@@ -1,6 +1,6 @@
 {{dhlog this}}
-<div class="dialog-content">
-    <form class="dh-wrapper" autocomplete="off">
+<div class="dh-prompt">
+    <div class="dh-wrapper">
         <div class="dh-attack">
             <!-- Header -->
             <div class="dh-panel dh-grid-col-6">
@@ -56,17 +56,17 @@
                 </div>
             </div>
         </div>
-    </form>
-</div>
+    </div>
 
-<!-- Buttons -->
-<div class="dialog-buttons">
-    <button class="dialog-button roll default" data-button="roll" id="roll-force-field">
-        <i class="dh-material">casino</i>
-        Roll
-    </button>
-    <button class="dialog-button cancel" data-button="cancel" id="cancel-prompt">
-        <i class="dh-material">close</i>
-        Cancel
-    </button>
+    <!-- Buttons -->
+    <footer class="form-footer">
+        <button type="button" class="dh-prompt__button" data-action="roll" id="roll-force-field">
+            <i class="dh-material">casino</i>
+            <span>Roll</span>
+        </button>
+        <button type="button" class="dh-prompt__button" data-action="cancel" id="cancel-prompt">
+            <i class="dh-material">close</i>
+            <span>Cancel</span>
+        </button>
+    </footer>
 </div>

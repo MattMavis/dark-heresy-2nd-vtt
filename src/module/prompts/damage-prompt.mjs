@@ -1,45 +1,51 @@
 import { sendActionDataToChat } from '../rolls/roll-helpers.mjs';
 import { ActionData } from '../rolls/action-data.mjs';
 
+const { DialogV2 } = foundry.applications.api;
+
 export async function prepareDamageRoll(rollData) {
     rollData.dh = CONFIG.dh;
-    const html = await foundry.applications.handlebars.renderTemplate('systems/dark-heresy-2nd/templates/prompt/damage-roll-prompt.hbs', rollData);
-    let dialog = new Dialog(
-        {
-            title: 'Damage Roll',
-            content: html,
-            buttons: {
-                roll: {
-                    icon: "<i class='dh-material'>casino</i>",
-                    label: 'Roll',
-                    callback: async (html) => {
-                        const actionData = new ActionData();
-                        actionData.template = 'systems/dark-heresy-2nd/templates/chat/damage-roll-chat.hbs';
+    const content = await foundry.applications.handlebars.renderTemplate(
+        'systems/dark-heresy-2nd/templates/prompt/damage-roll-prompt.hbs',
+        rollData,
+    );
 
-                        rollData.damage = html.find('#damage')[0].value;
-                        rollData.penetration = html.find('#penetration')[0].value;
-                        rollData.damageType = html.find('[name=damageType] :selected').val();
-                        rollData.pr = html.find('#pr')[0]?.value;
-                        rollData.template = 'systems/dark-heresy-2nd/templates/chat/damage-roll-chat.hbs';
-                        rollData.roll = new Roll(rollData.damage, rollData);
-                        await rollData.roll.evaluate();
+    await DialogV2.wait({
+        window: { title: 'Damage Roll' },
+        position: { width: 300 },
+        content,
+        buttons: [
+            {
+                action: 'roll',
+                label: 'Roll',
+                icon: 'fa-solid fa-dice-d20',
+                default: true,
+                callback: async (event, button) => {
+                    // DialogV2 renders `content` inside its own <form>; `button.form.elements`
+                    // is keyed by the name/id of each control in that form.
+                    const fields = button.form.elements;
 
-                        actionData.rollData = rollData;
-                        await sendActionDataToChat(actionData);
-                    },
-                },
-                cancel: {
-                    icon: "<i class='dh-material'>close</i>",
-                    label: 'Cancel',
-                    callback: () => {},
+                    const actionData = new ActionData();
+                    actionData.template = 'systems/dark-heresy-2nd/templates/chat/damage-roll-chat.hbs';
+
+                    rollData.damage = fields.damage.value;
+                    rollData.penetration = fields.penetration.value;
+                    rollData.damageType = fields.damageType.value;
+                    rollData.pr = fields.pr?.value;
+                    rollData.template = 'systems/dark-heresy-2nd/templates/chat/damage-roll-chat.hbs';
+                    rollData.roll = new Roll(rollData.damage, rollData);
+                    await rollData.roll.evaluate();
+
+                    actionData.rollData = rollData;
+                    await sendActionDataToChat(actionData);
                 },
             },
-            default: 'roll',
-            close: () => {},
-        },
-        {
-            width: 300,
-        },
-    );
-    dialog.render(true);
+            {
+                action: 'cancel',
+                label: 'Cancel',
+                icon: 'fa-solid fa-xmark',
+            },
+        ],
+        rejectClose: false,
+    });
 }
