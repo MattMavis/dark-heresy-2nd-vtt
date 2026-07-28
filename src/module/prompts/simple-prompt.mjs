@@ -1,73 +1,77 @@
 import { sendActionDataToChat } from '../rolls/roll-helpers.mjs';
 
+const { DialogV2 } = foundry.applications.api;
+
 /**
  *
  * @param simpleSkillData {SimpleSkillData}
  * @returns {Promise<void>}
  */
 export async function prepareSimpleRoll(simpleSkillData) {
-    const html = await foundry.applications.handlebars.renderTemplate('systems/dark-heresy-2nd/templates/prompt/simple-roll-prompt.hbs', simpleSkillData);
-    let dialog = new Dialog(
-        {
-            title: 'Roll Modifier',
-            content: html,
-            buttons: {
-                roll: {
-                    icon: "<i class='dh-material'>casino</i>",
-                    label: 'Roll',
-                    callback: async (html) => {
-                        const rollData = simpleSkillData.rollData;
-                        rollData.modifiers['difficulty'] = parseInt(html.find('[id=difficulty] :selected').val());
-                        rollData.modifiers['modifier'] = html.find('#modifier')[0].value;
-                        await rollData.calculateTotalModifiers();
-                        await simpleSkillData.calculateSuccessOrFailure();
-                        await sendActionDataToChat(simpleSkillData);
-                    },
-                },
-                cancel: {
-                    icon: "<i class='dh-material'>close</i>",
-                    label: 'Cancel',
-                    callback: () => {},
+    const content = await foundry.applications.handlebars.renderTemplate(
+        'systems/dark-heresy-2nd/templates/prompt/simple-roll-prompt.hbs',
+        simpleSkillData,
+    );
+
+    await DialogV2.wait({
+        window: { title: 'Roll Modifier' },
+        position: { width: 300 },
+        content,
+        buttons: [
+            {
+                action: 'roll',
+                label: 'Roll',
+                icon: 'fa-solid fa-dice-d20',
+                default: true,
+                callback: async (event, button) => {
+                    // DialogV2 renders `content` inside its own <form>; `button.form.elements`
+                    // is keyed by the name/id of each control in that form.
+                    const fields = button.form.elements;
+                    const rollData = simpleSkillData.rollData;
+                    rollData.modifiers['difficulty'] = parseInt(fields['modifiers.difficulty'].value);
+                    rollData.modifiers['modifier'] = fields['modifiers.modifier'].value;
+                    await rollData.calculateTotalModifiers();
+                    await simpleSkillData.calculateSuccessOrFailure();
+                    await sendActionDataToChat(simpleSkillData);
                 },
             },
-            default: 'roll',
-            close: () => {},
-        },
-        {
-            width: 300,
-        },
-    );
-    dialog.render(true);
+            {
+                action: 'cancel',
+                label: 'Cancel',
+                icon: 'fa-solid fa-xmark',
+            },
+        ],
+        rejectClose: false,
+    });
 }
 
 export async function prepareCreateSpecialistSkillPrompt(simpleSkillData) {
-    const html = await foundry.applications.handlebars.renderTemplate('systems/dark-heresy-2nd/templates/prompt/add-speciality-prompt.hbs', simpleSkillData);
-    let dialog = new Dialog(
-        {
-            title: 'Create Specialist Skill',
-            content: html,
-            buttons: {
-                add: {
-                    icon: "<i class='dh-material'>add</i>",
-                    label: 'Add',
-                    callback: async (html) => {
-                        const speciality = html.find('#speciality-name')[0].value;
-                        await simpleSkillData.actor.addSpecialitySkill(simpleSkillData.skillName, speciality);
-                    },
-                },
-                cancel: {
-                    icon: "<i class='dh-material'>close</i>",
-                    label: 'Cancel',
-                    callback: () => {},
+    const content = await foundry.applications.handlebars.renderTemplate(
+        'systems/dark-heresy-2nd/templates/prompt/add-speciality-prompt.hbs',
+        simpleSkillData,
+    );
+
+    await DialogV2.wait({
+        window: { title: 'Create Specialist Skill' },
+        position: { width: 300 },
+        content,
+        buttons: [
+            {
+                action: 'add',
+                label: 'Add',
+                icon: 'fa-solid fa-plus',
+                default: true,
+                callback: async (event, button) => {
+                    const speciality = button.form.elements.specialityName.value;
+                    await simpleSkillData.actor.addSpecialitySkill(simpleSkillData.skillName, speciality);
                 },
             },
-            default: 'add',
-            close: () => {},
-        },
-        {
-            width: 300,
-        },
-    );
-    dialog.render(true);
+            {
+                action: 'cancel',
+                label: 'Cancel',
+                icon: 'fa-solid fa-xmark',
+            },
+        ],
+        rejectClose: false,
+    });
 }
-
