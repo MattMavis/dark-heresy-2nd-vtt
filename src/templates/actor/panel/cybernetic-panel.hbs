@@ -6,7 +6,7 @@
             <div class="table-cell">AP</div>
             <div class="table-cell">Equipped</div>
             <div class="table-cell--last">
-                <label class="dh-control-button item-create" data-type="cybernetic">
+                <label class="dh-control-button item-create" data-type="cybernetic" data-action="itemCreate">
                     <span class="dh-control-button__span material-icons">{{defaultVal icon 'add_circle'}}</span>
                 </label>
             </div>
@@ -15,7 +15,7 @@
             {{#if item.isCybernetic}}
                 <div class="table-row item-drag" data-item-id="{{item.id}}" data-item-type="cybernetic">
                     <div class="table-cell--settingstoggle">
-                        <label class="dh-control-button item-edit" data-item-id="{{item.id}}">
+                        <label class="dh-control-button item-edit" data-item-id="{{item.id}}" data-action="itemEdit">
                             <span class="dh-control-button__span material-icons">{{defaultVal icon 'settings'}}</span>
                         </label>
                     </div>
@@ -29,10 +29,10 @@
                         <span class="display">{{item.system.equipped}}</span>
                     </div>
                     <div class="table-cell--last">
-                        <label class="dh-control-button item-vocalize" data-item-id="{{item.id}}">
+                        <label class="dh-control-button item-vocalize" data-item-id="{{item.id}}" data-action="itemVocalize">
                             <span class="dh-control-button__span material-icons">{{defaultVal icon 'record_voice_over'}}</span>
                         </label>
-                        <label class="dh-control-button item-delete" data-item-id="{{item.id}}">
+                        <label class="dh-control-button item-delete" data-item-id="{{item.id}}" data-action="itemDelete">
                             <span class="dh-control-button__span material-icons">{{defaultVal icon 'delete'}}</span>
                         </label>
                     </div>

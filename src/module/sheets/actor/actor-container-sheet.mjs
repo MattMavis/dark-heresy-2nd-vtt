@@ -2,45 +2,128 @@ import { toggleUIExpanded } from '../../rules/config.mjs';
 import { DHBasicActionManager } from '../../actions/basic-action-manager.mjs';
 import { prepareCreateSpecialistSkillPrompt } from '../../prompts/simple-prompt.mjs';
 
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ActorSheetV2 } = foundry.applications.sheets;
+
 /**
- * Shared Actor functions for Actor that contains embedded items
+ * Shared Actor functions for Actor that contains embedded items.
+ *
+ * ApplicationV2 base class for every Dark Heresy actor sheet. All click behaviour is declarative:
+ * markup carries `data-action="<name>"` and the handler is resolved from `DEFAULT_OPTIONS.actions`.
+ * Handlers are invoked with `this` bound to the sheet instance and the signature `(event, target)`
+ * where `target` is the element which carried the `data-action` attribute.
  */
-export class ActorContainerSheet extends ActorSheet {
-    activateListeners(html) {
-        super.activateListeners(html);
+export class ActorContainerSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
+    /** @inheritDoc */
+    static DEFAULT_OPTIONS = {
+        classes: ['dark-heresy-2nd', 'actor'],
+        position: {
+            width: 1000,
+            height: 750,
+        },
+        window: {
+            resizable: true,
+        },
+        form: {
+            // `handler` is inherited from DocumentSheetV2 (the standard document update handler).
+            submitOnChange: true,
+            closeOnSubmit: false,
+        },
+        actions: {
+            addSkill(event, target) {
+                return this._addSpecialistSkill(event, target);
+            },
+            effectCreate(event, target) {
+                return this._effectCreate(event, target);
+            },
+            effectDelete(event, target) {
+                return this._effectDelete(event, target);
+            },
+            effectDisable(event, target) {
+                return this._effectDisable(event, target);
+            },
+            effectEdit(event, target) {
+                return this._effectEdit(event, target);
+            },
+            effectEnable(event, target) {
+                return this._effectEnable(event, target);
+            },
+            itemCreate(event, target) {
+                return this._onItemCreate(event, target);
+            },
+            itemDamage(event, target) {
+                return this._onItemDamage(event, target);
+            },
+            itemDelete(event, target) {
+                return this._onItemDelete(event, target);
+            },
+            itemEdit(event, target) {
+                return this._onItemEdit(event, target);
+            },
+            itemRoll(event, target) {
+                return this._onItemRoll(event, target);
+            },
+            itemVocalize(event, target) {
+                return this._onItemVocalize(event, target);
+            },
+            sheetControlHideToggle(event, target) {
+                return this._sheetControlHideToggle(event, target);
+            },
+        },
+    };
 
-        // Everything below here is only needed if the sheet is editable
-        if (!this.isEditable) return;
-        this.form.ondrop = (ev) => this._onDrop(ev);
-        html.find('.sheet-control__hide-control').click(async (ev) => await this._sheetControlHideToggle(ev));
-        html.find('.item-roll').click(async (ev) => await this._onItemRoll(ev));
-        html.find('.item-damage').click(async (ev) => await this._onItemDamage(ev));
-        html.find('.item-create').click(async (ev) => await this._onItemCreate(ev));
-        html.find('.item-edit').click((ev) => this._onItemEdit(ev));
-        html.find('.item-delete').click((ev) => this._onItemDelete(ev));
-        html.find('.item-vocalize').click(async (ev) => await this._onItemVocalize(ev));
-        html.find('.item-drag').each((i, item) => {
-            if (item.dataset && item.dataset.itemId) {
-                item.setAttribute('draggable', true);
-                item.addEventListener('dragstart', this._onItemDragStart.bind(this), false);
-            }
-        });
-        html.find('.actor-drag').each((i, item) => {
-            if (item.dataset && item.dataset.itemId) {
-                item.setAttribute('draggable', true);
-                item.addEventListener('dragstart', this._onActorDragStart.bind(this), false);
-            }
-        });
-        html.find('.effect-delete').click(async (ev) => await this._effectDelete(ev));
-        html.find('.effect-edit').click(async (ev) => await this._effectEdit(ev));
-        html.find('.effect-create').click(async (ev) => await this._effectCreate(ev));
-        html.find('.effect-enable').click(async (ev) => await this._effectEnable(ev));
-        html.find('.effect-disable').click(async (ev) => await this._effectDisable(ev));
+    /* -------------------------------------------- */
+    /*  Rendering                                   */
+    /* -------------------------------------------- */
 
-        html.find('.add-skill').click(async (ev) => await this._addSpecialistSkill(ev));
+    /** @inheritDoc */
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
+        context.actor = this.actor;
+        context.dh = CONFIG.dh;
+        context.effects = this.actor.getEmbeddedCollection('ActiveEffect').contents;
+        return context;
     }
 
-    _onDrop(event) {
+    /* -------------------------------------------- */
+    /*  Drag and Drop                               */
+    /* -------------------------------------------- */
+
+    /**
+     * The system uses two distinct drag sources: `.item-drag` for embedded Items and `.actor-drag`
+     * for synthetic payloads (characteristics / skills). Replace the core single-selector DragDrop
+     * with one that watches both, then dispatch in {@link ActorContainerSheet#_onDragStart}.
+     * @type {DragDrop}
+     * @override
+     */
+    get _dragDrop() {
+        return (this.#dragDrop ??= new foundry.applications.ux.DragDrop.implementation({
+            dragSelector: '.item-drag, .actor-drag',
+            permissions: {
+                dragstart: this._canDragStart.bind(this),
+                drop: this._canDragDrop.bind(this),
+            },
+            callbacks: {
+                dragstart: this._onDragStart.bind(this),
+                dragover: this._onDragOver.bind(this),
+                drop: this._onDrop.bind(this),
+            },
+        }));
+    }
+
+    /** @type {DragDrop|null} */
+    #dragDrop = null;
+
+    /** @inheritDoc */
+    async _onDragStart(event) {
+        const element = event.currentTarget;
+        if (element?.classList.contains('item-drag')) return this._onItemDragStart(event);
+        if (element?.classList.contains('actor-drag')) return this._onActorDragStart(event);
+        return super._onDragStart(event);
+    }
+
+    /** @inheritDoc */
+    async _onDrop(event) {
         event.preventDefault();
         event.stopPropagation();
         game.dh.log('Actor _onDrop', event);
@@ -61,90 +144,6 @@ export class ActorContainerSheet extends ActorSheet {
             game.dh.log('Actor Container | drop error', err);
             return false;
         }
-    }
-
-    async _addSpecialistSkill(event) {
-        event.preventDefault();
-        const div = $(event.currentTarget);
-        const specialistSkill = div.data('skill');
-        const skill = this.actor.system.skills[specialistSkill];
-        if(!skill) {
-            ui.notifications.warn(`Skill not specified -- unexpected error.`);
-            return;
-        }
-        await prepareCreateSpecialistSkillPrompt({
-            actor: this.actor,
-            skill: skill,
-            skillName: specialistSkill
-        });
-    }
-
-    async _onItemDamage(event) {
-        event.preventDefault();
-        const div = $(event.currentTarget);
-        await this.actor.damageItem(div.data('itemId'));
-    }
-
-    async _onItemRoll(event) {
-        event.preventDefault();
-        const div = $(event.currentTarget);
-        await this.actor.rollItem(div.data('itemId'));
-    }
-
-    async _onItemCreate(event) {
-        event.preventDefault();
-        const div = $(event.currentTarget);
-        let data = {
-            name: `New ${div.data('type').capitalize()}`,
-            type: div.data('type'),
-        };
-        await this.actor.createEmbeddedDocuments('Item', [data], { renderSheet: true });
-    }
-
-    _onItemEdit(event) {
-        event.preventDefault();
-        const div = $(event.currentTarget);
-        let item = this.actor.items.get(div.data('itemId'));
-        item.sheet.render(true);
-    }
-
-    _onItemDelete(event) {
-        event.preventDefault();
-        Dialog.confirm({
-            title: 'Confirm Delete',
-            content: '<p>Are you sure you would like to delete this?</p>',
-            yes: () => {
-                const div = $(event.currentTarget);
-                this.actor.deleteEmbeddedDocuments('Item', [div.data('itemId')]);
-                div.slideUp(200, () => this.render(false));
-            },
-            no: () => {},
-            defaultYes: false,
-        });
-    }
-
-    async _onItemVocalize(event) {
-        event.preventDefault();
-        const div = $(event.currentTarget);
-        let item = this.actor.items.get(div.data('itemId'));
-        await DHBasicActionManager.sendItemVocalizeChat({
-            actor: this.actor.name,
-            name: item.name,
-            type: item.type?.toUpperCase(),
-            description: await foundry.applications.ux.TextEditor.enrichHTML(item.system.benefit ?? item.system.description, {rollData: {actor: this.actor, item: this, pr: this.actor.psy.rating}}),
-        });
-    }
-
-    /**
-     * Generic Sheet Hide/Show option for all embedded fields
-     */
-    async _sheetControlHideToggle(event) {
-        event.preventDefault();
-        const displayToggle = $(event.currentTarget);
-        $('span', displayToggle).first().toggleClass('active');
-        const target = displayToggle.data('toggle');
-        $('.' + target).toggle();
-        toggleUIExpanded(target);
     }
 
     async _onItemDragStart(event) {
@@ -178,16 +177,6 @@ export class ActorContainerSheet extends ActorSheet {
         event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
     }
 
-    async _sheetControlHideToggle(event) {
-        event.preventDefault();
-        const displayToggle = $(event.currentTarget);
-        $('span', displayToggle).first().toggleClass('active');
-        const target = displayToggle.data('toggle');
-        $('.' + target).toggle();
-        toggleUIExpanded(target);
-    }
-
-
     async _onActorDragStart(event) {
         event.stopPropagation();
         game.dh.log('_onActorDragStart', event);
@@ -210,7 +199,7 @@ export class ActorContainerSheet extends ActorSheet {
         };
 
         switch (dragType) {
-            case 'characteristic':
+            case 'characteristic': {
                 const characteristic = this.actor.characteristics[element.dataset.itemId];
                 dragData.data = {
                     name: characteristic.label,
@@ -218,7 +207,8 @@ export class ActorContainerSheet extends ActorSheet {
                 };
                 event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
                 return;
-            case 'skill':
+            }
+            case 'skill': {
                 const skill = this.actor.skills[element.dataset.itemId];
                 let name = skill.label;
                 if (element.dataset.speciality) {
@@ -232,6 +222,7 @@ export class ActorContainerSheet extends ActorSheet {
                 };
                 event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
                 return;
+            }
             default:
                 // Let default Foundry handler deal with default drag cases.
                 game.dh.warn('No handler for drag type: ' + dragType + ' Using default foundry handler.');
@@ -239,42 +230,127 @@ export class ActorContainerSheet extends ActorSheet {
         }
     }
 
-    async _effectDisable(event) {
+    /* -------------------------------------------- */
+    /*  Action Handlers                             */
+    /* -------------------------------------------- */
+
+    async _addSpecialistSkill(event, target) {
         event.preventDefault();
-        const div = $(event.currentTarget);
-        const effect = this.actor.effects.get(div.data('effectId'));
-        effect.update({disabled: true});
+        const specialistSkill = target.dataset.skill;
+        const skill = this.actor.system.skills[specialistSkill];
+        if (!skill) {
+            ui.notifications.warn(`Skill not specified -- unexpected error.`);
+            return;
+        }
+        await prepareCreateSpecialistSkillPrompt({
+            actor: this.actor,
+            skill: skill,
+            skillName: specialistSkill,
+        });
     }
 
-    async _effectEnable(event) {
+    async _onItemDamage(event, target) {
         event.preventDefault();
-        const div = $(event.currentTarget);
-        const effect = this.actor.effects.get(div.data('effectId'));
-        effect.update({disabled: false});
+        await this.actor.damageItem(target.dataset.itemId);
     }
 
-    async _effectDelete(event) {
+    async _onItemRoll(event, target) {
         event.preventDefault();
-        const div = $(event.currentTarget);
-        const effect = this.actor.effects.get(div.data('effectId'));
-        effect.delete();
+        await this.actor.rollItem(target.dataset.itemId);
     }
 
-    async _effectEdit(event) {
+    async _onItemCreate(event, target) {
         event.preventDefault();
-        const div = $(event.currentTarget);
-        const effect = this.actor.effects.get(div.data('effectId'));
-        effect.sheet.render(true);
+        const type = target.dataset.type;
+        const data = {
+            name: `New ${type.capitalize()}`,
+            type: type,
+        };
+        await this.actor.createEmbeddedDocuments('Item', [data], { renderSheet: true });
+    }
+
+    _onItemEdit(event, target) {
+        event.preventDefault();
+        const item = this.actor.items.get(target.dataset.itemId);
+        item.sheet.render({ force: true });
+    }
+
+    async _onItemDelete(event, target) {
+        event.preventDefault();
+        const itemId = target.dataset.itemId;
+        const confirmed = await foundry.applications.api.DialogV2.confirm({
+            window: { title: 'Confirm Delete' },
+            content: '<p>Are you sure you would like to delete this?</p>',
+            modal: true,
+        });
+        if (!confirmed) return;
+        await this.actor.deleteEmbeddedDocuments('Item', [itemId]);
+        await this.render();
+    }
+
+    async _onItemVocalize(event, target) {
+        event.preventDefault();
+        const item = this.actor.items.get(target.dataset.itemId);
+        await DHBasicActionManager.sendItemVocalizeChat({
+            actor: this.actor.name,
+            name: item.name,
+            type: item.type?.toUpperCase(),
+            description: await foundry.applications.ux.TextEditor.enrichHTML(item.system.benefit ?? item.system.description, {
+                rollData: { actor: this.actor, item: this, pr: this.actor.psy.rating },
+            }),
+        });
+    }
+
+    /**
+     * Generic Sheet Hide/Show option for all embedded fields
+     */
+    async _sheetControlHideToggle(event, target) {
+        event.preventDefault();
+        target.querySelector('span')?.classList.toggle('active');
+        const toggle = target.dataset.toggle;
+        for (const element of this.element.querySelectorAll(`.${CSS.escape(toggle)}`)) {
+            element.style.display = element.style.display === 'none' ? '' : 'none';
+        }
+        toggleUIExpanded(toggle);
+    }
+
+    async _effectDisable(event, target) {
+        event.preventDefault();
+        const effect = this.actor.effects.get(target.dataset.effectId);
+        await effect.update({ disabled: true });
+    }
+
+    async _effectEnable(event, target) {
+        event.preventDefault();
+        const effect = this.actor.effects.get(target.dataset.effectId);
+        await effect.update({ disabled: false });
+    }
+
+    async _effectDelete(event, target) {
+        event.preventDefault();
+        const effect = this.actor.effects.get(target.dataset.effectId);
+        await effect.delete();
+    }
+
+    async _effectEdit(event, target) {
+        event.preventDefault();
+        const effect = this.actor.effects.get(target.dataset.effectId);
+        effect.sheet.render({ force: true });
     }
 
     async _effectCreate(event) {
         event.preventDefault();
-        return this.actor.createEmbeddedDocuments('ActiveEffect', [{
-            label: 'New Effect',
-            icon: 'icons/svg/aura.svg',
-            origin: this.actor.uuid,
-            disabled: true
-        }], { renderSheet: true })
+        return this.actor.createEmbeddedDocuments(
+            'ActiveEffect',
+            [
+                {
+                    label: 'New Effect',
+                    icon: 'icons/svg/aura.svg',
+                    origin: this.actor.uuid,
+                    disabled: true,
+                },
+            ],
+            { renderSheet: true },
+        );
     }
-
 }
