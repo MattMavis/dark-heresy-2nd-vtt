@@ -19,6 +19,11 @@
 
 .dh-wrapper {
     position: relative;
+    // Sheets are drawn on a fixed parchment/ink illustration and must stay legible regardless of
+    // the user's chosen Foundry UI theme (light/dark). Elements below rely on `color: unset`
+    // (see reset.scss) to inherit this value rather than the theme-dependent color Foundry's own
+    // chrome would otherwise supply.
+    color: #191813;
 
     @import 'reset';
     @import 'abstracts';
