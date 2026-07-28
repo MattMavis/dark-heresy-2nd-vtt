@@ -26,8 +26,8 @@
                                        type="checkbox" name="system.skills.{{name}}.specialities.{{skey}}.taken" />
                             </div>
                         {{/each}}
-                        <div class="dh-settings__row--invert add-skill" data-skill="{{name}}">
-                            <button class="dh-settings__label--add">add_box</button>
+                        <div class="dh-settings__row--invert add-skill" data-skill="{{name}}" data-action="addSkill">
+                            <button type="button" class="dh-settings__label--add">add_box</button>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                              data-speciality="{{skey}}">
                             <div class="table-cell">
                                 <button class="roll-skill" data-skill="{{name}}" data-specialty="{{skey}}"
-                                        type="roll">{{localize this.label}}</button>
+                                        type="button" data-action="rollSkill">{{localize this.label}}</button>
                             </div>
                             <div class="table-cell">
                                 <select name="system.skills.{{name}}.specialities.{{skey}}.advance">

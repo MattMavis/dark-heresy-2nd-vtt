@@ -7,7 +7,7 @@
             <div class="table-cell">Type</div>
             <div class="table-cell">Equipped</div>
             <div class="table-cell--last">
-                <label class="dh-control-button item-create" data-type="weapon">
+                <label class="dh-control-button item-create" data-type="weapon" data-action="itemCreate">
                     <span class="dh-control-button__span material-icons">{{defaultVal icon 'add_circle'}}</span>
                 </label>
             </div>
@@ -16,7 +16,7 @@
             {{#if item.isWeapon}}
                 <div class="table-row item-drag" data-item-id="{{item.id}}" data-item-type="weapon">
                     <div class="table-cell--settingstoggle">
-                        <label class="dh-control-button item-edit" data-item-id="{{item.id}}">
+                        <label class="dh-control-button item-edit" data-item-id="{{item.id}}" data-action="itemEdit">
                             <span class="dh-control-button__span material-icons">{{defaultVal icon 'settings'}}</span>
                         </label>
                     </div>
@@ -33,13 +33,13 @@
                         <span class="display">{{item.system.equipped}}</span>
                     </div>
                     <div class="table-cell--last">
-                        <label class="dh-control-button item-roll" data-item-id="{{item.id}}">
+                        <label class="dh-control-button item-roll" data-item-id="{{item.id}}" data-action="itemRoll">
                             <span class="dh-control-button__span material-icons">{{defaultVal icon 'casino'}}</span>
                         </label>
-                        <label class="dh-control-button item-damage" data-item-id="{{item.id}}">
+                        <label class="dh-control-button item-damage" data-item-id="{{item.id}}" data-action="itemDamage">
                             <span class="dh-control-button__span material-icons">{{defaultVal icon 'bolt'}}</span>
                         </label>
-                        <label class="dh-control-button item-delete" data-item-id="{{item.id}}">
+                        <label class="dh-control-button item-delete" data-item-id="{{item.id}}" data-action="itemDelete">
                             <span class="dh-control-button__span material-icons">{{defaultVal icon 'delete'}}</span>
                         </label>
                     </div>

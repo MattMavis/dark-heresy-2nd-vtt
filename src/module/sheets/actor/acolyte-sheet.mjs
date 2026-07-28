@@ -1,4 +1,3 @@
-import { toggleUIExpanded } from '../../rules/config.mjs';
 import { ActorContainerSheet } from './actor-container-sheet.mjs';
 import { DHBasicActionManager } from '../../actions/basic-action-manager.mjs';
 import { DHTargetedActionManager } from '../../actions/targeted-action-manager.mjs';
@@ -7,64 +6,100 @@ import { AssignDamageData } from '../../rolls/assign-damage-data.mjs';
 import { prepareAssignDamageRoll } from '../../prompts/assign-damage-prompt.mjs';
 
 export class AcolyteSheet extends ActorContainerSheet {
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            width: 1000,
-            height: 750,
-            resizable: true,
-            tabs: [{ navSelector: '.dh-navigation', contentSelector: '.dh-body', initial: 'main' }],
-        });
+    /** @inheritDoc */
+    static DEFAULT_OPTIONS = {
+        classes: ['acolyte'],
+        actions: {
+            assignDamage(event, target) {
+                return this._combatControls(event, target);
+            },
+            attack(event, target) {
+                return this._combatControls(event, target);
+            },
+            bonusVocalize(event, target) {
+                return this._onBonusVocalize(event, target);
+            },
+            dodge(event, target) {
+                return this._combatControls(event, target);
+            },
+            parry(event, target) {
+                return this._combatControls(event, target);
+            },
+            rollCharacteristic(event, target) {
+                return this._prepareRollCharacteristic(event, target);
+            },
+            rollSkill(event, target) {
+                return this._prepareRollSkill(event, target);
+            },
+        },
+    };
+
+    /** @inheritDoc */
+    static PARTS = {
+        main: {
+            template: 'systems/dark-heresy-2nd/templates/actor/actor-acolyte-sheet.hbs',
+            scrollable: [''],
+        },
+    };
+
+    /** @inheritDoc */
+    static TABS = {
+        primary: {
+            initial: 'main',
+            tabs: [
+                { id: 'combat', label: 'combat' },
+                { id: 'main', label: 'main' },
+                { id: 'bio', label: 'bio' },
+                { id: 'gear', label: 'gear' },
+                { id: 'psychic', label: 'psychic powers' },
+                { id: 'advances', label: 'advances' },
+                { id: 'social', label: 'social' },
+            ],
+        },
+    };
+
+    /* -------------------------------------------- */
+
+    /**
+     * The homeworld `<select>` fires `change`, not `click`, so it cannot be expressed as a
+     * `data-action`. Bind it manually on every render.
+     * @inheritDoc
+     */
+    async _onRender(context, options) {
+        await super._onRender(context, options);
+        if (!this.isEditable) return;
+        this.element
+            .querySelector('.acolyte-homeWorld')
+            ?.addEventListener('change', (event) => this._onHomeworldChange(event));
     }
 
-    get template() {
-        return `systems/dark-heresy-2nd/templates/actor/actor-acolyte-sheet.hbs`;
-    }
+    /* -------------------------------------------- */
 
-    getData() {
-        const context = super.getData();
-        context.dh = CONFIG.dh;
-        context.effects = this.actor.getEmbeddedCollection('ActiveEffect').contents;
-        return context;
-    }
-
-    activateListeners(html) {
-        super.activateListeners(html);
-
-        html.find('.roll-characteristic').click(async (ev) => await this._prepareRollCharacteristic(ev));
-        html.find('.roll-skill').click(async (ev) => await this._prepareRollSkill(ev));
-        html.find('.acolyte-homeWorld').change((ev) => this._onHomeworldChange(ev));
-        html.find('.bonus-vocalize').click(async (ev) => await this._onBonusVocalize(ev));
-
-        html.find('.combat-control').click(async (ev) => await this._combatControls(ev));
-    }
-
-    async _combatControls(event) {
+    async _combatControls(event, target) {
         event.preventDefault();
-        const target = event.currentTarget;
 
-        switch(target.dataset.action) {
+        switch (target.dataset.action) {
             case 'attack':
                 await DHTargetedActionManager.performWeaponAttack(this.actor);
                 break;
-            case 'assign-damage':
+            case 'assignDamage': {
                 const hitData = new Hit();
                 const assignData = new AssignDamageData(this.actor, hitData);
                 await prepareAssignDamageRoll(assignData);
                 break;
+            }
             case 'dodge':
                 await this.actor.rollSkill('dodge');
                 break;
             case 'parry':
                 await this.actor.rollSkill('parry');
                 break;
-
         }
     }
 
-    async _onBonusVocalize(event) {
+    async _onBonusVocalize(event, target) {
         event.preventDefault();
-        const div = $(event.currentTarget);
-        let bonus = this.actor.backgroundEffects.abilities.find((a) => a.name === div.data('bonusName'));
+        const bonus = this.actor.backgroundEffects.abilities.find((a) => a.name === target.dataset.bonusName);
         if (bonus) {
             await DHBasicActionManager.sendItemVocalizeChat({
                 actor: this.actor.name,
@@ -75,43 +110,39 @@ export class AcolyteSheet extends ActorContainerSheet {
         }
     }
 
-    async _prepareRollCharacteristic(event) {
+    async _prepareRollCharacteristic(event, target) {
         event.preventDefault();
-        const characteristicName = $(event.currentTarget).data('characteristic');
-        await this.actor.rollCharacteristic(characteristicName);
+        await this.actor.rollCharacteristic(target.dataset.characteristic);
     }
 
-    async _prepareRollSkill(event) {
+    async _prepareRollSkill(event, target) {
         event.preventDefault();
-        const skillName = $(event.currentTarget).data('skill');
-        const specialtyName = $(event.currentTarget).data('specialty');
-        await this.actor.rollSkill(skillName, specialtyName);
+        await this.actor.rollSkill(target.dataset.skill, target.dataset.specialty);
     }
 
-    _onHomeworldChange(event) {
+    async _onHomeworldChange(event) {
         event.preventDefault();
-        Dialog.confirm({
-            title: 'Roll Characteristics?',
+        const confirmed = await foundry.applications.api.DialogV2.confirm({
+            window: { title: 'Roll Characteristics?' },
             content: '<p>Would you like to roll Wounds and Fate for this homeworld?</p>',
-            yes: async () => {
-                // Something is probably wrong -- we will skip this
-                if(!this.actor.backgroundEffects?.homeworld) return;
-
-                // Roll Wounds
-                let woundRoll = new Roll(this.actor.backgroundEffects.homeworld.wounds);
-                await woundRoll.evaluate();
-                this.actor.wounds.max = woundRoll.total;
-
-                // Roll Fate
-                let fateRoll = new Roll('1d10');
-                await fateRoll.evaluate();
-                this.actor.fate.max =
-                    parseInt(this.actor.backgroundEffects.homeworld.fate_threshold) +
-                    (fateRoll.total >= this.actor.backgroundEffects.homeworld.emperors_blessing ? 1 : 0);
-                this.render(true);
-            },
-            no: () => {},
-            defaultYes: false,
+            modal: true,
         });
+        if (!confirmed) return;
+
+        // Something is probably wrong -- we will skip this
+        if (!this.actor.backgroundEffects?.homeworld) return;
+
+        // Roll Wounds
+        const woundRoll = new Roll(this.actor.backgroundEffects.homeworld.wounds);
+        await woundRoll.evaluate();
+        this.actor.wounds.max = woundRoll.total;
+
+        // Roll Fate
+        const fateRoll = new Roll('1d10');
+        await fateRoll.evaluate();
+        this.actor.fate.max =
+            parseInt(this.actor.backgroundEffects.homeworld.fate_threshold) +
+            (fateRoll.total >= this.actor.backgroundEffects.homeworld.emperors_blessing ? 1 : 0);
+        await this.render({ force: true });
     }
 }

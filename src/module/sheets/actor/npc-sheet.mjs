@@ -1,16 +1,29 @@
 import { AcolyteSheet } from './acolyte-sheet.mjs';
 
 export class NpcSheet extends AcolyteSheet {
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            width: 1000,
-            height: 750,
-            resizable: true,
-            tabs: [{ navSelector: '.dh-navigation', contentSelector: '.dh-body', initial: 'main' }],
-        });
-    }
+    /** @inheritDoc */
+    static DEFAULT_OPTIONS = {
+        classes: ['npc'],
+    };
 
-    get template() {
-        return `systems/dark-heresy-2nd/templates/actor/actor-npc-sheet.hbs`;
-    }
+    /** @inheritDoc */
+    static PARTS = {
+        main: {
+            template: 'systems/dark-heresy-2nd/templates/actor/actor-npc-sheet.hbs',
+            scrollable: [''],
+        },
+    };
+
+    /** @inheritDoc */
+    static TABS = {
+        primary: {
+            initial: 'main',
+            tabs: [
+                { id: 'combat', label: 'combat' },
+                { id: 'main', label: 'main' },
+                { id: 'gear', label: 'gear' },
+                { id: 'psychic', label: 'psychic powers' },
+            ],
+        },
+    };
 }

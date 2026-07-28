@@ -12,11 +12,10 @@
             <div class="dh-chartable__cell--head {{colorCode this.has_bonus this.has_negative}}">
                 <button
                     class="roll-characteristic actor-drag"
-                    type="roll"
+                    type="button"
                     data-item-type="characteristic"
                     data-item-id="{{name}}"
-                    data-characteristic="{{name}}"
-                >{{this.short}}</button>
+                    data-characteristic="{{name}}" data-action="rollCharacteristic">{{this.short}}</button>
             </div>
             <div class="dh-chartable__cell {{colorCode this.has_bonus this.has_negative}}">
                 <input name="system.characteristics.{{name}}.base" data-dtype="Number" type="number" value="{{this.base}}" />

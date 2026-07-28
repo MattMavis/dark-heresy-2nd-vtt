@@ -6,7 +6,7 @@
             <div class="table-cell">Time</div>
             <div class="table-cell">Place</div>
             <div class="table-cell--last">
-                <label class="dh-control-button item-create" data-type="journalEntry">
+                <label class="dh-control-button item-create" data-type="journalEntry" data-action="itemCreate">
                     <span class="dh-control-button__span material-icons">{{defaultVal icon 'add_circle'}}</span>
                 </label>
             </div>
@@ -15,7 +15,7 @@
             {{#if item.isJournalEntry}}
                 <div class="table-row">
                     <div class="table-cell--settingstoggle">
-                        <label class="dh-control-button item-edit" data-item-id="{{item.id}}">
+                        <label class="dh-control-button item-edit" data-item-id="{{item.id}}" data-action="itemEdit">
                             <span class="dh-control-button__span material-icons">{{defaultVal icon 'settings'}}</span>
                         </label>
                     </div>
@@ -29,7 +29,7 @@
                         <span class="display">{{item.system.place}}</span>
                     </div>
                     <div class="table-cell--last">
-                        <label class="dh-control-button item-delete" data-item-id="{{item.id}}">
+                        <label class="dh-control-button item-delete" data-item-id="{{item.id}}" data-action="itemDelete">
                             <span class="dh-control-button__span material-icons">{{defaultVal icon 'delete'}}</span>
                         </label>
                     </div>

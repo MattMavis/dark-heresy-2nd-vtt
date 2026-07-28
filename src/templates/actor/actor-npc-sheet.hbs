@@ -1,10 +1,10 @@
 {{dhlog this}}
 <div class="dh-wrapper">
-    <form class="dh-actor" autocomplete="off">
+    <div class="dh-actor">
         <div class="dh-header dh-grid-col-6 dh-panel">
             <div class="dh-header__info">
                 <div class="dh-header__logo dh-header__item-wrapper--span-4">
-                    <img class="dh-header__logo-image" src="{{actor.img}}" data-edit="img" alt="{{actor.name}}" title="{{actor.name}}" />
+                    <img class="dh-header__logo-image" src="{{actor.img}}" data-edit="img" data-action="editImage" alt="{{actor.name}}" data-tooltip="{{actor.name}}" />
                 </div>
                 <div class="dh-header__item-wrapper--span-2">
                     <span class="dh-header__title">Name</span>
@@ -18,23 +18,23 @@
             </div>
         </div>
 
-        <div class="dh-navigation" data-group="primary">
+        <div class="dh-navigation tabs" data-group="primary">
             <label class="dh-navigation__item dh-navigation__item-left">
-                <a class="item" data-tab="combat" data-group="primary">combat</a>
+                <a class="item {{tabs.combat.cssClass}}" data-action="tab" data-tab="combat" data-group="primary">combat</a>
             </label>
             <label class="dh-navigation__item">
-                <a class="item" data-tab="main" data-group="primary">main</a>
+                <a class="item {{tabs.main.cssClass}}" data-action="tab" data-tab="main" data-group="primary">main</a>
             </label>
             <label class="dh-navigation__item">
-                <a class="item" data-tab="gear" data-group="primary">gear</a>
+                <a class="item {{tabs.gear.cssClass}}" data-action="tab" data-tab="gear" data-group="primary">gear</a>
             </label>
             <label class="dh-navigation__item">
-                <a class="item" data-tab="psychic" data-group="primary">psychic powers</a>
+                <a class="item {{tabs.psychic.cssClass}}" data-action="tab" data-tab="psychic" data-group="primary">psychic powers</a>
             </label>
         </div>
 
         <section class="dh-body">
-            <div class="tab" data-group="primary" data-tab="combat">
+            <div class="tab {{tabs.combat.cssClass}}" data-group="primary" data-tab="combat">
                 {{> systems/dark-heresy-2nd/templates/actor/panel/wounds-panel.hbs}}
                 {{> systems/dark-heresy-2nd/templates/actor/panel/fatigue-panel.hbs}}
                 {{> systems/dark-heresy-2nd/templates/actor/panel/fate-panel.hbs}}
@@ -44,7 +44,7 @@
                 {{> systems/dark-heresy-2nd/templates/actor/panel/movement-panel.hbs}}
                 {{> systems/dark-heresy-2nd/templates/actor/panel/active-effects-panel.hbs}}
             </div>
-            <div class="tab" data-group="primary" data-tab="main">
+            <div class="tab {{tabs.main.cssClass}}" data-group="primary" data-tab="main">
                 {{> systems/dark-heresy-2nd/templates/actor/panel/characteristic-panel.hbs}}
                 {{> systems/dark-heresy-2nd/templates/actor/panel/trait-panel.hbs}}
                 {{> systems/dark-heresy-2nd/templates/actor/panel/bonuses-panel.hbs}}
@@ -52,7 +52,7 @@
                 {{> systems/dark-heresy-2nd/templates/actor/panel/skills-specialist-panel.hbs}}
                 {{> systems/dark-heresy-2nd/templates/actor/panel/talent-panel.hbs}}
             </div>
-            <div class="tab" data-group="primary" data-tab="gear">
+            <div class="tab {{tabs.gear.cssClass}}" data-group="primary" data-tab="gear">
                 {{> systems/dark-heresy-2nd/templates/actor/panel/weapon-panel.hbs}}
                 {{> systems/dark-heresy-2nd/templates/actor/panel/encumbrance-panel.hbs}}
                 {{> systems/dark-heresy-2nd/templates/actor/panel/armour-panel.hbs}}
@@ -60,12 +60,12 @@
                 {{> systems/dark-heresy-2nd/templates/actor/panel/backpack-panel.hbs}}
                 {{> systems/dark-heresy-2nd/templates/actor/panel/gear-panel.hbs}}
             </div>
-            <div class="tab" data-group="primary" data-tab="psychic">
+            <div class="tab {{tabs.psychic.cssClass}}" data-group="primary" data-tab="psychic">
                 {{> systems/dark-heresy-2nd/templates/actor/panel/psychic-powers-panel.hbs}}
                 {{> systems/dark-heresy-2nd/templates/actor/panel/psy-panel.hbs}}
             </div>
         </section>
-    </form>
+    </div>
 </div>
 
 

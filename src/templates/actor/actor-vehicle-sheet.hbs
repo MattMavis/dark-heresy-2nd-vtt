@@ -1,10 +1,10 @@
 {{dhlog this}}
 <div class="dh-wrapper">
-    <form class="dh-actor" autocomplete="off">
+    <div class="dh-actor">
         <div class="dh-header dh-grid-col-6 dh-panel">
             <div class="dh-header__info">
                 <div class="dh-header__logo dh-header__item-wrapper--span-4">
-                    <img class="dh-header__logo-image" src="{{actor.img}}" data-edit="img" alt="{{actor.name}}" title="{{actor.name}}" />
+                    <img class="dh-header__logo-image" src="{{actor.img}}" data-edit="img" data-action="editImage" alt="{{actor.name}}" data-tooltip="{{actor.name}}" />
                 </div>
                 <div class="dh-header__item-wrapper--span-2">
                     <span class="dh-header__title">Vehicle Name</span>
@@ -31,7 +31,7 @@
         {{> systems/dark-heresy-2nd/templates/actor/panel/vehicle-movement-panel.hbs}}
         {{> systems/dark-heresy-2nd/templates/actor/panel/trait-panel.hbs}}
         {{> systems/dark-heresy-2nd/templates/actor/panel/weapon-panel.hbs}}
-    </form>
+    </div>
 </div>
 
 
