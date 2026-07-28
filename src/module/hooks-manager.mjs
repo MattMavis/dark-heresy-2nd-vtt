@@ -94,7 +94,8 @@ Enable Debug with: game.dh.debug = true
         CONFIG.Item.documentClass = DarkHeresyItem;
 
         // Register sheet application classes
-        Actors.unregisterSheet('core', ActorSheet);
+        // Actor sheets are ApplicationV2. Foundry V14 registers no `core` default sheet for Actor, so there is
+        // nothing to unregister -- `makeDefault` alone makes these the defaults for their types.
         Actors.registerSheet(SYSTEM_ID, AcolyteSheet, {types: ["acolyte"], makeDefault: true });
         Actors.registerSheet(SYSTEM_ID, NpcSheet, {types: ['npc'], makeDefault: true });
         Actors.registerSheet(SYSTEM_ID, VehicleSheet, {types: ['vehicle'], makeDefault: true });
