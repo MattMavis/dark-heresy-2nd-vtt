@@ -1,15 +1,16 @@
 import { DarkHeresyItemSheet } from './item-sheet.mjs';
 
 export class DarkHeresyForceFieldSheet extends DarkHeresyItemSheet {
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            width: 820,
-            height: 575,
-            tabs: [{ navSelector: '.dh-navigation', contentSelector: '.dh-body', initial: 'stats' }],
-        });
-    }
+    /** @inheritDoc */
+    static DEFAULT_OPTIONS = {
+        position: { width: 820, height: 575 },
+    };
 
-    get template() {
-        return `systems/dark-heresy-2nd/templates/item/item-force-field-sheet.hbs`;
-    }
+    /** @inheritDoc */
+    static PARTS = {
+        main: {
+            template: 'systems/dark-heresy-2nd/templates/item/item-force-field-sheet.hbs',
+            scrollable: [''],
+        },
+    };
 }
