@@ -113,7 +113,7 @@ export class AssignDamageData {
         });
         game.dh.log('performActionAndSendToChat', this)
 
-        const html = await renderTemplate('systems/dark-heresy-2nd/templates/chat/assign-damage-chat.hbs', this);
+        const html = await foundry.applications.handlebars.renderTemplate('systems/dark-heresy-2nd/templates/chat/assign-damage-chat.hbs', this);
         let chatData = {
             user: game.user.id,
             rollMode: game.settings.get('core', 'rollMode'),

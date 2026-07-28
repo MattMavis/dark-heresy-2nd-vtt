@@ -4,9 +4,9 @@
   "description": "Dark Heresy 2nd Edition - Foundry VTT",
   "version": "1.8.1",
   "compatibility": {
-    "minimum": 12,
-    "verified": "12.331",
-    "maximum": 12
+    "minimum": 13,
+    "verified": "14.360",
+    "maximum": 14
   },
   "authors": [
     {
@@ -28,104 +28,91 @@
       "system": "dark-heresy-2nd",
       "label": "Ammo",
       "path": "./packs/ammo.db",
-      "type": "Item",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "aptitudes",
       "system": "dark-heresy-2nd",
       "label": "Aptitudes",
       "path": "./packs/aptitudes.db",
-      "type": "Item",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "armour",
       "system": "dark-heresy-2nd",
       "label": "Armour",
       "path": "./packs/armour.db",
-      "type": "Item",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "attack-specials",
       "system": "dark-heresy-2nd",
       "label": "Specials",
       "path": "./packs/attack-specials.db",
-      "type": "Item",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "consumables",
       "system": "dark-heresy-2nd",
       "label": "Drugs and Consumables",
       "path": "./packs/consumables.db",
-      "type": "Item",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "cybernetics",
       "system": "dark-heresy-2nd",
       "label": "Cybernetics",
       "path": "./packs/cybernetics.db",
-      "type": "Item",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "psychic-powers",
       "system": "dark-heresy-2nd",
       "label": "Psychic Powers",
       "path": "./packs/psychic-powers.db",
-      "type": "Item",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "tables",
       "system": "dark-heresy-2nd",
       "label": "Tables",
       "path": "./packs/tables.db",
-      "type": "RollTable",
-      "entity": "RollTable"
+      "type": "RollTable"
     },
     {
       "name": "talents",
       "system": "dark-heresy-2nd",
       "label": "Talents",
       "path": "./packs/talents.db",
-      "type": "Item",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "tools",
       "system": "dark-heresy-2nd",
       "label": "Tools",
       "path": "./packs/tools.db",
-      "type": "Item",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "traits",
       "system": "dark-heresy-2nd",
       "label": "Traits",
       "path": "./packs/traits.db",
-      "type": "Item",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "weapons",
       "system": "dark-heresy-2nd",
       "label": "Weapons",
       "path": "./packs/weapons.db",
-      "type": "Item",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "weapon-mods",
       "system": "dark-heresy-2nd",
       "label": "Weapon Mods",
       "path": "./packs/weapon-mods.db",
-      "type": "Item",
-      "entity": "Item"
+      "type": "Item"
     }
   ],
   "grid": {

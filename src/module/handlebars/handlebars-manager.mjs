@@ -10,7 +10,7 @@ export class HandlebarManager {
     }
 
     static preloadHandlebarsTemplates() {
-        return loadTemplates([
+        return foundry.applications.handlebars.loadTemplates([
             // Actor partials.
             'systems/dark-heresy-2nd/templates/actor/panel/active-effects-panel.hbs',
             'systems/dark-heresy-2nd/templates/actor/panel/aptitude-panel.hbs',

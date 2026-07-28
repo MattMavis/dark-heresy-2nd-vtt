@@ -355,7 +355,7 @@ export class PsychicActionData extends ActionData {
 
     async descriptionText() {
         if(this.rollData.power) {
-            this.psychicEffect = await TextEditor.enrichHTML(this.rollData.power.system.description, {rollData: this.rollData});
+            this.psychicEffect = await foundry.applications.ux.TextEditor.enrichHTML(this.rollData.power.system.description, {rollData: this.rollData});
         }
     }
 }

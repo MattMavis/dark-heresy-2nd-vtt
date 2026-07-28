@@ -131,7 +131,7 @@ export class ActorContainerSheet extends ActorSheet {
             actor: this.actor.name,
             name: item.name,
             type: item.type?.toUpperCase(),
-            description: await TextEditor.enrichHTML(item.system.benefit ?? item.system.description, {rollData: {actor: this.actor, item: this, pr: this.actor.psy.rating}}),
+            description: await foundry.applications.ux.TextEditor.enrichHTML(item.system.benefit ?? item.system.description, {rollData: {actor: this.actor, item: this, pr: this.actor.psy.rating}}),
         });
     }
 

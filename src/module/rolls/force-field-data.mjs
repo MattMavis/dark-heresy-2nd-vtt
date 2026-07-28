@@ -59,7 +59,7 @@ export class ForceFieldData {
             })
         }
 
-        const html = await renderTemplate('systems/dark-heresy-2nd/templates/chat/force-field-roll-chat.hbs', this);
+        const html = await foundry.applications.handlebars.renderTemplate('systems/dark-heresy-2nd/templates/chat/force-field-roll-chat.hbs', this);
         let chatData = {
             user: game.user.id,
             rollMode: game.settings.get('core', 'rollMode'),

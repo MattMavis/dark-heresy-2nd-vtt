@@ -170,7 +170,7 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
                     actor: this.name,
                     name: item.name,
                     type: item.type?.toUpperCase(),
-                    description: await TextEditor.enrichHTML(item.system.benefit ?? item.system.description, {
+                    description: await foundry.applications.ux.TextEditor.enrichHTML(item.system.benefit ?? item.system.description, {
                         rollData: {
                             actor: this,
                             item: item,

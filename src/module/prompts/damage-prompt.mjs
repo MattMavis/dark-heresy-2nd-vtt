@@ -3,7 +3,7 @@ import { ActionData } from '../rolls/action-data.mjs';
 
 export async function prepareDamageRoll(rollData) {
     rollData.dh = CONFIG.dh;
-    const html = await renderTemplate('systems/dark-heresy-2nd/templates/prompt/damage-roll-prompt.hbs', rollData);
+    const html = await foundry.applications.handlebars.renderTemplate('systems/dark-heresy-2nd/templates/prompt/damage-roll-prompt.hbs', rollData);
     let dialog = new Dialog(
         {
             title: 'Damage Roll',

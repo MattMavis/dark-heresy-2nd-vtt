@@ -225,7 +225,7 @@ export class BasicActionManager {
      * @returns {Promise<void>}
      */
     async sendItemVocalizeChat(data) {
-        const html = await renderTemplate('systems/dark-heresy-2nd/templates/chat/item-vocalize-chat.hbs', data);
+        const html = await foundry.applications.handlebars.renderTemplate('systems/dark-heresy-2nd/templates/chat/item-vocalize-chat.hbs', data);
         let chatData = {
             user: game.user.id,
             content: html,
