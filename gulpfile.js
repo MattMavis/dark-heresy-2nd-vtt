@@ -21,6 +21,7 @@ const SYSTEM = JSON.parse(fs.readFileSync("src/system.json"));
 const SYSTEM_SCSS = ["src/scss/**/*.scss"];
 const STATIC_FILES = [
   "src/icons/**/*",
+  "src/lang/**/*",
   "src/module/**/*",
   "!src/module/foundry-core/**",
   "src/templates/**/*",

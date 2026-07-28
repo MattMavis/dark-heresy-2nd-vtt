@@ -1,0 +1,37 @@
+{
+    "TYPES": {
+        "Actor": {
+            "acolyte": "Acolyte",
+            "npc": "NPC",
+            "vehicle": "Vehicle"
+        },
+        "Item": {
+            "ammunition": "Ammunition",
+            "aptitude": "Aptitude",
+            "armour": "Armour",
+            "armourModification": "Armour Modification",
+            "attackSpecial": "Attack Special",
+            "backpack": "Backpack",
+            "consumable": "Consumable",
+            "criticalInjury": "Critical Injury",
+            "cybernetic": "Cybernetic",
+            "drug": "Drug",
+            "enemy": "Enemy",
+            "forceField": "Force Field",
+            "gear": "Gear",
+            "journalEntry": "Journal Entry",
+            "malignancy": "Malignancy",
+            "mentalDisorder": "Mental Disorder",
+            "mutation": "Mutation",
+            "peer": "Peer",
+            "psychicPower": "Psychic Power",
+            "specialAbility": "Special Ability",
+            "storageLocation": "Storage Location",
+            "talent": "Talent",
+            "tool": "Tool",
+            "trait": "Trait",
+            "weapon": "Weapon",
+            "weaponModification": "Weapon Modification"
+        }
+    }
+}
