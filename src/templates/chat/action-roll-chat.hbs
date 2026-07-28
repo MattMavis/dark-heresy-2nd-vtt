@@ -77,15 +77,15 @@
                     {{#unless ignoreControls}}
                         <div class='dh-roll__controls'>
                             {{#if showDamage}}
-                                <button class="dh-control-button roll-control__hide-control" data-toggle="{{@root.id}}">
+                                <div class="dh-control-button roll-control__hide-control" data-toggle="{{@root.id}}">
                                     <span class="dh-control-button__span material-icons">bolt</span>
                                     <span class="dh-control-button__label">Damage</span>
-                                </button>
+                                </div>
                             {{else}}
-                                <button class="dh-control-button__disabled">
+                                <div class="dh-control-button__disabled">
                                     <span class="dh-control-button__span material-icons">bolt</span>
                                     <span class="dh-control-button__label">Damage</span>
-                                </button>
+                                </div>
                             {{/if}}
                             <div class="dh-control-button roll-control__refund" data-roll-id="{{@root.id}}">
                                 <span class="dh-control-button__span material-icons">deblur</span>
