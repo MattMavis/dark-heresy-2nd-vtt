@@ -116,13 +116,13 @@ export class AssignDamageData {
         const html = await foundry.applications.handlebars.renderTemplate('systems/dark-heresy-2nd/templates/chat/assign-damage-chat.hbs', this);
         let chatData = {
             user: game.user.id,
-            rollMode: game.settings.get('core', 'rollMode'),
+            rollMode: game.settings.get('core', 'messageMode'),
             content: html,
             style: CONST.CHAT_MESSAGE_STYLES.OTHER,
         };
-        if (['gmroll', 'blindroll'].includes(chatData.rollMode)) {
+        if (['gm', 'blind'].includes(chatData.rollMode)) {
             chatData.whisper = ChatMessage.getWhisperRecipients('GM');
-        } else if (chatData.rollMode === 'selfroll') {
+        } else if (chatData.rollMode === 'self') {
             chatData.whisper = [game.user];
         }
         ChatMessage.create(chatData);

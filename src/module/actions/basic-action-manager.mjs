@@ -276,14 +276,14 @@ export class BasicActionManager {
         let chatData = {
             user: game.user.id,
             content: html,
-            rollMode: game.settings.get('core', 'rollMode'),
+            rollMode: game.settings.get('core', 'messageMode'),
             // V12+ renamed the numeric ChatMessage `type` field to `style`, backed by
             // CONST.CHAT_MESSAGE_STYLES (CONST.CHAT_MESSAGE_TYPES is now the document sub-type).
             style: CONST.CHAT_MESSAGE_STYLES.IC,
         };
-        if (['gmroll', 'blindroll'].includes(chatData.rollMode)) {
+        if (['gm', 'blind'].includes(chatData.rollMode)) {
             chatData.whisper = ChatMessage.getWhisperRecipients('GM');
-        } else if (chatData.rollMode === 'selfroll') {
+        } else if (chatData.rollMode === 'self') {
             chatData.whisper = [game.user];
         }
         ChatMessage.create(chatData);

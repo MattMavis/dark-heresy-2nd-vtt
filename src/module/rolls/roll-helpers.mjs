@@ -49,16 +49,16 @@ export async function sendActionDataToChat(actionData) {
     const html = await foundry.applications.handlebars.renderTemplate(actionData.template, actionData);
     let chatData = {
         user: game.user.id,
-        rollMode: game.settings.get('core', 'rollMode'),
+        rollMode: game.settings.get('core', 'messageMode'),
         content: html,
         style: CONST.CHAT_MESSAGE_STYLES.OTHER,
     };
     if (actionData.rollData.roll) {
         chatData.roll = actionData.rollData.roll;
     }
-    if (['gmroll', 'blindroll'].includes(chatData.rollMode)) {
+    if (['gm', 'blind'].includes(chatData.rollMode)) {
         chatData.whisper = ChatMessage.getWhisperRecipients('GM');
-    } else if (chatData.rollMode === 'selfroll') {
+    } else if (chatData.rollMode === 'self') {
         chatData.whisper = [game.user];
     }
     ChatMessage.create(chatData);
