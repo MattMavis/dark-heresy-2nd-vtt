@@ -1,10 +1,10 @@
 <div class="dh-wrapper">
-    <form class="dh-item" autocomplete="off">
+    <div class="dh-item">
         <div class="dh-panel dh-grid-col-6">
             <div class="dh-header">
                 <div class="dh-header__info">
                     <div class="dh-header__logo dh-header__item-wrapper--span-4">
-                        <img class="dh-header__logo-image" src="{{item.img}}" data-edit="img" alt="{{item.name}}" title="{{item.name}}" />
+                        <img class="dh-header__logo-image" src="{{item.img}}" data-edit="img" data-action="editImage" alt="{{item.name}}" data-tooltip="{{item.name}}" />
                     </div>
                     <div class="dh-header__item-wrapper--span-4">
                         <span class="dh-header__title">Name</span>
@@ -54,23 +54,23 @@
                         </select>
                     </div>
                 </div>
-                <div class="dh-navigation" data-group="primary">
+                <div class="dh-navigation tabs" data-group="primary">
                     <label class="dh-navigation__item dh-navigation__item-left">
-                        <a class="item" data-tab="active-effects" data-group="primary">active effects</a>
+                        <a class="item {{#if tabs.[active-effects].active}}active{{/if}}" data-action="tab" data-tab="active-effects" data-group="primary">active effects</a>
                     </label>
                     <label class="dh-navigation__item">
-                        <a class="item" data-tab="stats" data-group="primary">stats</a>
+                        <a class="item {{#if tabs.[stats].active}}active{{/if}}" data-action="tab" data-tab="stats" data-group="primary">stats</a>
                     </label>
                     <label class="dh-navigation__item">
-                        <a class="item" data-tab="description" data-group="primary">description</a>
+                        <a class="item {{#if tabs.[description].active}}active{{/if}}" data-action="tab" data-tab="description" data-group="primary">description</a>
                     </label>
                 </div>
                 <section class="dh-body">
-                    <div class="tab" data-group="primary" data-tab="active-effects">
+                    <div class="tab {{#if tabs.[active-effects].active}}active{{/if}}" data-group="primary" data-tab="active-effects">
                         {{> systems/dark-heresy-2nd/templates/item/panel/active-effects-panel.hbs}}
                     </div>
 
-                    <div class="tab" data-group="primary" data-tab="stats">
+                    <div class="tab {{#if tabs.[stats].active}}active{{/if}}" data-group="primary" data-tab="stats">
                         <div class="dh-panel dh-grid-col-2 dh-grid-row-1">
                             <h1 class="dh-panel__header">Damage</h1>
                             <div class="dh-field__wrapper">
@@ -152,7 +152,7 @@
                                             {{#if embedded.isAmmunition}}
                                                 <div class="table-row">
                                                     <div class="table-cell--settingstoggle">
-                                                        <label class="dh-control-button item-edit"
+                                                        <label class="dh-control-button item-edit" data-action="itemEdit"
                                                                data-item-id="{{embedded.id}}">
                                                             <span
                                                                 class="dh-control-button__span material-icons">{{defaultVal
@@ -163,7 +163,7 @@
                                                         {{> systems/dark-heresy-2nd/templates/actor/partial/trait-toggle.hbs toggle=(concat 'description_' embedded.id) text=embedded.name}}
                                                     </div>
                                                     <div class="table-cell--last">
-                                                        <label class="dh-control-button item-delete"
+                                                        <label class="dh-control-button item-delete" data-action="itemDelete"
                                                                data-item-id="{{embedded.id}}">
                                                             <span
                                                                 class="dh-control-button__span material-icons">{{defaultVal
@@ -198,7 +198,7 @@
                                     {{#if embedded.isWeaponModification}}
                                         <div class="table-row">
                                             <div class="table-cell--settingstoggle">
-                                                <label class="dh-control-button item-edit"
+                                                <label class="dh-control-button item-edit" data-action="itemEdit"
                                                        data-item-id="{{embedded.id}}">
                                                     <span class="dh-control-button__span material-icons">{{defaultVal
                                                         icon 'settings'}}</span>
@@ -214,7 +214,7 @@
                                                 <span>{{embedded.system.equipped}}</span>
                                             </div>
                                             <div class="table-cell--last">
-                                                <label class="dh-control-button item-delete"
+                                                <label class="dh-control-button item-delete" data-action="itemDelete"
                                                        data-item-id="{{embedded.id}}">
                                                     <span class="dh-control-button__span material-icons">{{defaultVal
                                                         icon 'delete'}}</span>
@@ -242,7 +242,7 @@
                                     {{#if embedded.isAttackSpecial}}
                                         <div class="table-row">
                                             <div class="table-cell--settingstoggle">
-                                                <label class="dh-control-button item-edit"
+                                                <label class="dh-control-button item-edit" data-action="itemEdit"
                                                        data-item-id="{{embedded.id}}">
                                                     <span class="dh-control-button__span material-icons">{{defaultVal
                                                         icon 'settings'}}</span>
@@ -259,7 +259,7 @@
                                                                                    'N/A'}}</span>
                                             </div>
                                             <div class="table-cell--last">
-                                                <label class="dh-control-button item-delete"
+                                                <label class="dh-control-button item-delete" data-action="itemDelete"
                                                        data-item-id="{{embedded.id}}">
                                                     <span class="dh-control-button__span material-icons">{{defaultVal
                                                         icon 'delete'}}</span>
@@ -275,7 +275,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab" data-group="primary" data-tab="description">
+                    <div class="tab {{#if tabs.[description].active}}active{{/if}}" data-group="primary" data-tab="description">
                         <div class="dh-header__info dh-grid-col-6">
                             <div class="dh-header__item-wrapper--text-area">
                                 <span class="dh-header__title">Description</span>
@@ -287,7 +287,7 @@
                 </section>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 

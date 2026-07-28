@@ -4,38 +4,64 @@
  */
 import { DarkHeresyItemSheet } from './item-sheet.mjs';
 
+const { DialogV2 } = foundry.applications.api;
+
 export class DarkHeresyItemContainerSheet extends DarkHeresyItemSheet {
-    getData() {
-        const context = super.getData();
-        if (!context.item.system.container) {
+    /** @inheritDoc */
+    static DEFAULT_OPTIONS = {
+        actions: {
+            itemCreate: DarkHeresyItemContainerSheet.#onItemCreate,
+            itemDelete: DarkHeresyItemContainerSheet.#onItemDelete,
+            itemEdit: DarkHeresyItemContainerSheet.#onItemEdit,
+        },
+    };
+
+    /**
+     * Set when the sheet is rendered for an Item which is not actually a container. Such a sheet is
+     * forced read-only, mirroring the legacy behaviour of clearing the `editable` option.
+     * @type {boolean}
+     */
+    #notAContainer = false;
+
+    /* -------------------------------------------- */
+
+    /** @inheritDoc */
+    get isEditable() {
+        return super.isEditable && !this.#notAContainer;
+    }
+
+    /* -------------------------------------------- */
+
+    /** @inheritDoc */
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
+        this.#notAContainer = !this.item.system.container;
+        if (this.#notAContainer) {
             game.dh.warn('Unexpected Sheet Type: Item has container sheet but is not container?', context);
-            this.options.editable = false;
-            return context;
+            context.editable = false;
         }
         return context;
     }
 
-    activateListeners(html) {
-        super.activateListeners(html);
+    /* -------------------------------------------- */
+    /*  Drag and Drop                               */
+    /* -------------------------------------------- */
 
-        // Everything below here is only needed if the sheet is editable
-        if (!this.isEditable) return;
-
-        if (this.item.system.container) {
-            this.form.ondragover = (ev) => this._onDragOver(ev);
-            this.form.ondrop = (ev) => this._onDrop(ev);
-            this.form.ondragend = (ev) => this._onDragEnd(ev);
-            html.find('.item-roll').click((ev) => this._onItemRoll(ev));
-            html.find('.item-create').click(async (ev) => await this._onItemCreate(ev));
-            html.find('.item-edit').click((ev) => this._onItemEdit(ev));
-            html.find('.item-delete').click((ev) => this._onItemDelete(ev));
-            html.find('.item-drag').each((i, item) => {
-                item.setAttribute('draggable', true);
-                item.addEventListener('dragstart', this._onItemDragStart.bind(this), false);
-            });
-        }
+    /** @inheritDoc */
+    _canDragStart(selector) {
+        return this.isEditable && this.item.system.container;
     }
 
+    /* -------------------------------------------- */
+
+    /** @inheritDoc */
+    _canDragDrop(selector) {
+        return this.isEditable && this.item.system.container;
+    }
+
+    /* -------------------------------------------- */
+
+    /** @inheritDoc */
     async _onDrop(event) {
         event.preventDefault();
         event.stopPropagation();
@@ -49,7 +75,8 @@ export class DarkHeresyItemContainerSheet extends DarkHeresyItemSheet {
                 return false;
             } else {
                 game.dh.log('_onDrop data: ', data);
-                item = fromUuidSync(data.uuid)
+                // Drags originating from within a container carry the item data directly rather than a uuid.
+                item = data.uuid ? fromUuidSync(data.uuid) : data.data;
 
                 if (data.actor) {
                     actor = data.actor;
@@ -71,13 +98,13 @@ export class DarkHeresyItemContainerSheet extends DarkHeresyItemSheet {
         if (item) {
             // Check up the chain that we are not dropping one of our parents onto us.
             let canAdd = this.item.id !== item._id;
-            parent = this.item.parent;
+            let ancestor = this.item.parent;
             let count = 0;
-            while (parent && count < 10) {
+            while (ancestor && count < 10) {
                 // Don't allow drops of anything in the parent chain or the item will disappear.
                 count += 1;
-                canAdd = canAdd && parent.id !== item._id;
-                parent = parent.parent;
+                canAdd = canAdd && ancestor.id !== item._id;
+                ancestor = ancestor.parent;
             }
             if (!canAdd) {
                 game.dh.log('ItemCollection | Cant drop on yourself');
@@ -102,69 +129,25 @@ export class DarkHeresyItemContainerSheet extends DarkHeresyItemSheet {
         return false;
     }
 
-    _onDragEnd(event) {
-        event.preventDefault();
-        return false;
-    }
+    /* -------------------------------------------- */
 
-    _onDragOver(event) {
-        event.preventDefault();
-        return false;
-    }
-
-    _onItemRoll(event) {
-        event.preventDefault();
-        return false;
-    }
-
-    async _onItemCreate(event) {
-        event.preventDefault();
-        const div = $(event.currentTarget);
-        let data = {
-            name: `New ${div.data('type').capitalize()}`,
-            type: div.data('type'),
-        };
-        await this.item.createNestedDocuments([data]);
-    }
-
-    _onItemEdit(event) {
-        event.preventDefault();
-        const div = $(event.currentTarget);
-        let item = this.item.items.get(div.data('itemId'));
-        item.sheet.render(true);
-    }
-
-    _onItemDelete(event) {
-        event.preventDefault();
-        Dialog.confirm({
-            title: 'Confirm Delete',
-            content: '<p>Are you sure you would like to delete this?</p>',
-            yes: () => {
-                const div = $(event.currentTarget);
-                this.item.deleteNestedDocuments([div.data('itemId')]);
-                div.slideUp(200, () => this.render(false));
-            },
-            no: () => {},
-            defaultYes: false,
-        });
-    }
-
-    async _onItemDragStart(event) {
+    /** @inheritDoc */
+    async _onDragStart(event) {
         event.stopPropagation();
-        game.dh.log('Item:_onItemDragStart', event);
+        game.dh.log('Item:_onDragStart', event);
 
         const element = event.currentTarget;
         if (!element.dataset?.itemId) {
-            game.dh.log('No Item Id - Cancelling Drag');
-            return;
+            // Not a nested item -- let the core ItemSheetV2 handler deal with it (e.g. ActiveEffects).
+            game.dh.log('Default Foundry Handler');
+            return super._onDragStart(event);
         }
 
         const itemId = element.dataset.itemId;
-        let item = this.item.items.get(itemId);
+        const item = this.item.items.get(itemId);
         if (!item) {
-            // Cannot find item on container? Just let foundry handle it...
-            game.dh.log('Default Foundry Handler');
-            return super._onDragStart(event);
+            game.dh.log('No Item found on container - Cancelling Drag');
+            return;
         }
 
         // Create drag data
@@ -177,6 +160,78 @@ export class DarkHeresyItemContainerSheet extends DarkHeresyItemSheet {
         await this.item.deleteNestedDocuments([itemId]);
     }
 
+    /* -------------------------------------------- */
+    /*  Event Listeners and Handlers                */
+    /* -------------------------------------------- */
+
+    /**
+     * Resolve the nested Item targeted by an action element.
+     * @param {HTMLElement} target  The element which defined the action
+     * @returns {Item|undefined}
+     * @protected
+     */
+    _getNestedItem(target) {
+        const itemId = target.closest('[data-item-id]')?.dataset.itemId;
+        return itemId ? this.item.items.get(itemId) : undefined;
+    }
+
+    /* -------------------------------------------- */
+
+    /**
+     * Create a new nested Item of the type declared by the action element.
+     * @this {DarkHeresyItemContainerSheet}
+     * @param {PointerEvent} event
+     * @param {HTMLElement} target
+     */
+    static async #onItemCreate(event, target) {
+        if (!this.isEditable) return;
+        const type = target.closest('[data-type]')?.dataset.type;
+        if (!type) return;
+        await this.item.createNestedDocuments([{ name: `New ${type.capitalize()}`, type }]);
+        this.render();
+    }
+
+    /* -------------------------------------------- */
+
+    /**
+     * Render the sheet of a nested Item.
+     * @this {DarkHeresyItemContainerSheet}
+     * @param {PointerEvent} event
+     * @param {HTMLElement} target
+     */
+    static #onItemEdit(event, target) {
+        this._getNestedItem(target)?.sheet.render({ force: true });
+    }
+
+    /* -------------------------------------------- */
+
+    /**
+     * Delete a nested Item after confirmation.
+     * @this {DarkHeresyItemContainerSheet}
+     * @param {PointerEvent} event
+     * @param {HTMLElement} target
+     */
+    static async #onItemDelete(event, target) {
+        if (!this.isEditable) return;
+        const itemId = target.closest('[data-item-id]')?.dataset.itemId;
+        if (!itemId) return;
+        const confirmed = await DialogV2.confirm({
+            window: { title: 'Confirm Delete' },
+            content: '<p>Are you sure you would like to delete this?</p>',
+            modal: true,
+        });
+        if (!confirmed) return;
+        await this.item.deleteNestedDocuments([itemId]);
+        this.render();
+    }
+
+    /* -------------------------------------------- */
+
+    /**
+     * Can the provided item be placed into this container?
+     * @param {object|Item} itemData
+     * @returns {boolean}
+     */
     canAdd(itemData) {
         return this.item.system.containerTypes.includes(itemData.type);
     }

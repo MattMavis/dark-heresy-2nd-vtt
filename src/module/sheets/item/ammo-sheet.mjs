@@ -1,18 +1,20 @@
 import { DarkHeresyItemContainerSheet } from './item-container-sheet.mjs';
 
 export class DarkHeresyAmmoSheet extends DarkHeresyItemContainerSheet {
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            width: 820,
-            height: 575,
-            tabs: [{ navSelector: '.dh-navigation', contentSelector: '.dh-body', initial: 'stats' }],
-        });
-    }
+    /** @inheritDoc */
+    static DEFAULT_OPTIONS = {
+        position: { width: 820, height: 575 },
+    };
 
-    get template() {
-        return `systems/dark-heresy-2nd/templates/item/item-ammo-sheet.hbs`;
-    }
+    /** @inheritDoc */
+    static PARTS = {
+        main: {
+            template: 'systems/dark-heresy-2nd/templates/item/item-ammo-sheet.hbs',
+            scrollable: [''],
+        },
+    };
 
+    /** @inheritDoc */
     canAdd(itemData) {
         if (!super.canAdd(itemData)) {
             return false;

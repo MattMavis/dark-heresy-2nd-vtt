@@ -1,26 +1,26 @@
 <div class="dh-wrapper">
-    <form class="dh-item" autocomplete="off">
+    <div class="dh-item">
         <div class="dh-panel dh-grid-col-6">
             <div class="dh-header">
                 <div class="dh-header__info">
                     <div class="dh-header__logo dh-header__item-wrapper--span-4">
-                        <img class="dh-header__logo-image" src="{{item.img}}" data-edit="img" alt="{{item.name}}" title="{{item.name}}" />
+                        <img class="dh-header__logo-image" src="{{item.img}}" data-edit="img" data-action="editImage" alt="{{item.name}}" data-tooltip="{{item.name}}" />
                     </div>
                     <div class="dh-header__item-wrapper--span-4">
                         <span class="dh-header__title">Name</span>
                         <input class="dh-header__input" name="name" type="text" value="{{item.name}}" />
                     </div>
                 </div>
-                <div class="dh-navigation" data-group="primary">
+                <div class="dh-navigation tabs" data-group="primary">
                     <label class="dh-navigation__item">
-                        <a class="item" data-tab="items" data-group="primary">items</a>
+                        <a class="item {{#if tabs.[items].active}}active{{/if}}" data-action="tab" data-tab="items" data-group="primary">items</a>
                     </label>
                     <label class="dh-navigation__item">
-                        <a class="item" data-tab="description" data-group="primary">description</a>
+                        <a class="item {{#if tabs.[description].active}}active{{/if}}" data-action="tab" data-tab="description" data-group="primary">description</a>
                     </label>
                 </div>
                 <section class="dh-body">
-                    <div class="tab" data-group="primary" data-tab="items">
+                    <div class="tab {{#if tabs.[items].active}}active{{/if}}" data-group="primary" data-tab="items">
                         <div class="dh-panel dh-grid-col-6">
                             <h1 class="dh-panel__header">Stored Items</h1>
                             <div class="dh-table--border dh-storagegeartable--border">
@@ -30,9 +30,9 @@
                                     <div class="table-cell--last"></div>
                                 </div>
                                 {{#each item.items as | embedded |}}
-                                    <div class="table-row item-drag" data-item-id="{{embedded.id}}" data-item-type="{{embedded.type}}">
+                                    <div class="table-row draggable" data-item-id="{{embedded.id}}" data-item-type="{{embedded.type}}">
                                         <div class="table-cell--settingstoggle">
-                                            <label class="dh-control-button item-edit" data-item-id="{{embedded.id}}">
+                                            <label class="dh-control-button item-edit" data-action="itemEdit" data-item-id="{{embedded.id}}">
                                                 <span class="dh-control-button__span material-icons">{{defaultVal icon
                                                                                                                   'settings'}}</span>
                                             </label>
@@ -44,7 +44,7 @@
                                             <span>{{capitalize embedded.type}}</span>
                                         </div>
                                         <div class="table-cell--last">
-                                            <label class="dh-control-button item-delete" data-item-id="{{embedded.id}}">
+                                            <label class="dh-control-button item-delete" data-action="itemDelete" data-item-id="{{embedded.id}}">
                                                 <span class="dh-control-button__span material-icons">{{defaultVal icon
                                                                                                                   'delete'}}</span>
                                             </label>
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab" data-group="primary" data-tab="description">
+                    <div class="tab {{#if tabs.[description].active}}active{{/if}}" data-group="primary" data-tab="description">
                         <div class="dh-header__info dh-grid-col-6">
                             <div class="dh-header__item-wrapper--text-area">
                                 <span class="dh-header__title">Description</span>
@@ -70,7 +70,7 @@
                 </section>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 
