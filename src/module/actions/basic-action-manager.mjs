@@ -23,16 +23,21 @@ export class BasicActionManager {
         });
 
         // Initialize Scene Control Buttons
+        // V13+ shape: `controls` is a Record<string, SceneControl> keyed by control name,
+        // and `SceneControl.tools` is a Record<string, SceneControlTool> keyed by tool name.
+        // `order` is required, and `onClick` was replaced by `onChange`.
         Hooks.on('getSceneControlButtons', (controls) => {
-            const bar = controls.find((c) => c.name === 'token');
-            bar.tools.push({
-                name: 'Assign Damage',
+            const tokenControls = controls.tokens;
+            if (!tokenControls?.tools) return;
+            tokenControls.tools.assignDamage = {
+                name: 'assignDamage',
                 title: 'Assign Damage',
                 icon: 'fas fa-shield',
+                order: Object.keys(tokenControls.tools).length,
                 visible: true,
-                onClick: async () => DHBasicActionManager.assignDamageTool(),
                 button: true,
-            });
+                onChange: async () => DHBasicActionManager.assignDamageTool(),
+            };
         });
     }
 
