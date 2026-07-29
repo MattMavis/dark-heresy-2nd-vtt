@@ -97,7 +97,7 @@ export class Hit {
 
         let rollFormula = actionItem.system.damage;
         if(!rollFormula || rollFormula === '') {
-            rollFormula = 0;
+            rollFormula = '0';
         }
         this.damageRoll = new Roll(rollFormula, attackData.rollData);
 
