@@ -74,6 +74,12 @@
                         {{/if}}
                     {{/unless}}
 
+                    {{#if render}}
+                        <div class="dh-roll__row--full dice-roll-render">
+                            {{{render}}}
+                        </div>
+                    {{/if}}
+
                     {{#unless ignoreControls}}
                         <div class='dh-roll__controls'>
                             {{#if showDamage}}

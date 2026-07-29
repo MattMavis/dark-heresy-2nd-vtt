@@ -21,6 +21,12 @@
                 <div class="dh-roll__label">The field fails to protect and the attack proceeds as normal.</div>
             {{/if}}
 
+            {{#if render}}
+                <div class="dh-roll__row--full dice-roll-render">
+                    {{{render}}}
+                </div>
+            {{/if}}
+
             {{#if forceField.system.description}}
                 <div class="dh-roll__divider"></div>
                 <div class="dh-roll__label">{{forceField.system.description}}</div>

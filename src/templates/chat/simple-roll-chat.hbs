@@ -43,11 +43,11 @@
                     </div>
                 {{/if}}
             </div>
-            <div class="dice-rolls" style="display:none">
+            {{#if render}}
                 <div class="dice-roll-render">
                     {{{render}}}
                 </div>
-            </div>
+            {{/if}}
         </div>
     </div>
 {{/with}}

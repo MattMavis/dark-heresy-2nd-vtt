@@ -25,6 +25,12 @@
                 <span>{{penetration}}</span>
             </div>
 
+            {{#if render}}
+                <div class="dh-roll__row--full dice-roll-render">
+                    {{{render}}}
+                </div>
+            {{/if}}
+
             {{#if targetActor}}
                 <div class='dh-roll__controls-1'>
                     <div class="dh-control-button roll-control__assign-damage"

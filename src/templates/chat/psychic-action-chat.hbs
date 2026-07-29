@@ -57,6 +57,12 @@
                         </div>
                     {{/if}}
 
+                    {{#if render}}
+                        <div class="dh-roll__row--full dice-roll-render">
+                            {{{render}}}
+                        </div>
+                    {{/if}}
+
                     <div class='dh-roll__controls-2'>
                         {{#if success}}
                             <div class="dh-control-button roll-control__hide-control" data-toggle="{{@root.id}}">
