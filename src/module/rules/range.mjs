@@ -93,10 +93,10 @@ function calculateRangeNameAndBonus(rollData) {
     if (targetDistance === 0) {
         rollData.rangeName = 'Self';
         rollData.rangeBonus = 0;
-    } else if (targetDistance === 2) {
+    } else if (targetDistance <= 2) {
         rollData.rangeName = 'Point Blank';
         rollData.rangeBonus = 30;
-    } else if (targetDistance <= maxRange / 2) {
+    } else if (targetDistance < maxRange / 2) {
         rollData.rangeName = 'Short Range';
         rollData.rangeBonus = 10;
     } else if (targetDistance <= maxRange * 2) {

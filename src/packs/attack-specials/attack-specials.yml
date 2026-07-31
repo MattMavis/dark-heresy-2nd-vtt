@@ -496,7 +496,7 @@ type: attackSpecial
 data:
     description: "Cumbersome, awkward to use, and often heavy, these are usually powerful\
         \ offensively, but suffer in defence actions such as parrying. These weapons cannot\
-        \ be used to make Lighting Attack actions, and impose a -10 penalty when\
+        \ be used to make Lightning Attack actions, and impose a -10 penalty when\
         \ used to Parry."
     hasLevel: false
     level: 0

@@ -178,7 +178,7 @@ function allCombatActions() {
             name: 'Knock Down',
             type: ['Half'],
             subtype: ['Attack', 'Melee'],
-            description: 'Make an opposed Strength test (with +10 if using Charge). 2+DoS gives (1d5-3)+SB Impact and 1 level of fatigue.',
+            description: 'Make an opposed Strength test (+10 if part of a Charge action or immediately after a Half Move). 2+DoS gives (1d5-3)+SB Impact and 1 level of fatigue; losing by 2+ DoS knocks the attacker Prone instead.',
         },
         {
             name: 'Lightning Attack',

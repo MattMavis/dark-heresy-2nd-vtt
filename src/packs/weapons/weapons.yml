@@ -21,7 +21,7 @@ data:
     special:
         tearing: true
     type: Bolt
-    weight: 4
+    weight: 3.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Bolt Pistol
 type: weapon
@@ -690,7 +690,7 @@ data:
         felling: 1
         toxic: 5
     type: Exotic
-    weight: 2
+    weight: 1.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Needle Pistol
 type: weapon
@@ -862,7 +862,7 @@ data:
     special:
         snare: 0
     type: Exotic
-    weight: 4
+    weight: 3.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Web Pistol
 type: weapon
@@ -882,9 +882,9 @@ data:
     penetration: 0
     range: 50
     rateOfFire:
-        burst: -1
-        full: -1
-        single: -1
+        burst: 0
+        full: 0
+        single: 1
     reload: 2 Full
     source: DH2 - 156
     special:
@@ -920,7 +920,7 @@ data:
         blast: 2
         flame: true
     type: Explosives
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Fire Bomb
 type: weapon
@@ -1128,7 +1128,7 @@ data:
         flame: true
         spray: true
     type: Flame
-    weight: 4
+    weight: 3.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Hand Flamer
 type: weapon
@@ -1400,7 +1400,7 @@ data:
     type: Force
     weight: 6
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
-name: Santus Hammer
+name: Sanctus Hammer
 type: weapon
 ---
 data:
@@ -1459,7 +1459,7 @@ data:
         sanctified: true
         smoke: 3
     type: Grenades/Missiles
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Ironfaith Incense Grenade
 type: weapon
@@ -1489,7 +1489,7 @@ data:
         crippling: 2
         tainted: true
     type: Grenades/Missiles
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Abyssal Charge
 type: weapon
@@ -1519,7 +1519,7 @@ data:
         crippling: 3
         sanctified: true
     type: Grenades/Missiles
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Argent Globe
 type: weapon
@@ -1547,7 +1547,7 @@ data:
     special:
         smoke: 2
     type: Grenades/Missiles
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Blind Grenade
 type: weapon
@@ -1575,7 +1575,7 @@ data:
     special:
         blast: 3
     type: Grenades/Missiles
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Choke Grenade
 type: weapon
@@ -1603,7 +1603,7 @@ data:
     special:
         blast: 3
     type: Grenades/Missiles
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Frag Grenade
 type: weapon
@@ -1658,9 +1658,9 @@ data:
     source: DH2 - 157
     special:
         blast: 6
-        hallucinogenic: true
+        hallucinogenic: 2
     type: Grenades/Missiles
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Hallucinogen Grenade
 type: weapon
@@ -1688,7 +1688,7 @@ data:
     special:
         haywire: 2
     type: Grenades/Missiles
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Haywire Grenade
 type: weapon
@@ -1716,7 +1716,7 @@ data:
     special:
         concussive: 0
     type: Grenades/Missiles
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Krak Grenade
 type: weapon
@@ -1773,7 +1773,7 @@ data:
     special:
         blast: 6
     type: Grenades/Missiles
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Photon Flash Grenade
 type: weapon
@@ -1802,7 +1802,7 @@ data:
         blast: 3
         hallucinogenic: 4
     type: Grenades/Missiles
-    weight: 0
+    weight: 1
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Psychotroke Grenade
 type: weapon
@@ -1888,7 +1888,7 @@ data:
     special:
         blast: 2
     type: Grenades/Missiles
-    weight: 1
+    weight: 2
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Rad Grenade
 type: weapon
@@ -1916,7 +1916,7 @@ data:
     special:
         smoke: 4
     type: Grenades/Missiles
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Smoke Grenade
 type: weapon
@@ -1973,7 +1973,7 @@ data:
         blast: 3
         concussive: 2
     type: Grenades/Missiles
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Stun Grenade
 type: weapon
@@ -2031,7 +2031,7 @@ data:
         blast: 3
         snare: 2
     type: Grenades/Missiles
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Web Grenade
 type: weapon
@@ -2201,7 +2201,7 @@ data:
     special:
         reliable: true
     type: Las
-    weight: 2
+    weight: 1.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Laspistol
 type: weapon
@@ -2231,7 +2231,7 @@ data:
         felling: 4
         reliable: true
     type: Las
-    weight: 5
+    weight: 4.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Long-Las
 type: weapon
@@ -2297,7 +2297,7 @@ data:
         max: 1
         value: 1
     craftsmanship: Common
-    damage: 2d10+2
+    damage: 2d10
     damageType: Impact
     description: ''
     equipped: false
@@ -2371,9 +2371,9 @@ data:
     source: DH2 - 154
     special:
         inaccurate: true
-        snare: true
+        snare: 1
     type: Low-Tech
-    weight: 2
+    weight: 1.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Bolas
 type: weapon
@@ -2499,7 +2499,7 @@ data:
         max: 1
         value: 1
     craftsmanship: Common
-    damage: 2d10+2
+    damage: 1d10+2
     damageType: Explosive
     description: ''
     equipped: false
@@ -3017,7 +3017,7 @@ data:
         razor-sharp: true
         sanctified: true
     type: Low-Tech
-    weight: 2
+    weight: 1.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Stealth Claw
 type: weapon
@@ -3161,7 +3161,7 @@ data:
         primitive: 8
         two-handed: true
     type: Low-Tech
-    weight: 5
+    weight: 4.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Warhammer
 type: weapon
@@ -3466,7 +3466,7 @@ data:
     equipped: false
     modifications: []
     penetration: 5
-    range: 0
+    range: 3
     rateOfFire:
         burst: -1
         full: -1
@@ -3479,7 +3479,7 @@ data:
         proven: 4
         sanctified: true
     type: Power
-    weight: 5
+    weight: 4.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Ordo Malleus Power Glaive
 type: weapon
@@ -3567,7 +3567,7 @@ data:
         power-field: true
         shocking: true
     type: Power
-    weight: 4
+    weight: 3.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Power Maul (High)
 type: weapon
@@ -3601,7 +3601,7 @@ name: Power Maul (Low)
 type: weapon
 ---
 data:
-    availability: Extremely Rare
+    availability: Very Rare
     class: Melee
     clip:
         max: 0
@@ -3742,7 +3742,7 @@ data:
         flexible: true
         shocking: true
     type: Shock
-    weight: 5
+    weight: 4.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Electro-Flail
 type: weapon
@@ -3770,13 +3770,13 @@ data:
     special:
         shocking: true
     type: Shock
-    weight: 3
+    weight: 2.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Shock Maul
 type: weapon
 ---
 data:
-    availability: Extremely Rare
+    availability: Rare
     class: Melee
     clip:
         max: 0
@@ -3881,7 +3881,7 @@ data:
     source: DH2 - 155
     special: {}
     type: Solid Projectile
-    weight: 2
+    weight: 1.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Autopistol
 type: weapon
@@ -3906,8 +3906,7 @@ data:
         single: 1
     reload: '2 Full Actions'
     source: DH2 - 155
-    special:
-        '!': true
+    special: {}
     type: Solid Projectile
     weight: 3
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
@@ -3992,7 +3991,7 @@ data:
     special:
         scatter: true
     type: Solid Projectile
-    weight: 7
+    weight: 6.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Shotgun (Combat)
 type: weapon
@@ -4048,7 +4047,7 @@ data:
     source: DH2 - 156
     special: {}
     type: Solid Projectile
-    weight: 2
+    weight: 1.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Stub Automatic
 type: weapon
@@ -4076,7 +4075,7 @@ data:
     special:
         reliable: true
     type: Solid Projectile
-    weight: 2
+    weight: 1.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Stub Revolver
 type: weapon

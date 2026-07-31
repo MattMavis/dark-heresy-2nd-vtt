@@ -1,0 +1,211 @@
+data:
+    description: >-
+        The character's skin becomes toughened with layers of thick scales or
+        chitin, and he gains the Natural Armour (2) trait.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Bestial Hide
+type: mutation
+---
+data:
+    description: >-
+        Twisted appendages (shrivelled arms, hooked talons, or fleshy tendrils)
+        emerge from this character's spine or torso. He gains the Multiple Arms
+        (CB) trait.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Unnatural Arms
+type: mutation
+---
+data:
+    description: >-
+        This character's eyes become sightless, cracked windows into a soul
+        afflicted with a growing corruption. He gains the Blind and Unnatural
+        Senses (CBx10) traits.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Sightless Orbs
+type: mutation
+---
+data:
+    description: >-
+        This character becomes bloated, his muscles expanding and his form
+        becoming excessively corpulent or disturbingly muscular (or perhaps
+        both). This character's Toughness and Strength characteristics are
+        permanently increased by 10, but his Agility bonus is reduced by 1 for
+        purposes of movement.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Swollen Brute
+type: mutation
+---
+data:
+    description: >-
+        This character's mind becomes twisted, his eyes showing him countless
+        possible annihilations of anything or anyone he gazes upon for more than
+        a few moments. Once per game session, this character may increase the
+        damage of one attack he has made by his Corruption bonus. If he does so,
+        he gains 1 Corruption point.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Deathsight
+type: mutation
+---
+data:
+    description: >-
+        This character's armour and cybernetic implants become fused with his
+        flesh, and even regenerate. Removing any of these items requires a
+        Challenging (+0) Medicae test; if the test fails, he suffers 1d5 Rending
+        damage to a randomly selected limb that ignores Armour. He can make an
+        Ordinary (+10) Toughness test to repair items merged with him, in the
+        same manner as a Tech-Use test to repair the same equipment, but suffers
+        1 Corruption point.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Cursed Fleshmetal
+type: mutation
+---
+data:
+    description: >-
+        This character's teeth grow long, turning into tearing fangs. This
+        character gains an unarmed attack that inflicts 1d5+CB Rending damage,
+        pen 2. He permanently reduces his Fellowship characteristic by 1d5.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Razor Fangs
+type: mutation
+---
+data:
+    description: >-
+        This character develops extra legs that support his form, suspending his
+        upper torso above a centauroid lower body. This character gains the
+        Quadruped trait with a number of extra legs equal half to his Corruption
+        bonus (rounded up).
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Excessive Legs
+type: mutation
+---
+data:
+    description: >-
+        Massive feathered or leathery wings erupt from this character's spine,
+        and he gains the Flyer (CBx2) trait.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Wings
+type: mutation
+---
+data:
+    description: >-
+        This character's legs wither as his spine elongates into a serpentine
+        tail that supports his body. He gains the Crawler trait and gains an
+        unarmed attack that can strike for 1d10 Impact damage, Pen 0.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Serpentine Tail
+type: mutation
+---
+data:
+    description: >-
+        This character's veins are filled with searing acids in place of blood,
+        though somehow the corrosive effects do not burn his own flesh. Whenever
+        he suffers Blood Loss, the foul liquid erupts and inflicts 1d5+CB Energy
+        damage, Pen 0, to each other character within 10 metres.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Searing Blood
+type: mutation
+---
+data:
+    description: >-
+        A small stigma in the shape of a maddening rune appears on this
+        character's body, marking him as touched by Chaos. He gains the Psyker
+        trait (or adds 1 to an existing psy rating) and freely learns any 1
+        psychic power that costs 100 xp or less. Whenever he attempts to use
+        this power, he gains 1d5 Corruption points.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Witch-Curse
+type: mutation
+---
+data:
+    description: >-
+        This character's bones grow long, twisted spurs that sprout painfully
+        from his flesh on his command. This character gains an unarmed attack
+        that inflicts 1d10+CB Rending damage, Pen 0. Whenever he makes an attack
+        with this weapon, this character suffers Blood Loss unless he passes a
+        Challenging (+0) Toughness test.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Bone-Blades
+type: mutation
+---
+data:
+    description: >-
+        Blood and marrow become as wine and bread to this character, and normal
+        food no longer sates the hunger of his soul. Once per game session, he
+        can remove 1d5 damage by consuming human flesh. Each time he does so, he
+        gains 1 Corruption point.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Cannibalistic Urge
+type: mutation
+---
+data:
+    description: >-
+        Instead of blood, when this character's flesh is torn asunder, horrific
+        insects, or flitting creatures spill forth. Whenever he suffers damage,
+        this character gains the Fear (1) trait for 1d5 rounds.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Corrupted Flesh
+type: mutation
+---
+data:
+    description: >-
+        This character is touched by the power of the Warp, and fortune twists
+        to keep him alive regardless of the terrible wounds he suffers, as if it
+        were the will of some dark being that resides beyond the veil of
+        reality. He can no longer burn a Fate point to survive lethal injuries.
+        Whenever he would die, he instead survives by the narrowest margin as if
+        he had burned a Fate point and gains 1d10+5 Corruption points.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: It Will Not Die!
+type: mutation
+---
+data:
+    description: >-
+        Whatever this character looks upon burns with the fire of the Warp, and
+        all who see his eyes despair. This character gains a 20m ranged attack
+        that strikes with 1d10+CB Energy damage and the Spray quality. Each time
+        he uses this attack, he gains 1d5 Corruption points. Characters struck
+        with this attack must make a Challenging (+0) Fear (1) test.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Warp Gaze
+type: mutation
+---
+data:
+    description: >-
+        Corruption seethes through this character's flesh, sewing his body back
+        together time and time again whether he wills it or not. Whenever this
+        character suffers damage, he makes a Challenging (+0) Toughness test. If
+        he succeeds, he gains the Regeneration (CB) trait for 1 round and gains
+        1d5 Corruption points.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: Warp Regeneration
+type: mutation
+---
+data:
+    description: >-
+        This character becomes a Daemon-like creature, capable of reshaping
+        reality itself at his whim. He gains the Daemonic (CB), Fear (2), From
+        Beyond, and Warp Instability traits. He can also use his Willpower
+        characteristic in place of any other characteristic for any test he is
+        called upon to take.
+    source: PG 292 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_02.png
+name: The Warp Made Manifest
+type: mutation

@@ -596,7 +596,7 @@ system:
     damage: '1d10+@pr'
     damageType: 'Energy'
     discipline: Biomancy
-    description: 'Drawing on the electric eld of his own body, the psyker projects crackling
+    description: 'Drawing on the electric field of his own body, the psyker projects crackling
         bolts of bio-lightning, transforming his very life force into destructive energy.
         Diviners often claim that one can tell much about the state of a biomancers soul
         from the colour and appearance of this power.'

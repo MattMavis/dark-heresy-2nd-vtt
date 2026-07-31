@@ -18,7 +18,7 @@ data:
     description: When used grants +20 to awareness tests and counts as a Free Action
         once per turn. With aTech-Usecan see through walls less than 50 cm, has a range
         of 50 meters.
-    weight: 0
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Auspex/Scanner
 type: tool
@@ -63,8 +63,10 @@ type: tool
 data:
     availability: Common
     craftsmanship: Common
-    description: The iPad's of the future.
-    weight: 0
+    description: A hand-held data-slab used to read and display information. Well-crafted
+        dataslates can also re-record new information, or transmit and receive data from
+        other devices.
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Dataslate
 type: tool
@@ -111,7 +113,7 @@ data:
     availability: Average
     craftsmanship: Common
     description: Provides +30 to Medicae tests to stop Blood Loss.
-    weight: 0
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Field Suture
 type: tool
@@ -119,20 +121,23 @@ type: tool
 data:
     availability: Abundant
     craftsmanship: Common
-    description: It's a Flashlight.
-    weight: 0
+    description: A portable light source. A glow-globe illuminates a radius of roughly
+        12 metres, while a stablight projects a narrower conical beam to twice that range.
+        Either runs for about five hours before the power cell must be recharged or replaced.
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
-name: Glow-globe/stab light
+name: Glow-globe/Stablight
 type: tool
 ---
 data:
     availability: Common
     craftsmanship: Common
     description: A Clip-harness and Gas powered pistol to shoot a hook and line 100
-        m away.
+        m away. The built-in winch can lift the user roughly 5 m per round, and supports
+        150 kg (200 kg if of Good craftsmanship).
     weight: 2
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
-name: Grapnel and Line
+name: 'Grapnel & Line'
 type: tool
 ---
 data:
@@ -151,7 +156,7 @@ data:
     craftsmanship: Common
     description: Grants another +20 to their next Ballistic Skill when using weapons
         with Indirect quality.
-    weight: 0
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Hand-Held Targeter
 type: tool
@@ -174,7 +179,7 @@ data:
     availability: Common
     craftsmanship: Common
     description: Holds drugs that can be administered as a Half Action.
-    weight: 0
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Inhaler/Injector
 type: tool
@@ -211,7 +216,7 @@ data:
     availability: Average
     craftsmanship: Common
     description: Telescope.
-    weight: 0
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Magnoculars
 type: tool
@@ -260,7 +265,7 @@ data:
     description: Grants a +20 bonus to all Survival and Navigation (Surface) tests.
     weight: 4
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
-name: Multi Compass
+name: Multicompass
 type: tool
 ---
 data:

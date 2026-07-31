@@ -6,7 +6,7 @@ data:
         Cannot reload during combat.
     installed: false
     upgrades: Any Las, Solid Projectile, or Bolt weapons of the Basic class
-    weight: 0
+    weight: 2.5
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Auxiliary Grenade Launcher
 type: weaponModification
@@ -18,7 +18,7 @@ data:
         size, but it cannot be reloaded in combat.
     installed: false
     upgrades: Any Bolt, Flame, Las, Melta, Plasma, and Solid Projectile weapon.
-    weight: 0
+    weight: 15
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Backpack Ammo Supply
 type: weaponModification
@@ -64,7 +64,7 @@ data:
     description: Increasesclip sizeby half (rounded up)
     installed: false
     upgrades: Ranged weapons
-    weight: 0
+    weight: 1
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Expanded Magazine
 type: weaponModification
@@ -76,7 +76,7 @@ data:
         Counts as a Standard Attack with a flamer
     installed: false
     upgrades: Any weapon except Pistol or Thrown.
-    weight: 0
+    weight: 1
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Exterminator
 type: weaponModification
@@ -88,7 +88,7 @@ data:
     installed: false
     upgrades: Any Bolt, Launcher, and Solid Projectile weapon of the Pistol or Basic
         class.
-    weight: 0
+    weight: 1
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Fire Selector
 type: weaponModification
@@ -111,7 +111,7 @@ data:
     description: Upgrade reduces range by 1/3.
     installed: false
     upgrades: Any Las, Low-Tech, Solid Projectile, Bolt, or Melta of the Pistol class.
-    weight: 0
+    weight: 1
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Forearm Weapon Mounting
 type: weaponModification
@@ -122,7 +122,7 @@ data:
     description: The ranged weapon counts as a spear when used in melee combat.
     installed: false
     upgrades: Any Basic ranged weapon.
-    weight: 0
+    weight: 2
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Melee Attachment
 type: weaponModification
@@ -156,22 +156,39 @@ data:
     description: Gains +10 BS to Semi-Auto Burst or Full Auto.
     installed: false
     upgrades: Any Ranged weapon (except Low-Tech) Capable of Semi-Auto or Full Auto.
-    weight: 0
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Motion Predictor
 type: weaponModification
 ---
 data:
-    availability: Very Rare
+    availability: Near Unique
     craftsmanship: Common
     description: Combines the benefits of a preysense sight, red-dot laser sight, and
         telescopic sight.
     installed: false
     upgrades: Any ranged Las, Solid Projectile, Bolt, Low-Tech or Plasma weapon of the
         Basic class.
-    weight: 0
+    weight: 2
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Omni-Scope
+type: weaponModification
+---
+data:
+    availability: Extremely Rare
+    craftsmanship: Common
+    description: Whenever a character with the Daemonic or Warp Instability trait
+        becomes engaged in melee with the warded armour's wearer or begins his turn
+        engaged with the wearer, that character must make a Hard (20) Willpower test.
+        If the character fails, he suffers 1d5 Energy damage per degree of failure
+        (ignoring armour and Toughness bonus). If the character scores 4 or more
+        degrees of success on the test, however, the pentagramatic ward shatters and
+        the armour permanently loses this upgrade.
+    installed: false
+    upgrades: Any armour.
+    weight: 0
+img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+name: Pentagramatic Wards
 type: weaponModification
 ---
 data:
@@ -181,7 +198,7 @@ data:
     installed: false
     upgrades: Any ranged Las, Solid Projectile, Bolt, Low-Tech or Plasma weapon of the
         Basic class.
-    weight: 0
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Photo Sight
 type: weaponModification
@@ -205,7 +222,7 @@ data:
     installed: false
     upgrades: Any ranged Las, Solid Projectile, Bolt, Low-Tech or Plasma weapon of the
         Basic class.
-    weight: 0
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Preysense Sight
 type: weaponModification
@@ -227,8 +244,8 @@ data:
     description: Gains +10 to BS when firing a single shot.
     installed: false
     upgrades: Any ranged Las, Solid Projectile, Bolt, Low-Tech or Plasma weapon of the
-        Basic class.
-    weight: 0
+        Pistol or Basic class.
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Red-Dot Laser Sight
 type: weaponModification
@@ -244,6 +261,21 @@ data:
     weight: 0
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Reinforced
+type: weaponModification
+---
+data:
+    availability: Rare
+    craftsmanship: Common
+    description: A sacred incense burner must be affixed to a backpack, helmet, or
+        similarly worn item. Setting it aflame requires a Half Action and it can burn
+        for 1 hour. While the burner is alight, any creature with the Daemonic trait
+        within 3 metres of the bearer suffers a 10 penalty to Weapon Skill tests and a
+        10 penalty to Warp Instability tests.
+    installed: false
+    upgrades: Any armour.
+    weight: 3
+img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+name: Sacred Incense Burner
 type: weaponModification
 ---
 data:
@@ -264,7 +296,7 @@ data:
         normal distance.
     installed: false
     upgrades: Any Solid Projectile weapon of the Basic or Pistol class.
-    weight: 0
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Silencer
 type: weaponModification
@@ -288,7 +320,7 @@ data:
         targeter, it is reduced by ten.
     installed: false
     upgrades: Any Las, Solid Projectile, Bolt, or Heavy weapon.
-    weight: 0
+    weight: 1.5
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Targeter
 type: weaponModification
@@ -301,7 +333,7 @@ data:
     installed: false
     upgrades: Any ranged Las, Solid Projectile, Bolt, Low-Tech or Plasma weapon of the
         Basic class.
-    weight: 0
+    weight: 1
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Telescopic Sight
 type: weaponModification
@@ -313,7 +345,7 @@ data:
         10 times before requiring refilling.
     installed: false
     upgrades: Any Low-Tech or Chain Melee Weapon
-    weight: 0
+    weight: 0.75
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Tox Dispenser
 type: weaponModification
@@ -326,9 +358,22 @@ data:
         on a tripod has a 180 arc.
     installed: false
     upgrades: Any Basic or Heavy weapon.
-    weight: 0
+    weight: 2
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Tripod/Bipod
+type: weaponModification
+---
+data:
+    availability: Very Rare
+    craftsmanship: Common
+    description: While engaged in melee with the wearer of Truesilver-filigreed armour,
+        any character with the Daemonic trait suffers a penalty to Weapon Skill tests
+        equal to 5 times the wearer's Willpower bonus.
+    installed: false
+    upgrades: Any armour.
+    weight: 0
+img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+name: Truesilver Filigree
 type: weaponModification
 ---
 data:
@@ -359,6 +404,26 @@ name: Truesilver Weaving
 type: weaponModification
 ---
 data:
+    availability: Common
+    craftsmanship: Common
+    description: Working the unguents onto armour takes roughly one hour, and empties
+        one container for each hit location treated. As part of the process, careful
+        rituals must also be performed to inscribe runes and litanies into the armour.
+        This requires a Hard (20) Scholastic Lore (Occult) or Forbidden Lore (Imperial
+        Creed) test for each location; failure means the unguents must be cleaned off
+        that location and the ritual started again. For each hit location treated with
+        Unguents of Warding, the armour grants its wearer a +5 bonus to tests to resist
+        Fear caused by characters with the Daemonic trait and to resist psychic powers.
+        The effects of the unguents last for one month (or less due to wear and tear or
+        contamination, at the GM's discretion).
+    installed: false
+    upgrades: Any armour.
+    weight: 0
+img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+name: Unguents of Warding
+type: weaponModification
+---
+data:
     availability: Rare
     craftsmanship: Common
     description: With spoken commands, the operator can fire his gun, switch firing
@@ -366,7 +431,7 @@ data:
     installed: false
     upgrades: Any Pistol, Basic, Launcher, or Heavy weapon that is not of the Low-Tech
         type
-    weight: 0
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Vox-Operated
 type: weaponModification
@@ -378,7 +443,7 @@ data:
         Each canister contains enough liquid to last for 40 rounds.
     installed: false
     upgrades: Any Solid Projectile weapon without a silencer.
-    weight: 0
+    weight: 1
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
 name: Warpleech Canister
 type: weaponModification

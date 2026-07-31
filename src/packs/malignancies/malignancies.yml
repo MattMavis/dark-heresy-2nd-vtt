@@ -1,0 +1,180 @@
+data:
+    description: >-
+        The character suffers from numerous minor tics, shakes, and tremors with
+        no medical cause. Reduce his Agility by 1d10.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Palsy
+type: malignancy
+---
+data:
+    description: >-
+        The character grows increasingly cruel, callous, and vindictive. Reduce
+        his Fellowship by 1d10.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Dark-hearted
+type: malignancy
+---
+data:
+    description: >-
+        Chance seems to mock this Acolyte at the most crucial of opportunities.
+        Whenever this character uses a Fate point, roll 1d10. On a result of
+        7-10, the Fate point has no effect but is spent anyway.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Ill-fortuned
+type: malignancy
+---
+data:
+    description: >-
+        The character is plagued by boils, scabs, weeping sores and other
+        disgusting features across his body. He suffers a -20 penalty to all
+        Charm tests.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Skin Afflictions
+type: malignancy
+---
+data:
+    description: >-
+        Light pains the character, echoing the growing stain on his soul. Unless
+        he shields his eyes, he suffers a -20 penalty on all tests made in an
+        area of bright light.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Night Eyes
+type: malignancy
+---
+data:
+    description: >-
+        The character finds it hard to concentrate as his mind turns
+        increasingly macabre and he becomes prone to tortured, gloom-filled
+        trains of thought. Reduce his Intelligence by 1d10.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Morbid
+type: malignancy
+---
+data:
+    description: >-
+        The character develops some minor physical deformity or easily
+        concealable mutation. It is small, but perhaps enough to bring him to
+        death if found out by a fanatical witch hunter.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Witch-mark
+type: malignancy
+---
+data:
+    description: >-
+        This functions like the Obsession Disorder on page 288, but in this case
+        the character is obsessed with something sinister or malign (such as
+        collecting finger-bone trophies, ritual sacrifice, carrying out
+        meaningless vivisections, etc.).
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Fell Obsession
+type: malignancy
+---
+data:
+    description: >-
+        The character feels sick at the sight, sound, or smell of something
+        otherwise innocuous (such as holy items, bare flesh, human laughter,
+        fresh food, etc.). When he encounters an object of his revulsion he must
+        make a Toughness test or suffer a -10 penalty to all tests as long as he
+        remains in its presence.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Irrational Nausea
+type: malignancy
+---
+data:
+    description: >-
+        The character's pallor becomes corpse-like and his muscles waste away.
+        Reduce his Strength by 1d10.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Wasted Frame
+type: malignancy
+---
+data:
+    description: >-
+        The character is plagued by daemonic visions in his sleep. This
+        functions identically to the Horrific Nightmares Disorder on page 289.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Night Terrors
+type: malignancy
+---
+data:
+    description: >-
+        The character constantly suffers petty illnesses and phantom pains, and
+        his wounds never seem to fully heal. Reduce the character's Toughness by
+        1d10.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Poor Health
+type: malignancy
+---
+data:
+    description: >-
+        The character cannot conceal the distrust and antipathy he has for
+        others. He suffers a -10 penalty to Fellowship tests when dealing with
+        strangers.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Distrustful
+type: malignancy
+---
+data:
+    description: >-
+        The world seems to darken, tarnish, and rot if the character looks at
+        anything too long. Reduce the character's Perception by 1d10.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Malign Sight
+type: malignancy
+---
+data:
+    description: >-
+        Food and drink taste foul and provide little sustenance to the
+        character, and he can barely stomach eating. Recovering from Fatigue
+        takes twice as long for him than normal (see page 233).
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Ashen Taste
+type: malignancy
+---
+data:
+    description: >-
+        Murderous rage is never far from the character's mind. After suffering
+        damage (after Armour and Toughness bonus) in combat, he must succeed at
+        a Willpower test to allow his enemies to flee, be captured, or
+        incapacitated, rather than killing them outright, even if his intent is
+        otherwise.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Bloodlust
+type: malignancy
+---
+data:
+    description: >-
+        The character suffers from inexplicable blackouts. When they occur and
+        what happens during them is up to the Game Master, who should inform the
+        player of the details of what (if anything) he remembers on awakening.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Blackouts
+type: malignancy
+---
+data:
+    description: >-
+        The character has a near-uncontrollable craving for some bizarre and
+        unnatural substance (such as rose petals, fresh blood, widows' tears,
+        etc.). This acts like a Minor Disorder for Compulsion (see page 288),
+        but is freakish enough to cause serious suspicion if discovered.
+    source: PG 290 CB
+img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+name: Strange Addiction
+type: malignancy

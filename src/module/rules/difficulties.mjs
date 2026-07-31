@@ -7,7 +7,7 @@ export function rollDifficulties() {
         '10': 'Ordinary (+10)',
         '-10': 'Difficult (-10)',
         '-20': 'Hard (-20)',
-        '-30': 'Very Difficult (-30)',
+        '-30': 'Very Hard (-30)',
         '-40': 'Arduous (-40)',
     };
 }

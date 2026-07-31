@@ -54,7 +54,7 @@ export function homeworlds() {
                     'A Hive World character moves through crowds as if they were open terrain and gains a +20 bonus to Navigate (Surface) Tests in closed spaces.',
             },
             aptitude: 'Perception',
-            wounds: '7+1d5',
+            wounds: '8+1d5',
             source: 'PG 38 CB',
         },
         {
@@ -68,7 +68,7 @@ export function homeworlds() {
                 benefit: "When spending a Fate Point, a Shrine World character's number of Fate Points are not reduced on a 1d10 result of 1.",
             },
             aptitude: 'Willpower',
-            wounds: '8+1d5',
+            wounds: '7+1d5',
             source: 'PG 40 CB',
         },
         {

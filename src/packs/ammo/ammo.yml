@@ -138,7 +138,7 @@ data:
     availability: Extremely Rare
     effect: 'Whenever a target with either the Psyker or Daemon trait is struck by a
         Purgatus stake-bolt, it must make a Challenging (+0) Willpower test. If it fails,
-        it must immediately roll on Table 62: Psychic Phenomena.'
+        it must immediately roll on Table 6-2: Psychic Phenomena.'
     special:
         sanctified: true
     weapon_type: Purgatus Crossbow only.
@@ -246,7 +246,8 @@ type: ammunition
 ---
 data:
     availability: Very Rare
-    effect: ''
+    effect: A weapon using this ammunition gains the Crippling (2) and Tainted quality,
+        but loses the Reliable and/or Sanctified qualities (if the weapon has them).
     special:
         crippling: 2
         reliable: false
@@ -254,7 +255,7 @@ data:
         tainted: true
     weapon_type: Bolt weapons and crossbows
 img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
-name: Abyssal Bolt
+name: Abyssal Bolts
 type: ammunition
 ---
 data:
@@ -272,7 +273,7 @@ type: ammunition
 data:
     availability: Extremely Rare
     effect: Add +1 damage for every point of the users psy rating. Ignores all protective
-        benefits granded by psychic powers.
+        benefits granted by psychic powers.
     special:
         daemonbane: true
         sanctified: true

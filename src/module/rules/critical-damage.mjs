@@ -3,7 +3,7 @@ export function criticalDamage() {
         "Energy": {
             "Arm": {
                 1: 'The attack grazes the target’s arm, causing it to spasm uncontrollably with pain. All tests involving that arm suffer a –30 penalty for [[1d5]] rounds',
-                2: 'The attack smashes into the arm, sending currents of energy crackling down to the fingers and up to the shoulder. The target suffers 1 level of Fatigue, and that arm is Useless for [[1d5]] rounds.',
+                2: 'The attack smashes into the arm, sending currents of energy crackling down to the fingers and up to the shoulder. The target suffers 1 level of Fatigue, and that arm is Useless for [[1d10]] rounds.',
                 3: 'The arm suffers superficial burns inflicting no small amount of pain on the target. The target suffers [[1d5]] levels of Fatigue, and can take only a Half Action during his next turn.',
                 4: 'The shock of the attack causes the character to temporarily lose control of his autonomous functions. He is Stunned for 1 round and is knocked Prone. The arm is Useless for [[1d10]] rounds.',
                 5: 'The attack causes energy to course through the target’s arm. He is Stunned for 1 round, and the arm is Useless until the target receives medical treatment.',

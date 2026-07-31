@@ -414,7 +414,7 @@ data:
     craftsmanship: Common
     description: When successfully blocks an attack, user jumps in a random direction.
         Roll 3d10 for meters travelled. If all 3 numbers rolled are the same then user
-        dose not re-emerge for 1d5 rounds and gains 1 Corruption for each round.If activated
+        does not re-emerge for 1d5 rounds and gains 1 Corruption point. If activated
         when unexpected, user can not act for one round.
     maxAgility: 0
     type: Force Field
@@ -480,7 +480,7 @@ data:
         and Focus Power tests against the wearer.
     maxAgility: 0
     type: Force Field
-    weight: 0
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
 name: Icon of the Just
 type: armour
@@ -501,7 +501,7 @@ data:
     type: Force Field
     weight: 50
 img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
-name: Power Field (Personnel)
+name: Power Field (Personal)
 type: armour
 ---
 data:

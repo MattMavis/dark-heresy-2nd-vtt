@@ -25,7 +25,7 @@ data:
     description: Counts as being armed even when not wielding weapons, with attacks
         deal 1d10 points of damage plus its SB. Can make attacks with its Natural Weapons
         using its Weapon Skill, though it cannot Parry with its natural weapons, nor can
-        it be disarmed unless, of course, its limbs are hacked o. In general, creatures
+        it be disarmed unless, of course, its limbs are hacked off. In general, creatures
         with Natural Weapons are immune to the Power Field quality, as it is assumed they
         have enough teeth, claws, or spines to ignore a few being removed. Natural weapons
         have the Primitive (7) weapon quality unless stated otherwise in the prole.
@@ -49,7 +49,7 @@ name: Phase
 type: trait
 ---
 data:
-    description: All suer a 10 penalty to Willpower tests taken while within X metres
+    description: All suffer a 10 penalty to Willpower tests taken while within X metres
         of the creature.
     level: 0
 img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
@@ -131,7 +131,7 @@ type: trait
 data:
     description: The base move for a creature with this trait is half its normal movement
         rate (roundup) as determined by its Agility bonus, but it does not take penalties
-        for moving over dicult terrain.
+        for moving over difficult terrain.
     level: 0
 img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
 name: Crawler
@@ -159,7 +159,7 @@ type: trait
 ---
 data:
     description: 'Bound to a particular group or creatures in exchange for certain benefits.
-        Upon becoming soul-bound, the psyker must choose one of the following eects: 3d10
+        Upon becoming soul-bound, the psyker must choose one of the following effects: 3d10
         Insanity points, the permanent loss of his sight, permanent loss of 1d10 points
         from one characteristic, or a random mutation.'
     level: 0
@@ -168,7 +168,7 @@ name: Soul Bound
 type: trait
 ---
 data:
-    description: Can see in darkness and never takes a penalty for ghting in areas of
+    description: Can see in darkness and never takes a penalty for fighting in areas of
         dim or no lighting.
     level: 0
 img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
@@ -177,7 +177,7 @@ type: trait
 ---
 data:
     description: Failed Willpower test causes creature to flee, trampling anything in
-        its path. Anyone in the way suers a single hit from the creatures Natural Weapons
+        its path. Anyone in the way suffers a single hit from the creatures Natural Weapons
         (or 1d5+SB Impact damage if it does not have that trait). One stampeding creature
         automatically causes all other creatures with the same trait within sight to stampede
         as well. The stampede lasts until the source of danger is no longer visible or
@@ -210,7 +210,7 @@ data:
     description: 'Always has an associated rating (14). This is indicated by the number
         in parentheses (X). When a character encounters a creature with this trait, must
         make a Willpower test with a penalty based on the creatures Fear rating. If he
-        succeeds, the character suers no ill eects; if he fails, he must roll on Table
+        succeeds, the character suffers no ill effects; if he fails, he must roll on Table
         8-11: Shock, adding +10 to the roll for every degree of failure on the test.'
     level: 0
 img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
@@ -251,7 +251,7 @@ type: trait
 data:
     description: Gain poisonous attack. When damaged must make a Toughness test at the
         end of his turn with a penalty equal to 10 times the number in parentheses (X),
-        or suer 1d10 points of Energy damage not reduced by Armour or Toughness.
+        or suffer 1d10 points of Energy damage not reduced by Armour or Toughness.
     level: 0
 img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
 name: Toxic
@@ -267,7 +267,7 @@ name: Hoverer
 type: trait
 ---
 data:
-    description: It cannot be harmed by diseases, poisons, or toxic eects. It also has
+    description: It cannot be harmed by diseases, poisons, or toxic effects. It also has
         no need to breathe, and thus can survive unaided in a vacuum.
     level: 0
 img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
@@ -297,7 +297,7 @@ type: trait
 ---
 data:
     description: Machines do not breathe, are immune to vacuum, extremes of cold, and
-        mind-inuencing psychic eects. Machines have a certain number of Armour points
+        mind-influencing psychic effects. Machines have a certain number of Armour points
         (indicated by the number in parentheses). This armour stacks with worn armour,
         but not with the Natural Armour trait, and can damage from Fire
     level: 0
@@ -324,7 +324,7 @@ type: trait
 data:
     description: If a creature with this trait takes damage and does not deal any damage
         or Insanity points to another creature by the end of its next turn, it must make
-        a Willpower test. The creature suers 1 point of damage for failing, plus 1 additional
+        a Willpower test. The creature suffers 1 point of damage for failing, plus 1 additional
         point of damage for each degree of failure. If this would deal damage equal to
         (or in excess of) the creatures wounds, it is cast back into the Warp.
     level: 0
@@ -356,7 +356,7 @@ data:
         climbing and swimming. In addition, for each full pair of arms it has (the Multiple
         Arms value divided by 2) it can make an additional attack as if wielding multiple
         melee weapons. In this case, the creature must either have natural weapons or
-        actual melee weapons to wield for this to take eect. Note that a creature still
+        actual melee weapons to wield for this to take effect. Note that a creature still
         requires the Two-Weapon Wielder talent to make multiple attacks in the same turn.
     level: 0
 img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png

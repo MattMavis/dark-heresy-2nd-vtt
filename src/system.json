@@ -5,8 +5,7 @@
   "version": "1.8.1",
   "compatibility": {
     "minimum": 13,
-    "verified": "14.360",
-    "maximum": 14
+    "verified": "14.365"
   },
   "authors": [
     {
@@ -70,6 +69,34 @@
       "system": "dark-heresy-2nd",
       "label": "Cybernetics",
       "path": "./packs/cybernetics.db",
+      "type": "Item"
+    },
+    {
+      "name": "gear",
+      "system": "dark-heresy-2nd",
+      "label": "Gear",
+      "path": "./packs/gear.db",
+      "type": "Item"
+    },
+    {
+      "name": "malignancies",
+      "system": "dark-heresy-2nd",
+      "label": "Malignancies",
+      "path": "./packs/malignancies.db",
+      "type": "Item"
+    },
+    {
+      "name": "mental-disorders",
+      "system": "dark-heresy-2nd",
+      "label": "Mental Disorders",
+      "path": "./packs/mental-disorders.db",
+      "type": "Item"
+    },
+    {
+      "name": "mutations",
+      "system": "dark-heresy-2nd",
+      "label": "Mutations",
+      "path": "./packs/mutations.db",
       "type": "Item"
     },
     {

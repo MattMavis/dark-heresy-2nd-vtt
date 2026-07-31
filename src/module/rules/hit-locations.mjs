@@ -1,9 +1,11 @@
 export function getHitLocationForRoll(roll) {
     game.dh.log('getHitLocationForRoll', roll);
-    const rollString = roll.toString().split('');
+    // Percentile digits must be reversed as a two-digit pair: 05 reverses to 50, not 5,
+    // and 100 is read as '00', which reverses to itself and counts as 100.
+    const rollString = (roll % 100).toString().padStart(2, '0').split('');
     const reverseArray = rollString.reverse();
     const joinArray = reverseArray.join('');
-    const reverseInt = parseInt(joinArray);
+    const reverseInt = parseInt(joinArray) || 100;
     return creatureHitLocations().find((i) => (reverseInt >= i.min) && (reverseInt <= i.max))?.name;
 }
 

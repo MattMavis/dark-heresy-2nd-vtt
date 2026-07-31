@@ -24,7 +24,7 @@ export function roles() {
         },
         {
             name: 'Desperado',
-            role_aptitudes: ['Agility', 'Ballistic Skill', 'Defense', 'Fellowship', 'Finesse'],
+            role_aptitudes: ['Agility', 'Ballistic Skill', 'Defence', 'Fellowship', 'Finesse'],
             role_talents: ['Catfall', 'Quick Draw'],
             role_bonus: {
                 name: 'Move and Shoot',
@@ -46,7 +46,7 @@ export function roles() {
         },
         {
             name: 'Mystic',
-            role_aptitudes: ['Defense', 'Intelligence', 'Knowledge', 'Perception', 'Willpower'],
+            role_aptitudes: ['Defence', 'Intelligence', 'Knowledge', 'Perception', 'Willpower'],
             role_talents: ['Resistance (Psychic Powers)', 'Warp Sense'],
             role_bonus: {
                 name: 'Stare into the Warp',
@@ -79,7 +79,7 @@ export function roles() {
         },
         {
             name: 'Warrior',
-            role_aptitudes: ['Ballistic Skill', 'Defense', 'Offence', 'Strength', 'Weapon Skill'],
+            role_aptitudes: ['Ballistic Skill', 'Defence', 'Offence', 'Strength', 'Weapon Skill'],
             role_talents: ['Iron Jaw', 'Rapid Reload'],
             role_bonus: {
                 name: 'Expert at Violence',

@@ -263,7 +263,7 @@ data:
     rightLeg: 0
   availability: Very Rare
   craftsmanship: Common
-  description: 'This implanted energy source charges internal capacitors, allowing the character to recharge devices or even unleash powerful energy blasts. With a successful Toughness test, the character recharges or powers machinery. This requires one minute of mental focus and meditation. The difficulty of the Toughness test varies depending on the nature of the powered system.'
+  description: 'This implanted energy source charges internal capacitors, allowing the character to recharge devices or even unleash powerful energy blasts. With a successful Toughness test, the character recharges or powers machinery. This requires one minute of mental focus and meditation. The difficulty of the Toughness test varies with the complexity of the powered system, from Ordinary for a simple power cell or glow-globe up to Very Hard for a cogitator core or xenos technology. Poor craftsmanship imposes a -10 penalty to the Toughness test, while Good craftsmanship grants a +10 bonus. The capacitor may only be used offensively by a character with the Mechanicus Implants trait.'
   weight: 0
   equipped: false
 img: systems/dark-heresy-2nd/icons/talents/blue/b_35.png

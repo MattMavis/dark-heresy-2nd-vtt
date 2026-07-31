@@ -21,9 +21,9 @@ export function backgrounds() {
             background_bonus: {
                 name: 'The Face of the Law',
                 benefit:
-                    'An Arbitrator can intimidation and Interrogation test, and can substitute his Willpower bonus for his degrees of success on these tests.',
+                    'An Arbitrator can re-roll any Intimidation and Interrogation test, and can substitute his Willpower bonus for his degrees of success on these tests.',
             },
-            aptitudes: ['Offence', 'Defense'],
+            aptitudes: ['Offence', 'Defence'],
             source: 'PG 48 CB',
         },
         {
@@ -37,7 +37,7 @@ export function backgrounds() {
                 benefit:
                     'When the character or an ally within 10 meters triggers a roll on the Psychic Phenomenon table. Adeptus Astra Telepathica character can increase or decrease the result by amount equal to his Willpower bonus.Tested on Terra: If the character takes the Psyker elite advance during character creation, he also gains the Sanctioned trait.',
             },
-            aptitudes: ['Defense', 'Psyker'],
+            aptitudes: ['Defence', 'Psyker'],
             source: 'PG 50 CB',
         },
         {

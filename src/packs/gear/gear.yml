@@ -1,0 +1,613 @@
+data:
+    availability: Abundant
+    craftsmanship: Common
+    description: Carries ~30 kg extra; removing an item is a Full Action. Only one
+        backpack or combat vest at a time.
+    source: PG 170 CB
+    weight: 2
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Backpack
+type: gear
+---
+data:
+    availability: Rare
+    craftsmanship: Common
+    description: +20 Stealth. If wearer stationary during his turn, BS tests against him
+        suffer -30 until start of his next turn.
+    source: PG 170 CB
+    weight: 0.5
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Chameleoline Cloak
+type: gear
+---
+data:
+    availability: Plentiful
+    craftsmanship: Common
+    description: Personal timepiece. No direct game effect.
+    source: PG 170 CB
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Chrono
+type: gear
+---
+data:
+    availability: Abundant
+    craftsmanship: Common
+    description: No inherent effect; availability varies with style at GM discretion.
+    source: PG 170 CB
+    weight: 2
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Clothing
+type: gear
+---
+data:
+    availability: Scarce
+    craftsmanship: Common
+    description: No extra AP; holds 15 kg comfortably; held items drawn as a Free
+        Action. Only one backpack or combat vest at a time.
+    source: PG 170 CB
+    weight: 2
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Combat Vest
+type: gear
+---
+data:
+    availability: Average
+    craftsmanship: Common
+    description: Holds a small pistol hidden under clothing. Detecting it suffers -20.
+        Readying becomes Full instead of Half (or Half instead of Free).
+    source: PG 170 CB
+    weight: 1
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Concealed Holster
+type: gear
+---
+data:
+    availability: Very Rare
+    craftsmanship: Common
+    description: Dampens high-volume sonic disturbances. +20 Toughness vs sonic effects
+        or the auditory effects of Concussive.
+    source: PG 170 CB
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Deadspace Earpiece
+type: gear
+---
+data:
+    availability: Scarce
+    craftsmanship: Common
+    description: 1 km remote; auto-detonates if out of range >5 min. Kills wearer
+        instantly (counts as frag grenade at that spot). Removing without remote
+        requires a Hard (-20) Tech-Use test; failing by 2+ degrees detonates.
+    source: PG 170 CB
+    weight: 3
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Explosive Collar
+type: gear
+---
+data:
+    availability: Common
+    craftsmanship: Common
+    description: +20 Toughness to resist damaging gases. Good craftsmanship +10 more.
+        Poor replaced after 5 hours.
+    source: PG 171 CB
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Filtration Plugs
+type: gear
+---
+data:
+    availability: Scarce
+    craftsmanship: Common
+    description: Grants Dark-sight. Good craftsmanship also grants immunity to photon
+        flash grenades.
+    source: PG 171 CB
+    weight: 0.5
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Photo-Visors/Contacts
+type: gear
+---
+data:
+    availability: Very Rare
+    craftsmanship: Common
+    description: No darkness penalties; +20 to vision-based Perception at night. Poor
+        are bulky w/ glowing lenses; Good/Best disguised as eyeglasses.
+    source: PG 171 CB
+    weight: 0.5
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Preysense Goggles
+type: gear
+---
+data:
+    availability: Scarce
+    craftsmanship: Common
+    description: Survive underwater ~1 hour, then Full Action to replace canister. Good
+        lasts 2 hours; Poor takes 2 Full Actions. Canisters are Scarce.
+    source: PG 171 CB
+    weight: 1
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Rebreather
+type: gear
+---
+data:
+    availability: Rare
+    craftsmanship: Common
+    description: Fire a Basic weapon one-handed without the -20; wield two-handed
+        pistols one-handed without penalty. Untrained -20 still applies.
+    source: PG 171 CB
+    weight: 0.5
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Recoil Glove
+type: gear
+---
+data:
+    availability: Average
+    craftsmanship: Common
+    description: +30 Toughness vs gas, and may re-roll a failed test. Good +10 more.
+        Poor replaced after 10 hours.
+    source: PG 171 CB
+    weight: 0.5
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Respirator/Gas Mask
+type: gear
+---
+data:
+    availability: Average
+    craftsmanship: Common
+    description: +20 to withstand extreme temperatures (Good +25, Best +30). Poor lasts
+        3 days before recharge.
+    source: PG 172 CB
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Survival Suit
+type: gear
+---
+data:
+    availability: Very Rare
+    craftsmanship: Common
+    description: 2 AP to all locations not already armoured; +10 Stealth; invisible to
+        preysense goggles and Dark-sight.
+    source: PG 172 CB
+    weight: 2
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Synskin
+type: gear
+---
+data:
+    availability: Scarce
+    craftsmanship: Common
+    description: Common craftsmanship grants 12 hrs of air with -10 Agility. Poor
+        craftsmanship grants 6 hrs with the same penalty. Good or Best craftsmanship
+        grants air with no Agility penalty.
+    source: PG 172 CB
+    weight: 8
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Void Suit
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Profane Object. A servo-skull that may in fact be possessed by a daemonic entity. Its
+        "owner" gains a +30 bonus to Tech-Use tests, added at the GM's discretion, especially
+        when success might have terrible or perverse consequences. The Animus Skull counts as
+        having a Willpower of 60, and can be ordered to grant this bonus on command via an
+        Opposed Hard (-20) Willpower test. If the owner fails this test, he gains 1 Corruption
+        point and suffers 1 point of Intelligence damage per degree of failure on the test. The
+        skull delights in other actions that cause death and destruction, such as corrupting
+        other machine spirits to its bidding, or abruptly deactivating life-support or engines
+        in vehicles.
+    source: PG 52 EI
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Animus Skull
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Profane Object. The desecrated remains of a holy relic from the shrine world of
+        Ossuar. If a bone suitable for combat is used to attack, it counts as a power axe;
+        the user does not need a Weapon Training talent to wield it without penalty and adds
+        twice his Corruption bonus to the damage inflicted. The owner gains the Enemy
+        (Adeptus Ministorum) (5) talent, and members of that organisation (or others at the
+        GM's discretion) gain the Hatred talent when fighting him. Smaller bones could also
+        be used to aid in dark rites, daemonic summonings or bindings, or even act as
+        protection against holy weapons and psychic attacks.
+    source: PG 52 EI
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Bones of Cardinal Cassille
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Profane Object. Eight ivory-coloured candles that can only be lit after the wicks
+        are dipped in the fresh blood of the owner. Lighting the candles does not require
+        fresh blood, though the user is encouraged to perform similar obscene rites when
+        setting each aflame. A user who does this gains 1d10 Corruption points, and an
+        additional 1d10 points if he did not have Corruption prior to the candles' use. When
+        all eight are lit, they grant a +30 bonus to any activities within 9 metres that draw
+        upon the Warp for power, and creatures in that range with the Warp Instability trait
+        lose this trait while they remain in the affected area. The candles can have other
+        effects as well, such as increasing the chances for Psychic Phenomena, causing the
+        results from psychic powers to vary wildly, or even causing Sanctified items to grow
+        listless and ineffective as the unholy light from the candles burns reality itself.
+    source: PG 53 EI
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Candles of Ending
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Profane Object. A thick metal sigil of the Imperium, its surface increasingly
+        encrusted with a dark red film. If this cursed item is within 3 metres of an event
+        calling for Psychic Phenomena, the event instead automatically triggers a roll on
+        Table 6-3: Perils of the Warp (see page 197 of the Dark Heresy Core Rulebook);
+        whoever is nearest the object counts as the triggering psyker, if needed. Each
+        character who witnesses the event gains a number of Corruption points equal to his
+        Fate threshold. The item seems to bring ill-favour to those following the Imperial
+        Creed, perhaps depressing the number of Fate points available for those loyal to the
+        Emperor, or twisting Fate point usage into results that inflict horrific outcomes.
+        Each translation into the Warp should be a horrific event if the Aquila is aboard,
+        with flickering Gellar fields and cracking hull plates.
+    source: PG 53 EI
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Carmine Aquila
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Profane Object. An ornate metallic cup covered with elaborate filigree, whose waters
+        are said to be the tears of redeemed heretics. He who dares to drink from the
+        chalice must spend a Half Action to make a Very Hard (-30) Willpower test, followed
+        by a Challenging (+0) Corruption test. He removes an amount of damage equal to the
+        sum of the degrees of success from these tests or can remove 1 point of Critical
+        damage, but also gains 1 Corruption point for each point of any type of damage
+        removed. Otherwise, he is overcome by the unnatural liquids and gains 1 Corruption
+        point for each degree of failure suffered from the two tests; on three or more
+        degrees of failure, he also triggers a roll on Table 6-2: Psychic Phenomena (see
+        page 196 of the Dark Heresy Core Rulebook) and adds ten times the degrees of failure
+        to the result.
+    source: PG 53 EI
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Chalice of Tears
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Profane Object. An eight-sided icon of spiked metal resembling other marks of Chaos,
+        with a fleshy, closed eye at its centre. The correct rituals required to open the
+        eye require a Very Hard (-30) Forbidden Lore (Daemonology) test. For every degree of
+        success, the user gains 2 Corruption points; for every degree of failure, he gains 2
+        Insanity points. Once opened, raw Warp energies rush through the icon and through
+        its wielder for 1d10 rounds; any psychic power he manifests during that time counts
+        as being used at twice the effective psy rating. A power strengthened this way
+        always generates Psychic Phenomena, with a bonus to the roll equal to twice the
+        effective psy rating the psyker chose. Even unopened, the icon is a powerful item,
+        and can easily sway those who follow the Dark Gods to the side of its user or ignite
+        a cult into violent uprising.
+    source: PG 54 EI
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Eye of Chaos
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Profane Object. A legendary fragment said to be all that remains of House Dane's
+        holdings, reportedly ranging in size from as large as a Baneblade to as small as a
+        coin held in a stasis chamber. Cultists that believe they are either fighting for,
+        or in defence of, the stone gain the Fearless talent and the Hatred talent for
+        anyone—including rival cultists—attempting to take the stone (or what they think is
+        the stone) away from them. Psykers could perhaps use the stone to gain visions from
+        Askellon's founding, though attempts to comprehend the titanic struggles of those
+        eras could inflict Insanity points or worse.
+    source: PG 54 EI
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Foundation Stone of House Dane
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Profane Object. A legendary hammer said to have destroyed enemy warlords in the
+        hands of cult leaders or firebrand military commanders. Any character using the
+        Hammer gains the Frenzy talent and a +5 bonus to Weapon Skill tests for each other
+        friendly character within 8 metres, but each of those allies suffers a -5 penalty to
+        Weapon Skill tests. The Hammer itself counts as a Best craftsmanship power fist with
+        the Concussive (3) and Tearing qualities. At the end of combat, each other friendly
+        character within 8 metres suffers one level of Fatigue and the user suffers +1d5
+        Corruption points for each adversary he killed using the Hammer.
+    source: PG 54 EI
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Hammer of Saint Lucillius
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Profane Object. A four-volume tome, each dedicated to a specific Chaos God. Reading
+        the Libris requires three ranks in either the Forbidden Lore (Daemonology) or
+        Forbidden Lore (The Warp) skill. Acolytes can use the Libris Maleficarum when
+        investigating various aspects of Chaos, represented by further bonuses to later
+        Forbidden Lore tests, or tests to resist the influence of the daemonic or the
+        profane (the GM has the final say on the exact nature of the bonuses). A character
+        gains 1d5 Corruption points for each hour spent studying the horrid books. The GM can
+        use the Craftsmanship ratings to represent different versions: Poor books are
+        scarcely legible scrawls with no real understanding of the original text—the
+        Acolytes never gain Corruption points for reading them, but research should take at
+        least twice as long and offer very limited benefits. Common is a typical modern copy
+        of a copy, with annotations and additions by a twisted author. Good retains most of
+        Inquisitor Belenos' original text, and Acolytes need only Linguistics (High Gothic)
+        to study it. Best clearly bears the marks of the daemonic—simply being near it sends
+        strange whispers into the Acolytes' heads—and an Acolyte also gains 1 Insanity point
+        for each Corruption point he gains as a result of reading this version.
+    source: PG 55 EI
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Libris Maleficarum
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Profane Object. A dataslate-sized music box, said to originate from the workshops of
+        Baron Michellius Madani, that plays a single piece of music. As long as the user
+        keeps playing the music box, everyone except the operator cannot leave the area or
+        even turn away from the box's user without first passing an Arduous (-40) Willpower
+        test. Additionally, those that fail the test suffer an Addiction (see page 173 of the
+        Dark Heresy Core Rulebook) to the music box, where the afflicted character gains 1d5
+        Insanity points each day he goes without hearing the music. GMs might want to inflict
+        Insanity depending on the size of the enraptured crowds, or even have a user gain
+        Corruption points as each note takes something away from his soul.
+    source: PG 56 EI
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Madani's Music Box
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Profane Object. One of six busts of Juno's most powerful leaders, sculpted by the
+        master artificer Vocram from hand-quarried Desoleum quartz. A character who owns one
+        of the Effigies may use it to cleanse the taint from his soul, but at the price of
+        his sanity. After staring with total concentration at the disturbing marble for at
+        least an hour, he can remove any number of Corruption points. For each point removed,
+        however, he suffers the same amount of Willpower damage, and gains twice that number
+        of Insanity points. After each use he must roll on Table 8-15: Malignancies; should
+        he gain a Malignancy he already possesses, he then gains an additional 1d10 Insanity
+        points instead. The GM can also impose an Addiction to the statue; its ownership
+        could become a source of jealous friction within the warband, or it could inflict
+        horrific facial deformities if used to remove too much Corruption.
+    source: PG 56 EI
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Vocram's Effigies
+type: gear
+---
+data:
+    availability: Very Rare
+    craftsmanship: Common
+    description: >-
+        Psykers within 5 metres of one or more banishing rods cannot push their psychic
+        powers, and reduce the result of any rolls they make on Table 6-2: Psychic
+        Phenomena by 20 (to a minimum of 1). Characters with the Daemonic trait treat
+        this area as a treacherous environment. When used in an exorcism, each rod
+        placed around the target of the exorcism grants a +5 bonus to the Daemonic
+        Mastery of the exorcism.
+    source: PG 47 EB
+    weight: 8
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Banishing Rod
+type: gear
+---
+data:
+    availability: Scarce
+    craftsmanship: Common
+    description: >-
+        Before making a Focus Power test, a character possessing one of these scrolls
+        may choose to burn a single one as a Free Action; this destroys that scroll.
+        Should the user have to roll on Table 6-2: Psychic Phenomena as a result of the
+        subsequent Focus Power test, he may re-roll the result.
+    source: PG 47 EB
+    weight: 1
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Consecrated Scrolls
+type: gear
+---
+data:
+    availability: Very Rare
+    craftsmanship: Common
+    description: >-
+        A brain mine must be attached to an enemy through a successful Grapple action
+        in melee combat. At the start of his turn for the following 3 rounds, the
+        target must make a Hard (20) Agility test. If successful, he can perform a Half
+        Action; otherwise he is unable to perform any actions, including Reactions,
+        that round. The mine deals 1d10+5 Rending damage that is not reduced by armour
+        if forcibly removed, but after 3 rounds, it burns out and dislodges from the
+        target.
+    source: PG 47 EB
+    weight: 1
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Empyrean Brain Mine
+type: gear
+---
+data:
+    availability: Rare
+    craftsmanship: Common
+    description: >-
+        As a Half Action, the wearer may make a Challenging (+0) Awareness test to
+        detect psykers and characters with the Daemonic trait without the need for
+        normal lighting until the end of the encounter. While these targets are
+        illuminated in this way, the wearer gains a +10 bonus to his Ballistic Skill
+        tests against them. The psyocculum distorts standard vision, however, imposing
+        a 20 penalty to all other sight-based tests made while it is used. It also
+        cannot be used at the same time as another piece of headgear, such as a helmet,
+        and requires a Half Action to both put on or take off. Using a psyocculum
+        causes the wearer to gain one level of Fatigue for every 5 minutes of operation
+        beyond the first minute.
+    source: PG 47 EB
+    weight: 1.5
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Psyocculum
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Daemonic Remnant. The desiccated remains of banished Daemons—grey and porous,
+        it seems to constantly generate heat but crumbles to ash when touched. Genuine
+        Balestone can only be found in areas of recent daemonic incursion or recent
+        summoning sites, and needs to be stored in stasis, as the unclean heat it emits
+        eventually destroys any container. Any ritual to summon Daemons gains a +30
+        bonus when enacted within a circle or symbol of Chaos composed of Balestone.
+        Coating a weapon with Balestone grants it the Overheats and Tainted weapon
+        qualities, and permanently removes the Sanctified quality, while covering skin
+        with it grants the Daemonic (X) trait for X minutes, where X equals half the
+        character's Willpower bonus. Any character who uses Balestone gains 1d10
+        Corruption points per minute of exposure, and suffers a 20 penalty to any
+        resulting Malignancy and Mutation tests. Balestone could also be used for
+        increasing the power of Malefic psychic powers, or to heighten the chances or
+        effects of Psychic Phenomena.
+    source: PG 48 EB
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Balestone
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Daemonic Remnant. A legendary object said to predate Imperial Compliance,
+        reported as a series of bells surrounded by rotted parchments; towns visited by
+        the Carillon usually succumb to famine, disease, and a form of obsessive
+        madness. A character must take a Willpower test at the end of every hour of
+        exposure to the Carillon, with a 10 penalty for each day the Carillon has been
+        present, gaining 1 Insanity point for every degree of failure. Mental disorders
+        gained from the Carillon are always Obsession/Compulsion disorders focused
+        around cataloguing innocuous and unrelated items. A cloud of smog with a radius
+        of 20 metres surrounds it, which increases by 5 metres per day; any living
+        creature within suffers the effects of suffocation after 30 minutes of exposure
+        regardless of sealed armour/breathing apparatus. The cursed bells can
+        alternatively be the source of quavering breaches in reality or even befoul
+        Gellar Fields into puddles of tainted energies.
+    source: PG 48 EB
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Cursed Carillon
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Daemonic Remnant. Supposedly ripped from the mouths of slain Flesh Hounds
+        during the Seventh Cleansing of Juno, this misshapen collection of huge fangs
+        arranged around a skeletal brass glove acts as a focusing tool that allows the
+        user to locate and track people through the Warp, much like Flesh Hounds
+        themselves. It grants a +30 bonus to any Navigate and Psyniscience tests, and
+        Survival tests for the Tracking special use. Each time the character makes such
+        a test, he gains 1d5 Corruption points, plus 1 additional Corruption point per
+        degree of success on the test. The GM can have it turn on its wearer should he
+        use it too much, sending packs of Flesh Hounds after him, or even turning
+        inwards to devour his hand whole. In melee combat, the gauntlet acts as a sword
+        and has the Tainted and Unwieldy weapon qualities.
+    source: PG 48 EB
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Hound's Teeth Gauntlet
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Daemonic Remnant. The first Daemon Hammer created for the Conclave of
+        Illyricum; a towering Herald of Khorne killed the Inquisitor who bore it into
+        its only battle and plucked it from his grasp. Changed fundamentally by the
+        Herald's touch, Realitus is no longer just a weapon but a shifting conduit of
+        unholy malice. Characters wielding Realitus could gain the Baneful Presence
+        (X), Daemonic (X), Phase, and Warp Instability traits, where X equals the
+        character's Willpower bonus; those who already possessed the Daemonic trait
+        would lose the Warp Instability trait as the hammer sustains their physical
+        presence instead. Characters without the Daemonic trait gain 1d10 Corruption
+        points for every hour they wield the hammer; others who come within 10m of the
+        hammer must pass a Hard (20) Willpower test for each hour they remain within
+        this radius or gain 1d10 Corruption points per degree of failure. Realitus
+        could also grant the Command skill at Rank 4 and the Halo of Command talent,
+        and in melee combat function as a Nemesis Daemon Hammer with the Tainted
+        quality in place of the Daemonbane quality.
+    source: PG 49 EB
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Realitus
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Daemonic Remnant. Last seen during the Blight of Rhodin IV some three dozen
+        years ago, this vile artefact takes the form of an ornate stand holding a
+        seemingly mundane candle with an unending, unnatural flame that reshapes itself
+        endlessly into daemonic faces, grasping claws, lost friends, and other terrors.
+        The flame can gift those who look closely into it with any desired Rank in one
+        chosen Lore skill, up to Rank 4, after performing a Willpower test with a
+        penalty equal to ten times the desired Rank. This lasts for a number of days
+        equal to the degrees of success on the test, but the user also gains 1d5 points
+        of Corruption per Rank gained. Failing the test results in 1d10 Intelligence
+        damage for each degree of failure. Staring into the flame could also inflict
+        Insanity points on the weak, as their minds collapse from the terrible secrets
+        revealed.
+    source: PG 49 EB
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Spectral Flame
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Daemonic Remnant. Easily one of the Askellon Sector's most feared objects,
+        many believe the Void Talon to actually be a Daemonette's severed claw, held in
+        the material plane by ancient and long-forgotten rituals. Too delicate for
+        combat, it is sharp enough to rend the veil of reality and open doorways
+        directly into the Immaterium. Anyone might use the Void Talon to tear a literal
+        hole in reality, opening up a direct gateway to the Warp. Those who stay near
+        the opening must pass a Hellish (60) Willpower test every minute or gain 1d10
+        Insanity and Corruption points for each degree of failure. A tear lasts for 6
+        minutes, during which time raw unreality pours through the opening, corrupting
+        everything nearby. The GM may also have Daemons emerge as desired, launch
+        Psychic Phenomena out of the tear, or even cause Daemonic Possessions in nearby
+        mortals.
+    source: PG 49 EB
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Void Talon
+type: gear
