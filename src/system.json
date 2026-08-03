@@ -147,6 +147,13 @@
       "label": "Weapon Mods",
       "path": "./packs/weapon-mods.db",
       "type": "Item"
+    },
+    {
+      "name": "vehicles",
+      "system": "dark-heresy-2nd",
+      "label": "Vehicles",
+      "path": "./packs/vehicles.db",
+      "type": "Actor"
     }
   ],
   "grid": {

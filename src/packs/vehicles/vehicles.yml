@@ -1,0 +1,1261 @@
+_id: NdRbOmmgsmCV6ZKu
+name: Aelurus Heavy Trike
+img: icons/svg/mystery-man.svg
+type: vehicle
+system:
+    front: 12
+    side: 12
+    rear: 10
+    availability: Average
+    speed:
+        cruising: 80
+        tactical: 18
+    crew: Driver
+    manoeuverability: 0
+    carryingCapacity: 2
+    integrity:
+        max: 12
+        value: 12
+        critical: 0
+    size: 6
+    faction: ''
+    subfaction: ''
+    type: Wheeled
+    threatLevel: 12
+items:
+    - _id: Ds1ClHRb8QUuRDzM
+      name: Size
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Determines creature size and benefits.
+          level: 6
+          source: PG 139 CB
+    - _id: aY7NvBKYoJcXJUPt
+      name: Bike
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The smallest sub-type of vehicles, bikes take many different forms,
+              from the iron steeds ridden by the Adeptus Astartes, to the nimble darts of
+              the Eldar, right through to the smoke-belching contraptions favoured by the
+              Orks. Bikes follow all the standard rules for vehicles and are treated as
+              having the Open-Topped trait. However, due to their size and lower profiles,
+              in melee characters attacking a vehicle with the Bike trait can choose between
+              the rider and the vehicle without needing to make a Called Shot. Bikes are
+              usually Wheeled vehicles, but can also be Skimmers or Tracked. They cannot
+              make Ram! actions due to their light construction.
+          level: 0
+          source: PG 187 CB
+    - _id: mQeUGBNHK7yU8zfm
+      name: Rugged
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Robust power systems, modular armour plates, and redundant fuel
+              systems can make a vehicle far easier to repair, saving time and resources
+              and allowing the vehicle to be put back into the field far more quickly than
+              other designs. All Repair tests made to repair a vehicle with the Rugged
+              trait gain a +20 bonus.
+          level: 0
+          source: PG 189 CB
+    - _id: JLc1pO1Z07EOUIlE
+      name: Wheeled
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The following rules apply to a Wheeled vehicle. It suffers a -20
+              penalty to all tests involving difficult terrain. It gains a +10 bonus on
+              all tests involving Manoeuvrability. Wheeled Vehicles are extremely difficult
+              to control once they suffer serious damage to their motive systems; the loss
+              of even one wheel can make even the most experienced drivers struggle to keep
+              the vehicle moving in a straight line, especially in the heat of combat. Vehicles
+              with the Wheeled Vehicle trait suffer Motive Systems Critical damage as normal,
+              but once any such damage has been taken, all forms of movement require Operate
+              tests, and all tests related to the vehicle's Manoeuvrability, are made at
+              a -10 penalty. Wheeled mechanisms are generally far less complex than those
+              belonging to tracked vehicles. Repairing Critical damage to the vehicle's
+              Motive Systems, as well as any lasting Motive System damage (such as Motive
+              Systems Damaged, Motive Systems Crippled, etc.) takes half as long as normal
+              (see page 259).
+          level: 0
+          source: PG 189 CB
+    - _id: H0M6yic28GLymOCh
+      name: Modular Design
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Although normally designed to carry both the driver and two passengers,
+              the Aelurus design allows for alternate configurations, enhancing the vehicle's
+              flexibility. Some trikes remove the two passenger seats to carry an extra
+              200kg of cargo (three times the norm), others replace the cargo area completely
+              with a third passenger seat, and those operating in dangerous areas even add
+              light weapons such as pintle-mounted linked autoguns.
+          level: 0
+          source: PG 54 EO
+    - _id: KoHEzhwdXaXoGNqL
+      name: Twin-Autoguns
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Scarce
+          weight: 10
+          equipped: false
+          inBackpack: false
+          description: Optional pintle-mounted weapon fitted to some Aelurus Heavy Trikes
+              operating in dangerous areas, replacing the third passenger seat.
+          source: PG 54 EO
+          damage: 1d10+3
+          damageType: Impact
+          penetration: 0
+          special:
+              twinLinked: true
+          range: 100
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 1
+              burst: 3
+              full: 10
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Basic
+          type: Solid Projectile
+          reload: 2 Full Actions
+          clip:
+              max: 150
+              value: 150
+          modifications: []
+---
+_id: NBUDfuMHNCJG9nfD
+name: Aquila Lander
+img: icons/svg/mystery-man.svg
+type: vehicle
+system:
+    front: 24
+    side: 24
+    rear: 20
+    availability: Very Rare
+    speed:
+        cruising: 2200
+        tactical: 1200
+    crew: Pilot
+    manoeuverability: 10
+    carryingCapacity: 10
+    integrity:
+        max: 25
+        value: 25
+        critical: 0
+    size: 8
+    faction: ''
+    subfaction: ''
+    type: Aircraft
+    threatLevel: 25
+items:
+    - _id: gsJusu4s6cqAuvSf
+      name: Size
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Determines creature size and benefits.
+          level: 8
+          source: PG 139 CB
+    - _id: tWubSBwYOgYkfTa6
+      name: Enclosed
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The greater majority of vehicles are completely enclosed, keeping
+              their crew and passengers safe from the outside elements with thick armour,
+              bulky hatchways, and heavy glassteel visors. Crew and passengers within an
+              Enclosed vehicle cannot attack targets with their own personal weapons unless
+              they have some way of getting outside of the vehicle, be it through a hatch,
+              doorway, or firing slit. Within an Enclosed vehicle, crew and passengers cannot
+              be specifically targeted by those outside the vehicle (unless there is a
+              particularly good reason, such as a mind-based psychic attack).
+          level: 0
+          source: PG 188 CB
+    - _id: KCTLizyVyleqviqP
+      name: Environmentally Sealed
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The vehicle is sealed off from the outside world completely, allowing
+              it to function in almost any environment. It will also have its own life
+              support system. Vehicles that become exposed due to Critical damage results
+              lose this ability until their armour is repaired. Passengers and crew cannot
+              fire their own personal weaponry from a vehicle with the Environmentally
+              Sealed trait without first breaching those seals (or if they were already
+              breached due to vehicle damage).
+          level: 0
+          source: PG 188 CB
+    - _id: 3wo6t5CLy9OyjN0r
+      name: Flyer
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Flyers must move at least their Tactical Speed every turn; a flyer
+              moving less than this descends by one level of Altitude at the start of the
+              pilot's turn. As a general rule, a flyer can only turn 45 degrees (instead
+              of 90 degrees) each time it moves its own length in distance. It can turn
+              more than once during a given Movement action, provided it moves a sufficient
+              distance each time. Flyers can have their Altitude changed via the Tactical
+              Manoeuvring action, altering their Altitude one level higher or lower. Altitudes
+              can be increased only when using a Full Action in this way. Flyers ignore
+              ground terrain while airborne (except in the case of mountains, hive cities,
+              or other exceedingly tall features). Flyers that go Out of Control while
+              airborne immediately descend one Altitude level and turn in a three-dimensional
+              random direction using the Scatter Diagram on page 230 of the Dark Heresy
+              Core Rulebook. This can result in a ground crash. Unless it is already at
+              ground level, a flyer that is destroyed automatically crashes. Firing on
+              an airborne flyer incurs a -20 penalty to Ballistic Skill tests on top of
+              any other penalties. Flyers at High or Orbital Altitudes cannot be targeted
+              by ground forces unless a weapon or user has a special ability allowing for
+              this. A flyer that crashes for any reason is treated as a skimmer crashing
+              from a height of 10 metres or higher, as described on page 256 of the Dark
+              Heresy Core Rulebook. NOTE - this vehicle-specific ruling differs from the
+              generic creature Flyer trait already in this system's trait pack; see that
+              entry's description for the creature version instead.
+          level: 0
+          source: PG 53 EO
+    - _id: KrTHqggNliwRAiGh
+      name: Skimmer
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: It moves roughly 2 metres above the ground at all times, in much
+              the same way as people and creatures with the Hoverer trait, but can adjust
+              that height slightly when moving over ground-based obstacles. Skimmers can
+              also move to Low Altitude, as described in the rules for Flying. It ignores
+              all forms of difficult terrain (except those deemed appropriate by the GM).
+              It gains a +10 bonus on all tests involving Manoeuvrability. A Skimmer is
+              not a true aircraft and therefore cannot fly at any significant altitude.
+              Nevertheless, a sudden loss in motive power can be catastrophic as it ploughs
+              into the ground, often at great speed. Skimmers follow special rules for
+              Crashing. It can make use of the Ram! action, but if the Operate test is
+              failed, it is treated as having instead Crashed into its target. A Skimmer
+              is often far more difficult to hit in melee combat than its ground-based
+              counterparts, and thus all Weapon Skill tests made to attack it in melee
+              suffer a -10 penalty. It can turn as many times as desired when moving, regardless
+              of how far it moves.
+          level: 0
+          source: PG 189 CB
+    - _id: MhDp9kY2uRS66MDM
+      name: Aerospace Vehicle
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: An Aquila Lander can reach Orbital Altitude.
+          level: 0
+          source: PG 55 EO
+    - _id: IbS8dzSHzcZzaPcR
+      name: Ceramite Hull
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Designed to leave and re-enter the atmosphere very quickly, the
+              Aquila's ceramite plating makes it more resistant to heat-based weaponry.
+              Attacks made against it with weapons with the Melta quality do not benefit
+              from that quality.
+          level: 0
+          source: PG 55 EO
+    - _id: ZlT1xTn8SHQ6dU6p
+      name: Autocannon
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Very Rare
+          weight: 40
+          equipped: true
+          inBackpack: false
+          description: One of three selectable hull-mounted weapons for the Aquila Lander
+              (the vehicle mounts only one at a time). The other options, Heavy Bolter
+              and Multi-Laser, are also included on this actor as unequipped alternates
+              for the GM to swap in.
+          source: PG 55 EO
+          damage: 3d10+8
+          damageType: Impact
+          penetration: 6
+          special:
+              reliable: true
+          range: 300
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 1
+              burst: 3
+              full: 0
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Solid Projectile
+          reload: 2 Full Actions
+          clip:
+              max: 48
+              value: 48
+          modifications: []
+    - _id: 9NzZWvTlcIN3z6gB
+      name: Heavy Bolter
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Very Rare
+          weight: 40
+          equipped: false
+          inBackpack: false
+          description: Alternate hull-mounted weapon option for the Aquila Lander (unequipped;
+              swap in place of the Autocannon if selected).
+          source: PG 55 EO
+          damage: 1d10+8
+          damageType: Explosive
+          penetration: 5
+          special:
+              tearing: true
+          range: 150
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 0
+              burst: 0
+              full: 6
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Bolt
+          reload: 2 Full Actions
+          clip:
+              max: 120
+              value: 120
+          modifications: []
+    - _id: tOQ2mkRmgfkJP6zK
+      name: Multi-Laser
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Very Rare
+          weight: 35
+          equipped: false
+          inBackpack: false
+          description: Alternate hull-mounted weapon option for the Aquila Lander (unequipped;
+              swap in place of the Autocannon if selected).
+          source: PG 55 EO
+          damage: 2d10+10
+          damageType: Energy
+          penetration: 2
+          special:
+              reliable: true
+          range: 150
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 0
+              burst: 0
+              full: 5
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Las
+          reload: 2 Full Actions
+          clip:
+              max: 100
+              value: 100
+          modifications: []
+---
+_id: Lm4SIyVtnYHFRNNA
+name: Arvus Lighter
+img: icons/svg/mystery-man.svg
+type: vehicle
+system:
+    front: 22
+    side: 20
+    rear: 20
+    availability: Rare
+    speed:
+        cruising: 1600
+        tactical: 1000
+    crew: Pilot
+    manoeuverability: -15
+    carryingCapacity: 10
+    integrity:
+        max: 25
+        value: 25
+        critical: 0
+    size: 7
+    faction: ''
+    subfaction: ''
+    type: Aircraft
+    threatLevel: 25
+items:
+    - _id: BzoCWOeoaTTHlzrW
+      name: Size
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Determines creature size and benefits.
+          level: 7
+          source: PG 139 CB
+    - _id: zNmZW9N7A7kTENSO
+      name: Enclosed
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The greater majority of vehicles are completely enclosed, keeping
+              their crew and passengers safe from the outside elements with thick armour,
+              bulky hatchways, and heavy glassteel visors. Crew and passengers within an
+              Enclosed vehicle cannot attack targets with their own personal weapons unless
+              they have some way of getting outside of the vehicle, be it through a hatch,
+              doorway, or firing slit. Within an Enclosed vehicle, crew and passengers cannot
+              be specifically targeted by those outside the vehicle (unless there is a
+              particularly good reason, such as a mind-based psychic attack).
+          level: 0
+          source: PG 188 CB
+    - _id: mkpWoPcTOZCDTZzR
+      name: Environmentally Sealed
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The vehicle is sealed off from the outside world completely, allowing
+              it to function in almost any environment. It will also have its own life
+              support system. Vehicles that become exposed due to Critical damage results
+              lose this ability until their armour is repaired. Passengers and crew cannot
+              fire their own personal weaponry from a vehicle with the Environmentally
+              Sealed trait without first breaching those seals (or if they were already
+              breached due to vehicle damage).
+          level: 0
+          source: PG 188 CB
+    - _id: bB98HIWtgT7OusdT
+      name: Flyer
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Flyers must move at least their Tactical Speed every turn; a flyer
+              moving less than this descends by one level of Altitude at the start of the
+              pilot's turn. As a general rule, a flyer can only turn 45 degrees (instead
+              of 90 degrees) each time it moves its own length in distance. It can turn
+              more than once during a given Movement action, provided it moves a sufficient
+              distance each time. Flyers can have their Altitude changed via the Tactical
+              Manoeuvring action, altering their Altitude one level higher or lower. Altitudes
+              can be increased only when using a Full Action in this way. Flyers ignore
+              ground terrain while airborne (except in the case of mountains, hive cities,
+              or other exceedingly tall features). Flyers that go Out of Control while
+              airborne immediately descend one Altitude level and turn in a three-dimensional
+              random direction using the Scatter Diagram on page 230 of the Dark Heresy
+              Core Rulebook. This can result in a ground crash. Unless it is already at
+              ground level, a flyer that is destroyed automatically crashes. Firing on
+              an airborne flyer incurs a -20 penalty to Ballistic Skill tests on top of
+              any other penalties. Flyers at High or Orbital Altitudes cannot be targeted
+              by ground forces unless a weapon or user has a special ability allowing for
+              this. A flyer that crashes for any reason is treated as a skimmer crashing
+              from a height of 10 metres or higher, as described on page 256 of the Dark
+              Heresy Core Rulebook. NOTE - this vehicle-specific ruling differs from the
+              generic creature Flyer trait already in this system's trait pack; see that
+              entry's description for the creature version instead.
+          level: 0
+          source: PG 53 EO
+    - _id: uaWMdfWYd0WxZBNA
+      name: Rugged
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Robust power systems, modular armour plates, and redundant fuel
+              systems can make a vehicle far easier to repair, saving time and resources
+              and allowing the vehicle to be put back into the field far more quickly than
+              other designs. All Repair tests made to repair a vehicle with the Rugged
+              trait gain a +20 bonus.
+          level: 0
+          source: PG 189 CB
+    - _id: 3uXjN0vptMTt8v6t
+      name: Aerospace Vehicle
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: An Arvus Lighter can reach Orbital Altitude.
+          level: 0
+          source: PG 55 EO
+    - _id: 8I1q4dJjBwMT467c
+      name: Cargo Hauler
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Designed primarily for carrying cargo to and from orbit, an Arvus
+              Lighter can carry several tonnes of additional equipment, small gun emplacements,
+              and even light vehicles. If not lifting cargo, it doubles its carrying capacity
+              for cramped-but-manageable transportation.
+          level: 0
+          source: PG 55 EO
+    - _id: QptdFYTnwIv7rLgR
+      name: Ceramite Hull
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Designed to leave and re-enter the atmosphere very quickly, the
+              Arvus Lighter's ceramite plating makes it more resistant to heat-based weaponry.
+              Attacks made against it with weapons with the Melta quality do not benefit
+              from that quality.
+          level: 0
+          source: PG 55 EO
+---
+_id: qZmJeOHNKXceA9P5
+name: Sentinel
+img: icons/svg/mystery-man.svg
+type: vehicle
+system:
+    front: 15
+    side: 15
+    rear: 15
+    availability: Average
+    speed:
+        cruising: 45
+        tactical: 10
+    crew: Driver
+    manoeuverability: 10
+    carryingCapacity: 0
+    integrity:
+        max: 20
+        value: 20
+        critical: 0
+    size: 6
+    faction: ''
+    subfaction: ''
+    type: Walker
+    threatLevel: 18
+items:
+    - _id: eTbV8d6NcL9HNbKS
+      name: Size
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Determines creature size and benefits.
+          level: 6
+          source: PG 139 CB
+    - _id: PjGyS7wQBJbX7tfy
+      name: Enhanced Motive Systems
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The vehicle has some way of gaining extra speed out of its engines,
+              either via an enhanced form of promethium, ancient xeno-technology, or even
+              a squig fuel injector. Vehicles with the Enhanced Motive Systems trait can
+              move up to twice their Tactical Speed as a Half-Action rather than a Full
+              Action, and can up to move three times their Tactical Speed as a Full Action.
+              This applies to the Floor It! action as well, where vehicles with this trait
+              move triple rather than double their Tactical Speed for the Full Action,
+              and the Operate test for this action is treated as Ordinary (+10) rather
+              than Difficult (-10).
+          level: 0
+          source: PG 188 CB
+    - _id: MLvqCleaIOquCbOs
+      name: Open-Topped
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The vehicle's passenger or crew compartments are not sealed and
+              are instead exposed to the open air around them. This limits their protection,
+              but it does allow transported troops to fire their own weapons as the vehicle
+              moves. Crew and passengers mounted on an Open-topped vehicle can be specifically
+              targeted by those outside the vehicle via the use of the Called Shot action.
+              Additionally, passengers mounted in Open-Topped vehicles are struck by any
+              Blast or Spray attacks of which they are in range. Crew and passengers within
+              an Open-topped can attack targets with their own personal weaponry.
+          level: 0
+          source: PG 188 CB
+    - _id: J6sjS6a22AtFxcXQ
+      name: Walker
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The following rules apply to a vehicle with the Walker trait.
+              It is able to ignore many types of difficult terrain due to its sure-footed
+              and agile limbs. It treats conditions such as rockslides, tank traps, fallen
+              trees, and basic rubble and ruins as open ground. It is up to the GM to determine
+              what other types of terrain a walker can ignore. It cannot make use of the
+              Ram! action, but if it has a melee weapon, it can make a Charge action (using
+              the operator's Weapon Skill) instead. Far more combat capable than most other
+              vehicle types, a walker (or rather its pilot) is better able to turn to face
+              its opponents in the midst of a melee. It can turn to face its melee opponents
+              at the end of its turn as a Free Action (this does not count as a form of
+              movement). It should be clear to the GM and the players which direction it
+              is facing for the purposes of working out which armour value its opponents
+              must attempt to penetrate, as well as which direction the walker may make
+              its attacks. It may turn as many times as it likes when moving, regardless
+              of how far it moves.
+          level: 0
+          source: PG 189 CB
+    - _id: LJHABcjvRgNyvg23
+      name: Armoured Sentinel
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Some Sentinels sacrifice speed in favour of an enclosed cockpit
+              and heavier armaments. An Armoured Sentinel increases its Front armour to
+              25, loses the Enhanced Motive Systems vehicle trait, but gains the Enclosed
+              vehicle trait.
+          level: 0
+          source: PG 56 EO
+    - _id: Vmeee2PQixrLyba7
+      name: Powerlifter
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Scarce
+          weight: 45
+          equipped: true
+          inBackpack: false
+          description: Standard hull-mounted tool for the Sentinel. A Sentinel equipped
+              with a powerlifter is capable of carrying a considerable amount of equipment
+              in a single load, up to 3,000kg at a time, and lift/tilt up to 6,000kg. Picking
+              up or setting down objects requires a Full Action. Alternate hull-mounted
+              weapon options (Autocannon, Heavy Flamer, Lascannon, Multilaser) are included
+              on this actor as unequipped alternates for the GM to swap in.
+          source: PG 56 EO
+          damage: 2d10+8
+          damageType: Impact
+          penetration: 4
+          special:
+              concussive: 2
+              primitive: 8
+              unwieldy: true
+          range: 0
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: -1
+              burst: -1
+              full: -1
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Melee
+          type: Low-Tech
+          reload: ''
+          clip:
+              max: 0
+              value: 0
+          modifications: []
+    - _id: BF4FPYKvkMyHQbCe
+      name: Autocannon
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Very Rare
+          weight: 40
+          equipped: false
+          inBackpack: false
+          description: Alternate hull-mounted weapon option for the Sentinel (unequipped;
+              swap in place of the Powerlifter if selected).
+          source: PG 56 EO
+          damage: 3d10+8
+          damageType: Impact
+          penetration: 6
+          special:
+              reliable: true
+          range: 300
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 1
+              burst: 3
+              full: 0
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Solid Projectile
+          reload: 2 Full Actions
+          clip:
+              max: 30
+              value: 30
+          modifications: []
+    - _id: 25nNlHHHlXQdVFTV
+      name: Heavy Flamer
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Rare
+          weight: 45
+          equipped: false
+          inBackpack: false
+          description: Alternate hull-mounted weapon option for the Sentinel (unequipped;
+              swap in place of the Powerlifter if selected).
+          source: PG 56 EO
+          damage: 1d10+5
+          damageType: Energy
+          penetration: 4
+          special:
+              flame: true
+              spray: true
+          range: 30
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 1
+              burst: 0
+              full: 0
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Flame
+          reload: 2 Full Actions
+          clip:
+              max: 10
+              value: 10
+          modifications: []
+    - _id: ucbIMmPBtW89IuXz
+      name: Lascannon
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Very Rare
+          weight: 55
+          equipped: false
+          inBackpack: false
+          description: Alternate hull-mounted weapon option for the Sentinel (unequipped;
+              swap in place of the Powerlifter if selected).
+          source: PG 56 EO
+          damage: 5d10+10
+          damageType: Energy
+          penetration: 10
+          special:
+              proven: 3
+          range: 300
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 1
+              burst: 0
+              full: 0
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Las
+          reload: 2 Full Actions
+          clip:
+              max: 30
+              value: 30
+          modifications: []
+    - _id: KPqqeTi8d5ku0fmC
+      name: Multilaser
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Very Rare
+          weight: 35
+          equipped: false
+          inBackpack: false
+          description: Alternate hull-mounted weapon option for the Sentinel (unequipped;
+              swap in place of the Powerlifter if selected).
+          source: PG 56 EO
+          damage: 2d10+10
+          damageType: Energy
+          penetration: 2
+          special:
+              reliable: true
+          range: 150
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 0
+              burst: 0
+              full: 5
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Las
+          reload: 2 Full Actions
+          clip:
+              max: 100
+              value: 100
+          modifications: []
+---
+_id: WVpy0TfDSavf17rF
+name: Skerab Walker
+img: icons/svg/mystery-man.svg
+type: vehicle
+system:
+    front: 35
+    side: 35
+    rear: 35
+    availability: Common
+    speed:
+        cruising: 10
+        tactical: 5
+    crew: Drivers (3), Combine Operators (10+), Enginseer, Tech-Adepts (3), attendant
+        and implanted servitors (10+)
+    manoeuverability: -30
+    carryingCapacity: 50
+    integrity:
+        max: 45
+        value: 45
+        critical: 0
+    size: 10
+    faction: ''
+    subfaction: ''
+    type: Walker
+    threatLevel: 2
+items:
+    - _id: 4Fx0ubXxLLv6Sng5
+      name: Size
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Determines creature size and benefits.
+          level: 10
+          source: PG 139 CB
+    - _id: LD5bZHFIWPU7wVJZ
+      name: Damage Control
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The vehicle possesses some limited form of self-repair. This could
+              be an ancient machine spirit, slaved servitors, quick-growing Eldar Wraithbone,
+              or even a team of Ork Grots scurrying across the hull hammering at loose
+              armour plates and holding wires together. When a vehicle with the Damage
+              Control vehicle trait suffers Critical damage due to Righteous Fury, the
+              vehicle's commander (or driver if there is no designated commander) can force
+              the 1d5 to be re-rolled. If a vehicle with the Damage Control trait ever
+              catches fire, then attempting to put out that fire is a Free Action for whichever
+              crewmember or passenger makes the attempt.
+          level: 0
+          source: PG 188 CB
+    - _id: ZR68pdIJ7h2Pz9rH
+      name: Walker
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The following rules apply to a vehicle with the Walker trait.
+              It is able to ignore many types of difficult terrain due to its sure-footed
+              and agile limbs. It treats conditions such as rockslides, tank traps, fallen
+              trees, and basic rubble and ruins as open ground. It is up to the GM to determine
+              what other types of terrain a walker can ignore. It cannot make use of the
+              Ram! action, but if it has a melee weapon, it can make a Charge action (using
+              the operator's Weapon Skill) instead. Far more combat capable than most other
+              vehicle types, a walker (or rather its pilot) is better able to turn to face
+              its opponents in the midst of a melee. It can turn to face its melee opponents
+              at the end of its turn as a Free Action (this does not count as a form of
+              movement). It should be clear to the GM and the players which direction it
+              is facing for the purposes of working out which armour value its opponents
+              must attempt to penetrate, as well as which direction the walker may make
+              its attacks. It may turn as many times as it likes when moving, regardless
+              of how far it moves.
+          level: 0
+          source: PG 189 CB
+    - _id: ErZIZfR7rEqjUgWn
+      name: Titanic Behemoth
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Skerab Harvesters dwarf almost everything on a planet's surface,
+              each one more akin to a small village than a simple vehicle. Over 500 metres
+              across and several stories high, GMs might treat a Skerab Harvester less
+              as a vehicle and more as a mobile hab block.
+          level: 0
+          source: PG 57 EO
+    - _id: BsVjdODwyenwQRPM
+      name: Unavoidable Attack
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Anything with the ill fortune to end up underneath an active Skerab
+              Walker suffers a single automatic hit from its combine harvester array or
+              digging shear. Due to the massive scale of the Skerab, a character cannot
+              use an Evasion reaction to avoid this hit. If the target is Massive (Size
+              7) or larger, the array shuts down after inflicting the hit to avoid damaging
+              the blades. It takes the crew an hour of repairs and cleansing rituals to
+              restart the blades.
+          level: 0
+          source: PG 57 EO
+    - _id: zElaF9R2lmeBmf9J
+      name: Combine Harvester Array
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Common
+          weight: 2000
+          equipped: true
+          inBackpack: false
+          description: Ventral weapon mount for a Skerab Walker operating as a Harvester
+              (as found on Kalto). Earthmover-variant Skerabs (as found on Vouxis Prime)
+              instead mount a pair of Digging Shears, included on this actor as an unequipped
+              alternate.
+          source: PG 57 EO
+          damage: 8d10+8
+          damageType: Rending
+          penetration: 6
+          special:
+              felling: 8
+              inaccurate: true
+              razorSharp: true
+              unwieldy: true
+          range: 0
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: -1
+              burst: -1
+              full: -1
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Melee
+          type: Low-Tech
+          reload: ''
+          clip:
+              max: 0
+              value: 0
+          modifications: []
+    - _id: LR2XxVxcjjgoZNAk
+      name: Digging Shear
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Common
+          weight: 1000
+          equipped: false
+          inBackpack: false
+          description: Pair of digging shears mounted on the Earthmover variant of the
+              Skerab Walker (as found on Vouxis Prime), unequipped alternate to the Combine
+              Harvester Array.
+          source: PG 57 EO
+          damage: 6d10+4
+          damageType: Rending
+          penetration: 12
+          special:
+              concussive: 6
+              inaccurate: true
+              unwieldy: true
+          range: 0
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: -1
+              burst: -1
+              full: -1
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Melee
+          type: Low-Tech
+          reload: ''
+          clip:
+              max: 0
+              value: 0
+          modifications: []
+---
+_id: Mp765dBoRYAv2JDE
+name: Wildcat Transport Buggy
+img: icons/svg/mystery-man.svg
+type: vehicle
+system:
+    front: 18
+    side: 15
+    rear: 15
+    availability: Rare
+    speed:
+        cruising: 120
+        tactical: 15
+    crew: Driver, Gunner
+    manoeuverability: 15
+    carryingCapacity: 0
+    integrity:
+        max: 15
+        value: 15
+        critical: 0
+    size: 6
+    faction: ''
+    subfaction: ''
+    type: Wheeled
+    threatLevel: 18
+items:
+    - _id: imQ0qyEvexNnk0M4
+      name: Size
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Determines creature size and benefits.
+          level: 6
+          source: PG 139 CB
+    - _id: UyNGDXbgd7KpXjoS
+      name: Enhanced Motive Systems
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The vehicle has some way of gaining extra speed out of its engines,
+              either via an enhanced form of promethium, ancient xeno-technology, or even
+              a squig fuel injector. Vehicles with the Enhanced Motive Systems trait can
+              move up to twice their Tactical Speed as a Half-Action rather than a Full
+              Action, and can up to move three times their Tactical Speed as a Full Action.
+              This applies to the Floor It! action as well, where vehicles with this trait
+              move triple rather than double their Tactical Speed for the Full Action,
+              and the Operate test for this action is treated as Ordinary (+10) rather
+              than Difficult (-10).
+          level: 0
+          source: PG 188 CB
+    - _id: P5IWLrIrc4u41d7i
+      name: Open-Topped
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The vehicle's passenger or crew compartments are not sealed and
+              are instead exposed to the open air around them. This limits their protection,
+              but it does allow transported troops to fire their own weapons as the vehicle
+              moves. Crew and passengers mounted on an Open-topped vehicle can be specifically
+              targeted by those outside the vehicle via the use of the Called Shot action.
+              Additionally, passengers mounted in Open-Topped vehicles are struck by any
+              Blast or Spray attacks of which they are in range. Crew and passengers within
+              an Open-topped can attack targets with their own personal weaponry.
+          level: 0
+          source: PG 188 CB
+    - _id: 2R8jGXLQPcPJFsbj
+      name: Wheeled
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The following rules apply to a Wheeled vehicle. It suffers a -20
+              penalty to all tests involving difficult terrain. It gains a +10 bonus on
+              all tests involving Manoeuvrability. Wheeled Vehicles are extremely difficult
+              to control once they suffer serious damage to their motive systems; the loss
+              of even one wheel can make even the most experienced drivers struggle to keep
+              the vehicle moving in a straight line, especially in the heat of combat. Vehicles
+              with the Wheeled Vehicle trait suffer Motive Systems Critical damage as normal,
+              but once any such damage has been taken, all forms of movement require Operate
+              tests, and all tests related to the vehicle's Manoeuvrability, are made at
+              a -10 penalty. Wheeled mechanisms are generally far less complex than those
+              belonging to tracked vehicles. Repairing Critical damage to the vehicle's
+              Motive Systems, as well as any lasting Motive System damage (such as Motive
+              Systems Damaged, Motive Systems Crippled, etc.) takes half as long as normal
+              (see page 259).
+          level: 0
+          source: PG 189 CB
+    - _id: 45jTSkjcQadpYwht
+      name: Shielded Cargo
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Wildcat buggies in service to Faceless Traders often feature special
+              hidden storage areas coated or glazed with a substance that confuses prying
+              scanners. Anyone attempting to scan for shielded cargo suffers a -30 penalty
+              to that test. A Wildcat with such shielded cargo has an Availability of Very
+              Rare (instead of Rare).
+          level: 0
+          source: PG 57 EO
+    - _id: N7ITxKLUkX0vyOYx
+      name: Speed Booster
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: In addition to its already formidable speed, all Wildcats come
+              equipped with a capacitor coil capable of overcharging the vehicle's engine
+              for a short period of time. As a Half Action, the driver may activate the
+              booster. For the next six rounds (30 seconds), the Wildcat's Cruising Speed
+              and Tactical Speed increase to 120 kph and 15m, respectively, and the Wildcat's
+              Manoeuvrability becomes -20. After use, the capacitor takes 1 hour to recharge,
+              during which time it cannot be used again.
+          level: 0
+          source: PG 57 EO
+    - _id: 2U8rtKk4EI3t2zID
+      name: Autogun
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Average
+          weight: 5
+          equipped: true
+          inBackpack: false
+          description: Hull-mounted weapon with a forward-facing arc, standard on all
+              Wildcat Transport Buggies.
+          source: PG 57 EO
+          damage: 1d10+3
+          damageType: Impact
+          penetration: 0
+          special: {}
+          range: 100
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 1
+              burst: 3
+              full: 10
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Basic
+          type: Solid Projectile
+          reload: Full Action
+          clip:
+              max: 60
+              value: 60
+          modifications: []
+    - _id: qTnmiEzNBJqkoT1v
+      name: Heavy Stubber
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Rare
+          weight: 30
+          equipped: true
+          inBackpack: false
+          description: Default pintle-mounted weapon on the Wildcat Transport Buggy.
+              Can be swapped for a Flechette Cannon, included on this actor as an unequipped
+              alternate.
+          source: PG 57 EO
+          damage: 1d10+4
+          damageType: Impact
+          penetration: 3
+          special: {}
+          range: 100
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 0
+              burst: 0
+              full: 8
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Solid Projectile
+          reload: 2 Full Actions
+          clip:
+              max: 80
+              value: 80
+          modifications: []
+    - _id: 6tzSnWQ36xgB0Oz5
+      name: Flechette Cannon
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Rare
+          weight: 35
+          equipped: false
+          inBackpack: false
+          description: Alternate pintle-mounted weapon option for the Wildcat Transport
+              Buggy (unequipped; swap in place of the Heavy Stubber if selected).
+          source: PG 57 EO
+          damage: 1d10+2
+          damageType: Rending
+          penetration: 2
+          special:
+              crippling: 2
+              tearing: true
+          range: 60
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 1
+              burst: 2
+              full: 0
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Solid Projectile
+          reload: 3 Full Actions
+          clip:
+              max: 30
+              value: 30
+          modifications: []

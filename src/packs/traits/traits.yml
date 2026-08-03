@@ -362,3 +362,168 @@ data:
 img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
 name: Multiple Arms
 type: trait
+---
+data:
+    description: The smallest sub-type of vehicles, bikes take many different forms,
+        from the iron steeds ridden by the Adeptus Astartes, to the nimble darts of the
+        Eldar, right through to the smoke-belching contraptions favoured by the Orks.
+        Bikes follow all the standard rules for vehicles and are treated as having the
+        Open-Topped trait. However, due to their size and lower profiles, in melee characters
+        attacking a vehicle with the Bike trait can choose between the rider and the
+        vehicle without needing to make a Called Shot. Bikes are usually Wheeled vehicles,
+        but can also be Skimmers or Tracked. They cannot make Ram! actions due to their
+        light construction.
+    level: 0
+    source: PG 187 CB
+img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+name: Bike
+type: trait
+---
+data:
+    description: The vehicle possesses some limited form of self-repair. This could
+        be an ancient machine spirit, slaved servitors, quick-growing Eldar Wraithbone,
+        or even a team of Ork Grots scurrying across the hull hammering at loose armour
+        plates and holding wires together. When a vehicle with the Damage Control vehicle
+        trait suffers Critical damage due to Righteous Fury, the vehicle's commander
+        (or driver if there is no designated commander) can force the 1d5 to be re-rolled.
+        If a vehicle with the Damage Control trait ever catches fire, then attempting
+        to put out that fire is a Free Action for whichever crewmember or passenger makes
+        the attempt.
+    level: 0
+    source: PG 188 CB
+img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+name: Damage Control
+type: trait
+---
+data:
+    description: The greater majority of vehicles are completely enclosed, keeping
+        their crew and passengers safe from the outside elements with thick armour,
+        bulky hatchways, and heavy glassteel visors. Crew and passengers within an Enclosed
+        vehicle cannot attack targets with their own personal weapons unless they have
+        some way of getting outside of the vehicle, be it through a hatch, doorway, or
+        firing slit. Within an Enclosed vehicle, crew and passengers cannot be specifically
+        targeted by those outside the vehicle (unless there is a particularly good reason,
+        such as a mind-based psychic attack).
+    level: 0
+    source: PG 188 CB
+img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+name: Enclosed
+type: trait
+---
+data:
+    description: The vehicle has some way of gaining extra speed out of its engines,
+        either via an enhanced form of promethium, ancient xeno-technology, or even
+        a squig fuel injector. Vehicles with the Enhanced Motive Systems trait can move
+        up to twice their Tactical Speed as a Half-Action rather than a Full Action,
+        and can up to move three times their Tactical Speed as a Full Action. This applies
+        to the Floor It! action as well, where vehicles with this trait move triple
+        rather than double their Tactical Speed for the Full Action, and the Operate
+        test for this action is treated as Ordinary (+10) rather than Difficult (-10).
+    level: 0
+    source: PG 188 CB
+img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+name: Enhanced Motive Systems
+type: trait
+---
+data:
+    description: The vehicle is sealed off from the outside world completely, allowing
+        it to function in almost any environment. It will also have its own life support
+        system. Vehicles that become exposed due to Critical damage results lose this
+        ability until their armour is repaired. Passengers and crew cannot fire their
+        own personal weaponry from a vehicle with the Environmentally Sealed trait without
+        first breaching those seals (or if they were already breached due to vehicle
+        damage).
+    level: 0
+    source: PG 188 CB
+img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+name: Environmentally Sealed
+type: trait
+---
+data:
+    description: The vehicle's passenger or crew compartments are not sealed and are
+        instead exposed to the open air around them. This limits their protection,
+        but it does allow transported troops to fire their own weapons as the vehicle
+        moves. Crew and passengers mounted on an Open-topped vehicle can be specifically
+        targeted by those outside the vehicle via the use of the Called Shot action.
+        Additionally, passengers mounted in Open-Topped vehicles are struck by any Blast
+        or Spray attacks of which they are in range. Crew and passengers within an Open-topped
+        can attack targets with their own personal weaponry.
+    level: 0
+    source: PG 188 CB
+img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+name: Open-Topped
+type: trait
+---
+data:
+    description: Robust power systems, modular armour plates, and redundant fuel systems
+        can make a vehicle far easier to repair, saving time and resources and allowing
+        the vehicle to be put back into the field far more quickly than other designs.
+        All Repair tests made to repair a vehicle with the Rugged trait gain a +20 bonus.
+    level: 0
+    source: PG 189 CB
+img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+name: Rugged
+type: trait
+---
+data:
+    description: It moves roughly 2 metres above the ground at all times, in much
+        the same way as people and creatures with the Hoverer trait, but can adjust
+        that height slightly when moving over ground-based obstacles. Skimmers can also
+        move to Low Altitude, as described in the rules for Flying on page 249. It ignores
+        all forms of difficult terrain (except those deemed appropriate by the GM).
+        It gains a +10 bonus on all tests involving Manoeuvrability. A Skimmer is not
+        a true aircraft and therefore cannot fly at any significant altitude. Nevertheless,
+        a sudden loss in motive power can be catastrophic as it ploughs into the ground,
+        often at great speed. Skimmers follow special rules for Crashing, which are
+        described on page 256. It can make use of the Ram! action (see page 252), but
+        if the Operate test is failed, it is treated as having instead Crashed into its
+        target (see page 255 for the full rules for Crashing). A Skimmer is often far
+        more difficult to hit in melee combat than its ground-based counterparts, and
+        thus all Weapon Skill tests made to attack it in melee suffer a -10 penalty.
+        It can turn as many times as desired when moving, regardless of how far it moves.
+    level: 0
+    source: PG 189 CB
+img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+name: Skimmer
+type: trait
+---
+data:
+    description: The following rules apply to a vehicle with the Walker trait. It
+        is able to ignore many types of difficult terrain due to its sure-footed and
+        agile limbs. It treats conditions such as rockslides, tank traps, fallen trees,
+        and basic rubble and ruins as open ground. It is up to the GM to determine what
+        other types of terrain a walker can ignore. It cannot make use of the Ram! action,
+        but if it has a melee weapon, it can make a Charge action (using the operator's
+        Weapon Skill) instead. Far more combat capable than most other vehicle types,
+        a walker (or rather its pilot) is better able to turn to face its opponents in
+        the midst of a melee. It can turn to face its melee opponents at the end of its
+        turn as a Free Action (this does not count as a form of movement). It should
+        be clear to the GM and the players which direction it is facing for the purposes
+        of working out which armour value its opponents must attempt to penetrate, as
+        well as which direction the walker may make its attacks. It may turn as many
+        times as it likes when moving, regardless of how far it moves.
+    level: 0
+    source: PG 189 CB
+img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+name: Walker
+type: trait
+---
+data:
+    description: The following rules apply to a Wheeled vehicle. It suffers a -20
+        penalty to all tests involving difficult terrain. It gains a +10 bonus on all
+        tests involving Manoeuvrability. Wheeled Vehicles are extremely difficult to
+        control once they suffer serious damage to their motive systems; the loss of
+        even one wheel can make even the most experienced drivers struggle to keep the
+        vehicle moving in a straight line, especially in the heat of combat. Vehicles
+        with the Wheeled Vehicle trait suffer Motive Systems Critical damage as normal,
+        but once any such damage has been taken, all forms of movement require Operate
+        tests, and all tests related to the vehicle's Manoeuvrability, are made at a
+        -10 penalty. Wheeled mechanisms are generally far less complex than those belonging
+        to tracked vehicles. Repairing Critical damage to the vehicle's Motive Systems,
+        as well as any lasting Motive System damage (such as Motive Systems Damaged,
+        Motive Systems Crippled, etc.) takes half as long as normal (see page 259).
+    level: 0
+    source: PG 189 CB
+img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+name: Wheeled
+type: trait
