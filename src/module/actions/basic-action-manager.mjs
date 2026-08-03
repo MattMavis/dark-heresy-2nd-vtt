@@ -329,6 +329,17 @@ export class BasicActionManager {
                 actor.update({ system: { fatigue: { value: actor.system.fatigue.value + fatigue } } }));
         }
 
+        // e.g. "if the target is not wearing armour on this location, he suffers 1 Fatigue" --
+        // checked live against the actor's CURRENT armour at the hit location, not baked into
+        // the button at roll time, since equipment can change between the hit and the click.
+        const fatigueIfUnarmoured = this._datasetNumber(dataset.fatigueIfUnarmoured);
+        if (fatigueIfUnarmoured) {
+            await attempt('Fatigue (unarmoured)', () => {
+                if (this._getArmourAtLocation(actor, location) > 0) return false;
+                return actor.update({ system: { fatigue: { value: actor.system.fatigue.value + fatigueIfUnarmoured } } });
+            });
+        }
+
         const stunnedRounds = this._datasetNumber(dataset.stunnedRounds);
         if (stunnedRounds) {
             await attempt('Stunned', () => this._applyTimedStatus(actor, 'stun', stunnedRounds, combat));
@@ -420,6 +431,22 @@ export class BasicActionManager {
                 duration: { rounds, startRound: combat.round, startTurn: combat.turn, combat: combat.id },
             });
         }
+    }
+
+    /**
+     * Look up the actor's current Armour Points at a hit location, fuzzy-matching the same
+     * way `assign-damage-data.mjs`'s `update()` does (location names sometimes carry spaces
+     * -- "Left Arm" -- that the actor's `system.armour` keys don't).
+     * @returns {number} 0 if the location can't be resolved or has no armour recorded.
+     */
+    _getArmourAtLocation(actor, location) {
+        if (!location || !actor.system.armour) return 0;
+        for (const [name, locationArmour] of Object.entries(actor.system.armour)) {
+            if (location.replace(/\s/g, '').toUpperCase() === name.toUpperCase()) {
+                return locationArmour.value ?? 0;
+            }
+        }
+        return 0;
     }
 
     async assignDamageTool() {

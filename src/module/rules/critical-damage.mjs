@@ -12,7 +12,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -25,7 +26,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -38,7 +40,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -51,7 +54,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -64,7 +68,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -77,7 +82,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -90,7 +96,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
@@ -103,20 +110,22 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
                 "text": "Fire consumes the target’s arm, burning the flesh to a crisp right down to the bone. The target must make an immediate Challenging (+0) Toughness test or die from shock. If he survives, the target suffers [[1d10]] levels of Fatigue and is Stunned for 1 round. The target now suffers from the Lost Arm condition.",
                 "effects": {
-                    "fatigue": null,
-                    "stunned": null,
+                    "fatigue": "1d10",
+                    "stunned": 1,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -129,7 +138,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         },
@@ -144,7 +154,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -157,7 +168,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -170,7 +182,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -183,7 +196,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -196,7 +210,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -209,7 +224,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -222,7 +238,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
@@ -235,7 +252,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -248,7 +266,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -261,7 +280,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         },
@@ -276,7 +296,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -291,7 +312,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -306,7 +328,8 @@ export function criticalDamage() {
                     },
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -321,7 +344,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -336,7 +360,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -351,7 +376,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -364,7 +390,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
@@ -377,7 +404,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -390,7 +418,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -403,7 +432,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         },
@@ -418,7 +448,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -431,7 +462,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -444,7 +476,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -457,7 +490,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -470,7 +504,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -483,7 +518,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -496,7 +532,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
@@ -509,7 +546,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -522,7 +560,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -535,7 +574,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         }
@@ -552,7 +592,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -565,7 +606,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -578,7 +620,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -591,7 +634,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -604,7 +648,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -617,20 +662,22 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
                 "text": "In a violent hail of flesh, the arm is blown apart. The target must immediately make a Challenging (+0) Toughness test or die from shock. If he survives, he suffers [[1d10]] levels of Fatigue, is Stunned for [[1d10]] rounds, and suffers Blood Loss. The target now suffers from the Lost Arm condition (see page 242).",
                 "effects": {
-                    "fatigue": null,
-                    "stunned": null,
+                    "fatigue": "1d10",
+                    "stunned": "1d10",
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
@@ -643,7 +690,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -656,7 +704,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -669,7 +718,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         },
@@ -684,7 +734,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -697,7 +748,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -710,7 +762,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -723,7 +776,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -736,7 +790,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -749,7 +804,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -762,7 +818,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
@@ -775,7 +832,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -788,7 +846,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -801,7 +860,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         },
@@ -816,7 +876,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -833,7 +894,8 @@ export function criticalDamage() {
                     },
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -846,7 +908,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -859,7 +922,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -872,7 +936,8 @@ export function criticalDamage() {
                     "deafened": "permanent",
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -885,7 +950,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -898,7 +964,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
@@ -911,7 +978,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -924,7 +992,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -937,7 +1006,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         },
@@ -952,7 +1022,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -965,7 +1036,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -978,7 +1050,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -986,12 +1059,13 @@ export function criticalDamage() {
                 "effects": {
                     "fatigue": null,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -1004,7 +1078,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -1017,20 +1092,22 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
                 "text": "The explosion reduces the target's leg into a hunk of smoking meat. The target must immediately make a Challenging (+0) Toughness test or die from shock. If he survives, he suffers [[1d10]] levels of Fatigue, is Stunned for [[1d10]] rounds, and suffers Blood Loss. He now suffers the Lost Leg condition (see page 198).",
                 "effects": {
-                    "fatigue": null,
-                    "stunned": null,
+                    "fatigue": "1d10",
+                    "stunned": "1d10",
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
@@ -1043,7 +1120,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -1056,7 +1134,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -1069,7 +1148,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         }
@@ -1086,7 +1166,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -1099,7 +1180,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -1112,7 +1194,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -1125,7 +1208,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -1138,7 +1222,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -1151,7 +1236,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -1164,20 +1250,22 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
                 "text": "The force of the attack takes the arm off just below the shoulder, showering blood and gore across the ground. The target must immediately make a Challenging (+0) Toughness test or die from shock. If he survives, he suffers [[1d5]] levels of Fatigue, is Stunned for [[1d10]] rounds, and suffers Blood Loss. He also now suffers from the Lost Arm condition (see page 242).",
                 "effects": {
-                    "fatigue": null,
-                    "stunned": null,
+                    "fatigue": "1d5",
+                    "stunned": "1d10",
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -1190,7 +1278,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -1203,7 +1292,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         },
@@ -1218,7 +1308,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -1231,7 +1322,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -1244,7 +1336,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -1257,7 +1350,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -1270,7 +1364,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -1283,7 +1378,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -1296,7 +1392,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
@@ -1304,12 +1401,13 @@ export function criticalDamage() {
                 "effects": {
                     "fatigue": null,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -1322,7 +1420,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -1335,7 +1434,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         },
@@ -1350,7 +1450,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -1363,7 +1464,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -1378,7 +1480,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -1391,7 +1494,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -1404,7 +1508,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -1417,7 +1522,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -1430,7 +1536,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
@@ -1443,7 +1550,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -1456,7 +1564,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -1469,7 +1578,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         },
@@ -1484,7 +1594,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -1497,7 +1608,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -1510,7 +1622,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -1523,7 +1636,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -1536,7 +1650,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -1549,7 +1664,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -1562,7 +1678,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
@@ -1573,9 +1690,10 @@ export function criticalDamage() {
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -1588,7 +1706,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -1601,7 +1720,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         }
@@ -1618,7 +1738,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -1631,7 +1752,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -1644,7 +1766,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -1657,7 +1780,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -1670,7 +1794,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -1683,7 +1808,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -1696,20 +1822,22 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
                 "text": "With an assortment of unnatural, wet, ripping sounds, the arm flies free of the body trailing blood behind it in a crimson arc. The target must immediately make a Challenging (+0) Toughness test or die from shock. If he survives, he is Stunned for [[1d10]] rounds and suffers Blood Loss. He suffers from the Lost Arm condition (see page 242).",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": "1d10",
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -1722,7 +1850,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -1735,7 +1864,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         },
@@ -1750,7 +1880,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": 1
                 }
             },
             "2": {
@@ -1763,7 +1894,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -1776,7 +1908,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -1789,7 +1922,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -1802,7 +1936,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -1815,7 +1950,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -1828,20 +1964,22 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
                 "text": "With a vile tearing noise, the skin on the target's chest comes away revealing a red ruin of muscle. He must succeed on a Challenging (+0) Toughness test or perish. If he survives, he is Stunned for 1 round and suffers Blood Loss. Permanently reduce his Toughness characteristic by 1d10.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": 1,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -1854,7 +1992,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -1867,7 +2006,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         },
@@ -1882,7 +2022,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": 1
                 }
             },
             "2": {
@@ -1895,7 +2036,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -1908,7 +2050,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -1921,7 +2064,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -1934,7 +2078,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -1947,7 +2092,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -1960,7 +2106,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
@@ -1973,7 +2120,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -1986,7 +2134,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -1999,7 +2148,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         },
@@ -2014,7 +2164,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "2": {
@@ -2027,7 +2178,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "3": {
@@ -2040,7 +2192,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "4": {
@@ -2053,7 +2206,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "5": {
@@ -2066,7 +2220,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "6": {
@@ -2079,7 +2234,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "7": {
@@ -2092,20 +2248,22 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "8": {
                 "text": "In a single bloody hack the target's leg is lopped off, spurting its vital fluids across the ground. The target must immediately make a Challenging (+0) Toughness test or die from shock. If he survives, he is Stunned for [[1d10]] rounds and suffers Blood Loss. He suffers the Lost Leg condition (see page 243).",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": "1d10",
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
-                    "death": false
+                    "death": false,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "9": {
@@ -2118,7 +2276,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             },
             "10": {
@@ -2131,7 +2290,8 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": true
+                    "death": true,
+                    "fatigueIfUnarmoured": null
                 }
             }
         }
@@ -2221,5 +2381,10 @@ export async function resolveCriticalEffects(effects = {}) {
         bloodLoss: !!effects.bloodLoss,
         onFire: !!effects.onFire,
         death: !!effects.death,
+        // Deliberately NOT rolled/resolved here -- this is checked live against the actor's
+        // current armour at the hit location when the button is clicked (basic-action-manager.mjs
+        // _applyCriticalEffect), not baked into the button at roll time, since armour state should
+        // reflect what's true at the moment of application, not the moment of the original hit.
+        fatigueIfUnarmoured: effects.fatigueIfUnarmoured ?? null,
     };
 }
