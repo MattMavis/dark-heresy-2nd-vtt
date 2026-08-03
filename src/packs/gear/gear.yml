@@ -611,3 +611,178 @@ data:
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Void Talon
 type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Xenos Relic. Activating the Aetheric Cube transforms the device into a larger
+        empty scaffold with open sides roughly three metres tall and wide. Stepping
+        inside activates the device, instantly suspending the user a few feet off the
+        ground in a golden energy field. The cube creates whatever soothing reality
+        the user desires, and an Acolyte can use this to both remove Fatigue and heal
+        from injury; each hour of use counts as 24 hours of complete rest. However,
+        when the character attempts to leave the illusory field he must make a
+        Willpower test, with a -10 penalty for each hour spent inside (-10 for 1 hour,
+        -20 for 2 hours, etc.). If he fails, he gains 1d5 Insanity Points for every
+        degree of failure. If he fails by 4 or more degrees, the Aetheric Cube
+        collapses with him still inside.
+    source: PG 58 EO
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Aetheric Cube
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Xenos Relic. Small, roughly spherical crystalline items that allow
+        instantaneous communication between one crystal and any other, regardless of
+        distance, using only a vox-caster and a message. The difficulty lies in the
+        fact that every crystal acts as a receiver, so anyone who has his own can
+        listen to any message sent through the network. A single stone is not much of
+        a threat on its own, but the potential doom the crystals represent for the
+        sector is what makes them so dangerous, as the network is known to extend as
+        far as the dreaded Halo Stars.
+    source: PG 58 EO
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Alreen's Diamonds
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Xenos Relic. Alien grub-like creatures that implant themselves inside cranial
+        tissue. A leech can be applied to a character's skin, and requires roughly 5
+        minutes to agonisingly make its way into a brain and spread its tendrils
+        across neural tissue. The host becomes highly suggestible, and carries out any
+        instructions without hesitation unless he makes a Hellish (-60) Willpower
+        test; he might also act oddly at the GM's discretion. Removing an implanted
+        leech (without damaging the host) requires 6 degrees of success on an Extended
+        Very Hard (-30) Medicae test; for every degree of failure, the leech instead
+        causes 1d10 Impact damage to his head location, which cannot be reduced for
+        any reason. If there is no concern for the host's well-being, a leech can be
+        forcibly removed with no test required, but removed leeches die within
+        seconds, no matter the means used, and cannot be used again.
+    source: PG 59 EO
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Cranial Leeches
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Xenos Relic. A stone archway covered in wires and tubes and connected to the
+        bodies of several dead xenos species, including what appears to be an Eldar
+        psyker. Farnov's Doorway appears to operate in the same manner as an Eldar
+        webway portal, but uses living psykers as its power source. An Acolyte with
+        the Forbidden Lore (Psykers) skill can perform a Very Hard (-30) Tech-Use test
+        to implant a psyker into the device via its glowing cables; the psyker
+        immediately suffers 1d5 Energy damage to the head location, ignoring armour
+        and Toughness bonus, for each degree of failure on the test. Once connected, a
+        Hellish (-60) Tech-Use test is needed to open the doorway, with a +10 bonus
+        for every psyker connected after the first. It remains open for 10 seconds for
+        every level of combined psy rating the connected psykers possess. Any
+        psykers removed during the doorway's operation suffer 2d10 Energy damage to
+        the head location, which cannot be reduced for any reason, and the device
+        immediately shuts down; once the doorway shuts down, all remaining connected
+        psykers also suffer 2d10 Energy damage to the head location. Stepping through
+        an open doorway sends the Acolyte to another doorway of similar design on a
+        completely different planet, perhaps in a different sector, and travel is
+        possible in both directions while it remains open.
+    source: PG 59 EO
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Farnov's Doorway
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Xenos Relic. A heavy and uncomfortable helmet not designed for human
+        physiology, featuring a series of twisted threads that extend out from the
+        helmet to the interrogation subject. Once active, the user gains both the
+        Telepathic Link and Terrify powers from the Telepathy discipline at an
+        effective psy rating of 4, but the powers can only be used on the other
+        person connected to the helm. The user gains 1 Insanity point for every
+        degree of success or failure on any Focus Power test made whilst using the
+        helm. Use of the helm cannot trigger Psychic Phenomena or other Warp-based
+        perils.
+    source: PG 60 EO
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Helm of Zachariah
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Xenos Relic. One of twelve oddly-shaped repositories recovered from a massive
+        alien crypt that once floated amidst the crumbling debris of the destroyed
+        planet Narwil V. The only clue to a Remain's function is the state of the
+        planet around which the stone crypt was located; theories hold that all
+        twelve were meant to be assembled together into one singular, destructive
+        device, that the items summoned terrors from the Immaterium or other
+        dimensions, or that they form some kind of stasis beam or teleportation
+        device. Attempting to closely study or measure the form of a Remain can
+        inflict Insanity points, especially when a character attempts to activate it.
+        GMs can have a Remain take on the effects of a weapon, cause Psychic
+        Phenomena, or even create Warp breaches to release daemonic entities.
+        Multiple Remains should increase these effects, or even cause new ones as the
+        items meld together into shapes that seem to branch into more dimensions than
+        normal reality can withstand.
+    source: PG 60 EO
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Remains of Narwil V
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Xenos Relic. A witch weapon of Eldar design, legends claim the Wounded Staff
+        contains the collected souls of an entire craftworld lost during the Fall.
+        The first time a character moves within 5 metres of the staff, he must pass a
+        Hard (-20) Willpower test or gain 1d10 Insanity points; for a psyker, this
+        test is Arduous (-40) instead. If a psyker causes any Psychic Phenomena within
+        20 metres of the Wounded Staff, he automatically receives the Perils of the
+        Warp result, and rolls twice on Table 6-3: Perils of the Warp, applying both
+        results. It can be used as a force staff, but while wielding it, the user
+        gains the Enemy (Eldar) (4) talent, and Eldar characters fighting him gain a
+        +20 Weapon Skill bonus against him.
+    source: PG 61 EO
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Wounded Staff
+type: gear
+---
+data:
+    availability: Near Unique
+    craftsmanship: Common
+    description: >-
+        Xenos Relic. A stone block nearly six metres tall that first appeared within
+        an ancillary narthex of the Basilica of Valerius Risen on Juno, hovering
+        nearly a metre off the ground, held in place by heavy chains that tug at its
+        bulk whenever it rises too quickly. Its inner light glows brighter the closer
+        someone approaches, and the etchings across its surface include multiple
+        alien languages, and even some older Imperial dialects, changing every few
+        days and never repeating in content or language. An Acolyte with the
+        Linguistics (Xenos Markings), Scholastic Lore (Cryptology), Scholastic Lore
+        (Numerology), or Trade (Linguist) skills can use the stone to research alien
+        languages, but the text shifts without warning, making any tests to read it
+        Hard (-20). When the stone disappears, it sends a shockwave out 1d10 metres;
+        anyone within the radius must pass an Ordinary (+0) Agility test or vanish
+        with only their clothing and gear left behind.
+    source: PG 61 EO
+    weight: 0
+img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+name: Zehnn Obelisk
+type: gear

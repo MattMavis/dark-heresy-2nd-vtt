@@ -828,4 +828,362 @@ results:
 formula: 1d100
 replacement: true
 displayRoll: true
+---
+name: Jokaero Weapon Modifications
+img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+description: A Jokaero Weaponsmith can modify a weapon, rolling up to four times on
+  this table and applying all the results (see Using a Jokaero Weaponsmith, page 52
+  of Enemies Without).
+results:
+  - type: 0
+    weight: 17
+    range:
+      - 1
+      - 17
+    drawn: false
+    documentCollection: ''
+    _id: C2tAlvvMNBJg2RIu
+    text: Aesthetic Alteration
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 18
+      - 20
+    drawn: false
+    documentCollection: ''
+    _id: HDhcM61mvyRsvvWX
+    text: Accurate
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 20
+      - 22
+    drawn: false
+    documentCollection: ''
+    _id: MEm86tPEtTDFFODJ
+    text: Balanced
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 23
+      - 25
+    drawn: false
+    documentCollection: ''
+    _id: uGmnEpxB4kuoMRHg
+    text: Compact
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 26
+      - 28
+    drawn: false
+    documentCollection: ''
+    _id: 8hpFeluIz2WRWF9L
+    text: Custom Grip
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 29
+      - 31
+    drawn: false
+    documentCollection: ''
+    _id: PmDA7QbojoJlYF4F
+    text: Deactivated Safety Features
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 32
+      - 34
+    drawn: false
+    documentCollection: ''
+    _id: KZ3xo0WhQUkKVZnE
+    text: Fire Selector
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 35
+      - 37
+    drawn: false
+    documentCollection: ''
+    _id: EB0NLbITVuqK7ZWP
+    text: Fluid Action
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 38
+      - 40
+    drawn: false
+    documentCollection: ''
+    _id: ze1qldkeH14G9IVI
+    text: Forearm Weapon Mount
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 41
+      - 43
+    drawn: false
+    documentCollection: ''
+    _id: td0RdikKps3HaLJa
+    text: Silencer
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 44
+      - 46
+    drawn: false
+    documentCollection: ''
+    _id: cIG6IUvwQpQtFwNH
+    text: Melee Attachment
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 47
+      - 49
+    drawn: false
+    documentCollection: ''
+    _id: TgundI4KWJRVUmcQ
+    text: Modified Stock
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 50
+      - 52
+    drawn: false
+    documentCollection: ''
+    _id: 0h3KQjjky2ZYgdZ0
+    text: Mono
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 53
+      - 55
+    drawn: false
+    documentCollection: ''
+    _id: qdrNcBizsHnlN0Jk
+    text: Motion Predictor
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 56
+      - 58
+    drawn: false
+    documentCollection: ''
+    _id: PmQf6bMOtuDhVeVC
+    text: Pistol Grip
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 59
+      - 61
+    drawn: false
+    documentCollection: ''
+    _id: Cl08ExX2kSC2v6ht
+    text: Proven (3)
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 62
+      - 64
+    drawn: false
+    documentCollection: ''
+    _id: MLM8OUxVGslyKheU
+    text: Quick Release
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 65
+      - 67
+    drawn: false
+    documentCollection: ''
+    _id: GpxBJle0dumpjfQL
+    text: Razor Sharp
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 68
+      - 70
+    drawn: false
+    documentCollection: ''
+    _id: ey36wK3BtYRoKJQg
+    text: Reinforced
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 71
+      - 73
+    drawn: false
+    documentCollection: ''
+    _id: gr99UwPV08f2jyza
+    text: Reliable
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 74
+      - 76
+    drawn: false
+    documentCollection: ''
+    _id: 77xVcdRhbuHzz48e
+    text: Good Craftsmanship
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 77
+      - 79
+    drawn: false
+    documentCollection: ''
+    _id: a9ZvbcQwfZem1JAj
+    text: Storm
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 80
+      - 82
+    drawn: false
+    documentCollection: ''
+    _id: dYzYynL2IuiNHRgP
+    text: Suspensors
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 83
+      - 85
+    drawn: false
+    documentCollection: ''
+    _id: ATo4M483jqLAa3Kv
+    text: Targeter
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 86
+      - 88
+    drawn: false
+    documentCollection: ''
+    _id: Ex5p31FCFN8RgZgp
+    text: Tox Dispenser
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 89
+      - 91
+    drawn: false
+    documentCollection: ''
+    _id: kN1MxJMwwtqB7BBj
+    text: Twin-Linked
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 92
+      - 94
+    drawn: false
+    documentCollection: ''
+    _id: VJmmGO1nwVs4P5l9
+    text: Vengeful (9)
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 95
+      - 97
+    drawn: false
+    documentCollection: ''
+    _id: p2CWRFSKEbXPwzho
+    text: Vox-Operated
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+  - type: 0
+    weight: 3
+    range:
+      - 98
+      - 100
+    drawn: false
+    documentCollection: ''
+    _id: 3jWWj21Jyz0NFJWM
+    text: Best Craftsmanship
+    img: icons/svg/d20-black.svg
+    documentId:
+    flags: {}
+formula: 1d100
+replacement: true
+displayRoll: true
 
