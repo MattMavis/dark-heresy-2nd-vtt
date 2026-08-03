@@ -19,6 +19,17 @@
 
 .dh-wrapper {
     position: relative;
+    // This is the root element of every sheet template, and the element every actor/item sheet's
+    // `PARTS.main.scrollable: ['']` config refers to (see e.g. acolyte-sheet.mjs). ApplicationV2's
+    // scrollable tracking only remembers/restores a *pre-existing* scroll position -- it doesn't
+    // make an element a scroll container by itself. Without an explicit bounded height + overflow
+    // here, content taller than the window's fixed 750px default (actor-container-sheet.mjs) simply
+    // overflowed the window frame with no scrollbar at all, and the only way to see the rest of the
+    // sheet was to manually drag-resize the window taller. Left over from the V1->V2 sheet migration
+    // (8add603, 2026-07-28) -- V1's ActorSheet auto-scrolled its form body; ApplicationV2 does not.
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
     // Sheets are drawn on a fixed parchment/ink illustration and must stay legible regardless of
     // the user's chosen Foundry UI theme (light/dark). Elements below rely on `color: unset`
     // (see reset.scss) to inherit this value rather than the theme-dependent color Foundry's own
