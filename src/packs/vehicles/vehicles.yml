@@ -1258,4 +1258,346 @@ items:
           clip:
               max: 30
               value: 30
+---
+_id: Vk9yr1eAsltCrr7q
+name: Valkyrie Assault Carrier
+img: icons/svg/mystery-man.svg
+type: vehicle
+system:
+    front: 22
+    side: 20
+    rear: 18
+    availability: Very Rare
+    speed:
+        cruising: 950
+        tactical: 800
+    crew: Pilot, Co-Pilot, 2 Gunners
+    manoeuverability: 10
+    carryingCapacity: 12
+    integrity:
+        max: 25
+        value: 25
+        critical: 0
+    size: 7
+    faction: ''
+    subfaction: ''
+    type: Aircraft
+    threatLevel: 28
+items:
+    - _id: Sz7VlkYrieCarr01
+      name: Size
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Determines creature size and benefits.
+          level: 7
+          source: PG 139 CB
+    - _id: EncVlkYrieCarr02
+      name: Environmentally Sealed
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The vehicle is sealed off from the outside world completely, allowing
+              it to function in almost any environment. It will also have its own life
+              support system. Vehicles that become exposed due to Critical damage results
+              lose this ability until their armour is repaired. Passengers and crew cannot
+              fire their own personal weaponry from a vehicle with the Environmentally
+              Sealed trait without first breaching those seals (or if they were already
+              breached due to vehicle damage).
+          level: 0
+          source: PG 188 CB
+    - _id: FlyVlkYrieCarr03
+      name: Flyer
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Flyers must move at least their Tactical Speed every turn; a flyer
+              moving less than this descends by one level of Altitude at the start of
+              the pilot's turn. As a general rule, a flyer can only turn 45 degrees (instead
+              of 90 degrees) each time it moves its own length in distance. It can turn
+              more than once during a given Movement action, provided it moves a sufficient
+              distance each time. Flyers can have their Altitude changed via the Tactical
+              Manoeuvring action, altering their Altitude one level higher or lower. Altitudes
+              can be increased only when using a Full Action in this way. Flyers ignore
+              ground terrain while airborne (except in the case of mountains, hive cities,
+              or other exceedingly tall features). Flyers that go Out of Control while
+              airborne immediately descend one Altitude level and turn in a three-dimensional
+              random direction using the Scatter Diagram on page 230 of the Dark Heresy
+              Core Rulebook. This can result in a ground crash. Unless it is already at
+              ground level, a flyer that is destroyed automatically crashes. Firing on
+              an airborne flyer incurs a -20 penalty to Ballistic Skill tests on top of
+              any other penalties. Flyers at High or Orbital Altitudes cannot be targeted
+              by ground forces unless a weapon or user has a special ability allowing
+              for this. A flyer that crashes for any reason is treated as a skimmer crashing
+              from a height of 10 metres or higher, as described on page 256 of the Dark
+              Heresy Core Rulebook. NOTE - this vehicle-specific ruling differs from the
+              generic creature Flyer trait already in this system's trait pack; see that
+              entry's description for the creature version instead.
+          level: 0
+          source: PG 53 EO
+    - _id: RugVlkYrieCarr04
+      name: Rugged
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: Robust power systems, modular armour plates, and redundant fuel
+              systems can make a vehicle far easier to repair, saving time and resources
+              and allowing the vehicle to be put back into the field far more quickly than
+              other designs. All Repair tests made to repair a vehicle with the Rugged
+              trait gain a +20 bonus.
+          level: 0
+          source: PG 189 CB
+    - _id: OpnVlkYrieCarr05
+      name: Open-Topped
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: The vehicle's passenger or crew compartments are not sealed and
+              are instead exposed to the open air around them. This limits their protection,
+              but it does allow transported troops to fire their own weapons as the vehicle
+              moves. Crew and passengers mounted on an Open-topped vehicle can be specifically
+              targeted by those outside the vehicle via the use of the Called Shot action.
+              Additionally, passengers mounted in Open-Topped vehicles are struck by any
+              Blast or Spray attacks of which they are in range. Crew and passengers within
+              an Open-topped can attack targets with their own personal weaponry.
+          level: 0
+          source: PG 188 CB
+    - _id: NseVlkYrieCarr06
+      name: Assault Ramp
+      type: trait
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      system:
+          description: 'UNVERIFIED, approximated from general Only War knowledge rather
+              than a book page in this project''s source files: represents the Valkyrie''s
+              rear/side troop bay doors, which open in flight to let its passengers fire
+              out (see the Open-Topped trait on this same actor) and jump or fast-rope
+              during an assault landing. No mechanical effect beyond enabling Open-Topped
+              firing and rapid deployment; flavour-only placeholder pending a real source
+              page.'
+          level: 0
+          source: 'UNVERIFIED - approximated, not sourced from a local PDF'
+    - _id: NosWpnVlkYrieC07
+      name: Twin-Linked Multi-Laser
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Very Rare
+          weight: 35
+          equipped: true
+          inBackpack: false
+          description: 'One of two selectable nose-mounted weapons for the Valkyrie (the
+              vehicle mounts only one at a time); the other option, Twin-Linked Lascannon,
+              is included on this actor as an unequipped alternate. Base damage/range/pen/clip
+              scaled to match this same pack''s existing Aquila Lander Multi-Laser (PG
+              55 EO) rather than inventing divergent numbers for the same weapon; the
+              "twin-linked" designation and its rate-of-fire bump are UNVERIFIED, approximated
+              from general Only War knowledge rather than a book page in this project''s
+              source files. Double-check before relying on this in play.'
+          source: 'PG 55 EO (base stats) + UNVERIFIED twin-linked approximation'
+          damage: 2d10+10
+          damageType: Energy
+          penetration: 2
+          special:
+              reliable: true
+              twin-linked: true
+          range: 150
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 0
+              burst: 0
+              full: 5
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Las
+          reload: 2 Full Actions
+          clip:
+              max: 100
+              value: 100
+    - _id: NosWpnVlkYrieC08
+      name: Twin-Linked Lascannon
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Extremely Rare
+          weight: 100
+          equipped: false
+          inBackpack: false
+          description: 'UNVERIFIED, approximated from general Only War knowledge, not
+              sourced from a local PDF page. Alternate nose-mounted weapon option for the
+              Valkyrie (unequipped; swap in place of the Twin-Linked Multi-Laser if selected).
+              Double-check these numbers against an Only War Core Rulebook before relying
+              on them in play.'
+          source: 'UNVERIFIED - approximated, not sourced from a local PDF'
+          damage: 5d10+10
+          damageType: Energy
+          penetration: 10
+          special:
+              proven: 3
+              twin-linked: true
+          range: 300
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 1
+              burst: 0
+              full: 0
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Las
+          reload: 3 Full Actions
+          clip:
+              max: 60
+              value: 60
+    - _id: PylWpnVlkYrieC09
+      name: Hellstrike Missile Launcher
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Extremely Rare
+          weight: 60
+          equipped: true
+          inBackpack: false
+          description: 'UNVERIFIED, approximated from general Only War knowledge, not
+              sourced from a local PDF page. Represents the pair of wing-pylon missile
+              racks (one launcher per side, modelled as a single item for simplicity);
+              each side carries 2 missiles before needing to rearm on the ground. One of
+              two selectable wing-pylon loadouts (the vehicle mounts only one at a time);
+              the other option, Rocket Pods, is included on this actor as an unequipped
+              alternate. Double-check these numbers against an Only War Core Rulebook
+              before relying on them in play.'
+          source: 'UNVERIFIED - approximated, not sourced from a local PDF'
+          damage: 3d10+10
+          damageType: Explosive
+          penetration: 8
+          special:
+              blast: 4
+          range: 250
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 1
+              burst: 0
+              full: 0
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Missile
+          reload: Special (rearm on the ground only)
+          clip:
+              max: 2
+              value: 2
+    - _id: PylWpnVlkYrieC11
+      name: Rocket Pods
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Extremely Rare
+          weight: 60
+          equipped: false
+          inBackpack: false
+          description: 'UNVERIFIED, approximated from general Only War knowledge, not
+              sourced from a local PDF page. Alternate wing-pylon loadout for the Valkyrie
+              (unequipped; swap in place of the Hellstrike Missile Launcher if selected).
+              Represents a barrage of lighter unguided rockets -- more shots per pass and
+              a wider blast radius than the Hellstrike missiles, but noticeably less penetration
+              and damage per hit, suited to suppressing infantry and soft targets rather
+              than precision anti-armour work. Double-check these numbers against an Only
+              War Core Rulebook before relying on them in play.'
+          source: 'UNVERIFIED - approximated, not sourced from a local PDF'
+          damage: 2d10+4
+          damageType: Explosive
+          penetration: 3
+          special:
+              blast: 2
+          range: 200
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 0
+              burst: 0
+              full: 6
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Missile
+          reload: Special (rearm on the ground only)
+          clip:
+              max: 6
+              value: 6
+    - _id: DorWpnVlkYrieC10
+      name: Heavy Bolter (Door Gun)
+      type: weapon
+      img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+      system:
+          craftsmanship: Common
+          availability: Very Rare
+          weight: 40
+          equipped: true
+          inBackpack: false
+          description: One of two side door-mounted Heavy Bolters (one per gunner), reusing
+              this system's existing standard Heavy Bolter statline (DH2 - 151) rather
+              than inventing new numbers for the mount.
+          source: DH2 - 151
+          damage: 1d10+8
+          damageType: Explosive
+          penetration: 5
+          special:
+              tearing: true
+          range: 150
+          attackType: ''
+          attackBonus: 0
+          rateOfFire:
+              single: 0
+              burst: 0
+              full: 6
+          target: ''
+          effect: ''
+          backpack:
+              inBackpack: false
+          container: true
+          containerTypes:
+              - weaponModification
+              - attackSpecial
+              - ammunition
+          class: Heavy
+          type: Bolt
+          reload: Full Action
+          clip:
+              max: 60
+              value: 60
           modifications: []
