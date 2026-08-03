@@ -145,7 +145,7 @@ export function backgrounds() {
             source: 'PG 34 EO',
         },
         {
-            name: 'Rogue Trader',
+            name: 'Rogue Trader Fleet',
             starting_skills:
                 'Charm or Scrutiny, Commerce, Common Lore (Rogue Traders), Linguistics (pick one alien language), Operate (Surface or Aeronautica)',
             starting_talents: 'Weapon Training (Las or Solid Projectile, Shock)',

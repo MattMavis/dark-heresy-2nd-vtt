@@ -153,7 +153,7 @@ data:
         quality, he may reduce the distance it scatters by a number of metres up to half
         his BS bonus
     cost: 0
-    prerequisites: ''
+    prerequisites: 'BS 35'
     source: PG 62 EO
     tier: '1'
 img: systems/dark-heresy-2nd/icons/items/grenade/grenade_04.png
@@ -209,7 +209,7 @@ data:
     benefit: When he would make an Agility test to avoid attacks from weapons with the
         Spray quality, he may make the test using his Dodge (Ag) skill instead.
     cost: 0
-    prerequisites: ''
+    prerequisites: 'Ag 35, Rank 2 in Dodge skill'
     source: PG 63 EO
     tier: '1'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
@@ -293,7 +293,7 @@ data:
         in the vehicle. In addition, once per round the character can attempt an Ordinary
         (+10) Agility test to Mount or Dismount a vehicle as a Free Action.
     cost: 0
-    prerequisites: ''
+    prerequisites: 'Rank 2 in any Operate skill'
     source: PG 63 EO
     tier: '1'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
@@ -370,11 +370,11 @@ type: talent
 ---
 data:
     aptitudes: Perception, Social
-    benefit: Any penalty to Interaction skill tests for dealing with xenos or non-Imperial
-        NPCs by 20. In addition, once per encounter, he can reroll a failed Interaction
-        skill test when interacting with such an NPC.
+    benefit: The character reduces any penalty to Interaction skill tests for dealing
+        with xenos or non-Imperial NPCs by 20. In addition, once per encounter, he can
+        reroll a failed Interaction skill test when interacting with such an NPC.
     cost: 0
-    prerequisites: ''
+    prerequisites: 'Fel 35, Int 35'
     source: PG 62 EO
     tier: '2'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
@@ -386,7 +386,7 @@ data:
     benefit: A Scholastic Lore or Forbidden Lore test utilising sources of recorded
         information of any sort can re-roll with -10.
     cost: 0
-    prerequisites: ''
+    prerequisites: 'Int 40'
     source: PG 62 EO
     tier: '2'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
@@ -598,7 +598,7 @@ data:
         Forbidden Lore (Xenos) skill, he makes a Medicae (WS) or Medicae (BS) test in
         place of the normal Weapon Skill or Ballistic Skill test.
     cost: 0
-    prerequisites: ''
+    prerequisites: 'BS or WS 40, Forbidden Lore (Xenos - Any), Rank 2 in Medicae skill'
     source: PG 62 EO
     tier: '2'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
@@ -671,7 +671,7 @@ data:
         test, he may voluntarily suffer 1 level of Fatigue in order to reduce the degrees
         of failure by an amount equal to his Agility bonus, to a minimum of 1.
     cost: 0
-    prerequisites: ''
+    prerequisites: 'Rank 2 in Survival or any Operate skill, Ag 35'
     source: PG 62 EO
     tier: '2'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
@@ -743,7 +743,7 @@ data:
     benefit: The character can attempt any Linguistics skill in which he is not trained
         as an untrained skill test as if it were not a Specialist skill.
     cost: 0
-    prerequisites: ''
+    prerequisites: 'Rank 3 in Linguistics (Any)'
     source: PG 63 EO
     tier: '2'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
@@ -974,7 +974,7 @@ data:
     benefit: The character can attempt any Forbidden Lore (Xenos) test in which he is
         not trained as an untrained skill test as if it were not a Specialist skill.
     cost: 0
-    prerequisites: ''
+    prerequisites: 'Rank 3 in Forbidden Lore (Xenos - Any)'
     source: PG 63 EO
     tier: '2'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
@@ -1191,7 +1191,7 @@ data:
         purposes of attack modifiers and the benefits of cover until the start of his
         next turn.
     cost: 0
-    prerequisites: ''
+    prerequisites: 'Rank 2 in Survival or any Operate skill'
     source: PG 62 EO
     tier: '3'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
@@ -1336,7 +1336,7 @@ data:
         Table 732: Motive Systems Critical Hit effects and apply the result. If he is
         riding a living mount, roll 1d5 on Table 718: Impact Critical effects  Leg'
     cost: 0
-    prerequisites: ''
+    prerequisites: 'Rank 2 in Survival or any Operate skill, Tech-Use'
     source: PG 63 EO
     tier: '3'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
@@ -1466,7 +1466,7 @@ data:
     benefit: The character reduces the penalty for using a weapon without the proper
         training by 10.
     cost: 0
-    prerequisites: ''
+    prerequisites: 'Exotic Weapon Training (Any)'
     source: PG 63 EO
     tier: '3'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png

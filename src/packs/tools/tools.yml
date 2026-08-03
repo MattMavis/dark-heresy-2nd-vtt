@@ -345,7 +345,7 @@ data:
         Compacts into a flat plate 3 meters across.
     weight: 6
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
-name: Stasis Cage.
+name: Stasis Cage
 type: tool
 ---
 data:

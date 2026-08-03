@@ -678,3 +678,46 @@ data:
 img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
 name: Praetor Armour
 type: armour
+---
+data:
+    armourPoints:
+        body: 0
+        head: 0
+        leftArm: 0
+        leftLeg: 0
+        rightArm: 0
+        rightLeg: 0
+    availability: Near Unique
+    craftsmanship: Common
+    description: The wearer of an active clone field doubles his degrees of success
+        on successful Dodge tests. Once per round, a character wearing an active clone
+        field may re-roll a failed Dodge test. Finally, a character wearing an active
+        clone field gains one extra reaction each round that he can only use to perform
+        the Evasion reaction.
+    maxAgility: 0
+    type: Force Field
+    weight: 0.5
+img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+name: Clone Field
+type: armour
+---
+data:
+    armourPoints:
+        body: 0
+        head: 0
+        leftArm: 0
+        leftLeg: 0
+        rightArm: 0
+        rightLeg: 0
+    availability: Near Unique
+    craftsmanship: Common
+    description: Protection rating of 30, protective field extends in a 5 metre radius.
+        Protects everyone inside against ranged attacks that originate from outside
+        the field's area of effect, but not from those ranged attacks that originate
+        from within its radius or from melee attacks.
+    maxAgility: 0
+    type: Force Field
+    weight: 1
+img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+name: Shimmershield
+type: armour

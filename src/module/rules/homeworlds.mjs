@@ -179,7 +179,7 @@ export function homeworlds() {
             fate_threshold: 2,
             emperors_blessing: 5,
             home_world_bonus: {
-                name: 'Survivor Paranoia',
+                name: "Survivor's Paranoia",
                 benefit:
                     'While a death world character is surprised, non-surprised attackers do not gain the normal +30 bonus to their Weapon Skill and Ballistic Skill tests when targeting this character.',
             },

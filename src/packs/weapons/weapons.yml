@@ -411,8 +411,8 @@ data:
         max: 1
         value: 1
     craftsmanship: Common
-    damage: ''
-    damageType: Impact
+    damage: 1d10+2
+    damageType: Energy
     description: ''
     equipped: false
     modifications: []
@@ -424,9 +424,10 @@ data:
         single: 1
     reload: ''
     source: PG 42 EO
-    special: {}
+    special:
+        reliable: true
     type: Exotic
-    weight: 1
+    weight: 0.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Digi-Weapon
 type: weapon
@@ -439,7 +440,7 @@ data:
         value: 16
     craftsmanship: Common
     damage: 1d10+2
-    damageType: R
+    damageType: Rending
     description: ''
     equipped: false
     modifications: []
@@ -449,13 +450,13 @@ data:
         burst: 4
         full: 8
         single: 0
-    reload: 2 Full
+    reload: '2 Full Actions'
     source: PG 42 EO
     special:
         inaccurate: true
         toxic: 2
     type: Exotic
-    weight: 2
+    weight: 1.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Firesprite Needler
 type: weapon
@@ -468,7 +469,7 @@ data:
         value: 0
     craftsmanship: Common
     damage: 1d10+5
-    damageType: E
+    damageType: Energy
     description: ''
     equipped: false
     modifications: []
@@ -487,7 +488,7 @@ data:
     type: Exotic
     weight: 6
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
-name: Ghost Blade
+name: Ghostblade
 type: weapon
 ---
 data:
@@ -523,15 +524,15 @@ data:
     availability: Near Unique
     class: Thrown
     clip:
-        max: 0
-        value: 0
+        max: 1
+        value: 1
     craftsmanship: Common
     damage: 1d10+7
-    damageType: I
+    damageType: Impact
     description: ''
     equipped: false
     modifications: []
-    penetration: 1
+    penetration: 7
     range: 0
     rateOfFire:
         burst: 0
@@ -586,7 +587,7 @@ data:
         value: 0
     craftsmanship: Common
     damage: 2d10+5
-    damageType: I
+    damageType: Impact
     description: ''
     equipped: false
     modifications: []
@@ -643,7 +644,7 @@ data:
         value: 6
     craftsmanship: Common
     damage: 4d10+4
-    damageType: I
+    damageType: Impact
     description: ''
     equipped: false
     modifications: []
@@ -788,7 +789,7 @@ data:
         value: 0
     craftsmanship: Common
     damage: 1d5+1
-    damageType: I
+    damageType: Impact
     description: ''
     equipped: false
     modifications: []
@@ -3366,34 +3367,6 @@ name: Desoleum Power Blade
 type: weapon
 ---
 data:
-    availability: Very Rare
-    class: Melee
-    clip:
-        max: 0
-        value: 0
-    craftsmanship: Common
-    damage: 1d10+3
-    damageType: E
-    description: ''
-    equipped: false
-    modifications: []
-    penetration: 5
-    range: 0
-    rateOfFire:
-        burst: -1
-        full: -1
-        single: -1
-    reload: ''
-    source: PG 42 EO
-    special:
-        power-field: true
-    type: Power
-    weight: 2
-img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
-name: Desoleum Power Blade
-type: weapon
----
-data:
     availability: Near Unique
     class: Melee
     clip:
@@ -4078,4 +4051,1128 @@ data:
     weight: 1.5
 img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
 name: Stub Revolver
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Melee
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 1d10+3
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 6
+    range: 0
+    rateOfFire:
+        burst: -1
+        full: -1
+        single: -1
+    reload: ''
+    source: PG 45 EO
+    special:
+        flexible: true
+        power-field: true
+        shocking: true
+        tearing: true
+    type: Exotic
+    weight: 2
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Agoniser
+type: weapon
+---
+data:
+    availability: Very Rare
+    class: Thrown
+    clip:
+        max: 1
+        value: 1
+    craftsmanship: Common
+    damage: 1d10+8
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 8
+    range: 0
+    rateOfFire:
+        burst: 0
+        full: 0
+        single: 1
+    reload: ''
+    source: PG 45 EO
+    special:
+        blast: 4
+        shocking: true
+    type: Exotic
+    weight: 0.5
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Eldar Plasma Grenade
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Melee
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 1d10+5
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 4
+    range: 0
+    rateOfFire:
+        burst: -1
+        full: -1
+        single: -1
+    reload: ''
+    source: PG 45 EO
+    special:
+        balanced: true
+        power-field: true
+    type: Exotic
+    weight: 1
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Eldar Power Sword
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Melee
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 1d10+8
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 10
+    range: 0
+    rateOfFire:
+        burst: -1
+        full: -1
+        single: -1
+    reload: ''
+    source: PG 45 EO
+    special:
+        felling: 4
+        tearing: true
+    type: Exotic
+    weight: 1
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Harlequin's Kiss
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Basic
+    clip:
+        max: 150
+        value: 150
+    craftsmanship: Common
+    damage: 1d10+2
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 3
+    range: 60
+    rateOfFire:
+        burst: 3
+        full: 5
+        single: 1
+    reload: '2 Full Actions'
+    source: PG 45 EO
+    special:
+        storm: true
+        toxic: 1
+    type: Exotic
+    weight: 3
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Shardcarbine
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Heavy
+    clip:
+        max: 200
+        value: 200
+    craftsmanship: Common
+    damage: 1d10+6
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 4
+    range: 60
+    rateOfFire:
+        burst: 0
+        full: 10
+        single: 0
+    reload: '2 Full Actions'
+    source: PG 45 EO
+    special:
+        razor-sharp: true
+        reliable: true
+    type: Exotic
+    weight: 18
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Shuriken Cannon
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Basic
+    clip:
+        max: 120
+        value: 120
+    craftsmanship: Common
+    damage: 1d10+4
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 3
+    range: 80
+    rateOfFire:
+        burst: 3
+        full: 10
+        single: 1
+    reload: 'Full Action'
+    source: PG 45 EO
+    special:
+        razor-sharp: true
+        reliable: true
+    type: Exotic
+    weight: 2.5
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Shuriken Catapult
+type: weapon
+---
+data:
+    availability: Very Rare
+    class: Pistol
+    clip:
+        max: 60
+        value: 60
+    craftsmanship: Common
+    damage: 1d10+4
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 3
+    range: 30
+    rateOfFire:
+        burst: 3
+        full: 0
+        single: 1
+    reload: 'Full Action'
+    source: PG 45 EO
+    special:
+        razor-sharp: true
+        reliable: true
+    type: Exotic
+    weight: 1.2
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Shuriken Pistol
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Heavy
+    clip:
+        max: 300
+        value: 300
+    craftsmanship: Common
+    damage: 1d10+5
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 4
+    range: 110
+    rateOfFire:
+        burst: 0
+        full: 10
+        single: 0
+    reload: '3 Full Actions'
+    source: PG 46 EO
+    special:
+        tearing: true
+        toxic: 4
+    type: Exotic
+    weight: 5
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Splinter Cannon
+type: weapon
+---
+data:
+    availability: Very Rare
+    class: Pistol
+    clip:
+        max: 120
+        value: 120
+    craftsmanship: Common
+    damage: 1d10+2
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 3
+    range: 30
+    rateOfFire:
+        burst: 3
+        full: 0
+        single: 1
+    reload: '2 Full Actions'
+    source: PG 46 EO
+    special:
+        toxic: 1
+    type: Exotic
+    weight: 1.5
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Splinter Pistol
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Basic
+    clip:
+        max: 180
+        value: 180
+    craftsmanship: Common
+    damage: 1d10+2
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 3
+    range: 80
+    rateOfFire:
+        burst: 3
+        full: 5
+        single: 1
+    reload: '2 Full Actions'
+    source: PG 46 EO
+    special:
+        toxic: 2
+    type: Exotic
+    weight: 2
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Splinter Rifle
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Melee
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 2d10
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 2
+    range: 0
+    rateOfFire:
+        burst: -1
+        full: -1
+        single: -1
+    reload: ''
+    source: PG 47 EO
+    special:
+        tearing: true
+        unbalanced: true
+    type: Exotic
+    weight: 10
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Big Choppa
+type: weapon
+---
+data:
+    availability: Very Rare
+    class: Basic
+    clip:
+        max: 60
+        value: 60
+    craftsmanship: Common
+    damage: 1d10+6
+    damageType: Impact
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 2
+    range: 120
+    rateOfFire:
+        burst: 0
+        full: 10
+        single: 0
+    reload: '2 Full Actions'
+    source: PG 47 EO
+    special:
+        inaccurate: true
+        unreliable: true
+    type: Exotic
+    weight: 6
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Big Shoota
+type: weapon
+---
+data:
+    availability: Very Rare
+    class: Melee
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 1d10+5
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 5
+    range: 0
+    rateOfFire:
+        burst: -1
+        full: -1
+        single: -1
+    reload: ''
+    source: PG 47 EO
+    special:
+        power-field: true
+        unwieldy: true
+    type: Exotic
+    weight: 8
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Burna (Melee)
+type: weapon
+---
+data:
+    availability: Very Rare
+    class: Basic
+    clip:
+        max: 6
+        value: 6
+    craftsmanship: Common
+    damage: 1d10+4
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 2
+    range: 20
+    rateOfFire:
+        burst: 0
+        full: 0
+        single: 1
+    reload: 'Full Action'
+    source: PG 47 EO
+    special:
+        flame: true
+        spray: true
+        unreliable: true
+    type: Exotic
+    weight: 8
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Burna (Ranged)
+type: weapon
+---
+data:
+    availability: Rare
+    class: Melee
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 1d10+1
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 2
+    range: 0
+    rateOfFire:
+        burst: -1
+        full: -1
+        single: -1
+    reload: ''
+    source: PG 48 EO
+    special:
+        unbalanced: true
+    type: Exotic
+    weight: 1
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Choppa
+type: weapon
+---
+data:
+    availability: Very Rare
+    class: Basic
+    clip:
+        max: 1
+        value: 1
+    craftsmanship: Common
+    damage: 2d10+5
+    damageType: Explosive
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 6
+    range: 150
+    rateOfFire:
+        burst: 0
+        full: 0
+        single: 1
+    reload: 'Half Action'
+    source: PG 48 EO
+    special:
+        blast: 2
+        inaccurate: true
+        unreliable: true
+    type: Exotic
+    weight: 6
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Rokkit Launcha
+type: weapon
+---
+data:
+    availability: Rare
+    class: Basic
+    clip:
+        max: 30
+        value: 30
+    craftsmanship: Common
+    damage: 1d10+4
+    damageType: Impact
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 0
+    range: 60
+    rateOfFire:
+        burst: 3
+        full: 0
+        single: 1
+    reload: 'Full Action'
+    source: PG 48 EO
+    special:
+        inaccurate: true
+        unreliable: true
+    type: Exotic
+    weight: 4
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Shoota
+type: weapon
+---
+data:
+    availability: Rare
+    class: Pistol
+    clip:
+        max: 18
+        value: 18
+    craftsmanship: Common
+    damage: 1d10+4
+    damageType: Impact
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 0
+    range: 20
+    rateOfFire:
+        burst: 3
+        full: 0
+        single: 1
+    reload: 'Full Action'
+    source: PG 48 EO
+    special:
+        inaccurate: true
+        unreliable: true
+    type: Exotic
+    weight: 2
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Slugga
+type: weapon
+---
+data:
+    availability: Rare
+    class: Thrown
+    clip:
+        max: 1
+        value: 1
+    craftsmanship: Common
+    damage: 2d10+5
+    damageType: Explosive
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 2
+    range: 0
+    rateOfFire:
+        burst: 0
+        full: 0
+        single: 1
+    reload: ''
+    source: PG 48 EO
+    special:
+        blast: 2
+        unreliable: true
+    type: Exotic
+    weight: 1
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Stikkbomb
+type: weapon
+---
+data:
+    availability: Very Rare
+    class: Basic
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: ''
+    damageType: Impact
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 0
+    range: 110
+    rateOfFire:
+        burst: 0
+        full: 0
+        single: 0
+    reload: ''
+    source: PG 49 EO
+    special: {}
+    type: Exotic
+    weight: 6
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Kroot Rifle
+type: weapon
+---
+data:
+    availability: Very Rare
+    class: Thrown
+    clip:
+        max: 1
+        value: 1
+    craftsmanship: Common
+    damage: ''
+    damageType: Impact
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 0
+    range: 0
+    rateOfFire:
+        burst: 0
+        full: 0
+        single: 1
+    reload: ''
+    source: PG 49 EO
+    special:
+        blast: 12
+    type: Exotic
+    weight: 0.5
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Photon Grenade
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Basic
+    clip:
+        max: 24
+        value: 24
+    craftsmanship: Common
+    damage: 2d10+2
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 4
+    range: 60
+    rateOfFire:
+        burst: 0
+        full: 3
+        single: 1
+    reload: 'Full Action'
+    source: PG 49 EO
+    special: {}
+    type: Exotic
+    weight: 6
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Pulse Carbine
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Pistol
+    clip:
+        max: 16
+        value: 16
+    craftsmanship: Common
+    damage: 2d10+2
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 4
+    range: 40
+    rateOfFire:
+        burst: 2
+        full: 0
+        single: 1
+    reload: 'Half Action'
+    source: PG 49 EO
+    special: {}
+    type: Exotic
+    weight: 3
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Pulse Pistol
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Basic
+    clip:
+        max: 36
+        value: 36
+    craftsmanship: Common
+    damage: 2d10+3
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 4
+    range: 150
+    rateOfFire:
+        burst: 2
+        full: 4
+        single: 1
+    reload: 'Half Action'
+    source: PG 49 EO
+    special: {}
+    type: Exotic
+    weight: 8
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Pulse Rifle
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Basic
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 1d10+8
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 5
+    range: 100
+    rateOfFire:
+        burst: 2
+        full: 0
+        single: 1
+    reload: ''
+    source: PG 50 EO
+    special:
+        reliable: true
+        vengeful: 9
+    type: Exotic
+    weight: 10
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Ablative Projector
+type: weapon
+---
+data:
+    availability: Near Unique
+    class: Melee
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 1d10+6
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 8
+    range: 0
+    rateOfFire:
+        burst: -1
+        full: -1
+        single: -1
+    reload: ''
+    source: PG 50 EO
+    special:
+        concussive: 1
+        power-field: true
+    type: Exotic
+    weight: 6
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Cascade Lance (Melee)
+type: weapon
+---
+data:
+    availability: Near Unique
+    class: Basic
+    clip:
+        max: 1
+        value: 1
+    craftsmanship: Common
+    damage: 1d10+12
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 10
+    range: 15
+    rateOfFire:
+        burst: 0
+        full: 0
+        single: 1
+    reload: 'Half Action'
+    source: PG 50 EO
+    special:
+        proven: 5
+        reliable: true
+    type: Exotic
+    weight: 6
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Cascade Lance (Ranged)
+type: weapon
+---
+data:
+    availability: Near Unique
+    class: Pistol
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 2d10+5
+    damageType: Explosive
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 4
+    range: 30
+    rateOfFire:
+        burst: 3
+        full: 0
+        single: 1
+    reload: ''
+    source: PG 50 EO
+    special:
+        concussive: 1
+        reliable: true
+    type: Exotic
+    weight: 4
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Concussion Beamer
+type: weapon
+---
+data:
+    availability: Near Unique
+    class: Melee
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 1d10
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 5
+    range: 0
+    rateOfFire:
+        burst: -1
+        full: -1
+        single: -1
+    reload: ''
+    source: PG 50 EO
+    special:
+        corrosive: true
+        razor-sharp: true
+        tearing: true
+    type: Exotic
+    weight: 15
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Molecular Blade
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Basic
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 2d10+3
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 3
+    range: 75
+    rateOfFire:
+        burst: 0
+        full: 0
+        single: 1
+    reload: ''
+    source: PG 50 EO
+    special:
+        reliable: true
+        shocking: true
+    type: Exotic
+    weight: 20
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Resonance Arc
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Thrown
+    clip:
+        max: 1
+        value: 1
+    craftsmanship: Common
+    damage: 2d10
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 6
+    range: 0
+    rateOfFire:
+        burst: 0
+        full: 0
+        single: 1
+    reload: ''
+    source: PG 51 EO
+    special:
+        blast: 3
+        concussive: 3
+        proven: 4
+    type: Exotic
+    weight: 1
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Akvran Cutter
+type: weapon
+---
+data:
+    availability: Very Rare
+    class: Basic
+    clip:
+        max: 10
+        value: 10
+    craftsmanship: Common
+    damage: 3d10
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 0
+    range: 60
+    rateOfFire:
+        burst: 0
+        full: 0
+        single: 1
+    reload: '3 Full Actions'
+    source: PG 51 EO
+    special:
+        blast: 2
+        corrosive: true
+        toxic: 2
+    type: Exotic
+    weight: 11
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Guldaniri Bile Projector
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Melee
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 1d10+4
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 3
+    range: 0
+    rateOfFire:
+        burst: -1
+        full: -1
+        single: -1
+    reload: ''
+    source: PG 51 EO
+    special:
+        razor-sharp: true
+    type: Exotic
+    weight: 1
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Havatian Ringblade (Melee)
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Thrown
+    clip:
+        max: 1
+        value: 1
+    craftsmanship: Common
+    damage: 1d10+6
+    damageType: Explosive
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 6
+    range: 0
+    rateOfFire:
+        burst: 0
+        full: 0
+        single: 1
+    reload: ''
+    source: PG 51 EO
+    special:
+        blast: 2
+        corrosive: true
+    type: Exotic
+    weight: 1
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Havatian Ringblade (Ranged)
+type: weapon
+---
+data:
+    availability: Very Rare
+    class: Thrown
+    clip:
+        max: 1
+        value: 1
+    craftsmanship: Common
+    damage: 1d10+6
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 10
+    range: 0
+    rateOfFire:
+        burst: 0
+        full: 0
+        single: 1
+    reload: ''
+    source: PG 51 EO
+    special:
+        razor-sharp: true
+    type: Exotic
+    weight: 1
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Kyaire Riveblade Grenade
+type: weapon
+---
+data:
+    availability: Extremely Rare
+    class: Pistol
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 2d10
+    damageType: Explosive
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 0
+    range: 35
+    rateOfFire:
+        burst: 0
+        full: 0
+        single: 1
+    reload: ''
+    source: PG 52 EO
+    special:
+        concussive: 3
+        overheats: true
+    type: Exotic
+    weight: 3
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Neural Catalyser
+type: weapon
+---
+data:
+    availability: Very Rare
+    class: Melee
+    clip:
+        max: 0
+        value: 0
+    craftsmanship: Common
+    damage: 1d10+3
+    damageType: Rending
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 4
+    range: 0
+    rateOfFire:
+        burst: -1
+        full: -1
+        single: -1
+    reload: ''
+    source: PG 52 EO
+    special:
+        razor-sharp: true
+        tearing: true
+    type: Exotic
+    weight: 1
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Talonblade
+type: weapon
+---
+data:
+    availability: Very Rare
+    class: Basic
+    clip:
+        max: 90
+        value: 90
+    craftsmanship: Common
+    damage: 1d10+3
+    damageType: Energy
+    description: ''
+    equipped: false
+    modifications: []
+    penetration: 0
+    range: 100
+    rateOfFire:
+        burst: 3
+        full: 6
+        single: 1
+    reload: 'Full Action'
+    source: PG 52 EO
+    special:
+        inaccurate: true
+        shocking: true
+    type: Exotic
+    weight: 10
+img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
+name: Xenarch Death-Arc
 type: weapon
