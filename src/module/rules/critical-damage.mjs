@@ -16,7 +16,7 @@ export function criticalDamage() {
                 }
             },
             "2": {
-                "text": "The attack smashes into the arm, sending currents of energy crackling down to the fingers and up to the shoulder. The target suffers 1 level of Fatigue, and that arm is Useless for [[1d10]] rounds.",
+                "text": "The attack smashes into the arm, sending currents of energy crackling down to the fingers and up to the shoulder. The target suffers 1 level of Fatigue, and that arm is Useless for [[1d5]] rounds.",
                 "effects": {
                     "fatigue": 1,
                     "stunned": null,
@@ -31,7 +31,7 @@ export function criticalDamage() {
             "3": {
                 "text": "The arm suffers superficial burns inflicting no small amount of pain on the target. The target suffers [[1d5]] levels of Fatigue, and can take only a Half Action during his next turn.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": "1d5",
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -58,7 +58,7 @@ export function criticalDamage() {
                 "text": "The attack causes energy to course through the target’s arm. He is Stunned for 1 round, and the arm is Useless until the target receives medical treatment.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": 1,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
@@ -70,7 +70,7 @@ export function criticalDamage() {
             "6": {
                 "text": "The attack wreathes the arm in flame, scorching clothing and armour, and temporarily fusing together the target’s fingers. The target suffers [[1d5]] levels of Fatigue and [[1d5]] Weapon Skill and Ballistic Skill damage, and he must make a Challenging (+0) Toughness test for suffer the Lost Hand condition.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": "1d5",
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -83,8 +83,8 @@ export function criticalDamage() {
             "7": {
                 "text": "With a terrible snapping sound, the heat of the attack boils the marrow in the target’s arm, causing it to crack or even shatter. The target suffers [[1d5]] levels of Fatigue and is Stunned for 1 round. His arm is Useless until it is repaired.",
                 "effects": {
-                    "fatigue": null,
-                    "stunned": null,
+                    "fatigue": "1d5",
+                    "stunned": 1,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
@@ -96,7 +96,7 @@ export function criticalDamage() {
             "8": {
                 "text": "Energy ripples across the target’s arm, causing skin and muscle to slough disgustingly from the target’s limb, revealing a sticky red mess of sinew and bone. The target suffers [[1d10]] levels of Fatigue and must make a Challenging (+0) Toughness test or be Stunned for [[1d5]] rounds. He now suffers from the Lost Arm condition.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": "1d10",
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -129,7 +129,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         },
@@ -163,7 +163,7 @@ export function criticalDamage() {
             "3": {
                 "text": "The attack cooks the flesh on the chest and abdomen. He suffers 2 levels of Fatigue and [[1d5]] Toughness damage.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 2,
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -176,7 +176,7 @@ export function criticalDamage() {
             "4": {
                 "text": "The energy ripples all over the character, scorching his body with horrid third-degree burns. The target suffers [[1d10]] levels of Fatigue, and can only take a Half Action on his next turn.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": "1d10",
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -191,7 +191,7 @@ export function criticalDamage() {
                 "effects": {
                     "fatigue": null,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -202,9 +202,9 @@ export function criticalDamage() {
             "6": {
                 "text": "Struck by the full force of the attack, the target is sent reeling to the ground; smoke spiraling out from the wound. The target suffers [[1d5]] levels of Fatigue, is knocked Prone, and is Stunned for [[1d10]] rounds. In addition, he must make a Challenging (+0) Agility test or catch fire.",
                 "effects": {
-                    "fatigue": null,
-                    "stunned": null,
-                    "prone": false,
+                    "fatigue": "1d5",
+                    "stunned": "1d10",
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -216,7 +216,7 @@ export function criticalDamage() {
                 "text": "The intense power of the energy attack cooks the target’s organs, burning his lungs and heart with intense heat. The target is Stunned for [[2d10]] rounds, and his Toughness characteristic is permanently reduced by [[1d10]].",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": "2d10",
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
@@ -229,7 +229,7 @@ export function criticalDamage() {
                 "text": "As the attack washes over the target, his skin turns black and peels off, while melted fat seeps from his clothing and armour. The target is Stunned for [[2d10]] rounds. His Strength, Toughness, and Agility characteristics are reduced by half (rounding up) until he receives medical treatment. Permanently reduce the character’s Fellowship characteristic by [[2d5]].",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": "2d10",
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
@@ -248,7 +248,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "10": {
@@ -261,7 +261,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         },
@@ -312,10 +312,12 @@ export function criticalDamage() {
             "4": {
                 "text": "The energy attack burns away all of the hairs on the target's head, as well as leaving him reeling from the injury. The target suffers 2 levels of Fatigue and the target is Blinded for [[1d5]] rounds.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 2,
                     "stunned": null,
                     "prone": false,
-                    "blinded": null,
+                    "blinded": {
+                        "rounds": "1d5"
+                    },
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
@@ -326,9 +328,11 @@ export function criticalDamage() {
                 "text": "A blast of energy envelops the target's head, burning his face and hair, crisping his skin, and causing him to scream like a stuck grox. In addition to losing all hair on his scalp and face, he is Blinded for [[1d10]] rounds and Stunned for 1 round. Permanently reduce the target's Fellowship characteristic by 1.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": 1,
                     "prone": false,
-                    "blinded": null,
+                    "blinded": {
+                        "rounds": "1d10"
+                    },
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
@@ -338,10 +342,12 @@ export function criticalDamage() {
             "6": {
                 "text": "The attack cooks the target's face, melting his features and damaging his eyes. The target suffers [[1d5]] levels of Fatigue and is Blinded for [[1d10]] hours. Permanently reduce his Fellowship and Perception characteristics by [[1d5]].",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": "1d5",
                     "stunned": null,
                     "prone": false,
-                    "blinded": null,
+                    "blinded": {
+                        "hours": "1d10"
+                    },
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
@@ -371,7 +377,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "9": {
@@ -384,7 +390,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "10": {
@@ -397,7 +403,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         },
@@ -431,9 +437,9 @@ export function criticalDamage() {
             "3": {
                 "text": "A solid blow to the leg sends currents of agony coursing through the target. The target suffers 1 level of Fatigue and is knocked Prone. Reduce his Movement by half (rounding up) for [[1d10]] rounds.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 1,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -457,9 +463,9 @@ export function criticalDamage() {
             "5": {
                 "text": "The target's leg endures horrific burn damage, fusing clothing and armour with flesh and bone. The target suffers 1 level of Fatigue and is knocked Prone. Reduce his Movement by half (rounding up) for [[2d10]] rounds.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 1,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -470,7 +476,7 @@ export function criticalDamage() {
             "6": {
                 "text": "The attack burns the target's foot, charring the flesh and emitting a foul aroma. The target suffers 2 levels of Fatigue. He must also make a Challenging (+0) Toughness test. If he succeeds, reduce his Movement by half (rounding up) until he receives medical attention; if he fails, he suffers the Lost Foot condition (see page 243).",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 2,
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -483,7 +489,7 @@ export function criticalDamage() {
             "7": {
                 "text": "The energy attack fries the leg, leaving it a mess of blackened flesh. The leg is broken and until repaired, the target counts as having lost the leg. He suffers [[1d5]] levels of Fatigue. He must also make a Challenging (+0) Toughness test or be Stunned for 1 round. He now suffers the Lost Leg condition (see page 243).",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": "1d5",
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -496,12 +502,12 @@ export function criticalDamage() {
             "8": {
                 "text": "Energy sears through the bone, causing the leg to be severed. The target suffers [[1d10]] levels of Fatigue and suffers Blood Loss. He must also make a Challenging (+0) Toughness test or be Stunned for 1 round. He now suffers the Lost Leg condition (see page 243).",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": "1d10",
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -529,7 +535,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         }
@@ -539,7 +545,7 @@ export function criticalDamage() {
             "1": {
                 "text": "The attack throws the limb backwards, painfully jerking it away from the body. The target suffers 1 level of Fatigue.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 1,
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -579,7 +585,7 @@ export function criticalDamage() {
                 "text": "The blast rips the sinew of the arm straight from the bone. The target is Stunned for 1 round and must make a Challenging (+0) Toughness test or suffer Blood Loss. The limb is Useless until the target receives medical attention.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": 1,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
@@ -604,12 +610,12 @@ export function criticalDamage() {
             "6": {
                 "text": "The explosive attack shatters the bone and mangles the flesh, turning the target's arm into a red ruin. The target suffers Blood Loss and [[1d5]] levels of Fatigue. The arm is Useless until he receives medical attention",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": "1d5",
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -637,7 +643,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "9": {
@@ -650,7 +656,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "10": {
@@ -663,7 +669,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         },
@@ -673,7 +679,7 @@ export function criticalDamage() {
                 "effects": {
                     "fatigue": null,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -684,9 +690,9 @@ export function criticalDamage() {
             "2": {
                 "text": "The target is blown backwards [[1d5]] metres by a terrific explosion, suffering 1 level of Fatigue per metre travelled. The target is knocked Prone.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": "1d5",
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -698,8 +704,8 @@ export function criticalDamage() {
                 "text": "The force of the blast sends the target sprawling to the ground. The target is knocked backwards [[1d5]] metres, Stunned for 1 round, and is knocked Prone.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
-                    "prone": false,
+                    "stunned": 1,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -723,9 +729,9 @@ export function criticalDamage() {
             "5": {
                 "text": "Concussion from the explosion knocks the target to the ground and turns his innards into so much ground meat. The target suffers [[1d5]] levels of Fatigue and is knocked Prone. He must immediately make a Challenging (+0) Toughness test; if he fails, he suffers Blood Loss and his Toughness characteristic is permanently reduced by 1.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": "1d5",
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -737,11 +743,11 @@ export function criticalDamage() {
                 "text": "Chunks of the target's flesh are ripped free by the force of the attack leaving large, weeping wounds. The target is Stunned for 1 round and suffers Blood Loss.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": 1,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -769,7 +775,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "9": {
@@ -782,7 +788,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "10": {
@@ -795,7 +801,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         },
@@ -819,8 +825,12 @@ export function criticalDamage() {
                     "fatigue": null,
                     "stunned": null,
                     "prone": false,
-                    "blinded": null,
-                    "deafened": null,
+                    "blinded": {
+                        "rounds": 1
+                    },
+                    "deafened": {
+                        "rounds": 1
+                    },
                     "bloodLoss": false,
                     "onFire": false,
                     "death": false
@@ -829,7 +839,7 @@ export function criticalDamage() {
             "3": {
                 "text": "The detonation leaves the target's face a bloody ruin from scores of cuts. Permanent scarring is very likely. The target suffers 2 levels of Fatigue and must make a Challenging (+0) Toughness test or suffer [[1d10]] points of Perception and Fellowship damage.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 2,
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -844,7 +854,7 @@ export function criticalDamage() {
                 "effects": {
                     "fatigue": null,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -856,10 +866,10 @@ export function criticalDamage() {
                 "text": "The explosion flays the flesh from the target's face and bursts his eardrums with its force. The target is Stunned for [[1d10]] rounds and is permanently Deafened. Permanently reduce his Fellowship characteristic by 1d5.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": "1d10",
                     "prone": false,
                     "blinded": null,
-                    "deafened": null,
+                    "deafened": "permanent",
                     "bloodLoss": false,
                     "onFire": false,
                     "death": false
@@ -875,7 +885,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "7": {
@@ -888,7 +898,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "8": {
@@ -901,7 +911,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "9": {
@@ -914,7 +924,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "10": {
@@ -927,7 +937,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         },
@@ -950,7 +960,7 @@ export function criticalDamage() {
                 "effects": {
                     "fatigue": null,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -1000,7 +1010,7 @@ export function criticalDamage() {
             "6": {
                 "text": "The concussive force of the blast shatters the target's leg bones and splits apart flesh. The target suffers [[1d10]] levels of Fatigue. The leg is Useless until he receives medical attention. The target must make a Challenging (+0) Toughness test; if he fails, he suffers the Lost Foot condition (see page 198).",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": "1d10",
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -1033,7 +1043,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "9": {
@@ -1046,7 +1056,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "10": {
@@ -1059,7 +1069,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         }
@@ -1082,7 +1092,7 @@ export function criticalDamage() {
             "2": {
                 "text": "The strike leaves a deep bruise, possibly causing minor fractures in the arm. The target suffers 1 level of Fatigue.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 1,
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -1096,7 +1106,7 @@ export function criticalDamage() {
                 "text": "The impact smashes into the arm or whatever the target is holding, ripping it away and leaving the target reeling from the pain. He is Stunned for 1 round and drops anything he was holding in that hand. Roll 1d10; on a result of 1, anything the target was holding in that hand is badly damaged and unusable until repaired.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": 1,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
@@ -1134,7 +1144,7 @@ export function criticalDamage() {
             "6": {
                 "text": "The attack pulverises the target's hand, crushing and breaking [[1d5]] fingers. The target suffers 1 level of Fatigue. He must make a Challenging (+0) Toughness test; if he fails, permanently reduce his Weapon Skill and Ballistic Skill characteristics by 2.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 1,
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -1152,7 +1162,7 @@ export function criticalDamage() {
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -1180,7 +1190,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "10": {
@@ -1193,7 +1203,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         },
@@ -1214,9 +1224,9 @@ export function criticalDamage() {
             "2": {
                 "text": "The impact punches the air from the target's body. He suffers 1 level of Fatigue and is knocked Prone.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 1,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -1228,8 +1238,8 @@ export function criticalDamage() {
                 "text": "The attack breaks a rib with a resounding crunch. The target is Stunned for 1 round and knocked Prone.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
-                    "prone": false,
+                    "stunned": 1,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -1254,7 +1264,7 @@ export function criticalDamage() {
                 "text": "A solid blow to the chest pulverises the target's innards, and he momentarily doubles over in pain, clutching himself and crying in agony. The target is Stunned for 2 rounds and must make a Challenging (+0) Toughness test or suffer [[1d5]] levels of Fatigue.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": 2,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
@@ -1266,9 +1276,9 @@ export function criticalDamage() {
             "6": {
                 "text": "The attack knocks the target sprawling on the ground. The target suffers [[1d5]] levels of Fatigue, is flung [[1d5]] metres away from the attacker (stopping if he hits a solid object), and falls Prone. He is Stunned for 2 rounds.",
                 "effects": {
-                    "fatigue": null,
-                    "stunned": null,
-                    "prone": false,
+                    "fatigue": "1d5",
+                    "stunned": 2,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -1297,7 +1307,7 @@ export function criticalDamage() {
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -1362,7 +1372,9 @@ export function criticalDamage() {
                     "fatigue": null,
                     "stunned": null,
                     "prone": false,
-                    "blinded": null,
+                    "blinded": {
+                        "rounds": 1
+                    },
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
@@ -1385,8 +1397,8 @@ export function criticalDamage() {
             "5": {
                 "text": "The force of the blow sends the target reeling in pain. The target suffers 1 level of Fatigue, is Stunned for 1 round, and staggers backwards [[1d5]] metres. Permanently reduce his Intelligence characteristic by 1.",
                 "effects": {
-                    "fatigue": null,
-                    "stunned": null,
+                    "fatigue": 1,
+                    "stunned": 1,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
@@ -1399,7 +1411,7 @@ export function criticalDamage() {
                 "text": "The target's head is snapped back by the attack, leaving him staggering around trying to control mind-numbing pain. The target is Stunned for [[1d5]] rounds, is knocked backwards [[1d5]] metres, and must make a Challenging (+0) Agility test or be knocked Prone.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": "1d5",
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
@@ -1412,7 +1424,7 @@ export function criticalDamage() {
                 "text": "The attack slams into the target's head, fracturing his skull and opening a long tear in his scalp. The target is Stunned for [[1d10]] rounds. His Movement is halved (rounding up) for [[1d10]] hours.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": "1d10",
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
@@ -1431,7 +1443,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "9": {
@@ -1444,7 +1456,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "10": {
@@ -1457,7 +1469,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         },
@@ -1465,7 +1477,7 @@ export function criticalDamage() {
             "1": {
                 "text": "A blow to the leg results in deep bruises and teeth-clenching pain. The target suffers 1 level of Fatigue.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 1,
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -1493,7 +1505,7 @@ export function criticalDamage() {
                 "effects": {
                     "fatigue": null,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -1506,7 +1518,7 @@ export function criticalDamage() {
                 "effects": {
                     "fatigue": null,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -1518,8 +1530,8 @@ export function criticalDamage() {
                 "text": "The blow breaks the target's leg with an agonising snap. He is Stunned for 1 round and knocked Prone. Reduce his Movement to 1 metre until he receives medical attention.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
-                    "prone": false,
+                    "stunned": 1,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -1530,7 +1542,7 @@ export function criticalDamage() {
             "6": {
                 "text": "With a sharp cracking noise, several of the tiny bones in the target's foot snap like twigs. The target suffers 2 levels of Fatigue, and his Movement is halved (rounded up) until he receives medical attention. He must make a Challenging (+0) Toughness test or suffer the Lost Foot condition (see page 243).",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 2,
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -1544,8 +1556,8 @@ export function criticalDamage() {
                 "text": "With a nasty crunch, the leg is broken and the target is left mewling in pain. He is Stunned for 2 round and falls Prone. The leg is Useless until the target receives medical attention.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
-                    "prone": false,
+                    "stunned": 2,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -1576,7 +1588,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "10": {
@@ -1589,7 +1601,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         }
@@ -1612,7 +1624,7 @@ export function criticalDamage() {
             "2": {
                 "text": "Deep cuts cause the target to drop his arm. He suffers 1 level of Fatigue and releases anything he was holding in that hand.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 1,
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -1638,9 +1650,9 @@ export function criticalDamage() {
             "4": {
                 "text": "The attack flays the skin from the limb, filling the air with blood and the sounds of his screaming. The target suffers 2 levels of Fatigue and falls Prone. The arm is Useless for [[1d10]] rounds.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 2,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -1656,7 +1668,7 @@ export function criticalDamage() {
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -1665,7 +1677,7 @@ export function criticalDamage() {
                 "text": "The blow mangles flesh and muscle as it hacks into the target's hand, liberating [[1d5]] fingers in the process (a roll of a 5 means that the thumb has been sheared off as well). The target is Stunned for 1 round and must immediately make a Challenging (+0) Toughness test or suffers the Lost Hand condition (see page 242).",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": 1,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
@@ -1682,7 +1694,7 @@ export function criticalDamage() {
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -1710,7 +1722,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "10": {
@@ -1723,7 +1735,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         },
@@ -1744,7 +1756,7 @@ export function criticalDamage() {
             "2": {
                 "text": "A powerful slash opens a painful rent in the target's body. He suffers 1 level of Fatigue and must make a Challenging (+0) Toughness test or be Stunned for 1 round.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 1,
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -1758,7 +1770,7 @@ export function criticalDamage() {
                 "text": "The attack rips a large patch of skin from the target's torso, leaving him gasping in pain. The target is Stunned for 1 round and must make a Challenging (+0) Toughness test or suffer Blood Loss.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": 1,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
@@ -1771,11 +1783,11 @@ export function criticalDamage() {
                 "text": "The blow opens up a long wound in the target's torso, causing him to double over in terrible pain. The target is Stunned for 1 round and suffers Blood Loss.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": 1,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -1788,7 +1800,7 @@ export function criticalDamage() {
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -1798,10 +1810,10 @@ export function criticalDamage() {
                 "effects": {
                     "fatigue": null,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -1814,7 +1826,7 @@ export function criticalDamage() {
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -1842,7 +1854,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "10": {
@@ -1855,7 +1867,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         },
@@ -1890,11 +1902,11 @@ export function criticalDamage() {
                 "text": "The attack rips open the target's face with a vicious shredding sound. He is Stunned for 1 round and suffers Blood Loss. If he is wearing a helmet, it is torn off.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": 1,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -1916,7 +1928,7 @@ export function criticalDamage() {
                 "text": "The attack tears the target's helmet from his head. If he is not wearing a helmet, the target instead loses an ear and is Deafened until he receives medical attention. If he loses an ear, he must also must pass a Challenging (+0) Toughness test or have his Fellowship characteristic permanently reduced by 1. The target is Stunned for [[1d5]] rounds.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": "1d5",
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
@@ -1928,12 +1940,12 @@ export function criticalDamage() {
             "6": {
                 "text": "The blow rips violently across the target's face, taking with it an important feature. He suffers [[1d5]] levels of Fatigue and suffers Blood Loss. Roll [[1d10]] to see what the target has lost.\n1-3: Eye (see the Lost Eye condition on page 242),\n4-7: Nose (permanently reduce his Fellowship characteristic by [[1d10]]),\n8-10: Ear (the target is Deafened until he receives medical attention).",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": "1d5",
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -1942,11 +1954,11 @@ export function criticalDamage() {
                 "text": "In a splatter of skin and teeth, the attack removes most of the target's face. The strike might not have slain him, but the target's words are forever slurred as a result of this vicious injury. The target is Stunned for 1 round and suffers Blood Loss. He is permanently Blinded. Permanently reduce his Fellowship characteristic by 1d10.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
+                    "stunned": 1,
                     "prone": false,
-                    "blinded": null,
+                    "blinded": "permanent",
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -1961,7 +1973,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "9": {
@@ -1974,7 +1986,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "10": {
@@ -1987,7 +1999,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         },
@@ -1995,7 +2007,7 @@ export function criticalDamage() {
             "1": {
                 "text": "The attack knocks the limb backwards, painfully twisting it awkwardly. The target suffers 1 level of Fatigue.",
                 "effects": {
-                    "fatigue": null,
+                    "fatigue": 1,
                     "stunned": null,
                     "prone": false,
                     "blinded": null,
@@ -2026,7 +2038,7 @@ export function criticalDamage() {
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -2036,7 +2048,7 @@ export function criticalDamage() {
                 "effects": {
                     "fatigue": null,
                     "stunned": null,
-                    "prone": false,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
                     "bloodLoss": false,
@@ -2052,7 +2064,7 @@ export function criticalDamage() {
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -2065,7 +2077,7 @@ export function criticalDamage() {
                     "prone": false,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -2074,11 +2086,11 @@ export function criticalDamage() {
                 "text": "The force of the blow cuts deep into the leg, grinding against bone and tearing ligaments apart. The target is Stunned for 1 round, is knocked Prone, and suffers Blood Loss. The leg is Useless until the target receives medical attention.",
                 "effects": {
                     "fatigue": null,
-                    "stunned": null,
-                    "prone": false,
+                    "stunned": 1,
+                    "prone": true,
                     "blinded": null,
                     "deafened": null,
-                    "bloodLoss": false,
+                    "bloodLoss": true,
                     "onFire": false,
                     "death": false
                 }
@@ -2106,7 +2118,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             },
             "10": {
@@ -2119,7 +2131,7 @@ export function criticalDamage() {
                     "deafened": null,
                     "bloodLoss": false,
                     "onFire": false,
-                    "death": false
+                    "death": true
                 }
             }
         }
