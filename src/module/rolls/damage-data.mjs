@@ -1,6 +1,6 @@
 import { additionalHitLocations, getHitLocationForRoll } from '../rules/hit-locations.mjs';
 import { calculateAmmoDamageBonuses, calculateAmmoPenetrationBonuses, calculateAmmoSpecials } from '../rules/ammo.mjs';
-import { getCriticalDamage } from '../rules/critical-damage.mjs';
+import { getCriticalDamage, resolveCriticalEffects } from '../rules/critical-damage.mjs';
 import {
     calculateWeaponModifiersDamageBonuses,
     calculateWeaponModifiersPenetrationBonuses,
@@ -67,6 +67,7 @@ export class Hit {
         // Determine Righteous Fury Effects
         for(const righteousFury of hit.righteousFury) {
             righteousFury.effect = getCriticalDamage(hit.damageType, hit.location, righteousFury.roll.total);
+            righteousFury.resolved = righteousFury.effect ? await resolveCriticalEffects(righteousFury.effect.effects) : null;
         }
 
         return hit;
@@ -124,7 +125,7 @@ export class Hit {
                     // Righteous fury hit
                     const righteousFuryRoll = new Roll('1d5', {});
                     await righteousFuryRoll.evaluate();
-                    this.righteousFury.push({roll: righteousFuryRoll, effect: ''});
+                    this.righteousFury.push({roll: righteousFuryRoll, effect: null, resolved: null});
 
                     // DeathDealer
                     if (actionItem.isMelee) {

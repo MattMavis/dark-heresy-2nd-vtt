@@ -344,6 +344,7 @@ export class ActorContainerSheet extends HandlebarsApplicationMixin(ActorSheetV2
             'ActiveEffect',
             [
                 {
+                    name: 'New Effect',
                     label: 'New Effect',
                     icon: 'icons/svg/aura.svg',
                     origin: this.actor.uuid,

@@ -1,5 +1,5 @@
 import { hitDropdown } from '../rules/hit-locations.mjs';
-import { getCriticalDamage } from '../rules/critical-damage.mjs';
+import { getCriticalDamage, resolveCriticalEffects } from '../rules/critical-damage.mjs';
 import { damageTypeDropdown } from '../rules/damage-type.mjs';
 
 export class AssignDamageData {
@@ -19,7 +19,9 @@ export class AssignDamageData {
     damageTaken = 0;
     hasCriticalDamage = false;
     criticalDamageTaken = 0;
-    criticalEffect = '';
+    criticalAmount = null;
+    criticalEffect = null;
+    resolvedCriticalEffect = null;
 
     constructor(actor, hit) {
         this.actor = actor;
@@ -85,7 +87,11 @@ export class AssignDamageData {
                 this.criticalDamageTaken = this.criticalDamageTaken - this.tb < 1 ? 1 : this.criticalDamageTaken - this.tb;
             }
 
-            this.criticalEffect = getCriticalDamage(this.hit.damageType, this.hit.location, this.actor.system.wounds.critical + this.criticalDamageTaken);
+            this.criticalAmount = this.actor.system.wounds.critical + this.criticalDamageTaken;
+            this.criticalEffect = getCriticalDamage(this.hit.damageType, this.hit.location, this.criticalAmount);
+            if (this.criticalEffect) {
+                this.resolvedCriticalEffect = await resolveCriticalEffects(this.criticalEffect.effects);
+            }
         }
 
         if(this.hit.totalFatigue > 0) {

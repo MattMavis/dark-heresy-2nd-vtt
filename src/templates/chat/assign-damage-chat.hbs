@@ -35,7 +35,33 @@
                     <span>{{this.criticalDamageTaken}}</span>
                     <span>Critical Damage</span>
                 </div>
-                <div class="dh-roll__label">{{this.criticalEffect}}</div>
+                <div class="dh-roll__label">{{{this.criticalEffect.text}}}</div>
+                {{#with this.resolvedCriticalEffect}}
+                    <div class='dh-roll__controls-1'>
+                        <div class="dh-control-button roll-control__apply-critical-effect"
+                             data-uuid="{{@root.actor.uuid}}"
+                             data-damage-type="{{@root.hit.damageType}}"
+                             data-location="{{@root.hit.location}}"
+                             data-amount="{{@root.criticalAmount}}"
+                             data-fatigue="{{this.fatigue}}"
+                             data-stunned-rounds="{{this.stunnedRounds}}"
+                             data-prone="{{this.prone}}"
+                             data-blinded-rounds="{{this.blindedRounds}}"
+                             data-blinded-hours="{{this.blindedHours}}"
+                             data-blinded-permanent="{{this.blindedPermanent}}"
+                             data-blinded-medical="{{this.blindedMedical}}"
+                             data-deafened-rounds="{{this.deafenedRounds}}"
+                             data-deafened-hours="{{this.deafenedHours}}"
+                             data-deafened-permanent="{{this.deafenedPermanent}}"
+                             data-deafened-medical="{{this.deafenedMedical}}"
+                             data-blood-loss="{{this.bloodLoss}}"
+                             data-on-fire="{{this.onFire}}"
+                             data-death="{{this.death}}">
+                            <span class="dh-control-button__span material-icons">warning</span>
+                            <span class="dh-control-button__label">Apply Critical Effect</span>
+                        </div>
+                    </div>
+                {{/with}}
             {{/if}}
         </div>
     </div>
