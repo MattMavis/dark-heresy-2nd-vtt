@@ -52,7 +52,7 @@ export function eliteAdvances() {
             changes:
                 'Gain the Peer (Adepta Sororitas) and Weapon Training (Bolt) talents, the Scholastic Lore (Tactica Imperialis) skill, and the Willpower aptitude.',
             talents: [
-                'Blessed Maryrdom',
+                'Blessed Martyrdom',
                 'Ceaseless Crusader',
                 'Cleanse with Fire',
                 'Divine Vengeance',
@@ -60,7 +60,7 @@ export function eliteAdvances() {
                 'Furious Zeal',
                 'Spirit of the Martyr',
                 'Shielding Faith',
-                'Zealots Passion',
+                "Zealot's Passion",
             ],
         },
         {

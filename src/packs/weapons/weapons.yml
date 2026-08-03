@@ -1827,36 +1827,7 @@ data:
         full: 0
         single: 1
     reload: ''
-    source: PG 44 EI
-    special:
-        blast: 3
-        smoke: 3
-    type: Grenades/Missiles
-    weight: 1
-img: systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png
-name: Psyk-Out Grenade
-type: weapon
----
-data:
-    availability: Extremely Rare
-    class: Thrown
-    clip:
-        max: 1
-        value: 1
-    craftsmanship: Common
-    damage: 1d10
-    damageType: Explosive
-    description: ''
-    equipped: false
-    modifications: []
-    penetration: 0
-    range: 0
-    rateOfFire:
-        burst: 0
-        full: 0
-        single: 1
-    reload: ''
-    source: PG 41 EB
+    source: PG 44 EI / PG 41 EB
     special:
         blast: 3
         smoke: 3
