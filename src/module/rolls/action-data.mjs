@@ -92,6 +92,19 @@ export class ActionData {
 
     async calculateSuccessOrFailure() {
         await this._calculateHit();
+
+        // Blinded auto-fails all Ballistic Skill tests outright (RAW) -- a modifier
+        // can't reliably force this since the roll formula is capped at +/-60, so
+        // override success after the fact, same shape as the ranged-weapon-jam override
+        // below. Runs before the Spray check further down deliberately: Spray doesn't
+        // roll a normal BS test per RAW (everyone in the arc tests Agility instead), so
+        // a Blinded actor firing a Spray weapon bypassing this auto-fail is correct, not
+        // a gap.
+        if (this.rollData.baseChar === 'BS' && this.rollData.sourceActor?.statuses?.has('blind')) {
+            this.rollData.success = false;
+            this.effects.push('blinded-autofail');
+        }
+
         let actionItem = this.rollData.weapon ?? this.rollData.power;
 
         // Action Item
@@ -253,6 +266,9 @@ export class ActionData {
                     break;
                 case 'jam':
                     this.addEffect('Jam', `The weapon jams!`);
+                    break;
+                case 'blinded-autofail':
+                    this.addEffect('Blinded', `The character is Blinded and automatically fails all Ballistic Skill tests!`);
                     break;
             }
         }

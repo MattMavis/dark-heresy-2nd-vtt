@@ -251,6 +251,33 @@ export class WeaponRollData extends RollData {
             this.usesAmmo = false;
         }
         await calculateWeaponRange(this);
+
+        // Status-effect modifiers -- reset every call since update() re-runs on weapon
+        // switch, and a stale value from a previously-selected weapon must not persist.
+        this.modifiers['self-prone'] = 0;
+        this.modifiers['self-blinded'] = 0;
+        this.modifiers['target-prone'] = 0;
+
+        // Prone/Blinded self-penalties only apply to melee (Weapon Skill) per RAW --
+        // neither status carries a Ballistic Skill penalty (Blinded auto-fails BS tests
+        // entirely instead, handled separately in ActionData.calculateSuccessOrFailure()).
+        if (this.weapon.isMelee) {
+            if (this.sourceActor?.statuses?.has('prone')) {
+                this.modifiers['self-prone'] = -10;
+            }
+            if (this.sourceActor?.statuses?.has('blind')) {
+                this.modifiers['self-blinded'] = -30;
+            }
+        }
+
+        if (this.targetActor?.statuses?.has('prone')) {
+            if (this.weapon.isMelee) {
+                this.modifiers['target-prone'] = 10;
+            } else if (this.rangeName !== 'Point Blank') {
+                this.modifiers['target-prone'] = -10;
+            }
+        }
+
         this.updateBaseTarget();
     }
 
@@ -269,6 +296,12 @@ export class WeaponRollData extends RollData {
             } catch (error) {
                 ui.notifications.warn('Target size is not a number. Unexpected error.');
             }
+        }
+
+        // Stunned target: +20 to hit, melee and ranged alike. Doesn't change after
+        // initial targeting, same as target-size above.
+        if (this.targetActor?.statuses?.has('stun')) {
+            this.modifiers['target-stunned'] = 20;
         }
 
         // Talents

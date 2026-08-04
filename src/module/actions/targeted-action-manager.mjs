@@ -123,10 +123,25 @@ export class TargetedActionManager {
         };
     }
 
+    /**
+     * Stunned: cannot take Actions or Reactions (RAW). Reused by both attack entry
+     * points below -- this is the single gate every attack path runs through, whether
+     * triggered from the sheet, a macro, or an NPC.
+     * @returns {boolean} true if the actor is Stunned and the attack was blocked.
+     */
+    _blockIfStunned(actor) {
+        if (actor?.statuses?.has('stun')) {
+            ui.notifications.warn(`${actor.name} is Stunned and cannot take Actions!`);
+            return true;
+        }
+        return false;
+    }
+
     async performWeaponAttack(source = null, target = null, weapon = null) {
         game.dh.log('performWeaponAttack', { source, target, weapon });
         const rollData = this.createSourceAndTargetData(source, target);
         if (!rollData) return;
+        if (this._blockIfStunned(rollData.actor)) return;
 
         // Weapon
         const weapons = weapon ? [weapon] : rollData.actor.items.filter((item) => item.type === 'weapon').filter((item) => item.system.equipped);
@@ -148,6 +163,7 @@ export class TargetedActionManager {
         game.dh.log('performPsychicAttack');
         const rollData = this.createSourceAndTargetData(source, target);
         if (!rollData) return;
+        if (this._blockIfStunned(rollData.actor)) return;
 
         // Powers
         const powers = psychicPower ? [psychicPower] : rollData.actor.items.filter((item) => item.type === 'psychicPower');

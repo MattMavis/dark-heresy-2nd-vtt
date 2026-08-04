@@ -122,13 +122,26 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
             skill = skill.specialities[specialityName];
             label = `${label}: ${skill.label}`;
         }
+
+        // Dodge/Parry are Evasion reactions -- Stunned characters cannot attempt them at
+        // all (RAW: no Actions or Reactions while Stunned), and Prone imposes a flat -20.
+        const isEvasion = skillName === 'dodge' || skillName === 'parry';
+        if (isEvasion && this.statuses.has('stun')) {
+            ui.notifications.warn(`${this.name} is Stunned and cannot attempt Evasion reactions!`);
+            return;
+        }
+
         const simpleSkillData = new SimpleSkillData();
         const rollData = simpleSkillData.rollData;
         rollData.actor = this;
+        rollData.sourceActor = this;
         rollData.nameOverride = label;
         rollData.type = 'Skill';
         rollData.baseTarget = skill.current;
         rollData.modifiers.modifier = 0;
+        if (isEvasion && this.statuses.has('prone')) {
+            rollData.modifiers['self-prone'] = -20;
+        }
         await prepareSimpleRoll(simpleSkillData);
     }
 
@@ -141,6 +154,10 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
                     ui.notifications.warn('Actor must have weapon equipped!');
                     return;
                 }
+                // Gate here, before the Simple-Attack-Rolls/targeted split, so a Stunned
+                // actor is blocked either way -- the targeted path's own internal check
+                // in performWeaponAttack() only covers itself, not the simple-rolls path.
+                if (DHTargetedActionManager._blockIfStunned(this)) return;
                 if(game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.simpleAttackRolls)) {
                     if(item.isRanged) {
                         await this.rollCharacteristic('ballisticSkill', item.name);
@@ -152,6 +169,7 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
                 }
                 return;
             case 'psychicPower':
+                if (DHTargetedActionManager._blockIfStunned(this)) return;
                 if(game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.simplePsychicRolls)) {
                     await this.rollCharacteristic('willpower',  item.name)
                 } else {

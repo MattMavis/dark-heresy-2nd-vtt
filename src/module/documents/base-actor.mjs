@@ -57,6 +57,8 @@ export class DarkHeresyBaseActor extends Actor {
         const simpleSkillData = new SimpleSkillData();
         const rollData = simpleSkillData.rollData;
         rollData.actor = this;
+        rollData.sourceActor = this;
+        rollData.baseChar = characteristic.short;
         rollData.nameOverride = characteristic.label;
         rollData.type = override ? override : 'Characteristic';
         rollData.baseTarget = characteristic.total;
