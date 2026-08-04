@@ -1,0 +1,15 @@
+{{#with actor}}
+    <div class="dh-wrapper">
+        <div class="dh-panel spacer">
+            <h1 class="dh-panel__header">{{name}}</h1>
+            <div class="dh-settings__row--span">
+                <div class="dh-settings__label">Subtlety</div>
+                <input class="dh-settings__input" data-dtype="Number" type="number" name="system.subtlety.value" value="{{subtlety.value}}" />
+            </div>
+            <div class="dh-settings__row--span">
+                <div class="dh-settings__label">Max Subtlety</div>
+                <input class="dh-settings__input" data-dtype="Number" type="number" name="system.subtlety.max" value="{{subtlety.max}}" />
+            </div>
+        </div>
+    </div>
+{{/with}}

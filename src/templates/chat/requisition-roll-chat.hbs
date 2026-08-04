@@ -1,0 +1,87 @@
+{{#with rollData}}
+    <div class="dh-wrapper">
+        <div class="dh-chat">
+            <h3>{{sourceActor.name}}</h3>
+            <div class="dh-roll">
+                <h1>Requisition</h1>
+                <div class="dh-roll__divider"></div>
+
+                <div class="dh-roll__row dh-roll__row--number">
+                    <div class="dh-roll__label">Base (Inf)</div>
+                    <div class="dh-roll__value">{{baseTarget}}</div>
+                </div>
+                {{#each activeModifiers}}
+                    <div class="dh-roll__row dh-roll__row--number">
+                        <div class="dh-roll__label">Modifier: {{@key}}</div>
+                        <div class="dh-roll__value">{{this}}</div>
+                    </div>
+                {{/each}}
+                <div class="dh-roll__target">
+                    <div class="dh-roll__label">Target</div>
+                    <div class="dh-roll__value">{{modifiedTarget}}</div>
+                </div>
+
+                {{#if success}}
+                    <div class="dh-roll__success">
+                        <span>Success</span>
+                        <span>{{roll.total}}</span>
+                    </div>
+                    <div class="dh-roll__row dh-roll__row--number">
+                        <div class="dh-roll__label">Degrees of Success</div>
+                        <div class="dh-roll__value">{{dos}}</div>
+                    </div>
+                {{else}}
+                    <div class="dh-roll__fail">
+                        <span>Fail</span>
+                        <span>{{roll.total}}</span>
+                    </div>
+                    <div class="dh-roll__row dh-roll__row--number">
+                        <div class="dh-roll__label">Degrees of Failure</div>
+                        <div class="dh-roll__value">{{dof}}</div>
+                    </div>
+                {{/if}}
+
+                <div class="dh-roll__divider"></div>
+                <div class="dh-roll__row">
+                    <div class="dh-roll__label">Items Requested</div>
+                </div>
+                {{#each selectedCandidates}}
+                    <div class="dh-roll__row">
+                        <div class="dh-roll__label">{{this.name}} x{{this.quantity}}</div>
+                        <div class="dh-roll__value">{{this.availability}} / {{this.craftsmanship}}</div>
+                    </div>
+                {{/each}}
+
+                {{#if ../subtletyCost}}
+                    <div class="dh-roll__row dh-roll__row--number">
+                        <div class="dh-roll__label">Subtlety Paid</div>
+                        <div class="dh-roll__value">{{../subtletyCost}}</div>
+                    </div>
+                    {{#if ../subtletyError}}
+                        <div class="dh-roll__row">
+                            <div class="dh-roll__label">Failed to update the Warband Tracker -- apply manually.</div>
+                        </div>
+                    {{/if}}
+                {{/if}}
+
+                {{#if success}}
+                    {{#if ../granted.length}}
+                        <div class="dh-roll__row">
+                            <div class="dh-roll__label">Granted to {{sourceActor.name}}</div>
+                        </div>
+                        {{#each ../granted}}
+                            <div class="dh-roll__row">
+                                <div class="dh-roll__label">{{this.name}}</div>
+                            </div>
+                        {{/each}}
+                    {{/if}}
+                {{/if}}
+            </div>
+            {{#if render}}
+                <div class="dice-roll-render">
+                    {{{render}}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
+{{/with}}

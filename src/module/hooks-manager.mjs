@@ -25,6 +25,7 @@ import { DarkHeresyTraitSheet } from './sheets/item/trait-sheet.mjs';
 import { DarkHeresyActorProxy } from './documents/actor-proxy.mjs';
 import { NpcSheet } from './sheets/actor/npc-sheet.mjs';
 import { VehicleSheet } from './sheets/actor/vehicle-sheet.mjs';
+import { WarbandSheet } from './sheets/actor/warband-sheet.mjs';
 import { DarkHeresyCriticalInjurySheet } from './sheets/item/critical-injury-sheet.mjs';
 import { DarkHeresyGearSheet } from './sheets/item/gear-sheet.mjs';
 import { DarkHeresySettings } from './dark-heresy-settings.mjs';
@@ -89,6 +90,7 @@ Enable Debug with: game.dh.debug = true
             acolyte: documents.DarkHeresyAcolyte,
             npc: documents.DarkHeresyNPC,
             vehicle: documents.DarkHeresyVehicle,
+            warband: documents.DarkHeresyWarband,
 
         };
         CONFIG.Item.documentClass = DarkHeresyItem;
@@ -99,6 +101,7 @@ Enable Debug with: game.dh.debug = true
         Actors.registerSheet(SYSTEM_ID, AcolyteSheet, {types: ["acolyte"], makeDefault: true });
         Actors.registerSheet(SYSTEM_ID, NpcSheet, {types: ['npc'], makeDefault: true });
         Actors.registerSheet(SYSTEM_ID, VehicleSheet, {types: ['vehicle'], makeDefault: true });
+        Actors.registerSheet(SYSTEM_ID, WarbandSheet, {types: ['warband'], makeDefault: true });
 
         // Item sheets are ApplicationV2. Foundry V14 registers no `core` default sheet for Item, so there is
         // nothing to unregister -- `makeDefault` alone makes these the defaults for their types.

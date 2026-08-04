@@ -4,6 +4,11 @@ import { DHTargetedActionManager } from '../../actions/targeted-action-manager.m
 import { Hit } from '../../rolls/damage-data.mjs';
 import { AssignDamageData } from '../../rolls/assign-damage-data.mjs';
 import { prepareAssignDamageRoll } from '../../prompts/assign-damage-prompt.mjs';
+import { openRequisitionMenu } from '../../prompts/requisition-prompt.mjs';
+import { RequisitionRollData } from '../../rolls/roll-data.mjs';
+import { buildRequisitionCandidates, getWarbandTracker } from '../../rules/requisition.mjs';
+import { DarkHeresySettings } from '../../dark-heresy-settings.mjs';
+import { SYSTEM_ID } from '../../hooks-manager.mjs';
 
 export class AcolyteSheet extends ActorContainerSheet {
     /** @inheritDoc */
@@ -30,6 +35,9 @@ export class AcolyteSheet extends ActorContainerSheet {
             },
             rollSkill(event, target) {
                 return this._prepareRollSkill(event, target);
+            },
+            requisition(event, target) {
+                return this._prepareRequisition(event, target);
             },
         },
     };
@@ -118,6 +126,18 @@ export class AcolyteSheet extends ActorContainerSheet {
     async _prepareRollSkill(event, target) {
         event.preventDefault();
         await this.actor.rollSkill(target.dataset.skill, target.dataset.specialty);
+    }
+
+    async _prepareRequisition(event, target) {
+        event.preventDefault();
+        const rollData = new RequisitionRollData();
+        rollData.sourceActor = this.actor;
+        rollData.warbandActor = getWarbandTracker();
+        rollData.maxAvailability = game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.requisitionMaxAvailability);
+        rollData.availabilityFilter = rollData.maxAvailability;
+        rollData.updateBaseTarget();
+        rollData.candidates = await buildRequisitionCandidates(rollData.maxAvailability);
+        await openRequisitionMenu(rollData);
     }
 
     async _onHomeworldChange(event) {

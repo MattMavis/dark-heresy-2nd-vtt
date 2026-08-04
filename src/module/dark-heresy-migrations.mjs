@@ -2,7 +2,7 @@ import { DarkHeresySettings } from './dark-heresy-settings.mjs';
 import { SYSTEM_ID } from './hooks-manager.mjs';
 
 export async function checkAndMigrateWorld() {
-    const worldVersion = 181;
+    const worldVersion = 182;
 
     const currentVersion = game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.worldVersion);
     if (worldVersion !== currentVersion && game.user.isGM) {
@@ -28,6 +28,9 @@ export async function checkAndMigrateWorld() {
 
         // Update Compendium Permissions
         await updateCompendiumPermissions(currentVersion);
+
+        // Ensure the shared Warband Subtlety tracker exists
+        await ensureWarbandTracker(currentVersion);
 
         // Display Release Notes
         await displayReleaseNotes(worldVersion);
@@ -57,6 +60,24 @@ export async function checkAndMigrateWorld() {
                         "ASSISTANT": "OWNER",
                         "GAMEMASTER": "OWNER",
                     },
+                });
+            }
+        }
+    }
+
+    async function ensureWarbandTracker(currentVersion) {
+        if (currentVersion < 182) {
+            // Every table needs exactly one shared, GM-owned Subtlety tracker for the
+            // Requisition Menu to read/write. Auto-create it, pre-permissioned, so a GM
+            // can't forget the ownership step and silently break player writes.
+            const existing = game.actors.find((a) => a.getFlag(SYSTEM_ID, 'isWarbandTracker'));
+            if (!existing) {
+                console.log('Creating Warband Tracker actor');
+                await Actor.create({
+                    name: 'Warband Tracker',
+                    type: 'warband',
+                    flags: { [SYSTEM_ID]: { isWarbandTracker: true } },
+                    ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER },
                 });
             }
         }
@@ -149,6 +170,15 @@ export async function checkAndMigrateWorld() {
                     notes: [
                         'Updated compendium permissions to fix permissions issues for players without ownership permissions.',
                         'Fixed issue with nested items not working: weapon specials and ammunition should now work correctly.',
+                    ],
+                });
+                break;
+            case 182:
+                await releaseNotes({
+                    version: '1.8.2',
+                    notes: [
+                        'Added the Requisition Menu: browse available gear, roll a Requisition test automatically, and receive items on success.',
+                        'Added a shared Warband Tracker actor for the party\'s Subtlety value, spent automatically by Requisition tests for scarce items.',
                     ],
                 });
                 break;

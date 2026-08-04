@@ -1,6 +1,6 @@
 {
     "Actor": {
-        "types": ["acolyte", "npc", "vehicle"],
+        "types": ["acolyte", "npc", "vehicle", "warband"],
         "templates": {
             "base": {
                 "wounds": {
@@ -962,6 +962,13 @@
         },
         "vehicle": {
             "templates": ["base", "vehicle", "npc"]
+        },
+        "warband": {
+            "templates": ["base"],
+            "subtlety": {
+                "value": 0,
+                "max": 0
+            }
         }
     },
     "Item": {

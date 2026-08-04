@@ -1,4 +1,5 @@
 import { SYSTEM_ID } from './hooks-manager.mjs';
+import { DarkHeresy } from './rules/config.mjs';
 
 export class DarkHeresySettings {
 
@@ -7,6 +8,7 @@ export class DarkHeresySettings {
         simpleAttackRolls: 'simple-attack-rolls',
         simplePsychicRolls: 'simple-psychic-rolls',
         processActiveEffectsDuringCombat: 'active-effects-during-combat',
+        requisitionMaxAvailability: 'requisition-max-availability',
 
     }
 
@@ -46,6 +48,16 @@ export class DarkHeresySettings {
             requiresReload: true,
             default: false,
             type: Boolean,
+        });
+        game.settings.register(SYSTEM_ID, DarkHeresySettings.SETTINGS.requisitionMaxAvailability, {
+            name: 'Requisition Max Availability',
+            hint: 'The highest Availability tier players may see in the Requisition Menu.',
+            scope: 'world',
+            config: true,
+            requiresReload: false,
+            default: 'Average',
+            type: String,
+            choices: Object.fromEntries(DarkHeresy.items.availability.map((tier) => [tier, tier])),
         });
     }
 }

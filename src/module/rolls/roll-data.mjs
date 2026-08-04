@@ -452,3 +452,93 @@ export class PsychicRollData extends RollData {
         await this.calculateTotalModifiers();
     }
 }
+
+export class RequisitionRollData extends RollData {
+    // Full candidate list for the current max-Availability setting, and the subset
+    // the player has checked -- populated once (async, compendium query) by the
+    // caller before the dialog opens, not recomputed on every render like
+    // WeaponRollData's weapon list is.
+    candidates = [];
+    selectedCandidates = [];
+    warbandActor;
+    // The GM-configured ceiling (world setting) -- fixed, used only to build the
+    // candidate list and to cap the availabilityFilter dropdown's own option list.
+    maxAvailability = '';
+    // The player's own further narrowing of the list, defaults to maxAvailability
+    // (i.e. "show everything up to the GM's ceiling"). The dropdown this binds to
+    // never offers tiers above maxAvailability, so this can only narrow, not widen.
+    availabilityFilter = '';
+    search = '';
+
+    constructor() {
+        super();
+        this.template = 'systems/dark-heresy-2nd/templates/prompt/requisition-prompt.hbs';
+    }
+
+    updateBaseTarget() {
+        this.baseTarget = this.sourceActor?.characteristics?.influence?.total ?? 0;
+        this.baseChar = 'Inf';
+    }
+
+    // Tiers the player is allowed to filter by -- capped at maxAvailability (the GM's
+    // ceiling), so the dropdown built from this can only narrow, never widen, past it.
+    get availabilityOptions() {
+        const tiers = DarkHeresy.items.availability;
+        const maxIndex = tiers.indexOf(this.maxAvailability);
+        return Object.fromEntries(tiers.slice(0, maxIndex + 1).map((tier) => [tier, tier]));
+    }
+
+    // Annotates each row with `selected`/`quantity` so the template can bind
+    // directly (`{{#each visibleCandidates}}...{{checked selected}}`) without
+    // needing a multi-argument Handlebars helper to call `isSelected(pack, itemId)`.
+    get visibleCandidates() {
+        const tiers = DarkHeresy.items.availability;
+        const filterIndex = tiers.indexOf(this.availabilityFilter || this.maxAvailability);
+        const search = this.search.trim().toLowerCase();
+        return this.candidates
+            .filter((c) => {
+                if (tiers.indexOf(c.availability) > filterIndex) return false;
+                if (search && !c.name.toLowerCase().includes(search)) return false;
+                return true;
+            })
+            .map((c) => {
+                const selectedEntry = this.selectedCandidates.find((s) => s.pack === c.pack && s.itemId === c.itemId);
+                return { ...c, selected: !!selectedEntry, quantity: selectedEntry?.quantity ?? 1 };
+            });
+    }
+
+    toggleCandidate(candidate) {
+        const idx = this.selectedCandidates.findIndex((c) => c.pack === candidate.pack && c.itemId === candidate.itemId);
+        if (idx >= 0) {
+            this.selectedCandidates.splice(idx, 1);
+        } else {
+            this.selectedCandidates.push({ ...candidate, quantity: 1 });
+        }
+        this.updateRequisitionModifier();
+    }
+
+    setQuantity(pack, itemId, quantity) {
+        const entry = this.selectedCandidates.find((c) => c.pack === pack && c.itemId === itemId);
+        if (entry) {
+            entry.quantity = Math.max(1, Number.parseInt(quantity) || 1);
+        }
+    }
+
+    updateRequisitionModifier() {
+        this.modifiers['requisition'] = this.selectedCandidates.reduce((sum, c) => sum + c.modifier, 0);
+    }
+
+    // Sum of each individually-negative-modifier selected candidate's own Subtlety
+    // cost (tens digit of that item's modifier) -- paid regardless of success/failure.
+    // This combined-basket summing is this system's own extrapolation beyond RAW,
+    // which only ever describes a single-item Requisition test.
+    get subtletyCost() {
+        return this.selectedCandidates
+            .filter((c) => c.modifier < 0)
+            .reduce((sum, c) => sum + Math.abs(c.modifier) / 10, 0);
+    }
+
+    async finalize() {
+        await this.calculateTotalModifiers();
+    }
+}

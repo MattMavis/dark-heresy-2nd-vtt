@@ -21,3 +21,16 @@
         }
     }
 }
+
+// .dh-attack's implicit grid auto-placement gives every direct child exactly one
+// of its 6 columns (~1/6 width) unless told otherwise -- fine for the small
+// text-field panels the weapon/psychic prompts use, but a wide multi-column data
+// table (the Requisition Menu's candidate list) needs the full row or it renders
+// squeezed into a sliver next to a large empty void.
+.dh-grid-col-full {
+    grid-column: 1 / -1;
+}
+
+.dh-grid-col-half {
+    grid-column: span 3;
+}
