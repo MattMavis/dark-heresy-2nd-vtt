@@ -1,0 +1,50 @@
+---
+# Local Foundry VTT instance for developing/testing this system, wired to load
+# straight from this repo's gulp build output (build/dark-heresy-2nd) rather than
+# a package-manager install -- rebuild the system (`npx gulp build`) and refresh
+# the browser to see changes, no reinstall step needed.
+#
+# Setup: copy .env.example to .env and fill in your foundryvtt.com credentials
+# (see .env.example for details), then `npx gulp build` at least once, then
+# `docker compose up --detach`. Foundry will be at http://localhost:30001.
+#
+# Deliberately published on 30001, not Foundry's usual 30000 -- this is meant to
+# run *alongside* a native Foundry install (e.g. the Windows one this project
+# already uses day to day, which listens on 30000), not replace it. Confirmed by
+# hitting a real port conflict while testing this file with the native instance
+# running at the same time.
+#
+# Uses https://github.com/felddy/foundryvtt-docker -- see its README for the
+# full environment variable reference.
+services:
+  foundry:
+    image: ghcr.io/felddy/foundryvtt:14
+    # Foundry binds its software license to the container hostname -- keep this
+    # stable across recreations or you'll need to re-license every time.
+    hostname: dh2e-foundry-dev
+    volumes:
+      - type: volume
+        source: docker-data
+        target: /data
+      - type: bind
+        source: ./build/dark-heresy-2nd
+        target: /data/Data/systems/dark-heresy-2nd
+        read_only: true
+    environment:
+      - FOUNDRY_USERNAME=${FOUNDRY_USERNAME:-}
+      - FOUNDRY_PASSWORD=${FOUNDRY_PASSWORD:-}
+      - FOUNDRY_RELEASE_URL=${FOUNDRY_RELEASE_URL:-}
+      - FOUNDRY_ADMIN_KEY=${FOUNDRY_ADMIN_KEY:-}
+      # Pinned to match this system's system.json "verified" Foundry version --
+      # bump both together if the system gets verified against a newer release.
+      - FOUNDRY_VERSION=${FOUNDRY_VERSION:-14.365}
+      - FOUNDRY_TELEMETRY=false
+      - CONTAINER_PRESERVE_CONFIG=true
+    ports:
+      - target: 30000
+        published: 30001
+        protocol: tcp
+    restart: unless-stopped
+
+volumes:
+  docker-data:

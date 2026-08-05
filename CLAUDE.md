@@ -67,6 +67,31 @@ than re-deriving an approach each session.
    hard-blocking Foundry 15); `verified` is 14.365. PowerShell `Set-Content -Encoding UTF8` adds a
    BOM that no other pack file has — use node or the `Write` tool for YAML instead.
 
+## Local Foundry via Docker — disposable dev/test instance, not the live campaign
+`docker-compose.yml` (repo root) runs a throwaway Foundry instance via
+[felddy/foundryvtt-docker](https://github.com/felddy/foundryvtt-docker), bind-mounting
+`build/dark-heresy-2nd` straight into it — `npx gulp build` + refresh the browser, no reinstall
+step, same rebuild-and-reload loop as the local Windows junction setup (`G:\FoundryData`) uses,
+but fully disposable and scriptable instead of needing the user to babysit
+unload/relaunch cycles for every rebuild.
+- **This is a separate instance from the user's real campaign** (`G:\FoundryData`, the
+  `dh-new-test` world) — its data lives in a Docker-managed named volume (`docker-data`), not
+  `G:\FoundryData`. Never point this compose file's data volume at the user's real Foundry data
+  directory.
+- Setup: copy `.env.example` to `.env` (gitignored, needs the user's own foundryvtt.com
+  credentials — never ask the user to paste these into chat, and never write them into any
+  tracked file) and pick an admin key, then `docker compose up --detach`. Foundry at
+  `http://localhost:30001` — deliberately **not** 30000, since the native Windows Foundry install
+  this project already uses day to day listens there; confirmed by hitting a real port conflict
+  running both at once during setup. Meant to run alongside the native instance, not replace it.
+- Foundry ties its software license to the container **hostname** — `docker-compose.yml` pins one
+  (`dh2e-foundry-dev`) deliberately; don't let it default to a random per-container id or every
+  recreation re-triggers licensing.
+- `FOUNDRY_VERSION` defaults to `14.365` in the compose file, matching `system.json`'s `verified`
+  field — bump both together if this system gets verified against a newer Foundry release.
+- Requires Docker Desktop actually running (not just the CLI installed) — `docker info` hanging or
+  erroring with a pipe/socket-not-found message means Desktop itself isn't started.
+
 ## Bulk-editing a large generated data file — exact procedure
 For a structural or wide-reaching change to a file like `critical-damage.mjs` (~2400 lines, 160
 entries), never hand-edit/retype it directly — transcription drift across that much prose is real
