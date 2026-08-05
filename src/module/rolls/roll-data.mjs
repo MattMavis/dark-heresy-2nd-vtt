@@ -473,6 +473,7 @@ export class RequisitionRollData extends RollData {
     constructor() {
         super();
         this.template = 'systems/dark-heresy-2nd/templates/prompt/requisition-prompt.hbs';
+        this.modifiers['requisition'] = 0;
     }
 
     updateBaseTarget() {
@@ -524,8 +525,18 @@ export class RequisitionRollData extends RollData {
         }
     }
 
+    // The combined test is exactly as hard as its single worst (most negative)
+    // selected item -- NOT a sum. Summing let easy items offset hard ones (e.g. a
+    // Common +10 item selected alongside a Rare -20 item nets to -10, making the
+    // Rare item easier to acquire just because something common was also on the
+    // list) -- backwards, and gameable by padding the cart. Padding with more
+    // common items now never changes the test's difficulty at all.
     updateRequisitionModifier() {
-        this.modifiers['requisition'] = this.selectedCandidates.reduce((sum, c) => sum + c.modifier, 0);
+        if (this.selectedCandidates.length === 0) {
+            this.modifiers['requisition'] = 0;
+            return;
+        }
+        this.modifiers['requisition'] = Math.min(...this.selectedCandidates.map((c) => c.modifier));
     }
 
     // Sum of each individually-negative-modifier selected candidate's own Subtlety

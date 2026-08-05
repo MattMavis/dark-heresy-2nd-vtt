@@ -61,3 +61,27 @@
     @import 'src/scss/sheets/item';
     @import 'src/scss/sheets/attack';
 }
+
+// Prompt dialogs (weapon-prompt.mjs, requisition-prompt.mjs, etc.) wrap .dh-wrapper
+// in an outer .dh-prompt root -- unlike sheets, where .dh-wrapper IS the part's root
+// element. .dh-wrapper's height:100%/overflow-y:auto above only resolves against a
+// PARENT with a definite height; .dh-prompt had none, so .dh-wrapper's "100%" fell
+// back to "however tall my content is," never actually clipping/scrolling (confirmed
+// live: scrollHeight === clientHeight, both just grew to fit every row). Sheets never
+// hit this because their .dh-wrapper is a direct child of Foundry's own flexed
+// .window-content, which already has a definite height. Give .dh-prompt the same
+// definite-height flex context here instead of duplicating it in every prompt's own
+// markup, and let the nested .dh-wrapper flex-fill the remaining space below the
+// footer (min-height: 0 is required for a flex child to be allowed to shrink below
+// its content's natural size -- without it overflow never kicks in even inside a
+// correctly-sized flex parent).
+.dh-prompt {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .dh-wrapper {
+        flex: 1 1 auto;
+        min-height: 0;
+    }
+}

@@ -39,6 +39,16 @@ export class RequisitionDialog extends HandlebarsApplicationMixin(ApplicationV2)
     static PARTS = {
         body: {
             template: 'systems/dark-heresy-2nd/templates/prompt/requisition-prompt.hbs',
+            // Unlike the weapon/psychic-power prompts this class is otherwise modelled
+            // on, this dialog's candidate list is long enough to actually overflow --
+            // needs the same scrollable config actor/item sheets use for .dh-wrapper's
+            // height:100%/overflow-y:auto CSS to have a bounded height to resolve
+            // against (CLAUDE.md's ApplicationV2 scroll gotcha). Unlike sheet templates,
+            // where .dh-wrapper IS the part's root element (so scrollable: [''] -- "the
+            // part's own root" -- correctly targets it), this template's actual root is
+            // .dh-prompt, with .dh-wrapper nested one level inside -- '' would mark the
+            // wrong element scrollable. Target it explicitly instead.
+            scrollable: ['.dh-wrapper'],
         },
     };
 
