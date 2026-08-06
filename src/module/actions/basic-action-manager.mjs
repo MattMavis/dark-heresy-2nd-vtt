@@ -474,8 +474,16 @@ export class BasicActionManager {
      * @param data
      * @returns {Promise<void>}
      */
+    async sendConsumableUseChat(data) {
+        return this._sendChat('systems/dark-heresy-2nd/templates/chat/consumable-use-chat.hbs', data);
+    }
+
     async sendItemVocalizeChat(data) {
-        const html = await foundry.applications.handlebars.renderTemplate('systems/dark-heresy-2nd/templates/chat/item-vocalize-chat.hbs', data);
+        return this._sendChat('systems/dark-heresy-2nd/templates/chat/item-vocalize-chat.hbs', data);
+    }
+
+    async _sendChat(template, data) {
+        const html = await foundry.applications.handlebars.renderTemplate(template, data);
         let chatData = {
             user: game.user.id,
             content: html,
@@ -489,7 +497,7 @@ export class BasicActionManager {
         } else if (chatData.rollMode === 'self') {
             chatData.whisper = [game.user];
         }
-        ChatMessage.create(chatData);
+        return ChatMessage.create(chatData);
     }
 }
 
