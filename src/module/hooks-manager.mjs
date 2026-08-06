@@ -94,6 +94,7 @@ Enable Debug with: game.dh.debug = true
 
         };
         CONFIG.Item.documentClass = DarkHeresyItem;
+        CONFIG.ActiveEffect.documentClass = documents.DarkHeresyActiveEffect;
 
         // Register sheet application classes
         // Actor sheets are ApplicationV2. Foundry V14 registers no `core` default sheet for Actor, so there is
