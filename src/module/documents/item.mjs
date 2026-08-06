@@ -152,7 +152,7 @@ export class DarkHeresyItem extends DarkHeresyItemContainer {
         return super._onCreate(data, options, user);
     }
 
-    async prepareData() {
+    prepareData() {
         super.prepareData();
         game.dh.log('Item prepare data', this);
 

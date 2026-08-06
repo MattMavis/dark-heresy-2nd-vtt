@@ -15,10 +15,6 @@ export class DarkHeresyVehicle extends DarkHeresyBaseActor {
         this.updateSource(initData)
     }
 
-    async prepareData() {
-        await super.prepareData();
-    }
-
     get faction() {
         return this.system.faction;
     }

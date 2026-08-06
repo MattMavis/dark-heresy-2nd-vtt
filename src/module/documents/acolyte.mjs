@@ -70,18 +70,29 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
         return this.system.backgroundEffects;
     }
 
-    async prepareData() {
+    /**
+     * super.prepareBaseData() is not optional: Actor#prepareBaseData clears the completed
+     * ActiveEffect phase set, and skipping it makes applyActiveEffects throw "phase has already
+     * completed" on every cycle after the first. Background fields belong here rather than in
+     * derived data because they are a static lookup off bio.* that nothing else depends on, and
+     * because _computeBackgroundFields pushes into abilities -- it must run exactly once per
+     * cycle, paired with the reset above it.
+     */
+    prepareBaseData() {
+        super.prepareBaseData();
         this.system.backgroundEffects = {
             abilities: [],
         };
         this._computeBackgroundFields();
-        this._computeCharacteristics();
+    }
+
+    prepareDerivedData() {
+        // super computes characteristics and movement; the rest depend on those being done.
+        super.prepareDerivedData();
         this._computeSkills();
         this._computeExperience();
         this._computeArmour();
-        this._computeMovement();
         this._computeEncumbrance();
-        await super.prepareData();
     }
 
     async rollWeaponDamage(weapon) {

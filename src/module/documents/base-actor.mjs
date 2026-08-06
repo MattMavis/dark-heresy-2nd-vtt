@@ -45,8 +45,14 @@ export class DarkHeresyBaseActor extends Actor {
         return this.system.movement;
     }
 
-    async prepareData() {
-        await super.prepareData();
+    /**
+     * Foundry applies the "initial" phase of ActiveEffects at the end of prepareEmbeddedDocuments,
+     * which runs before this. Anything computed here therefore already sees effect-modified input
+     * slots (characteristics.X.modifier and friends). Computing derived values any earlier -- as
+     * this system did until now, from an overridden prepareData -- silently ignores them.
+     */
+    prepareDerivedData() {
+        super.prepareDerivedData();
         this._computeCharacteristics();
         this._computeMovement();
     }
