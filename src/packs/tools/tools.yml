@@ -46,6 +46,17 @@ data:
     craftsmanship: Common
     description: Grants +10 to Tech-Use
     weight: 1
+effects:
+    - name: Combi-tool
+      img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+      transfer: true
+      disabled: false
+      system:
+          changes:
+              - key: system.skills.techUse.modifier
+                type: add
+                value: 10
+                phase: initial
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Combi-tool
 type: tool
@@ -96,6 +107,17 @@ data:
     craftsmanship: Common
     description: Make you look like someone else. +10 to deceive tests.
     weight: 2
+effects:
+    - name: Disguise Kit
+      img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+      transfer: true
+      disabled: false
+      system:
+          changes:
+              - key: system.skills.deceive.modifier
+                type: add
+                value: 10
+                phase: initial
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Disguise Kit
 type: tool
@@ -105,6 +127,17 @@ data:
     craftsmanship: Common
     description: Grants +20 to Interrogation tests.
     weight: 2
+effects:
+    - name: Excruciator Kit
+      img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+      transfer: true
+      disabled: false
+      system:
+          changes:
+              - key: system.skills.interrogation.modifier
+                type: add
+                value: 20
+                phase: initial
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Excruciator Kit
 type: tool
@@ -235,6 +268,17 @@ data:
     craftsmanship: Common
     description: Grants +10 bonus to Medicae tests.
     weight: 2
+effects:
+    - name: Medi-kit
+      img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+      transfer: true
+      disabled: false
+      system:
+          changes:
+              - key: system.skills.medicae.modifier
+                type: add
+                value: 10
+                phase: initial
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Medi-kit
 type: tool
@@ -264,6 +308,21 @@ data:
     craftsmanship: Common
     description: Grants a +20 bonus to all Survival and Navigation (Surface) tests.
     weight: 4
+effects:
+    - name: Multicompass
+      img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+      transfer: true
+      disabled: false
+      system:
+          changes:
+              - key: system.skills.survival.modifier
+                type: add
+                value: 20
+                phase: initial
+              - key: system.skills.navigate.specialities.surface.modifier
+                type: add
+                value: 20
+                phase: initial
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Multicompass
 type: tool
@@ -363,6 +422,17 @@ data:
     description: Dampens sound and grants +30 to Stealth test. Last for 20 minutes before
         needing to be recharged.
     weight: 2
+effects:
+    - name: Stummer
+      img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+      transfer: true
+      disabled: false
+      system:
+          changes:
+              - key: system.skills.stealth.modifier
+                type: add
+                value: 30
+                phase: initial
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Stummer
 type: tool

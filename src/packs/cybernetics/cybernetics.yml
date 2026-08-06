@@ -147,6 +147,17 @@ data:
   description: 'These bionics are internal cogitator implants which aid in data retention and processing. The user can rapidly sift through stacked dataslates and parchments, applying intuition to vast reams of data far beyond the capabilities of a normal man. This implant grants the user a +10 bonus to Literacy, Logic, and Scholastic Lore tests.'
   weight: 0
   equipped: false
+effects:
+  - name: Calculus Logi Upgrade
+    img: systems/dark-heresy-2nd/icons/talents/blue/b_35.png
+    transfer: true
+    disabled: false
+    system:
+      changes:
+        - key: system.skills.logic.modifier
+          type: add
+          value: 10
+          phase: initial
 img: systems/dark-heresy-2nd/icons/talents/blue/b_35.png
 name: Calculus Logi Upgrade
 type: cybernetic

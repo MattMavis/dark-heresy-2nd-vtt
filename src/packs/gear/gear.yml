@@ -539,6 +539,29 @@ data:
         and has the Tainted and Unwieldy weapon qualities.
     source: PG 48 EB
     weight: 0
+effects:
+    - name: Hound's Teeth Gauntlet
+      img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+      transfer: true
+      disabled: false
+      system:
+          changes:
+              - key: system.skills.psyniscience.modifier
+                type: add
+                value: 30
+                phase: initial
+              - key: system.skills.navigate.specialities.surface.modifier
+                type: add
+                value: 30
+                phase: initial
+              - key: system.skills.navigate.specialities.stellar.modifier
+                type: add
+                value: 30
+                phase: initial
+              - key: system.skills.navigate.specialities.warp.modifier
+                type: add
+                value: 30
+                phase: initial
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Hound's Teeth Gauntlet
 type: gear
