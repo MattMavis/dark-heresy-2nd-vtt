@@ -63,6 +63,9 @@ export class ActorContainerSheet extends HandlebarsApplicationMixin(ActorSheetV2
             itemRoll(event, target) {
                 return this._onItemRoll(event, target);
             },
+            itemUse(event, target) {
+                return this._onItemUse(event, target);
+            },
             itemVocalize(event, target) {
                 return this._onItemVocalize(event, target);
             },
@@ -257,6 +260,12 @@ export class ActorContainerSheet extends HandlebarsApplicationMixin(ActorSheetV2
     async _onItemRoll(event, target) {
         event.preventDefault();
         await this.actor.rollItem(target.dataset.itemId);
+    }
+
+    async _onItemUse(event, target) {
+        event.preventDefault();
+        await this.actor.useConsumable(target.dataset.itemId);
+        await this.render();
     }
 
     async _onItemCreate(event, target) {

@@ -106,6 +106,11 @@ export class DarkHeresyItem extends DarkHeresyItemContainer {
         return this.type === 'consumable';
     }
 
+    /** Types that are spent by an explicit Use action rather than worn or wielded. */
+    get isUsable() {
+        return this.isConsumable || this.isDrug;
+    }
+
     get isTool() {
         return this.type === 'tool';
     }

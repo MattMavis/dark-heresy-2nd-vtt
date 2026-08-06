@@ -210,6 +210,72 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
         }
     }
 
+    /**
+     * Spend one dose of a consumable or drug: roll its duration, copy its effect templates onto
+     * this actor as real timed effects, decrement the stack, and announce it in chat.
+     */
+    async useConsumable(itemId) {
+        const item = this.items.get(itemId);
+        if (!item?.isUsable) {
+            ui.notifications.warn('Only consumables and drugs can be used.');
+            return;
+        }
+        if (item.quantity <= 0) {
+            ui.notifications.warn(`${item.name} has none remaining.`);
+            return;
+        }
+
+        // Book durations are dice expressions ("3d10 rounds"), so this is rolled per dose at the
+        // moment of use rather than baked into the item.
+        const formula = (item.system.onUse?.durationFormula ?? '').trim();
+        const units = item.system.onUse?.durationUnit || 'rounds';
+        let durationValue = null;
+        if (formula) {
+            try {
+                const roll = await new Roll(formula).evaluate();
+                durationValue = Math.max(0, Math.floor(roll.total));
+            } catch (err) {
+                game.dh.error(`useConsumable: bad duration formula "${formula}" on ${item.name}`, err);
+            }
+        }
+
+        // The item's own effects are permanently suppressed while they sit on a consumable, so
+        // they are only ever templates. Copy them onto the actor to actually take hold.
+        const uuid = item.uuid;
+        const effectData = item.effects.contents.map((effect) => {
+            const data = effect.toObject();
+            delete data._id;
+            data.transfer = false;
+            data.disabled = false;
+            data.origin = uuid;
+            if (durationValue !== null) data.duration = { value: durationValue, units };
+            return data;
+        });
+        let applied = [];
+        if (effectData.length) {
+            applied = await this.createEmbeddedDocuments('ActiveEffect', effectData);
+        }
+
+        const remaining = item.quantity - 1;
+        const depleted = remaining <= 0;
+        if (depleted) await item.delete();
+        else await item.update({ 'system.quantity': remaining });
+
+        await DHBasicActionManager.sendConsumableUseChat({
+            actor: this.name,
+            name: item.name,
+            type: item.type?.toUpperCase(),
+            effectName: applied.map((e) => e.name).join(', '),
+            // Resolved integer, never the formula -- chat enrichment rewrites [[XdY]] syntax.
+            durationText: durationValue === null ? '' : `${durationValue} ${units}`,
+            remaining: Math.max(0, remaining),
+            depleted,
+            description: await foundry.applications.ux.TextEditor.enrichHTML(item.system.description ?? '', {
+                rollData: { actor: this, item: item },
+            }),
+        });
+    }
+
     async damageItem(itemId) {
         const item = this.items.get(itemId);
         switch (item.type) {

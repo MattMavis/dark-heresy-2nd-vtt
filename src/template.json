@@ -1169,6 +1169,12 @@
                 "backpack": {
                     "inBackpack": false
                 }
+            },
+            "onUse": {
+                "onUse": {
+                    "durationFormula": "",
+                    "durationUnit": "rounds"
+                }
             }
         },
         "ammunition": {
@@ -1210,10 +1216,10 @@
             "hasArmourPoints": false
         },
         "consumable": {
-            "templates": ["physicalItem", "itemDescription", "backpack"]
+            "templates": ["physicalItem", "itemDescription", "backpack", "onUse"]
         },
         "drug": {
-            "templates": ["physicalItem", "itemDescription", "backpack"]
+            "templates": ["physicalItem", "itemDescription", "backpack", "onUse"]
         },
         "enemy": {
             "templates": ["itemDescription"],

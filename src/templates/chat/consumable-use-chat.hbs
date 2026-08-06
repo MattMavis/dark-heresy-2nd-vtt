@@ -1,0 +1,25 @@
+{{dhlog this}}
+<div class="dh-wrapper">
+    <div class="dh-chat">
+        <h3>{{actor}} uses {{name}}</h3>
+        <div class="dh-roll">
+            <h1>{{name}}</h1>
+            <h2>{{type}}</h2>
+            <div class="dh-roll__divider"></div>
+            {{#if effectName}}
+                <div class="dh-roll__label">
+                    <strong>{{effectName}}</strong>{{#if durationText}} &mdash; {{durationText}}{{/if}}
+                </div>
+            {{/if}}
+            <div class="dh-roll__label">{{{description}}}</div>
+            <div class="dh-roll__divider"></div>
+            <div class="dh-roll__label">
+                {{#if depleted}}
+                    Last one &mdash; none remaining.
+                {{else}}
+                    {{remaining}} remaining.
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
