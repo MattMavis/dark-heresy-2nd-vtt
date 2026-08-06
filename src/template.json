@@ -1126,6 +1126,7 @@
                 "craftsmanship": "common",
                 "availability": "common",
                 "weight": 0,
+                "quantity": 1,
                 "equipped": false,
                 "inBackpack": false
             },

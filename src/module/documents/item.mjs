@@ -3,11 +3,19 @@ import { capitalize } from '../handlebars/handlebars-helpers.mjs';
 
 export class DarkHeresyItem extends DarkHeresyItemContainer {
     get totalWeight() {
-        let weight = this.system.weight || 0;
+        // A stack of N carries N times the weight; nested contents are counted once for the
+        // container itself, not multiplied per copy of it.
+        let weight = (this.system.weight || 0) * this.quantity;
         if (this.items && this.items.size > 0) {
             this.items.forEach((item) => (weight += item.totalWeight));
         }
         return weight;
+    }
+
+    /** Stack size. Non-physical items have no quantity field and always count as one. */
+    get quantity() {
+        const q = Number(this.system.quantity ?? 1);
+        return Number.isFinite(q) && q > 0 ? q : 1;
     }
 
     get equipped() {
