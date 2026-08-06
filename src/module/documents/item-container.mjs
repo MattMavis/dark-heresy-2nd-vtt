@@ -57,27 +57,6 @@ export class DarkHeresyItemContainer extends Item {
         game.dh.log('Item ' + this.name + ' items:', this.items);
     }
 
-    static async _onCreateOperation(items, context, user) {
-        // Parent is not an item -- ignore
-        if (!(context.parent instanceof Item)) return super._onCreateOperation(items, context, user);
-        // None of the items being created are containers -- ignore
-        if (items.filter((item) => item.system.container).length === 0) return super._onCreateOperation(items, context, user);
-
-        const toCreate = [];
-        for (const item of items) {
-            for (const e of item.effects) {
-                if (!e.data.transfer) continue;
-                const effectData = e.toJSON();
-                effectData.origin = item.uuid;
-                toCreate.push(effectData);
-            }
-        }
-        if (!toCreate.length) return [];
-        game.dh.log('ItemContainer: ' + this.name + ' _onCreateDocuments');
-        const cls = getDocumentClass('ActiveEffect');
-        return cls.createDocuments(toCreate, context);
-    }
-
     hasWeaponModification(mod) {
         return this.hasItemByType(mod, 'weaponModification');
     }
