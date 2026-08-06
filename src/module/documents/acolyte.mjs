@@ -298,11 +298,12 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
         for (let skill of Object.values(this.skills)) {
             let short = !skill.characteristic || skill.characteristic === '' ? skill.characteristics[0] : skill.characteristic;
             let characteristic = this._findCharacteristic(short);
-            skill.current = characteristic.total + this._skillAdvanceToValue(skill.advance);
+            skill.current = characteristic.total + this._skillAdvanceToValue(skill.advance) + (skill.modifier ?? 0);
 
             if (skill.isSpecialist) {
                 for (let speciality of Object.values(skill.specialities)) {
-                    speciality.current = characteristic.total + this._skillAdvanceToValue(speciality.advance);
+                    speciality.current =
+                        characteristic.total + this._skillAdvanceToValue(speciality.advance) + (speciality.modifier ?? 0);
                 }
             }
         }
@@ -448,6 +449,12 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
         this.armour.body.total += this.armour.body.value;
         this.armour.leftLeg.total += this.armour.leftLeg.value;
         this.armour.rightLeg.total += this.armour.rightLeg.value;
+
+        // Effect-granted armour points. Folded in last so they stack on top of the best worn
+        // armour rather than competing inside the max-per-location reduction above.
+        locations.forEach((location) => {
+            this.armour[location].total += Number(this.system.armourBonus?.[location] ?? 0);
+        });
     }
 
     _computeEncumbrance() {
