@@ -119,12 +119,20 @@ export function getWarbandTracker() {
     return game.actors.find((a) => a.getFlag(SYSTEM_ID, 'isWarbandTracker'));
 }
 
+/** Flag recording which compendium entry a granted item came from, so repeat grants can stack. */
+export const REQUISITION_SOURCE_FLAG = 'requisitionSourceId';
+
 /**
- * Grant `quantity` copies of a compendium item onto `actor`. Fetches the full
+ * Grant `quantity` of a compendium item onto `actor`. Fetches the full
  * compendium Document (not the index entry) so nested ammo/attack-special flags
  * (DarkHeresyItemContainer) travel with it via `.toObject()`; weapons already carry
  * a full clip baked into their pack data, so a granted weapon is ready to use.
- * No RAW DoS-based bonus-quantity granting -- exactly `quantity` copies, no more.
+ * No RAW DoS-based bonus-quantity granting -- exactly `quantity`, no more.
+ *
+ * Requisitioning something the actor already has bumps that stack's quantity rather than
+ * adding a second row. Matching is by source-compendium id, not by name: two items can share
+ * a name but differ in craftsmanship, and merging those would silently upgrade or downgrade
+ * one of them.
  */
 export async function grantRequisitionedItem(actor, packId, itemId, quantity = 1) {
     const pack = game.packs.get(packId);
@@ -137,8 +145,20 @@ export async function grantRequisitionedItem(actor, packId, itemId, quantity = 1
         game.dh.error(`grantRequisitionedItem: item ${itemId} not found in ${packId}`);
         return [];
     }
+
+    const count = Math.max(1, quantity);
+    const sourceKey = `${packId}.${itemId}`;
+
+    const existing = actor.items.find((i) => i.getFlag(SYSTEM_ID, REQUISITION_SOURCE_FLAG) === sourceKey);
+    if (existing) {
+        await existing.update({ 'system.quantity': existing.quantity + count });
+        return [existing];
+    }
+
     const itemData = doc.toObject();
     delete itemData._id;
-    const toCreate = Array.from({ length: Math.max(1, quantity) }, () => foundry.utils.deepClone(itemData));
-    return actor.createEmbeddedDocuments('Item', toCreate);
+    itemData.system = itemData.system ?? {};
+    itemData.system.quantity = count;
+    foundry.utils.setProperty(itemData, `flags.${SYSTEM_ID}.${REQUISITION_SOURCE_FLAG}`, sourceKey);
+    return actor.createEmbeddedDocuments('Item', [itemData]);
 }
