@@ -10,6 +10,7 @@ export class DarkHeresyCyberneticSheet extends DarkHeresyItemSheet {
     static PARTS = {
         main: {
             template: 'systems/dark-heresy-2nd/templates/item/item-cybernetic-sheet.hbs',
+            templates: ['systems/dark-heresy-2nd/templates/item/panel/active-effects-panel.hbs'],
             scrollable: [''],
         },
     };

@@ -20,6 +20,31 @@
                                value="{{item.system.weight}}" />
                     </div>
                     <div class="dh-header__item-wrapper">
+                        <span class="dh-header__title">Quantity</span>
+                        <input class="dh-header__input" name="system.quantity" type="number" data-dtype="Number"
+                               min="0" step="1" value="{{item.system.quantity}}" />
+                    </div>
+                    {{#unless item.isUsable}}
+                        <div class="dh-header__item-wrapper">
+                            <span class="dh-header__title">Equipped</span>
+                            <input name="system.equipped" type="checkbox" data-dtype="Boolean" {{checked
+                                item.system.equipped}}/>
+                        </div>
+                    {{/unless}}
+                    {{#if item.isUsable}}
+                        <div class="dh-header__item-wrapper">
+                            <span class="dh-header__title">Duration</span>
+                            <input class="dh-header__input" name="system.onUse.durationFormula" type="text"
+                                   placeholder="e.g. 3d10" value="{{item.system.onUse.durationFormula}}" />
+                        </div>
+                        <div class="dh-header__item-wrapper">
+                            <span class="dh-header__title">Duration Unit</span>
+                            <select class="dh-header__select" name="system.onUse.durationUnit">
+                                {{selectOptions (arrayToObject dh.items.duration_units) selected=item.system.onUse.durationUnit}}
+                            </select>
+                        </div>
+                    {{/if}}
+                    <div class="dh-header__item-wrapper">
                         <span class="dh-header__title">In Backpack</span>
                         <input name="system.backpack.inBackpack" type="checkbox" data-dtype="Boolean" {{checked
                             item.system.backpack.inBackpack}}/>
@@ -43,5 +68,6 @@
                 </div>
             </div>
         </div>
+        {{> systems/dark-heresy-2nd/templates/item/panel/active-effects-panel.hbs}}
     </div>
 </div>

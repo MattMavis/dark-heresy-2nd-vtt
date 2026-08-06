@@ -10,6 +10,8 @@
             <div class="table-cell--span2">Name</div>
             <div class="table-cell">Type</div>
             <div class="table-cell">Weight</div>
+            <div class="table-cell">Qty</div>
+            <div class="table-cell">Use</div>
             <div class="table-cell--last">
                 <label class="dh-control-button item-create" data-type="gear" data-action="itemCreate">
                     <span class="dh-control-button__span material-icons">{{defaultVal icon 'add_circle'}}</span>
@@ -32,6 +34,17 @@
                     </div>
                     <div class="table-cell">
                         <span class="display">{{item.system.weight}}</span>
+                    </div>
+                    <div class="table-cell">
+                        <span class="display">{{item.system.quantity}}</span>
+                    </div>
+                    <div class="table-cell">
+                        {{#if item.isUsable}}
+                            <label class="dh-control-button item-use" data-item-id="{{item.id}}" data-action="itemUse"
+                                   data-tooltip="Use one">
+                                <span class="dh-control-button__span material-icons">{{defaultVal icon 'local_drink'}}</span>
+                            </label>
+                        {{/if}}
                     </div>
                     <div class="table-cell--last">
                         <label class="dh-control-button item-delete" data-item-id="{{item.id}}" data-action="itemDelete">
