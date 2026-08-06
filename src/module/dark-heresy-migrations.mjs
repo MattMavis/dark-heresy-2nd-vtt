@@ -2,7 +2,7 @@ import { DarkHeresySettings } from './dark-heresy-settings.mjs';
 import { SYSTEM_ID } from './hooks-manager.mjs';
 
 export async function checkAndMigrateWorld() {
-    const worldVersion = 182;
+    const worldVersion = 183;
 
     const currentVersion = game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.worldVersion);
     if (worldVersion !== currentVersion && game.user.isGM) {
@@ -179,6 +179,18 @@ export async function checkAndMigrateWorld() {
                     notes: [
                         'Added the Requisition Menu: browse available gear, roll a Requisition test automatically, and receive items on success.',
                         'Added a shared Warband Tracker actor for the party\'s Subtlety value, spent automatically by Requisition tests for scarce items.',
+                    ],
+                });
+                break;
+            case 183:
+                await releaseNotes({
+                    version: '1.8.3',
+                    notes: [
+                        'Items can now carry Active Effects that really change your character. Equip a Medi-kit and your Medicae goes up; take it off and it goes back down.',
+                        'IMPORTANT: effects on weapons, armour, cybernetics, force fields, gear and tools now only apply while the item is Equipped. If you hand-authored effects on a weapon or armour before this update, tick Equipped to keep them working.',
+                        'Consumables and drugs now have a quantity and a Use button on the Gear tab. Using one rolls its duration, applies its effects for that long, and spends a dose.',
+                        'All physical items now have a Quantity. Carry weight counts the whole stack, and requisitioning something you already own adds to that stack instead of making a second row.',
+                        'Fixed carry weight ignoring anything loaded inside a weapon -- ammunition and modifications now count toward encumbrance, so some characters will weigh slightly more than before.',
                     ],
                 });
                 break;
