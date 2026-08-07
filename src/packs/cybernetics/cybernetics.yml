@@ -111,6 +111,10 @@ data:
   availability: Rare
   craftsmanship: Common
   description: 'Common bionic lungs and implanted respiratory systems mimic the action of human lungs and keep the body supplied with oxygen. Such characters gain a +20 bonus to Toughness tests made to resist airborne toxins and gas weapons. Poor bionic lungs offer the same benefits as the Common system, but are raucously loud affairs and characters suffer a –20 penalty to Stealth tests. Their generally poor oxygen supply to the body means that the character suffers a –10 penalty on all tests involving strenuous physical activity. Good bionic lungs count as a full life support system—if for any reason the user’s own respiratory system fails, his bionic lungs keep his blood oxygenated—and can be designed to be unnoticeable if desired.'
+  conditionalBonuses:
+    - key: toughness
+      value: 20
+      condition: to resist airborne toxins and gas weapons
   weight: 0
   equipped: false
 img: systems/dark-heresy-2nd/icons/talents/blue/b_35.png
@@ -224,6 +228,13 @@ data:
   availability: Rare
   craftsmanship: Common
   description: 'The Acolyte now has a mechanical port implanted in his body, commonly in the rear of the neck, which can be connected to machines via a data cable. This allows the user faster and smoother access to the valuable information within, and grants a +10 bonus to Common Lore, Inquiry, or Tech-Use tests whilst connected to a relevant mechanism or data spool.'
+  conditionalBonuses:
+    - key: techUse
+      value: 10
+      condition: whilst connected to a relevant mechanism
+    - key: inquiry
+      value: 10
+      condition: whilst connected to a relevant data spool
   weight: 0
   equipped: false
 img: systems/dark-heresy-2nd/icons/talents/blue/b_35.png
@@ -378,6 +389,10 @@ data:
   availability: Rare
   craftsmanship: Common
   description: 'These are implanted inside the lungs or involve masses of tubes, wires, vox-grills, or other augmetic parts replacing the neck and upper chest. The implant sifts out most toxic gases; inhaled particulate matter is also filtered, making breathing easier in heavily polluted atmospheres. This implant grants the user a +20 bonus to resist inhaled poisons, gas weapons, or atmospheric toxins.'
+  conditionalBonuses:
+    - key: toughness
+      value: 20
+      condition: to resist inhaled poisons, gas, or atmospheric toxins
   weight: 0
   equipped: false
 img: systems/dark-heresy-2nd/icons/talents/blue/b_35.png

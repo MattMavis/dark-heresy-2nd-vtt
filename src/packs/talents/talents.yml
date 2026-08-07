@@ -44,6 +44,10 @@ data:
     prerequisites: 'Ag 30'
     source: PG 124 CB
     tier: '1'
+    conditionalBonuses:
+        - key: acrobatics
+          value: 20
+          condition: when using Jump
 img: systems/dark-heresy-2nd/icons/psykana/wind-grasp-magenta-1.jpg
 name: Catfall
 type: talent
@@ -91,6 +95,10 @@ data:
     prerequisites: ''
     source: PG 126 CB
     tier: '1'
+    conditionalBonuses:
+        - key: weaponSkill
+          value: 10
+          condition: when outnumbering the opponent
 img: systems/dark-heresy-2nd/icons/talents/violet/p_29.PNG
 name: Double Team
 type: talent
@@ -103,6 +111,18 @@ data:
     prerequisites: ''
     source: PG 126 CB
     tier: '1'
+    choice:
+        list: faction
+        selected: ''
+    conditionalBonuses:
+        - key: fellowship
+          value: -10
+          perLevel: true
+          condition: 'when dealing with {choice}'
+        - key: influence
+          value: -10
+          perLevel: true
+          condition: 'when dealing with {choice}'
 img: systems/dark-heresy-2nd/icons/talents/violet/p_21.PNG
 name: Enemy
 type: talent
@@ -189,6 +209,10 @@ data:
     prerequisites: 'Int 35'
     source: PG 129 CB
     tier: '1'
+    conditionalBonuses:
+        - key: awareness
+          value: -10
+          condition: on the single permitted retry
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
 name: Keen Intuition
 type: talent
@@ -248,6 +272,14 @@ data:
     prerequisites: 'Fel 30'
     source: PG 130 CB
     tier: '1'
+    choice:
+        list: faction
+        selected: ''
+    conditionalBonuses:
+        - key: fellowship
+          value: 10
+          perLevel: true
+          condition: 'when dealing with {choice}'
 img: systems/dark-heresy-2nd/icons/psykana/evil-eye-eerie-2.jpg
 name: Peer
 type: talent
@@ -281,6 +313,16 @@ data:
     prerequisites: ''
     source: PG 131 CB
     tier: '1'
+    choice:
+        list: resistance
+        selected: ''
+    conditionalBonuses:
+        - key: toughness
+          value: 10
+          condition: 'to resist {choice}'
+        - key: willpower
+          value: 10
+          condition: 'to resist {choice}'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
 name: Resistance
 type: talent
@@ -351,6 +393,9 @@ data:
     prerequisites: ''
     source: PG 133 CB
     tier: '1'
+    choice:
+        list: weapon_group
+        selected: ''
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
 name: Weapon Training
 type: talent
@@ -424,6 +469,10 @@ data:
     prerequisites: 'S 45'
     source: PG 123 CB
     tier: '2'
+    conditionalBonuses:
+        - key: athletics
+          value: 20
+          condition: when using Heft
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
 name: Bulging Biceps
 type: talent
@@ -484,6 +533,17 @@ data:
     source: PG 124 CB
     tier: '2'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+effects:
+    - name: Coordinated Interrogation
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+      transfer: true
+      disabled: false
+      system:
+          changes:
+              - key: system.skills.interrogation.modifier
+                type: add
+                value: 10
+                phase: initial
 name: Coordinated Interrogation
 type: talent
 ---
@@ -494,6 +554,10 @@ data:
     prerequisites: 'WS 40'
     source: PG 125 CB
     tier: '2'
+    conditionalBonuses:
+        - key: weaponSkill
+          value: -20
+          condition: on the attack following a successful Parry
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
 name: Counter Attack
 type: talent
@@ -648,6 +712,13 @@ data:
     prerequisites: ''
     source: PG 128 CB
     tier: '2'
+    choice:
+        list: faction
+        selected: ''
+    conditionalBonuses:
+        - key: weaponSkill
+          value: 10
+          condition: 'when attacking {choice}'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
 name: Hatred
 type: talent
@@ -854,6 +925,9 @@ data:
     prerequisites: ''
     source: PG 58 EI
     tier: '2'
+    choice:
+        list: faction
+        selected: ''
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
 name: Purity of Hatred
 type: talent
@@ -915,6 +989,13 @@ data:
     prerequisites: ''
     source: PG 132 CB
     tier: '2'
+    conditionalBonuses:
+        - key: weaponSkill
+          value: -20
+          condition: when attacking with two weapons
+        - key: ballisticSkill
+          value: -20
+          condition: when attacking with two weapons
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
 name: Two-Weapon Wielder
 type: talent
@@ -1399,6 +1480,17 @@ data:
     source: PG 131 CB
     tier: '3'
 img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+effects:
+    - name: Superior Chirurgeon
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+      transfer: true
+      disabled: false
+      system:
+          changes:
+              - key: system.skills.medicae.modifier
+                type: add
+                value: 20
+                phase: initial
 name: Superior Chirurgeon
 type: talent
 ---

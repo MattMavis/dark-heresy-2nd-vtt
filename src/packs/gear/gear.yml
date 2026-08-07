@@ -68,6 +68,10 @@ data:
     description: Dampens high-volume sonic disturbances. +20 Toughness vs sonic effects
         or the auditory effects of Concussive.
     source: PG 170 CB
+    conditionalBonuses:
+        - key: toughness
+          value: 20
+          condition: vs sonic effects and auditory Concussive
     weight: 0
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Deadspace Earpiece
@@ -91,6 +95,10 @@ data:
     description: +20 Toughness to resist damaging gases. Good craftsmanship +10 more.
         Poor replaced after 5 hours.
     source: PG 171 CB
+    conditionalBonuses:
+        - key: toughness
+          value: 20
+          condition: to resist damaging gases
     weight: 0
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Filtration Plugs
@@ -113,6 +121,10 @@ data:
     description: No darkness penalties; +20 to vision-based Perception at night. Poor
         are bulky w/ glowing lenses; Good/Best disguised as eyeglasses.
     source: PG 171 CB
+    conditionalBonuses:
+        - key: perception
+          value: 20
+          condition: for vision-based tests at night
     weight: 0.5
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Preysense Goggles
@@ -146,6 +158,10 @@ data:
     description: +30 Toughness vs gas, and may re-roll a failed test. Good +10 more.
         Poor replaced after 10 hours.
     source: PG 171 CB
+    conditionalBonuses:
+        - key: toughness
+          value: 30
+          condition: to resist gas, and may re-roll a failure
     weight: 0.5
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Respirator/Gas Mask
@@ -157,6 +173,10 @@ data:
     description: +20 to withstand extreme temperatures (Good +25, Best +30). Poor lasts
         3 days before recharge.
     source: PG 172 CB
+    conditionalBonuses:
+        - key: toughness
+          value: 20
+          condition: to withstand extreme temperatures
     weight: 0
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Survival Suit
@@ -169,6 +189,17 @@ data:
         preysense goggles and Dark-sight.
     source: PG 172 CB
     weight: 2
+effects:
+    - name: Synskin
+      img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+      transfer: true
+      disabled: false
+      system:
+          changes:
+              - key: system.skills.stealth.modifier
+                type: add
+                value: 10
+                phase: initial
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Synskin
 type: gear
@@ -199,6 +230,10 @@ data:
         other machine spirits to its bidding, or abruptly deactivating life-support or engines
         in vehicles.
     source: PG 52 EI
+    conditionalBonuses:
+        - key: techUse
+          value: 30
+          condition: when the skull consents, at the GM's discretion
     weight: 0
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Animus Skull
@@ -470,6 +505,10 @@ data:
         causes the wearer to gain one level of Fatigue for every 5 minutes of operation
         beyond the first minute.
     source: PG 47 EB
+    conditionalBonuses:
+        - key: ballisticSkill
+          value: 10
+          condition: against psykers and Daemonic targets it has illuminated
     weight: 1.5
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Psyocculum

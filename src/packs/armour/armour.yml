@@ -104,6 +104,13 @@ data:
         a single round, the suit becomes damaged and require repair.
     maxAgility: 40
     type: Basic
+    conditionalBonuses:
+        - key: toughness
+          value: 40
+          condition: to resist the effects of gases
+        - key: toughness
+          value: 10
+          condition: to resist extreme temperatures or being set on fire
     weight: 10
 img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
 name: Mould Suit

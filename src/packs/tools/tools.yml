@@ -18,6 +18,10 @@ data:
     description: When used grants +20 to awareness tests and counts as a Free Action
         once per turn. With aTech-Usecan see through walls less than 50 cm, has a range
         of 50 meters.
+    conditionalBonuses:
+        - key: awareness
+          value: 20
+          condition: when actively scanning
     weight: 0.5
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Auspex/Scanner
@@ -36,6 +40,10 @@ data:
     availability: Common
     craftsmanship: Common
     description: Grants +30 to Climb tests and cannot fall if failed.
+    conditionalBonuses:
+        - key: athletics
+          value: 30
+          condition: when climbing
     weight: 2
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Clip/Drop Harness
@@ -97,6 +105,13 @@ data:
     availability: Rare
     craftsmanship: Common
     description: Grants +20 to Medicae or Perception  to determine proper treatment.
+    conditionalBonuses:
+        - key: medicae
+          value: 20
+          condition: to determine proper treatment
+        - key: perception
+          value: 20
+          condition: to determine proper treatment
     weight: 4
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Diagnostor
@@ -146,6 +161,10 @@ data:
     availability: Average
     craftsmanship: Common
     description: Provides +30 to Medicae tests to stop Blood Loss.
+    conditionalBonuses:
+        - key: medicae
+          value: 30
+          condition: to stop Blood Loss
     weight: 0.5
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Field Suture
@@ -189,6 +208,10 @@ data:
     craftsmanship: Common
     description: Grants another +20 to their next Ballistic Skill when using weapons
         with Indirect quality.
+    conditionalBonuses:
+        - key: ballisticSkill
+          value: 20
+          condition: with Indirect weapons, next shot only
     weight: 0.5
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Hand-Held Targeter
@@ -203,6 +226,16 @@ data:
         allowing to survey the area around in great detail, and grants a +20 bonus to
         Navigate (Surface), Survival (Tracking), and Scrutiny tests. The recorder can
         stay airborne for 5 hours before its power cell is exhausted
+    conditionalBonuses:
+        - key: navigate.surface
+          value: 20
+          condition: once deployed
+        - key: survival
+          value: 20
+          condition: once deployed
+        - key: scrutiny
+          value: 20
+          condition: once deployed
     weight: 6
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Holo-Spectus
@@ -331,6 +364,10 @@ data:
     availability: Scarce
     craftsmanship: Common
     description: Gains a +30 bonus to Security test when trying to open locks.
+    conditionalBonuses:
+        - key: security
+          value: 30
+          condition: when opening locks
     weight: 0
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Multikey
@@ -371,6 +408,10 @@ data:
     craftsmanship: Common
     description: Chess in the future and takes 1d5 hours. Can grant +10 to fellowship
         with the opponent the following day.
+    conditionalBonuses:
+        - key: fellowship
+          value: 10
+          condition: with an opponent, the day after a game
     weight: 1
 img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
 name: Regicide Set

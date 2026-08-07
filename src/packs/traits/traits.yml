@@ -285,12 +285,26 @@ data:
         it has a suitable special ability or talent.
     level: 0
 img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+effects:
+    - name: Incorporeal
+      img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
+      transfer: true
+      disabled: false
+      system:
+          changes:
+              - key: system.skills.stealth.modifier
+                type: add
+                value: 30
+                phase: initial
 name: Incorporeal
 type: trait
 ---
 data:
     description: Increases one characteristic bonus.
     level: 0
+    choice:
+        list: characteristic
+        selected: ''
 img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
 name: Unnatural Characteristic
 type: trait
@@ -359,6 +373,10 @@ data:
         actual melee weapons to wield for this to take effect. Note that a creature still
         requires the Two-Weapon Wielder talent to make multiple attacks in the same turn.
     level: 0
+    conditionalBonuses:
+        - key: athletics
+          value: 10
+          condition: on tests involving climbing or swimming
 img: systems/dark-heresy-2nd/icons/talents/blue/b_33.png
 name: Multiple Arms
 type: trait
