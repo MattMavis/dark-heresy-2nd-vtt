@@ -11,7 +11,17 @@
     {
       "name": "Matt Keathley",
       "url": "https://www.keathley.co",
-      "discord": "mkea"
+      "discord": "mkea",
+      "flags": {
+        "role": "Original author of the Dark Heresy 2nd Edition system"
+      }
+    },
+    {
+      "name": "Matt Mavis",
+      "url": "https://github.com/MattMavis",
+      "flags": {
+        "role": "Fork maintainer -- additional automation, see README"
+      }
     }
   ],
   "esmodules": [

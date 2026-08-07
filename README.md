@@ -6,9 +6,13 @@ It offers extensive support for character sheets, compendium packs, and automate
 
 ---
 
-## About this fork
+## Credits
 
-This is a fork of [mrkeathley/dark-heresy-2nd-vtt](https://github.com/mrkeathley/dark-heresy-2nd-vtt), extended with additional automation for my own table. Everything above and in the _Thanks_ section below is the original author's work — the sections marked **Added in this fork** are mine.
+**The Dark Heresy 2nd Edition system for Foundry VTT was created by [Matt Keathley](https://www.keathley.co)** — [mrkeathley/dark-heresy-2nd-vtt](https://github.com/mrkeathley/dark-heresy-2nd-vtt). The character sheets, compendium packs, roll pipeline, combat automation and essentially all of the architecture this fork builds on are his work, and it is excellent. If you want the system as its author intended, install the original rather than this fork.
+
+This fork is maintained by [Matt Mavis](https://github.com/MattMavis) and adds further automation for my own table. Everything in the intro above and the _Thanks_ section below is the original author's writing and his credits; the sections marked **Added in this fork** are the only parts that are mine.
+
+Released under the same [GPL v3.0](https://choosealicense.com/licenses/gpl-3.0/) licence as the original.
 
 ### A disclaimer worth reading first
 
