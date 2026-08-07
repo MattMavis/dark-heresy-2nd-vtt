@@ -37,6 +37,41 @@ DarkHeresy.items = {
     duration_units: ['rounds', 'turns', 'seconds', 'minutes', 'hours', 'days']
 };
 
+/**
+ * Option lists for talents and traits that are taken "with a specialisation" -- Hatred (Mutants),
+ * Weapon Training (Bolt), Unnatural Characteristic (Strength). The chosen value feeds both the
+ * item's displayed name and whatever bonus it grants, so these are keys, not free text.
+ *
+ * A list may be an array (the entry is both value and label) or an object (key -> label), which
+ * is what `characteristic` needs so the stored value matches the actor's data path.
+ */
+DarkHeresy.choices = {
+    faction: [
+        'Adepta Sororitas', 'Adeptus Arbites', 'Adeptus Astartes', 'Adeptus Astra Telepathica',
+        'Adeptus Mechanicus', 'Administratum', 'Chartist Captains', 'Collegia Titanicus',
+        'Ecclesiarchy', 'Imperial Creed', 'Imperial Guard', 'Imperial Navy', 'Imperium',
+        'Navigators', 'Planetary Defence Forces', 'Rogue Traders', 'Schola Progenium',
+        'Underworld', 'Chaos', 'Daemons', 'Heretics', 'Mutants', 'Psykers', 'Xenos',
+    ],
+    resistance: ['Cold', 'Disease', 'Fear', 'Heat', 'Poisons', 'Psychic Powers', 'Radiation', 'Vacuum'],
+    weapon_group: [
+        'Bolt', 'Chain', 'Exotic', 'Flame', 'Las', 'Launcher', 'Low-Tech', 'Melta',
+        'Plasma', 'Power', 'Primitive', 'Shock', 'Solid Projectile',
+    ],
+    characteristic: {
+        weaponSkill: 'Weapon Skill',
+        ballisticSkill: 'Ballistic Skill',
+        strength: 'Strength',
+        toughness: 'Toughness',
+        agility: 'Agility',
+        intelligence: 'Intelligence',
+        perception: 'Perception',
+        willpower: 'Willpower',
+        fellowship: 'Fellowship',
+        influence: 'Influence',
+    },
+};
+
 DarkHeresy.combat = {
     las_fire_modes: ['Standard', 'Overcharge', 'Overload'],
     psychic_attacks: ['Psychic Bolt', 'Psychic Blast', 'Psychic Barrage', 'Psychic Storm'],

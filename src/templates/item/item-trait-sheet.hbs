@@ -14,6 +14,15 @@
                         <span class="dh-header__title">Source</span>
                         <input class="dh-header__input" name="system.source" type="text" value="{{item.system.source}}" />
                     </div>
+                    {{#if item.hasChoice}}
+                        <div class="dh-header__item-wrapper--span-2">
+                            <span class="dh-header__title">Specialisation</span>
+                            <select class="dh-header__select" name="system.choice.selected">
+                                <option value=""></option>
+                                {{selectOptions item.choiceOptions selected=item.system.choice.selected}}
+                            </select>
+                        </div>
+                    {{/if}}
                     <div class="dh-header__item-wrapper--span-2">
                         <span class="dh-header__title">Level</span>
                         <input class="dh-header__input" name="system.level" type="number" data-dtype='Number' value="{{item.system.level}}" />

@@ -335,7 +335,28 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
         }
     }
 
+    /**
+     * An Unnatural Characteristic trait raises the unnatural rating of whichever characteristic
+     * it was taken for, by its level. Added on top of anything typed into the sheet by hand
+     * rather than replacing it, and recomputed from source data every cycle, so repeated
+     * preparation cannot make it creep upwards.
+     */
+    _applyUnnaturalTraits() {
+        for (const trait of this.items) {
+            if (trait.type !== 'trait') continue;
+            if (trait.system?.choice?.list !== 'characteristic') continue;
+            const key = trait.system.choice.selected;
+            const level = Number(trait.system.level) || 0;
+            if (!key || level <= 0) continue;
+            const characteristic = this.characteristics?.[key];
+            if (characteristic) {
+                characteristic.unnatural = (Number(characteristic.unnatural) || 0) + level;
+            }
+        }
+    }
+
     _computeCharacteristics() {
+        this._applyUnnaturalTraits();
         for (const [name, characteristic] of Object.entries(this.characteristics)) {
             characteristic.total = characteristic.base + characteristic.advance * 5 + characteristic.modifier;
             characteristic.bonus = Math.floor(characteristic.total / 10) + characteristic.unnatural;

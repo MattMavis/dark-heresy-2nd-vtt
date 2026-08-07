@@ -1146,6 +1146,13 @@
                 "source": "",
                 "conditionalBonuses": []
             },
+            "selectable": {
+                "choice": {
+                    "list": "",
+                    "selected": ""
+                },
+                "level": 0
+            },
             "attack": {
                 "range": "",
                 "attackType": "",
@@ -1281,7 +1288,7 @@
             "benefit": ""
         },
         "talent": {
-            "templates": ["itemDescription"],
+            "templates": ["itemDescription", "selectable"],
             "prerequisites": "",
             "aptitudes": "",
             "benefit": "",
@@ -1292,8 +1299,7 @@
             "templates": ["physicalItem", "itemDescription", "action", "backpack"]
         },
         "trait": {
-            "templates": ["itemDescription"],
-            "level": 0
+            "templates": ["itemDescription", "selectable"]
         },
         "weapon": {
             "templates": ["physicalItem", "itemDescription", "damage", "attack", "action", "container", "backpack"],

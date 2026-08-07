@@ -1,5 +1,6 @@
 import { DarkHeresyItemContainer } from './item-container.mjs';
 import { capitalize } from '../handlebars/handlebars-helpers.mjs';
+import { DarkHeresy } from '../rules/config.mjs';
 
 export class DarkHeresyItem extends DarkHeresyItemContainer {
     get totalWeight() {
@@ -109,6 +110,42 @@ export class DarkHeresyItem extends DarkHeresyItemContainer {
     /** Types that are spent by an explicit Use action rather than worn or wielded. */
     get isUsable() {
         return this.isConsumable || this.isDrug;
+    }
+
+    /**
+     * Options a specialisable talent/trait may choose from, always normalised to value -> label
+     * so templates can hand it straight to selectOptions. Config lists are arrays where the
+     * stored value is its own label, and objects where the value is a data key that needs
+     * translating (characteristics, so the stored value matches the actor's data path).
+     */
+    get choiceOptions() {
+        const list = this.system?.choice?.list;
+        if (!list) return {};
+        const opts = DarkHeresy.choices?.[list];
+        if (!opts) return {};
+        return Array.isArray(opts) ? Object.fromEntries(opts.map((o) => [o, o])) : opts;
+    }
+
+    get hasChoice() {
+        return Object.keys(this.choiceOptions).length > 0;
+    }
+
+    /** The chosen specialisation as it should read to a player. */
+    get choiceLabel() {
+        const selected = this.system?.choice?.selected;
+        if (!selected) return '';
+        return this.choiceOptions[selected] ?? selected;
+    }
+
+    /**
+     * Name qualified by its specialisation and/or rating, so a sheet shows "Hatred (Mutants)"
+     * or "Fear (3)" rather than every copy reading the same. The underlying name is untouched.
+     */
+    get displayName() {
+        const parts = [];
+        if (this.choiceLabel) parts.push(this.choiceLabel);
+        if (Number(this.system?.level)) parts.push(Number(this.system.level));
+        return parts.length ? `${this.name} (${parts.join(' ')})` : this.name;
     }
 
     get isTool() {
