@@ -202,6 +202,10 @@ export function attackSpecials() {
             hasLevel: false,
         },
         {
+            name: 'Shocking',
+            hasLevel: false,
+        },
+        {
             name: 'Smoke',
             hasLevel: true,
         },
