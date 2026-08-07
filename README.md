@@ -1,4 +1,4 @@
-# Dark Heresy 2nd Edition
+# Dark Heresy 2nd Edition: Expanded
 
 This is an _unofficial_ system for playing Dark Heresy 2nd Edition on [Foundry VTT](https://foundryvtt.com/). This requires >= Foundry 12.
 
@@ -67,7 +67,7 @@ This fork:
    `https://github.com/MattMavis/dark-heresy-2nd-vtt/releases/latest/download/system.json`
  - Create a Game World using the "Dark Heresy 2nd Edition" system.
 
-Both this fork and the original share the system id `dark-heresy-2nd`, so Foundry treats them as the same system — install one or the other, not both.
+Both this fork and the original share the system id `dark-heresy-2nd`, so Foundry treats them as the same system — install one or the other, not both. The id is deliberately unchanged so that worlds built on the original open with this fork without modification; only the displayed title differs, and it will appear in Foundry as **Dark Heresy 2nd Edition: Expanded**.
 
 The original, unmodified system by Matt Keathley:
  - Manifest: `https://s3-keathley.nyc3.digitaloceanspaces.com/dark-heresy-2nd/system.json`

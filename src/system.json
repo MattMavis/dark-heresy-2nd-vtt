@@ -1,7 +1,7 @@
 {
   "id": "dark-heresy-2nd",
-  "title": "Dark Heresy 2nd Edition",
-  "description": "Dark Heresy 2nd Edition - Foundry VTT",
+  "title": "Dark Heresy 2nd Edition: Expanded",
+  "description": "Dark Heresy 2nd Edition for Foundry VTT, originally by Matt Keathley. This fork adds further automation: item effects that reach the character, usable consumables, situational bonuses surfaced on the roll they apply to, specialisable talents and traits, and a Requisition menu.",
   "version": "1.8.4",
   "compatibility": {
     "minimum": 13,
