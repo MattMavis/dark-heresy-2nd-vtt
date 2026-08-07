@@ -59,12 +59,22 @@ What that means in practice:
 
 ## Install
 
-> This fork is not published to a manifest URL. Install it by cloning this repository into your Foundry `Data/systems` directory, or use the original author's release below for the unmodified system.
+**Back up your world first.** This fork ships data migrations that convert existing content on first load.
 
-Original system:
+This fork:
  - Go to the setup page and choose _Game Systems_.
- - Click the _Install System_ button, and paste in this [manifest link](https://s3-keathley.nyc3.digitaloceanspaces.com/dark-heresy-2nd/system.json)
+ - Click the _Install System_ button, and paste in this manifest link:
+   `https://github.com/MattMavis/dark-heresy-2nd-vtt/releases/latest/download/system.json`
  - Create a Game World using the "Dark Heresy 2nd Edition" system.
+
+Both this fork and the original share the system id `dark-heresy-2nd`, so Foundry treats them as the same system — install one or the other, not both.
+
+The original, unmodified system by Matt Keathley:
+ - Manifest: `https://s3-keathley.nyc3.digitaloceanspaces.com/dark-heresy-2nd/system.json`
+
+### Releasing (notes to self)
+
+`npx gulp build` writes `archive/dark-heresy-2nd-<version>.zip`. Publish a GitHub release tagged `v<version>` with both that zip and the built `system.json` attached. The `manifest` URL always resolves to the newest release, while `download` is pinned per release — so bump `version` and the version in `download` together in `src/system.json` before tagging.
 
 ## Links
   - [Foundry VTT](https://foundryvtt.com/)
