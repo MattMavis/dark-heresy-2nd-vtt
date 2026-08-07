@@ -472,10 +472,13 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
         );
 
         // Add Cybernetics -- these are cumulative?
+        // Deliberately not filtered on system.hasArmourPoints: that flag only controls whether
+        // the sheet shows the armour fields, and no compendium cybernetic has ever set it, so
+        // gating the maths on it silently discarded every implant's protection. The points
+        // themselves are the source of truth, and they are zero for implants without armour.
         this.items
             .filter((item) => item.type === 'cybernetic' )
             .filter((item) => item.system.equipped)
-            .filter((item) => item.system.hasArmourPoints)
             .forEach((cybernetic) => {
                 locations.forEach((location) => {
                     let armourVal = cybernetic.system.armourPoints[location] || 0;
