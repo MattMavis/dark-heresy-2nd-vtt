@@ -113,6 +113,20 @@ export class RollData {
         return this.baseTarget + this.modifierTotal;
     }
 
+    /**
+     * Situational bonuses from gear that deliberately are NOT applied to modifiedTarget --
+     * see rules/conditional-bonuses.mjs. Surfaced with the target they would produce so the
+     * table can apply them by eye when the condition is actually met.
+     */
+    conditionalBonuses = [];
+
+    get conditionalTargets() {
+        return this.conditionalBonuses.map((bonus) => ({
+            ...bonus,
+            target: this.modifiedTarget + bonus.value,
+        }));
+    }
+
     get activeModifiers() {
         const modifiers = {};
         for (const m of Object.keys(this.modifiers)) {

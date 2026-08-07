@@ -15,6 +15,7 @@ import { DHBasicActionManager } from '../actions/basic-action-manager.mjs';
 import { getDegree, roll1d100 } from '../rolls/roll-helpers.mjs';
 import { SYSTEM_ID } from '../hooks-manager.mjs';
 import { DarkHeresySettings } from '../dark-heresy-settings.mjs';
+import { collectConditionalBonuses, conditionalBonusKey } from '../rules/conditional-bonuses.mjs';
 
 export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
 
@@ -150,6 +151,7 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
         rollData.type = 'Skill';
         rollData.baseTarget = skill.current;
         rollData.modifiers.modifier = 0;
+        rollData.conditionalBonuses = collectConditionalBonuses(this, conditionalBonusKey(skillName, specialityName));
         if (isEvasion && this.statuses.has('prone')) {
             rollData.modifiers['self-prone'] = -20;
         }

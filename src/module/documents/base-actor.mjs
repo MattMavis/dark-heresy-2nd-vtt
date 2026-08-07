@@ -1,6 +1,7 @@
 import { prepareSimpleRoll } from '../prompts/simple-prompt.mjs';
 import { SimpleSkillData } from '../rolls/action-data.mjs';
 import { toCamelCase } from '../handlebars/handlebars-helpers.mjs';
+import { collectConditionalBonuses, conditionalBonusKey } from '../rules/conditional-bonuses.mjs';
 
 export class DarkHeresyBaseActor extends Actor {
 
@@ -69,6 +70,7 @@ export class DarkHeresyBaseActor extends Actor {
         rollData.type = override ? override : 'Characteristic';
         rollData.baseTarget = characteristic.total;
         rollData.modifiers.modifier = 0;
+        rollData.conditionalBonuses = collectConditionalBonuses(this, conditionalBonusKey(characteristicName));
         await prepareSimpleRoll(simpleSkillData);
     }
 

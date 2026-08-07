@@ -16,6 +16,14 @@
                 <span class="dh-field__span">Modifier</span>
                 <input class="dh-field__input" type="number" data-dtype="Number" name="modifiers.modifier" id="modifier" value="0" />
             </div>
+            {{#if conditionalBonuses.length}}
+                {{#each conditionalBonuses}}
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">{{source}}</span>
+                        <span class="dh-field__span">{{display}} {{condition}}</span>
+                    </div>
+                {{/each}}
+            {{/if}}
         </div>
     </div>
 {{/with}}

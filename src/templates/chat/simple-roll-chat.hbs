@@ -23,6 +23,16 @@
                     <div class="dh-roll__value">{{modifiedTarget}}</div>
                 </div>
 
+                {{#if conditionalTargets.length}}
+                    <div class="dh-roll__divider"></div>
+                    {{#each conditionalTargets}}
+                        <div class="dh-roll__row dh-roll__row--number">
+                            <div class="dh-roll__label">{{source}}: {{display}} {{condition}}</div>
+                            <div class="dh-roll__value">{{target}}</div>
+                        </div>
+                    {{/each}}
+                {{/if}}
+
                 {{#if success}}
                     <div class="dh-roll__success">
                         <span>Success</span>
