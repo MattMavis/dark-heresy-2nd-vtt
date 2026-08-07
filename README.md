@@ -1,8 +1,12 @@
 # Dark Heresy 2nd Edition: Expanded
 
-This is an _unofficial_ system for playing Dark Heresy 2nd Edition on [Foundry VTT](https://foundryvtt.com/). This requires >= Foundry 12.
+An _unofficial_ system for playing Dark Heresy 2nd Edition on [Foundry VTT](https://foundryvtt.com/), built on [Matt Keathley's Dark Heresy 2nd Edition system](https://github.com/mrkeathley/dark-heresy-2nd-vtt) and extended with further automation.
 
-It offers extensive support for character sheets, compendium packs, and automated management to save you time and allow you to focus on role playing. The existing system listed on Foundry was character sheet only and thus this system was created to facilitate the automation features I desired.
+It gives you full character sheets, a large set of compendium packs, and automation that handles the bookkeeping so the table can stay on the fiction — attack resolution with weapon qualities, ammunition and modifiers applied for you, background and role bonuses during character creation, and encumbrance and inventory that keep themselves straight.
+
+This fork adds the layer above that: gear whose effects genuinely change your character, consumables you can use, situational bonuses shown on the roll they apply to rather than left in the item text, and a Requisition menu that runs the Influence test for you. See [Added in this fork](#added-in-this-fork) for the full list.
+
+**Requires Foundry v13 or later.** Verified against 14.365.
 
 ---
 
@@ -10,7 +14,7 @@ It offers extensive support for character sheets, compendium packs, and automate
 
 **The Dark Heresy 2nd Edition system for Foundry VTT was created by [Matt Keathley](https://www.keathley.co)** — [mrkeathley/dark-heresy-2nd-vtt](https://github.com/mrkeathley/dark-heresy-2nd-vtt). The character sheets, compendium packs, roll pipeline, combat automation and essentially all of the architecture this fork builds on are his work, and it is excellent. If you want the system as its author intended, install the original rather than this fork.
 
-This fork is maintained by [Matt Mavis](https://github.com/MattMavis) and adds further automation for my own table. Everything in the intro above and the _Thanks_ section below is the original author's writing and his credits; the sections marked **Added in this fork** are the only parts that are mine.
+This fork is maintained by [Matt Mavis](https://github.com/MattMavis) and adds further automation for my own table. The _Thanks_ section at the bottom is the original author's own acknowledgements, kept as he wrote them; the sections marked **Added in this fork** describe what I have added on top of his work.
 
 Released under the same [GPL v3.0](https://choosealicense.com/licenses/gpl-3.0/) licence as the original.
 
@@ -88,7 +92,9 @@ The original, unmodified system by Matt Keathley:
 | ![Attack Prompt](.github/attack_prompt.png)  | ![Damage Chat](.github/damage_chat.png) |
 
 
-### Thanks
+### Thanks, from the original author
+_Matt Keathley's acknowledgements from the upstream project, kept as he wrote them._
+
 - I liked the layout of the WH4e sheet on Roll20 and tried to mimic that where possible. Thanks to the authors for that inspiration.
 - I studied the original DH2e Foundry VTT project by moo-man. I ended up not using much from there but learned a lot about Foundry. I appreciate the head start!
 - My tabletop group for play testing and feedback.
