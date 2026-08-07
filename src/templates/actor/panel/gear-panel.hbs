@@ -19,7 +19,7 @@
             </div>
         </div>
         {{#each actor.items as | item |}}
-            {{#if item.isGear}}
+            {{#if (and item.isGear item.isLoose)}}
                 <div class="table-row item-drag" data-item-id="{{item.id}}" data-item-type="{{item.type}}">
                     <div class="table-cell--settingstoggle">
                         <label class="dh-control-button item-edit" data-item-id="{{item.id}}" data-action="itemEdit">

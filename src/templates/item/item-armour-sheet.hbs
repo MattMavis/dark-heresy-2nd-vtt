@@ -135,6 +135,12 @@
                                                 <span>{{embedded.system.equipped}}</span>
                                             </div>
                                             <div class="table-cell--last">
+                                                {{#if @root.item.actor}}
+                                                    <label class="dh-control-button item-release" data-action="itemRelease"
+                                                              data-item-id="{{embedded.id}}" data-tooltip="Remove from container">
+                                                        <span class="dh-control-button__span material-icons">eject</span>
+                                                    </label>
+                                                {{/if}}
                                                 <label class="dh-control-button item-delete" data-action="itemDelete"
                                                        data-item-id="{{embedded.id}}">
                                                     <span class="dh-control-button__span material-icons">{{defaultVal

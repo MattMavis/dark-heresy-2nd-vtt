@@ -1,6 +1,8 @@
 import { toggleUIExpanded } from '../../rules/config.mjs';
 import { DHBasicActionManager } from '../../actions/basic-action-manager.mjs';
 import { prepareCreateSpecialistSkillPrompt } from '../../prompts/simple-prompt.mjs';
+import { DH_CONTAINED_BY } from '../../documents/item-container.mjs';
+import { SYSTEM_ID } from '../../hooks-manager.mjs';
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -134,6 +136,17 @@ export class ActorContainerSheet extends HandlebarsApplicationMixin(ActorSheetV2
         try {
             const data = JSON.parse(event.dataTransfer.getData('text/plain'));
             if (data.type === 'Item' || data.type === 'item') {
+                // Dragged out of one of this actor's own containers: take it out of the
+                // container rather than duplicating it. Without this the only way to get a
+                // modification back off a weapon would be to delete it.
+                const dropped = data.uuid ? await fromUuid(data.uuid) : null;
+                if (dropped?.parent === this.actor && dropped.isContained) {
+                    await dropped.unsetFlag(SYSTEM_ID, DH_CONTAINED_BY);
+                    ui.notifications.info(`${dropped.name} removed from its container.`);
+                    this.render();
+                    return false;
+                }
+
                 game.dh.log('Checking if item already exists', data);
                 // Check if Item already Exists
                 if (this.actor.items.find((i) => i._id === data?.data?._id)) {
@@ -287,9 +300,15 @@ export class ActorContainerSheet extends HandlebarsApplicationMixin(ActorSheetV2
     async _onItemDelete(event, target) {
         event.preventDefault();
         const itemId = target.dataset.itemId;
+        // Contents go with their container, as they always have -- but say so rather than
+        // silently taking a loaded clip and every installed modification with it.
+        const contents = [...(this.actor.items.get(itemId)?.items ?? [])].map((i) => i.name);
+        const warning = contents.length
+            ? `<p>This will also delete what it contains: <strong>${contents.join(', ')}</strong>.</p>`
+            : '';
         const confirmed = await foundry.applications.api.DialogV2.confirm({
             window: { title: 'Confirm Delete' },
-            content: '<p>Are you sure you would like to delete this?</p>',
+            content: `<p>Are you sure you would like to delete this?</p>${warning}`,
             modal: true,
         });
         if (!confirmed) return;

@@ -3,6 +3,8 @@
  * e.g. weapons with associated weapon mods
  */
 import { DarkHeresyItemSheet } from './item-sheet.mjs';
+import { DH_CONTAINED_BY } from '../../documents/item-container.mjs';
+import { SYSTEM_ID } from '../../hooks-manager.mjs';
 
 const { DialogV2 } = foundry.applications.api;
 
@@ -13,6 +15,7 @@ export class DarkHeresyItemContainerSheet extends DarkHeresyItemSheet {
             itemCreate: DarkHeresyItemContainerSheet.#onItemCreate,
             itemDelete: DarkHeresyItemContainerSheet.#onItemDelete,
             itemEdit: DarkHeresyItemContainerSheet.#onItemEdit,
+            itemRelease: DarkHeresyItemContainerSheet.#onItemRelease,
         },
     };
 
@@ -65,66 +68,59 @@ export class DarkHeresyItemContainerSheet extends DarkHeresyItemSheet {
     async _onDrop(event) {
         event.preventDefault();
         event.stopPropagation();
-        let data;
+
         let item;
-        let actor;
         try {
-            data = JSON.parse(event.dataTransfer.getData('text/plain'));
+            const data = JSON.parse(event.dataTransfer.getData('text/plain'));
             if (data.type !== 'Item') {
-                game.dh.log('ItemCollection | Containers only accept items', data);
+                game.dh.log('ItemContainer | Containers only accept items', data);
                 return false;
-            } else {
-                game.dh.log('_onDrop data: ', data);
-                // Drags originating from within a container carry the item data directly rather than a uuid.
-                item = data.uuid ? fromUuidSync(data.uuid) : data.data;
-
-                if (data.actor) {
-                    actor = data.actor;
-                } else if (data.uuid && data.uuid.startsWith('Actor.')) {
-                    actor = await fromUuid(data.uuid);
-                }
-
-                // Check if Item already Exists
-                if (this.item.items.find((i) => i._id === item._id)) {
-                    game.dh.log('Item already exists in container -- ignoring');
-                    return false;
-                }
             }
+            // Contained items are ordinary documents now, so every drop resolves by uuid --
+            // there is no longer a raw-data payload for things dragged out of a container.
+            item = data.uuid ? await fromUuid(data.uuid) : null;
         } catch (err) {
             game.dh.log('Item Container | drop error', err);
             return false;
         }
+        if (!item) return false;
 
-        if (item) {
-            // Check up the chain that we are not dropping one of our parents onto us.
-            let canAdd = this.item.id !== item._id;
-            let ancestor = this.item.parent;
-            let count = 0;
-            while (ancestor && count < 10) {
-                // Don't allow drops of anything in the parent chain or the item will disappear.
-                count += 1;
-                canAdd = canAdd && ancestor.id !== item._id;
-                ancestor = ancestor.parent;
-            }
-            if (!canAdd) {
-                game.dh.log('ItemCollection | Cant drop on yourself');
-                ui.notifications.info('Cannot drop item into itself');
-                throw new Error('Dragging bag onto itself or ancestor opens a planar vortex and you are sucked into it');
-            }
-            // drop from player characters or another bag.
-            if (this.canAdd(item)) {
+        if (this.item.items.get(item.id)) {
+            game.dh.log('Item already in this container -- ignoring');
+            return false;
+        }
+
+        // Refuse a drop that would put a container inside itself or its own contents.
+        if (this.#wouldCycle(item)) {
+            ui.notifications.warn('Cannot place an item inside itself.');
+            return false;
+        }
+
+        if (this.canAdd(item)) {
+            // Same collection (usually the same actor): containment is just a flag change, so
+            // the document keeps its id, its effects and any other references to it.
+            if (item.parent === this.item.parent) {
+                await item.setFlag(SYSTEM_ID, DH_CONTAINED_BY, this.item.id);
+            } else {
                 await this.item.createNestedDocuments([item]);
-                if (actor && (actor.type === 'acolyte' || actor.isToken)) await actor.deleteEmbeddedDocuments('Item', [item._id]);
-                return false;
+                if (item.parent) await item.delete();
             }
-            // Item is not accepted by this container -- place back onto actor
-            else if (this.item.parent) {
-                // this bag is owned by an actor - drop into the inventory instead.
-                if (actor && actor.type === 'acolyte') await actor.deleteEmbeddedDocuments('Item', [item._id]);
-                await this.item.parent.createNestedDocuments([item]);
-                ui.notifications.info('Item dropped back into actor.');
-                return false;
-            }
+            this.render();
+            return false;
+        }
+
+        ui.notifications.info(`${this.item.name} cannot hold a ${item.type}.`);
+        return false;
+    }
+
+    /** True if placing `item` into this container would create a containment loop. */
+    #wouldCycle(item) {
+        if (item.id === this.item.id) return true;
+        let container = this.item.containerItem;
+        let depth = 0;
+        while (container && depth++ < 10) {
+            if (container.id === item.id) return true;
+            container = container.containerItem;
         }
         return false;
     }
@@ -134,30 +130,24 @@ export class DarkHeresyItemContainerSheet extends DarkHeresyItemSheet {
     /** @inheritDoc */
     async _onDragStart(event) {
         event.stopPropagation();
-        game.dh.log('Item:_onDragStart', event);
 
         const element = event.currentTarget;
-        if (!element.dataset?.itemId) {
-            // Not a nested item -- let the core ItemSheetV2 handler deal with it (e.g. ActiveEffects).
-            game.dh.log('Default Foundry Handler');
+        const itemId = element.dataset?.itemId;
+        if (!itemId) {
+            // Not a contained item -- let the core ItemSheetV2 handler deal with it (e.g. ActiveEffects).
             return super._onDragStart(event);
         }
 
-        const itemId = element.dataset.itemId;
         const item = this.item.items.get(itemId);
         if (!item) {
-            game.dh.log('No Item found on container - Cancelling Drag');
+            game.dh.log('No item found on container - cancelling drag');
             return;
         }
 
-        // Create drag data
-        const dragData = {
-            parentId: this.item.id,
-            type: 'Item',
-            data: item,
-        };
-        event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
-        await this.item.deleteNestedDocuments([itemId]);
+        // Non-destructive: the item is a real document with a uuid, so it stays put until
+        // something actually accepts it. The old implementation deleted it here and rebuilt it
+        // on drop, which lost the item outright if the drag was cancelled.
+        event.dataTransfer.setData('text/plain', JSON.stringify(item.toDragData()));
     }
 
     /* -------------------------------------------- */
@@ -222,6 +212,27 @@ export class DarkHeresyItemContainerSheet extends DarkHeresyItemSheet {
         });
         if (!confirmed) return;
         await this.item.deleteNestedDocuments([itemId]);
+        this.render();
+    }
+
+    /* -------------------------------------------- */
+
+    /**
+     * Take a contained item out of this container, leaving it in the owner's inventory.
+     * Dragging it out to the actor sheet does the same thing, but that means having both
+     * windows open and lined up -- this is the reliable way to get something back off a
+     * weapon without deleting it.
+     * @this {DarkHeresyItemContainerSheet}
+     * @param {PointerEvent} event
+     * @param {HTMLElement} target
+     */
+    static async #onItemRelease(event, target) {
+        if (!this.isEditable) return;
+        const itemId = target.closest('[data-item-id]')?.dataset.itemId;
+        if (!itemId) return;
+        const name = this.item.items.get(itemId)?.name ?? 'Item';
+        await this.item.releaseNestedDocuments([itemId]);
+        ui.notifications.info(`${name} removed from ${this.item.name}.`);
         this.render();
     }
 

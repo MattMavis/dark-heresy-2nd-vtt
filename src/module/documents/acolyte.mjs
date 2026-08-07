@@ -558,7 +558,7 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
         let backpackMaxWeight = 0;
         if (this.backpack.hasBackpack) {
             backpackMaxWeight = this.backpack.weight.max;
-            this.items.filter((item) => !item.isStorageLocation).forEach((item) => {
+            this.items.filter((item) => !item.isStorageLocation && !item.isContained).forEach((item) => {
                 if (item.system.backpack?.inBackpack) {
                     backpackCurrentWeight += item.totalWeight;
                 } else {
@@ -571,7 +571,7 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
             }
         } else {
             // No backpack -- add everything
-            this.items.filter((item) => !item.isStorageLocation).forEach((item) => (currentWeight += item.totalWeight));
+            this.items.filter((item) => !item.isStorageLocation && !item.isContained).forEach((item) => (currentWeight += item.totalWeight));
         }
 
         const attributeBonus = this.characteristics.strength.bonus + this.characteristics.toughness.bonus;

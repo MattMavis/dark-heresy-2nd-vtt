@@ -29,9 +29,32 @@ export class DarkHeresyActiveEffect extends ActiveEffect {
         if (!(item instanceof Item)) return false;
 
         if (USE_ONLY_TYPES.includes(item.type)) return true;
+
+        // Something inside a container only counts while the container itself is in use: a
+        // red-dot sight does nothing while the gun it is bolted to is in a backpack.
+        if (item.isContained) {
+            if (!this.#containerInUse(item)) return true;
+            // Mirror how the rules layer already decides whether contained things count --
+            // modifications must be installed, specials enabled, loaded ammo just present.
+            if (item.isWeaponModification || item.isArmourModification) return !item.system.equipped;
+            if (item.isAttackSpecial) return !(item.system.equipped || item.system.enabled);
+            return false;
+        }
+
         // Talents, traits, mutations and the like have no equipped concept -- always on.
         if (!EQUIP_GATED_TYPES.includes(item.type)) return false;
 
         return !item.system.equipped;
+    }
+
+    /** Walk the container chain; every equip-gated container along it must be equipped. */
+    #containerInUse(item) {
+        let container = item.containerItem;
+        let depth = 0;
+        while (container && depth++ < 10) {
+            if (EQUIP_GATED_TYPES.includes(container.type) && !container.system.equipped) return false;
+            container = container.containerItem;
+        }
+        return true;
     }
 }

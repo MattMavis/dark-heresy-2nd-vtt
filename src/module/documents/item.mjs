@@ -199,14 +199,42 @@ export class DarkHeresyItem extends DarkHeresyItemContainer {
     _onCreate(data, options, user) {
         game.dh.log('Determining nested items for', this);
         this._determineNestedItems();
+        this._expandLegacyContents();
         return super._onCreate(data, options, user);
+    }
+
+    /**
+     * A container from the world directory or a compendium carries its contents as flag data,
+     * because unowned containers have no character to affect. The moment it belongs to an
+     * actor those contents have to become real items, or a weapon dragged onto a character
+     * would arrive stripped of its qualities and modifications.
+     *
+     * The legacy flag is left alone so the source item is unchanged and the data stays
+     * recoverable.
+     */
+    async _expandLegacyContents() {
+        if (!this.parent) return;
+        if (this.items?.size) return;
+        const legacy = this.getNested();
+        if (!legacy.length) return;
+        game.dh.log(`Expanding ${legacy.length} contained item(s) onto ${this.parent.name}`, this.name);
+        await this.createNestedDocuments(legacy);
+    }
+
+    /**
+     * Contents are siblings rather than data held inside this item, so they have to be removed
+     * deliberately. This preserves the old behaviour, where a weapon's mods and loaded clip
+     * disappeared along with it -- the difference is that the sheet now says so first.
+     */
+    async _preDelete(options, user) {
+        const ids = [...(this.items ?? [])].map((i) => i.id);
+        if (ids.length) await this.deleteNestedDocuments(ids);
+        return super._preDelete(options, user);
     }
 
     prepareData() {
         super.prepareData();
         game.dh.log('Item prepare data', this);
-
-        this.convertNestedToItems();
 
         if (this.isPsychicPower) {
             if(!this.system.damage || this.system.damage === '') {
@@ -241,20 +269,22 @@ export class DarkHeresyItem extends DarkHeresyItemContainer {
             if (this.isAmmunition) await this._updateSpecialsFromPack('dark-heresy-2nd.ammo', this.system.special);
             game.dh.log('Special migrated for item: ' + this.name, this.system.special);
             this.system.special = undefined;
-
-            await this.convertNestedToItems();
         }
     }
 
     async _updateSpecialsFromPack(pack, data) {
         const compendium = game.packs.find((p) => p.collection === pack);
         if (!compendium) return;
+        // try/finally so a failure part way through can't leave the compendium unlocked.
         await compendium.configure({ locked: false });
-        const attackSpecials = await this._getAttackSpecials(data);
-        if (attackSpecials.length > 0) {
-            await this.createNestedDocuments(attackSpecials);
+        try {
+            const attackSpecials = await this._getAttackSpecials(data);
+            if (attackSpecials?.length > 0) {
+                await this.createNestedDocuments(attackSpecials);
+            }
+        } finally {
+            await compendium.configure({ locked: true });
         }
-        await compendium.configure({ locked: true });
     }
 
     async _getAttackSpecials(specialData) {
