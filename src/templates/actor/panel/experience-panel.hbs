@@ -1,15 +1,108 @@
-<div class="dh-panel dh-grid-col-2 dh-grid-row-2">
+<div class="dh-panel dh-grid-col-3 dh-grid-row-4">
     <h1 class="dh-panel__header">Experience</h1>
     <div class="dh-field__wrapper">
         <span class="dh-field__header">Total</span>
-        <input class="dh-field__input" data-dtype="Number" type="number" name="system.experience.total" value="{{actor.system.experience.total}}" />
+        {{#if actor.system.experience.awards.length}}
+            <span class="dh-field__span">{{actor.system.experience.total}}</span>
+        {{else}}
+            <input class="dh-field__input" data-dtype="Number" type="number" name="system.experience.total" value="{{actor.system.experience.total}}" />
+        {{/if}}
     </div>
     <div class="dh-field__wrapper">
         <span class="dh-field__header">Spent</span>
-        <input class="dh-field__input" data-dtype="Number" type="number" name="system.experience.used" value="{{actor.system.experience.used}}" />
+        {{#if actor.system.experience.ledger.length}}
+            <span class="dh-field__span">{{actor.system.experience.used}}</span>
+        {{else}}
+            <input class="dh-field__input" data-dtype="Number" type="number" name="system.experience.used" value="{{actor.system.experience.used}}" />
+        {{/if}}
     </div>
     <div class="dh-field__wrapper">
         <span class="dh-field__header">Available</span>
         <span class="dh-field__span">{{actor.system.experience.available}}</span>
     </div>
+
+    <div class="dh-controls__wrapper">
+        <div class="dh-control-button">
+            <button type="button" class="combat-control" data-action="advancement">Spend Experience</button>
+        </div>
+        {{#if isGM}}
+            <div class="dh-control-button">
+                <button type="button" class="combat-control" data-action="award">Award Experience</button>
+            </div>
+        {{/if}}
+    </div>
+
+    {{#if actor.system.experience.ledger.length}}
+        <div class="dh-table--border dh-experiencelogtable--border">
+            <div class="table-row--head">
+                <div class="table-cell--span2">Spend by Category</div>
+                <div class="table-cell">Cost</div>
+                <div class="table-cell--last"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell--span2">Characteristics</div>
+                <div class="table-cell">{{actor.system.experience.ledgerByKind.characteristic}}</div>
+                <div class="table-cell--last"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell--span2">Skills</div>
+                <div class="table-cell">{{actor.system.experience.ledgerByKind.skill}}</div>
+                <div class="table-cell--last"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell--span2">Talents</div>
+                <div class="table-cell">{{actor.system.experience.ledgerByKind.talent}}</div>
+                <div class="table-cell--last"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell--span2">Other</div>
+                <div class="table-cell">{{actor.system.experience.ledgerByKind.other}}</div>
+                <div class="table-cell--last"></div>
+            </div>
+        </div>
+
+        <div class="dh-table--border dh-experiencelogtable--border">
+            <div class="table-row--head">
+                <div class="table-cell--span2">History</div>
+                <div class="table-cell">Cost</div>
+                <div class="table-cell--last"></div>
+            </div>
+            {{#each actor.system.experience.ledgerSorted as |entry|}}
+                <div class="table-row">
+                    <div class="table-cell--span2">{{entry.label}}</div>
+                    <div class="table-cell">{{entry.cost}}</div>
+                    <div class="table-cell--last">
+                        {{#if ../isGM}}
+                            <label class="dh-control-button" data-entry-id="{{entry.id}}" data-action="deleteLedgerEntry">
+                                <span class="dh-control-button__span material-icons">{{defaultVal icon 'delete'}}</span>
+                            </label>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+
+    {{#if actor.system.experience.awards.length}}
+        <div class="dh-table--border dh-experiencelogtable--border">
+            <div class="table-row--head">
+                <div class="table-cell--span2">Award History</div>
+                <div class="table-cell">Amount</div>
+                <div class="table-cell--last"></div>
+            </div>
+            {{#each actor.system.experience.awardsSorted as |entry|}}
+                <div class="table-row">
+                    <div class="table-cell--span2">{{entry.reason}} (by {{entry.by}})</div>
+                    <div class="table-cell">{{entry.amount}}</div>
+                    <div class="table-cell--last">
+                        {{#if ../isGM}}
+                            <label class="dh-control-button" data-entry-id="{{entry.id}}" data-action="deleteAwardEntry">
+                                <span class="dh-control-button__span material-icons">{{defaultVal icon 'delete'}}</span>
+                            </label>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
 </div>

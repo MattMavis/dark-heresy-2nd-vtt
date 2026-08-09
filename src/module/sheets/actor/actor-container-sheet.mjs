@@ -87,6 +87,9 @@ export class ActorContainerSheet extends HandlebarsApplicationMixin(ActorSheetV2
         context.actor = this.actor;
         context.dh = CONFIG.dh;
         context.effects = this.actor.getEmbeddedCollection('ActiveEffect').contents;
+        // Only a GM may delete an experience ledger entry (experience-panel.hbs) -- distinct from
+        // `editable`, which is also true for a player viewing/editing their own owned character.
+        context.isGM = game.user.isGM;
         return context;
     }
 

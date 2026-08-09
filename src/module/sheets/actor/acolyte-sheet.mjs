@@ -5,6 +5,8 @@ import { Hit } from '../../rolls/damage-data.mjs';
 import { AssignDamageData } from '../../rolls/assign-damage-data.mjs';
 import { prepareAssignDamageRoll } from '../../prompts/assign-damage-prompt.mjs';
 import { openRequisitionMenu } from '../../prompts/requisition-prompt.mjs';
+import { openAdvancementMenu } from '../../prompts/advancement-prompt.mjs';
+import { openAwardMenu } from '../../prompts/award-prompt.mjs';
 import { RequisitionRollData } from '../../rolls/roll-data.mjs';
 import { buildRequisitionCandidates, getWarbandTracker } from '../../rules/requisition.mjs';
 import { DarkHeresySettings } from '../../dark-heresy-settings.mjs';
@@ -38,6 +40,18 @@ export class AcolyteSheet extends ActorContainerSheet {
             },
             requisition(event, target) {
                 return this._prepareRequisition(event, target);
+            },
+            advancement(event, target) {
+                return this._prepareAdvancement(event, target);
+            },
+            deleteLedgerEntry(event, target) {
+                return this._deleteLedgerEntry(event, target);
+            },
+            award(event, target) {
+                return this._prepareAward(event, target);
+            },
+            deleteAwardEntry(event, target) {
+                return this._deleteAwardEntry(event, target);
             },
         },
     };
@@ -138,6 +152,65 @@ export class AcolyteSheet extends ActorContainerSheet {
         rollData.updateBaseTarget();
         rollData.candidates = await buildRequisitionCandidates(rollData.maxAvailability);
         await openRequisitionMenu(rollData);
+    }
+
+    /** Only the actor's owner (or a GM, who Foundry always treats as an owner) may spend XP. */
+    async _prepareAdvancement(event, target) {
+        event.preventDefault();
+        if (!this.isEditable) return;
+        await openAdvancementMenu(this.actor);
+    }
+
+    /** GM-only: the template already hides this control from non-GMs (see experience-panel.hbs's
+     * `isGM` gate), but the handler checks again rather than trusting the client wasn't tampered
+     * with -- Foundry would refuse the resulting actor update anyway, but fail with a clear
+     * notification instead of a silent server-side rejection. */
+    async _deleteLedgerEntry(event, target) {
+        event.preventDefault();
+        if (!game.user.isGM) {
+            ui.notifications.warn('Only a GM may delete an experience ledger entry.');
+            return;
+        }
+        const entryId = target.dataset.entryId;
+        const confirmed = await foundry.applications.api.DialogV2.confirm({
+            window: { title: 'Confirm Delete' },
+            content: '<p>Remove this experience ledger entry? This cannot be undone.</p>',
+            modal: true,
+        });
+        if (!confirmed) return;
+        const ledger = this.actor.experience.ledger ?? [];
+        await this.actor.update({ 'system.experience.ledger': ledger.filter((e) => e.id !== entryId) });
+    }
+
+    /** GM-only: awarding is a GM action rather than something an owner does to their own
+     * character, unlike Spend Experience above -- the template already hides the control from
+     * non-GMs (experience-panel.hbs's `isGM` gate), but this checks again for the same reason
+     * _deleteLedgerEntry does. */
+    async _prepareAward(event, target) {
+        event.preventDefault();
+        if (!game.user.isGM) {
+            ui.notifications.warn('Only a GM may award experience.');
+            return;
+        }
+        await openAwardMenu(this.actor);
+    }
+
+    /** GM-only, same double-check pattern as _deleteLedgerEntry. */
+    async _deleteAwardEntry(event, target) {
+        event.preventDefault();
+        if (!game.user.isGM) {
+            ui.notifications.warn('Only a GM may delete an experience award entry.');
+            return;
+        }
+        const entryId = target.dataset.entryId;
+        const confirmed = await foundry.applications.api.DialogV2.confirm({
+            window: { title: 'Confirm Delete' },
+            content: '<p>Remove this experience award entry? This cannot be undone.</p>',
+            modal: true,
+        });
+        if (!confirmed) return;
+        const awards = this.actor.experience.awards ?? [];
+        await this.actor.update({ 'system.experience.awards': awards.filter((e) => e.id !== entryId) });
     }
 
     async _onHomeworldChange(event) {

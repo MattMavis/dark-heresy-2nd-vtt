@@ -1,0 +1,68 @@
+{{dhlog this}}
+<div class="dh-prompt">
+    <div class="dh-wrapper">
+        <div class="dh-attack">
+            <!-- Header -->
+            <div class="dh-panel dh-grid-col-full">
+                <div class="dh-header">
+                    <div class="dh-header__prompt dh-header__logo">
+                        <div class="dh-header__item-wrapper--span-4 dh-header__borderless">
+                            <img class="dh-header__logo-image-small" alt="{{this.actor.name}}" src="{{this.actor.img}}" />
+                            <span class="dh-header__title">Award Experience</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dh-field__wrapper">
+                    <span class="dh-field__header">Amount</span>
+                    <input class="dh-field__input" data-dtype="Number" type="number" name="amount" value="{{amount}}" />
+                </div>
+                <div class="dh-field__wrapper">
+                    <span class="dh-field__header">Reason (required)</span>
+                    <input class="dh-field__input" type="text" name="reason" value="{{reason}}" required />
+                </div>
+                <div class="dh-field__wrapper">
+                    <label class="dh-field__header">
+                        <input data-dtype="Boolean" type="checkbox" name="toParty" {{checked toParty}} />
+                        Award to the whole party
+                    </label>
+                </div>
+            </div>
+
+            <!-- Recipients -->
+            <div class="dh-panel dh-grid-col-full">
+                <div class="dh-header">
+                    <div class="dh-header__info">
+                        <div class="dh-header__item-wrapper--span-4 dh-header__borderless">
+                            <span class="dh-header__subtitle">Will Receive This Award</span>
+                        </div>
+                    </div>
+                </div>
+                {{#if partyEmpty}}
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">No player-owned characters were found -- nobody would receive this award.</span>
+                    </div>
+                {{else}}
+                    <div class="dh-table--border dh-attackprompttable--border">
+                        {{#each recipients}}
+                            <div class="table-row">
+                                <div class="table-cell--span2">{{this.name}}</div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <footer class="form-footer">
+        <button type="button" class="dh-prompt__button" data-action="award" id="award-confirm">
+            <i class="dh-material">redeem</i>
+            <span>Award</span>
+        </button>
+        <button type="button" class="dh-prompt__button" data-action="cancel" id="award-cancel">
+            <i class="dh-material">close</i>
+            <span>Cancel</span>
+        </button>
+    </footer>
+</div>
