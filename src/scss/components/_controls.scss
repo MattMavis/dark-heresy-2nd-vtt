@@ -122,6 +122,59 @@
     }
 }
 
+// Buttons inside prompt dialogs -- the Buy buttons in the advancement window, and the
+// confirm/cancel pair in every prompt's footer. `dh-prompt__button` had no styling of its own
+// either, so these were browser-default and easy to miss in a long table.
+.dh-prompt__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    min-width: 3.25rem;
+    margin: 0;
+    padding: 0.15rem 0.5rem;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #f3ece0;
+    background: linear-gradient(180deg, lighten($form-button-background, 8%), $form-button-background);
+    border: 1px solid darken($form-button-background, 18%);
+    border-radius: 2px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.4);
+    transition: background 0.12s ease, box-shadow 0.12s ease, transform 0.05s ease;
+
+    &:hover:not(:disabled) {
+        background: linear-gradient(180deg, lighten($form-button-background, 16%), lighten($form-button-background, 4%));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26), 0 0 6px rgba(196, 62, 44, 0.65), 0 1px 2px rgba(0, 0, 0, 0.4);
+        color: #fff;
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(1px);
+        box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    &:focus-visible {
+        outline: 2px solid rgba(196, 62, 44, 0.9);
+        outline-offset: 1px;
+    }
+
+    // Unaffordable or maxed out. Flat, colourless and obviously not pressable, so a player
+    // scanning the list can tell at a glance what is actually available to them.
+    &:disabled {
+        cursor: not-allowed;
+        color: #6b675e;
+        background: #d8d2c6;
+        border-color: #a9a294;
+        box-shadow: none;
+        text-shadow: none;
+    }
+}
+
 button[type='roll'] {
     margin: 0;
     cursor: pointer;

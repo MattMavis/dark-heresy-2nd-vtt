@@ -33,12 +33,12 @@
                         <div class="table-cell--last">Buy</div>
                     </div>
                     {{#each characteristicRows}}
-                        <div class="table-row">
+                        <div class="table-row {{#unless this.nextCost}}is-maxed{{else}}{{#unless this.canAfford}}is-unaffordable{{/unless}}{{/unless}}">
                             <div class="table-cell--span2">{{this.label}}</div>
                             <div class="table-cell">{{this.rankLabel}}</div>
                             <div class="table-cell">{{this.matches}}</div>
                             <div class="table-cell">{{defaultVal this.nextLabel 'Max'}}</div>
-                            <div class="table-cell">{{defaultVal this.nextCost '--'}}</div>
+                            <div class="table-cell {{#if this.nextCost}}{{#unless this.canAfford}}cost--short{{/unless}}{{/if}}">{{defaultVal this.nextCost '--'}}</div>
                             <div class="table-cell--last">
                                 <button
                                     type="button"
@@ -65,12 +65,12 @@
                         <div class="table-cell--last">Buy</div>
                     </div>
                     {{#each skillRows}}
-                        <div class="table-row">
+                        <div class="table-row {{#unless this.nextCost}}is-maxed{{else}}{{#unless this.canAfford}}is-unaffordable{{/unless}}{{/unless}}">
                             <div class="table-cell--span2">{{this.label}}</div>
                             <div class="table-cell">{{this.rankLabel}}</div>
                             <div class="table-cell">{{this.matches}}</div>
                             <div class="table-cell">{{defaultVal this.nextLabel 'Max'}}</div>
-                            <div class="table-cell">{{defaultVal this.nextCost '--'}}</div>
+                            <div class="table-cell {{#if this.nextCost}}{{#unless this.canAfford}}cost--short{{/unless}}{{/if}}">{{defaultVal this.nextCost '--'}}</div>
                             <div class="table-cell--last">
                                 <button
                                     type="button"
@@ -109,7 +109,7 @@
                         <div class="table-cell--last">Buy</div>
                     </div>
                     {{#each visibleTalents}}
-                        <div class="table-row">
+                        <div class="table-row {{#unless this.canAfford}}is-unaffordable{{/unless}}">
                             <div class="table-cell--span2">
                                 <img class="dh-field__image" alt="{{this.name}}" src="{{this.img}}" />
                                 <div class="display">{{this.name}}</div>
@@ -117,7 +117,7 @@
                             <div class="table-cell">{{this.tier}}</div>
                             <div class="table-cell">{{this.prerequisites}}</div>
                             <div class="table-cell">{{this.matches}}</div>
-                            <div class="table-cell">{{this.cost}}</div>
+                            <div class="table-cell {{#unless this.canAfford}}cost--short{{/unless}}">{{this.cost}}</div>
                             <div class="table-cell--last">
                                 <button
                                     type="button"

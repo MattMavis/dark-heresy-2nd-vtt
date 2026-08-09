@@ -298,3 +298,29 @@ $grid-tables: (
         }
     }
 }
+
+// Affordability states for the advancement window's rows.
+//
+// Applied alongside `.table-row` rather than as a `--modifier`, because the grid layout rules
+// above key off the exact `.table-row` / `.table-row--head` class names and a modifier class
+// would fall outside them and lose its columns.
+.table-row {
+    // Priced, but the character cannot pay for it right now. Faint red wash so a player
+    // scanning a long list sees immediately which rows are out of reach today.
+    &.is-unaffordable {
+        background: rgba(150, 30, 20, 0.07);
+        color: rgba(25, 24, 19, 0.55);
+    }
+
+    // Already at the top rank -- nothing left to buy, and no amount of XP changes that, so it
+    // reads as simply inactive rather than as something to save up for.
+    &.is-maxed {
+        color: rgba(25, 24, 19, 0.4);
+    }
+}
+
+// The cost itself, when it is the reason the row is unavailable.
+.cost--short {
+    color: #a8231a;
+    font-weight: 700;
+}
