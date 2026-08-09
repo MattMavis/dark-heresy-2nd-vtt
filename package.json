@@ -8,7 +8,8 @@
     "build": "gulp build",
     "packs": "gulp packs",
     "scss": "gulp scss",
-    "watch": "gulp"
+    "watch": "gulp",
+    "test": "node tests/test-advancement.mjs && node tests/test-ledger.mjs"
   },
   "browserslist": [
     "last 3 versions"
