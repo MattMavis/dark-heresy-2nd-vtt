@@ -3,7 +3,7 @@ import { SYSTEM_ID } from './hooks-manager.mjs';
 import { DH_CONTAINED_BY, DH_CONTAINER_ID } from './documents/item-container.mjs';
 
 export async function checkAndMigrateWorld() {
-    const worldVersion = 185;
+    const worldVersion = 187;
 
     const currentVersion = game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.worldVersion);
     if (worldVersion !== currentVersion && game.user.isGM) {
@@ -38,6 +38,12 @@ export async function checkAndMigrateWorld() {
 
         // Remove contained items that an earlier build wrongly created in the world directory
         await cleanupStrayContainedWorldItems(currentVersion);
+
+        // Rebuild XP spend history for characters who predate the ledger
+        await migrateExperienceLedger(currentVersion);
+
+        // ...and the award history on the other side of the account
+        await migrateExperienceAwards(currentVersion);
 
         // Display Release Notes
         await displayReleaseNotes(worldVersion);
@@ -177,6 +183,111 @@ export async function checkAndMigrateWorld() {
         await Item.deleteDocuments(strays.map((i) => i.id));
     }
 
+    /**
+     * Give characters who predate the ledger a single opening entry for what they had already
+     * spent, so their history starts from today rather than being invented.
+     *
+     * An earlier version of this tried to reconstruct the history by pricing every advance,
+     * talent and power the character owns through the cost tables. That cannot work, and the
+     * reason is worth recording: **a character is given a great deal for free at creation**.
+     * Home world, background and role each grant skills, talents and characteristic advances
+     * that were never paid for, and nothing on the sheet distinguishes a granted advance from a
+     * bought one. Pricing what a character owns therefore measures chargen, not spending.
+     *
+     * It is not a near miss either. Run against the four player characters in the development
+     * world, reconstruction claimed 2700-4300 xp of purchases against lifetime totals of
+     * 1300-1850 -- more than the characters had ever earned, which is impossible for a purchase
+     * history and is the clearest possible proof the premise was wrong. Every character would
+     * have needed a large negative correction to cancel the invented entries back out.
+     *
+     * So the opening entry records only the number the character actually has, and real history
+     * accumulates from the next purchase onwards. Available XP is untouched by construction:
+     * the entry equals `used`, and `_computeExperience` derives `used` back from the ledger.
+     *
+     * Only `acolyte` actors are considered. NPCs are a separate type, statted directly rather
+     * than bought with experience, and record no XP at all.
+     *
+     * Awards are the mirror image of this on the other side of the account, but they are a
+     * SEPARATE migration step at 187 rather than part of this one. That is not tidiness: a build
+     * shipped briefly with the ledger seeding here and no awards seeding at all, so a world that
+     * upgraded on it is already recorded as 186 and would never run the awards half if the two
+     * shared a version gate. Keep them separate.
+     */
+    async function migrateExperienceLedger(currentVersion) {
+        if (currentVersion >= 186) return;
+
+        const report = [];
+        for (const actor of game.actors.contents) {
+            if (actor.type !== 'acolyte') continue;
+
+            const xp = actor.system?.experience ?? {};
+            if (Array.isArray(xp.ledger) && xp.ledger.length) continue; // already has one
+            const used = Number(xp.used) || 0;
+            if (!used) continue; // nothing spent yet: let the ledger start empty
+
+            await actor.update({
+                'system.experience.ledger': [
+                    {
+                        id: foundry.utils.randomID(),
+                        kind: 'adjustment',
+                        source: 'legacy',
+                        cost: used,
+                        at: Date.now(),
+                        label: 'Experience spent before spending was recorded as a history',
+                    },
+                ],
+            });
+            report.push({ actor: actor.name, used });
+        }
+
+        if (report.length) {
+            console.log('XP ledger opening balances:');
+            for (const r of report) console.log(`  ${r.actor}: ${r.used} xp spent`);
+        }
+    }
+
+    /**
+     * Give characters an opening award equal to whatever total they already had.
+     *
+     * The mirror of the ledger seeding above: there is no record of which grants were awarded on
+     * which date, only what the character has now, so one opening entry carries it and real
+     * history accrues from the next award. The entry equals `total` and `_computeExperience`
+     * derives `total` back from the awards, so available XP (`total - used`) cannot move.
+     *
+     * Gated at 187 deliberately -- see the note on the ledger migration above.
+     */
+    async function migrateExperienceAwards(currentVersion) {
+        if (currentVersion >= 187) return;
+
+        const report = [];
+        for (const actor of game.actors.contents) {
+            if (actor.type !== 'acolyte') continue;
+
+            const xp = actor.system?.experience ?? {};
+            if (Array.isArray(xp.awards) && xp.awards.length) continue; // already has one
+            const total = Number(xp.total) || 0;
+            if (!total) continue; // never awarded anything: let the history start empty
+
+            await actor.update({
+                'system.experience.awards': [
+                    {
+                        id: foundry.utils.randomID(),
+                        amount: total,
+                        reason: 'Experience awarded before awards were recorded as a history',
+                        at: Date.now(),
+                        by: 'System',
+                    },
+                ],
+            });
+            report.push({ actor: actor.name, total });
+        }
+
+        if (report.length) {
+            console.log('XP award opening balances:');
+            for (const r of report) console.log(`  ${r.actor}: ${r.total} xp total`);
+        }
+    }
+
     async function migrateItemData(item, currentVersion) {
         if (currentVersion < 180) {
             // Get itemcollection.contentsData flag
@@ -298,6 +409,28 @@ export async function checkAndMigrateWorld() {
                         'Deleting a weapon still removes whatever was loaded or installed in it, and now tells you what is going first.',
                         'Weapons in the Items sidebar are unchanged and keep their qualities as before -- they are only expanded into real items once the weapon is on a character.',
                         'Your characters were converted automatically. The old data is kept as a hidden backup for now, so nothing is lost if anything looks wrong -- please report it rather than re-adding things by hand.',
+                    ],
+                });
+                break;
+            case 186:
+                await releaseNotes({
+                    version: '1.8.5',
+                    notes: [
+                        'Experience spending is now tracked as a history rather than a single number you edit by hand, so the sheet can no longer drift out of step with what you have actually bought.',
+                        'Whatever your characters had already spent is carried over as a single opening entry, and history builds up from your next purchase. Available XP is unchanged. Earlier spending is not itemised, because a character is given so much for free at creation that there is no way to tell a granted advance from a bought one after the fact.',
+                        'Only player characters were touched. NPCs are statted directly rather than bought with experience, so they were left alone.',
+                    ],
+                });
+                break;
+            case 187:
+                await releaseNotes({
+                    version: '1.8.5',
+                    notes: [
+                        'Experience is now tracked as a history on both sides of the account rather than two numbers you edit by hand, so the sheet cannot drift out of step with what you have actually been given or bought.',
+                        'The GM can now award experience to a single character or to the whole party at once, with a reason recorded, from a new Award Experience button on the Experience panel.',
+                        'Players can spend experience from a new Spend Experience button, which prices every advance against the character\'s own aptitudes and will not let them skip a rank.',
+                        'Whatever your characters had already earned and spent is carried over as one opening award and one opening spend entry. Available XP is unchanged for everyone; earlier history is not itemised, because a character is given so much for free at creation that there is no way to tell a granted advance from a bought one after the fact.',
+                        'Only player characters were touched. NPCs are statted directly rather than bought with experience, so they were left alone.',
                     ],
                 });
                 break;
