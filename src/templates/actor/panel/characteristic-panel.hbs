@@ -21,7 +21,7 @@
                 <input name="system.characteristics.{{name}}.base" data-dtype="Number" type="number" value="{{this.base}}" />
             </div>
             <div class="dh-chartable__cell {{colorCode this.has_bonus this.has_negative}}">
-                <select name="system.characteristics.{{name}}.advance">
+                <select name="system.characteristics.{{name}}.advance" data-dtype="Number">
                     {{option "0" this.advance "None"}}
                     {{option "1" this.advance "Simple"}}
                     {{option "2" this.advance "Intermediate"}}
