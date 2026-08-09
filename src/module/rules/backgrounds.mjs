@@ -42,7 +42,7 @@ export function backgrounds() {
         },
         {
             name: 'Adeptus Mechanicus',
-            starting_skills: 'Awareness or Operate (Pick One), Common Lore (Adeptus Mechanicus), Logic, Security, Tech',
+            starting_skills: 'Awareness or Operate (Pick One), Common Lore (Adeptus Mechanicus), Logic, Security, Tech-Use',
             starting_talents: 'Mechadendrite Use (Utility), Weapon Training (Solid Projectile)',
             starting_equipment: 'Autogun or Hand Cannon, Monotask Servo-Skull (utility) or Optical Mechadendrite, Imperial robes, 2 vials of sacred unguents',
             background_bonus: {
@@ -57,7 +57,7 @@ export function backgrounds() {
             name: 'Adeptus Ministorum',
             starting_skills: 'Charm, Command, Common Lore (Adeptus Ministorum), Inquiry or Scrutiny, Linguistics (High Gothic)',
             starting_talents: 'Weapon Training (Flame) or Weapon Training (Low-Tech, Solid Projectile)',
-            starting_equipment: 'Hand Flamer (or Warhammer and Stub Revolver), Imperial Robes or Flak Vest, Backpack, Glow-Globe, Monotask Servo',
+            starting_equipment: 'Hand Flamer (or Warhammer and Stub Revolver), Imperial Robes or Flak Vest, Backpack, Glow-Globe, Monotask Servo-Skull (Laud Hailer)',
             background_bonus: {
                 name: 'Faith is All',
                 benefit: 'When spending a Fate point to gain a+10 bonus to any one test, an Adeptus Ministorum character gains a +20 bonus instead.',
