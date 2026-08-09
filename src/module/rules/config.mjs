@@ -49,6 +49,10 @@ DarkHeresy.choices = {
     faction: [
         'Adepta Sororitas', 'Adeptus Arbites', 'Adeptus Astartes', 'Adeptus Astra Telepathica',
         'Adeptus Mechanicus', 'Administratum', 'Chartist Captains', 'Collegia Titanicus',
+        // Penal Colony's home world bonus grants Peer (Criminal Cartels), which had no entry
+        // here. The concept already exists elsewhere in the system as the Forbidden Lore
+        // speciality "Criminal Cartels and Smugglers"; "Underworld" is a different group.
+        'Criminal Cartels',
         'Ecclesiarchy', 'Imperial Creed', 'Imperial Guard', 'Imperial Navy', 'Imperium',
         'Navigators', 'Planetary Defence Forces', 'Rogue Traders', 'Schola Progenium',
         'Underworld', 'Chaos', 'Daemons', 'Heretics', 'Mutants', 'Psykers', 'Xenos',
