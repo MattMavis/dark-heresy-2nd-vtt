@@ -27,7 +27,7 @@ function ownedAptitudeNames(actor) {
  * so a prerequisite naming a specific specialisation can actually be checked against it -- a bare
  * `name` would read back just "Resistance" regardless of which one was taken.
  */
-export function buildPrerequisiteSnapshot(actor) {
+function buildPrerequisiteSnapshot(actor) {
     const characteristics = {};
     for (const [key, c] of Object.entries(actor.system.characteristics)) characteristics[key] = c.total;
     return {
@@ -75,7 +75,7 @@ function nextSkillStep(actor, key, spKey) {
  * extend RollData: nothing here rolls dice, so inheriting the difficulty/modifier/opposed-roll
  * machinery would just be dead weight.
  */
-export class AdvancementData {
+class AdvancementData {
     actor;
     /** Narrows the talent list by name. Bound to form data like requisition-prompt's search box. */
     search = '';
@@ -187,7 +187,7 @@ export class AdvancementData {
  * actually works), restricted to tier 1-3: Table 2-6 has no column for anything else, and pricing
  * one would mean guessing rather than reading it off the book.
  */
-export async function buildTalentCandidates(actor) {
+async function buildTalentCandidates(actor) {
     const pack = game.packs.get(`${SYSTEM_ID}.talents`);
     if (!pack) {
         game.dh.error(`buildTalentCandidates: talents pack not found`);

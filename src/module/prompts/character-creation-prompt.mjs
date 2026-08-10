@@ -165,7 +165,7 @@ async function buildGrantedItemData(entry, { selected = null, level = null, quan
  * final Confirm. An abandoned wizard (closed early) therefore leaves the actor byte-for-byte
  * unchanged.
  */
-export class CharacterCreationData {
+class CharacterCreationData {
     actor;
     step = STEPS[0];
 
@@ -770,7 +770,7 @@ export class CharacterCreationData {
 /** Every tier 1-3 talent not already planned for this character -- same tier restriction as
  * `buildTalentCandidates` (advancement-prompt.mjs) and for the same reason (Table 2-6 has no
  * column beyond tier 3). Rebuilt after every purchase so a bought talent drops off the list. */
-export async function refreshXpTalentCandidates(data) {
+async function refreshXpTalentCandidates(data) {
     const pack = game.packs.get(`${SYSTEM_ID}.talents`);
     if (!pack) {
         game.dh.error('refreshXpTalentCandidates: talents pack not found');
@@ -864,7 +864,7 @@ function blockingIssues(data) {
  * left with correct bio/characteristics/skills/XP-ledger data but missing some items. The caller
  * surfaces this rather than pretending it can't happen.
  */
-export async function applyCharacterCreation(data) {
+async function applyCharacterCreation(data) {
     const actor = data.actor;
 
     const itemBuilds = [];

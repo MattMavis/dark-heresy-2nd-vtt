@@ -56,10 +56,6 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
         return this.system.corruption;
     }
 
-    get aptitudes() {
-        return this.system.aptitudes;
-    }
-
     get armour() {
         return this.system.armour;
     }
@@ -422,63 +418,28 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
         return training;
     }
 
+    /**
+     * A non-empty ledger or award list is the only account of what a character has spent or been
+     * given, so the sheet cannot drift from a hand-typed number. Characters with neither keep
+     * their typed values until the migration seeds them.
+     */
     _computeExperience() {
-        if(!this.experience) return;
-        this.experience.spentCharacteristics = 0;
-        this.experience.spentSkills = 0;
-        this.experience.spentTalents = 0;
-        this.experience.spentPsychicPowers = this.psy.cost;
-        for (let characteristic of Object.values(this.characteristics)) {
-            this.experience.spentCharacteristics += parseInt(characteristic.cost, 10);
-        }
-        for (let skill of Object.values(this.skills)) {
-            if (skill.isSpecialist) {
-                for (let speciality of Object.values(skill.specialities)) {
-                    this.experience.spentSkills += parseInt(speciality.cost, 10);
-                }
-            } else {
-                this.experience.spentSkills += parseInt(skill.cost, 10);
-            }
-        }
-        for (let item of this.items) {
-            if (item.isTalent) {
-                this.experience.spentTalents += parseInt(item.cost, 10);
-            } else if (item.isPsychicPower) {
-                this.experience.spentPsychicPowers += parseInt(item.cost, 10);
-            }
-        }
-        this.experience.calculatedTotal =
-            this.experience.spentCharacteristics + this.experience.spentSkills + this.experience.spentTalents + this.experience.spentPsychicPowers;
-        // Once a character has a ledger it is the only account of what has been spent, so the
-        // sheet cannot drift the way a hand-typed `used` could. Characters who predate the
-        // ledger keep using their typed value until the migration back-populates them.
-        const ledger = this.experience.ledger;
-        if (Array.isArray(ledger) && ledger.length) {
-            this.experience.used = ledgerTotal(ledger);
-        }
+        if (!this.experience) return;
 
-        // Same contract on the other side of the account: once a character has at least one
-        // award, it is the only record of what they were given, so `total` cannot drift from a
-        // hand-typed value the way `used` couldn't above. Characters who predate awards keep
-        // using their typed total until the migration back-populates them.
+        const ledger = this.experience.ledger;
+        if (Array.isArray(ledger) && ledger.length) this.experience.used = ledgerTotal(ledger);
+
         const awards = this.experience.awards;
-        if (Array.isArray(awards) && awards.length) {
-            this.experience.total = awardsTotal(awards);
-        }
+        if (Array.isArray(awards) && awards.length) this.experience.total = awardsTotal(awards);
 
         this.experience.available = this.experience.total - this.experience.used;
 
-        // Spend breakdown and history for the experience panel -- always computed (not gated on
-        // ledger.length, unlike `used` above) so the panel can rely on these being real objects.
-        // Deliberately independent of spentCharacteristics/spentSkills/spentTalents above: those
-        // legacy fields are dead (nothing writes system.characteristics.*.cost or
-        // system.skills.*.cost -- see advancement.mjs's docstring) and unused by any template.
-        // This breakdown is instead a straight partition of the same ledger `used` is summed from,
-        // so the four buckets always add up to `used` by construction (see tests/test-ledger.mjs).
+        // Always computed, unlike `used` and `total` above, so the experience panel can rely on
+        // these being real objects. The breakdown partitions the same ledger `used` is summed
+        // from, so its buckets always add up to `used`. `ledgerSorted` only reads `at`, so it
+        // serves the awards side unchanged.
         this.experience.ledgerByKind = ledgerByKind(ledger);
         this.experience.ledgerSorted = ledgerSorted(ledger);
-        // Award history, most recent first, for the experience panel -- ledgerSorted only ever
-        // looks at an entry's `at` timestamp, so it applies unchanged to the awards side too.
         this.experience.awardsSorted = ledgerSorted(awards);
     }
 

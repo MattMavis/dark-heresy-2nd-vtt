@@ -87,7 +87,10 @@ export function resolveSkillGrant(grant, skills = {}) {
     return { status: 'unresolved', skillKey, specialityKey: null, alias: false, reason: `no speciality matching "${spec}" on ${skillKey}` };
 }
 
-/** Resolve many grants at once, keeping the unresolved ones together for reporting. */
+/**
+ * Resolve many grants at once, keeping the unresolved ones together for reporting.
+ * Used only by the test sweep; production code resolves grants one at a time.
+ */
 export function resolveSkillGrants(grants = [], skills = {}) {
     const resolved = [];
     const unresolved = [];

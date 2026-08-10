@@ -10,7 +10,7 @@ const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
  * actually inspects. Recomputed on every call rather than cached, so the recipient list in the
  * dialog is always live against the current world state.
  */
-export function partyActors() {
+function partyActors() {
     return game.actors.filter(
         (actor) =>
             actor.type === 'acolyte' &&
@@ -22,7 +22,7 @@ export function partyActors() {
  * Plain state object for the Award Experience window. Modelled on AdvancementData
  * (advancement-prompt.mjs) in shape -- a data bag the dialog renders and mutates.
  */
-export class AwardData {
+class AwardData {
     actor;
     amount = 0;
     reason = '';
