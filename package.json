@@ -9,7 +9,7 @@
     "packs": "gulp packs",
     "scss": "gulp scss",
     "watch": "gulp",
-    "test": "node tests/test-advancement.mjs && node tests/test-ledger.mjs && node tests/test-grants.mjs && node tests/test-character-creation.mjs"
+    "test": "node tests/test-advancement.mjs && node tests/test-ledger.mjs && node tests/test-grants.mjs && node tests/test-character-creation.mjs && node tests/test-prerequisites.mjs"
   },
   "browserslist": [
     "last 3 versions"

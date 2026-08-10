@@ -322,13 +322,19 @@
                             <div class="table-cell--last">Buy</div>
                         </div>
                         {{#each xpVisibleTalents}}
-                            <div class="table-row {{#unless this.canAfford}}is-unaffordable{{/unless}}">
+                            <div class="table-row {{#unless this.canAfford}}is-unaffordable{{/unless}} {{#if this.prereqBlocked}}is-prereq-unmet{{/if}}">
                                 <div class="table-cell--span2 cell-inline">
                                     <img class="dh-field__image" alt="{{this.name}}" src="{{this.img}}" />
                                     <div class="display">{{this.name}}</div>
                                 </div>
                                 <div class="table-cell">{{this.tier}}</div>
-                                <div class="table-cell">{{this.prerequisites}}</div>
+                                <div class="table-cell prereq-list">
+                                    {{#each this.prereqClauses}}
+                                        <div class="prereq-clause prereq-clause--{{this.status}}">{{this.text}}</div>
+                                    {{else}}
+                                        <span class="prereq-none">--</span>
+                                    {{/each}}
+                                </div>
                                 <div class="table-cell">{{this.matches}}</div>
                                 <div class="table-cell {{#unless this.canAfford}}cost--short{{/unless}}">{{this.cost}}</div>
                                 <div class="table-cell--last">

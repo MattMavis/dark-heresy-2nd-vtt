@@ -321,12 +321,61 @@ $grid-tables: (
     &.is-maxed {
         color: rgba(25, 24, 19, 0.4);
     }
+
+    // A talent whose prerequisites are not met. A sibling state to `is-unaffordable` rather than
+    // reusing it outright -- "can't afford it yet" and "doesn't qualify" are different problems
+    // for a player to solve, and a blue-ish wash keeps that visually distinct from the red
+    // affordability tint (both can apply to the same row at once, and do stack sensibly).
+    &.is-prereq-unmet {
+        background: rgba(30, 60, 150, 0.07);
+    }
 }
 
 // The cost itself, when it is the reason the row is unavailable.
 .cost--short {
     color: #a8231a;
     font-weight: 700;
+}
+
+// One line per prerequisite clause, colour-coded by whether the character meets it. Advisory
+// (indeterminate) clauses are shown but never styled as blocking -- this parser could not
+// evaluate them, which is not the same thing as the character failing them.
+.prereq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    font-size: 0.85em;
+    line-height: 1.2;
+}
+
+.prereq-clause {
+    &--met {
+        color: rgba(25, 24, 19, 0.55);
+    }
+
+    &--unmet {
+        color: #a8231a;
+        font-weight: 700;
+
+        &::before {
+            content: 'needs: ';
+            font-weight: 400;
+        }
+    }
+
+    &--indeterminate {
+        font-style: italic;
+        color: #7a6a2a;
+
+        &::before {
+            content: 'verify: ';
+            font-style: normal;
+        }
+    }
+}
+
+.prereq-none {
+    color: rgba(25, 24, 19, 0.4);
 }
 
 // Put an icon and its label on one line inside a table cell.

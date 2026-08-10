@@ -17,6 +17,7 @@ import {
     talentCost,
     countMatchingAptitudes,
 } from '../rules/advancement.mjs';
+import { evaluatePrerequisites } from '../rules/talent-prerequisites.mjs';
 import {
     collectFixedSkillGrants,
     collectSkillChoiceGroups,
@@ -684,15 +685,71 @@ export class CharacterCreationData {
         return cost === null ? null : { rank: rank + 1, matches, cost, label: SKILL_RANKS[rank] };
     }
 
+    /**
+     * A plain snapshot for `evaluatePrerequisites` (rules/talent-prerequisites.mjs), built from the
+     * wizard's own not-yet-applied state rather than the actor -- a fresh actor has none of this
+     * yet. Characteristic totals mirror `acolyte.mjs`'s `base + advance*5` (no `modifier`: nothing
+     * that grants one exists before the actor is created). Skill ranks combine what home
+     * world/background/role grant for free with whatever has been bought so far this session.
+     * Psy rating, corruption, insanity and elite advance are not wizard-tracked state (a fresh
+     * character starts at zero/none of each), so they're read from the actor's current -- still
+     * default -- values, which is exactly what they will be until Confirm.
+     */
+    get prerequisiteSnapshot() {
+        const characteristics = {};
+        for (const key of ROLLED_CHARACTERISTIC_KEYS) {
+            characteristics[key] = (Number(this.characteristics[key]) || 0) + this.xpCurrentCharacteristicRank(key) * 5;
+        }
+
+        const skills = JSON.parse(JSON.stringify(this.skills));
+        for (const key of Object.keys(SKILL_APTITUDES)) {
+            const skill = skills[key];
+            if (!skill) continue;
+            if (skill.isSpecialist) {
+                for (const spKey of Object.keys(skill.specialities ?? {})) {
+                    skill.specialities[spKey].advance = this.xpCurrentSkillRank(key, spKey);
+                }
+            } else {
+                skill.advance = this.xpCurrentSkillRank(key, null);
+            }
+        }
+
+        const talents = this.resolvedTalentGrants
+            .filter((g) => g.resolution.status === 'ok')
+            .map((g) => (g.speciality ? `${g.name} (${g.speciality})` : g.name));
+        for (const entry of this.xpLedger) {
+            if (entry.kind === 'talent') talents.push(entry.talentName);
+        }
+
+        return {
+            characteristics,
+            skills,
+            talents,
+            psyRating: this.actor.psy?.rating ?? 0,
+            corruption: this.actor.corruption ?? 0,
+            insanity: this.actor.insanity ?? 0,
+            eliteAdvance: this.actor.bio?.elite || null,
+        };
+    }
+
     get xpVisibleTalents() {
         const search = this.xpTalentSearch.trim().toLowerCase();
+        const snapshot = this.prerequisiteSnapshot;
         return this.xpTalentCandidates
             .filter((t) => !this.hasPlannedTalent(t.name))
             .filter((t) => !search || t.name.toLowerCase().includes(search))
             .map((t) => {
                 const matches = countMatchingAptitudes(this.plannedAptitudeNames, t.aptitudes);
                 const cost = talentCost(t.tier, matches);
-                return { ...t, matches, cost, canAfford: cost !== null && cost <= this.xpAvailable };
+                const prereq = evaluatePrerequisites(t.prerequisites, snapshot);
+                return {
+                    ...t,
+                    matches,
+                    cost,
+                    prereqClauses: prereq.clauses,
+                    prereqBlocked: prereq.blocked,
+                    canAfford: cost !== null && cost <= this.xpAvailable && !prereq.blocked,
+                };
             });
     }
 
@@ -1130,6 +1187,12 @@ export class CharacterCreationDialog extends HandlebarsApplicationMixin(Applicat
         const cost = talentCost(candidate.tier, matches);
         if (cost === null || cost > this.data.xpAvailable) {
             ui.notifications.warn('Not enough starting experience for that talent.');
+            return;
+        }
+        // Re-checked here rather than trusting the button's disabled state, same as the cost
+        // check just above -- see AdvancementDialog.onBuyTalent for the live-actor equivalent.
+        if (evaluatePrerequisites(candidate.prerequisites, this.data.prerequisiteSnapshot).blocked) {
+            ui.notifications.warn(`${candidate.name}'s prerequisites are not met.`);
             return;
         }
         this.data.xpLedger.push({

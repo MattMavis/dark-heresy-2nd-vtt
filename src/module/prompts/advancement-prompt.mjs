@@ -11,6 +11,7 @@ import {
     talentCost,
     countMatchingAptitudes,
 } from '../rules/advancement.mjs';
+import { evaluatePrerequisites } from '../rules/talent-prerequisites.mjs';
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -18,6 +19,26 @@ const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
  * with no readers or writers left in this codebase, so it is never consulted here. */
 function ownedAptitudeNames(actor) {
     return actor.items.filter((i) => i.type === 'aptitude').map((i) => i.name);
+}
+
+/**
+ * A plain, Foundry-free snapshot of `actor` for `evaluatePrerequisites` (rules/talent-prerequisites.mjs).
+ * `displayName` (not `name`) is what supplies a specialised talent's owned form ("Resistance (Fear)"),
+ * so a prerequisite naming a specific specialisation can actually be checked against it -- a bare
+ * `name` would read back just "Resistance" regardless of which one was taken.
+ */
+export function buildPrerequisiteSnapshot(actor) {
+    const characteristics = {};
+    for (const [key, c] of Object.entries(actor.system.characteristics)) characteristics[key] = c.total;
+    return {
+        characteristics,
+        skills: actor.system.skills,
+        talents: actor.items.filter((i) => i.isTalent).map((i) => i.displayName),
+        psyRating: actor.psy?.rating ?? 0,
+        corruption: actor.corruption ?? 0,
+        insanity: actor.insanity ?? 0,
+        eliteAdvance: actor.bio?.elite || null,
+    };
 }
 
 /**
@@ -62,8 +83,18 @@ export class AdvancementData {
      * {@link openAdvancementMenu} before the dialog renders -- see buildTalentCandidates. */
     talentCandidates = [];
 
+    /** GM-only house-rule escape hatch: tables house-rule prerequisites constantly, and a GM must
+     * not be stuck behind this parser's judgement. Defaults off; a non-GM never sees the toggle
+     * (see `isGM`) and `buyTalent` re-checks `game.user.isGM` itself rather than trusting this
+     * flag blindly, the same "don't trust the client" posture `AcolyteSheet`'s XP handlers use. */
+    ignorePrerequisites = false;
+
     constructor(actor) {
         this.actor = actor;
+    }
+
+    get isGM() {
+        return game.user.isGM;
     }
 
     get available() {
@@ -124,16 +155,28 @@ export class AdvancementData {
         };
     }
 
-    /** Talent candidates filtered by the search box and annotated with this actor's live price. */
+    /** Talent candidates filtered by the search box and annotated with this actor's live price
+     * and prerequisite state. The snapshot is rebuilt once per render (not once per row) since
+     * every row is evaluated against the exact same actor state. */
     get visibleTalents() {
         const search = this.search.trim().toLowerCase();
         const aptitudes = ownedAptitudeNames(this.actor);
+        const snapshot = buildPrerequisiteSnapshot(this.actor);
         return this.talentCandidates
             .filter((t) => !search || t.name.toLowerCase().includes(search))
             .map((t) => {
                 const matches = countMatchingAptitudes(aptitudes, t.aptitudes);
                 const cost = talentCost(t.tier, matches);
-                return { ...t, matches, cost, canAfford: cost !== null && cost <= this.available };
+                const prereq = evaluatePrerequisites(t.prerequisites, snapshot);
+                const prereqBlocked = prereq.blocked && !this.ignorePrerequisites;
+                return {
+                    ...t,
+                    matches,
+                    cost,
+                    prereqClauses: prereq.clauses,
+                    prereqBlocked: prereq.blocked,
+                    canAfford: cost !== null && cost <= this.available && !prereqBlocked,
+                };
             });
     }
 }
@@ -246,7 +289,7 @@ async function buySkill(actor, key, spKey) {
  * (a second operation) -- Foundry has no single call that does both, so a talent purchase is
  * unavoidably two actor-level operations rather than one.
  */
-async function buyTalent(actor, candidate) {
+async function buyTalent(actor, candidate, ignorePrerequisites) {
     const matches = countMatchingAptitudes(ownedAptitudeNames(actor), candidate.aptitudes);
     const cost = talentCost(candidate.tier, matches);
     if (cost === null) {
@@ -255,6 +298,14 @@ async function buyTalent(actor, candidate) {
     }
     if (cost > actor.experience.available) {
         ui.notifications.warn('Not enough experience for that talent.');
+        return;
+    }
+    // Re-checked here rather than trusting the button's disabled state, the same "don't trust the
+    // client" posture as the cost check just above -- and the override itself only takes effect
+    // for an actual GM, regardless of what a tampered client claims `ignorePrerequisites` is.
+    const blocked = evaluatePrerequisites(candidate.prerequisites, buildPrerequisiteSnapshot(actor)).blocked;
+    if (blocked && !(ignorePrerequisites && game.user.isGM)) {
+        ui.notifications.warn(`${candidate.name}'s prerequisites are not met.`);
         return;
     }
     const granted = await grantRequisitionedItem(actor, candidate.pack, candidate.itemId, 1);
@@ -359,7 +410,7 @@ export class AdvancementDialog extends HandlebarsApplicationMixin(ApplicationV2)
         const { pack, itemId } = target.dataset;
         const candidate = this.data.talentCandidates.find((c) => c.pack === pack && c.itemId === itemId);
         if (!candidate) return;
-        await buyTalent(this.data.actor, candidate);
+        await buyTalent(this.data.actor, candidate, this.data.ignorePrerequisites);
         // The candidate is now owned -- rebuild the list so it drops out rather than lingering
         // with a stale Buy button until the sheet is reopened.
         this.data.talentCandidates = await buildTalentCandidates(this.data.actor);
