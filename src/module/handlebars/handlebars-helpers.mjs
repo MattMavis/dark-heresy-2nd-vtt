@@ -82,6 +82,19 @@ export function registerHandlebarsHelpers() {
         return obj1 && obj2;
     });
 
+    // String comparison, not ===, for the same reason the `option` helper below compares this
+    // way: a value that started as a JS number (built server-side, e.g. a view-model's `index`)
+    // and one that came back through a <select> as a string (e.g. a stored selection with no
+    // data-dtype, or before it round-trips through recursiveUpdate's own coercion) must still
+    // compare equal here, or a "currently selected" check silently reads as false forever.
+    Handlebars.registerHelper('eq', function(a, b) {
+        return String(a) === String(b);
+    });
+
+    Handlebars.registerHelper('gt', function(a, b) {
+        return Number(a) > Number(b);
+    });
+
     Handlebars.registerHelper('arrayIncludes', function(field, array) {
         return array.includes(field);
     });

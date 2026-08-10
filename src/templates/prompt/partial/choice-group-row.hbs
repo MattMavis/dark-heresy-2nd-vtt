@@ -1,0 +1,24 @@
+{{!-- Shared row for an ordinary or free-choice skill/talent/trait choice group -- see
+      CharacterCreationData#_groupView (character-creation-prompt.mjs) for the view-model shape.
+      Included from character-creation-prompt.hbs for the home world and background steps. --}}
+<div class="dh-field__wrapper">
+    <span class="dh-field__span">{{#if isFreeChoice}}{{promptLabel}}{{else}}Choose one{{/if}}{{#if resolved}} (chosen){{/if}}</span>
+    <div class="dh-field__input">
+        {{#if isFreeChoice}}
+            <select name="freeChoices.{{id}}">
+                <option value="">-- choose {{skillLabel}} speciality --</option>
+                {{#each specialityOptions}}
+                    {{option this.key ../selectedSpeciality this.label}}
+                {{/each}}
+            </select>
+            {{#if unresolvedSkill}}<span class="cost--short">{{unresolvedSkill}}</span>{{/if}}
+        {{else}}
+            <select name="choices.{{id}}" data-dtype="Number">
+                <option value="">-- choose --</option>
+                {{#each options}}
+                    {{option this.index ../selectedIndex this.label}}
+                {{/each}}
+            </select>
+        {{/if}}
+    </div>
+</div>

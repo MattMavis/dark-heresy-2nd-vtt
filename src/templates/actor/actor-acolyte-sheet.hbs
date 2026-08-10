@@ -67,6 +67,11 @@
                 <div class="dh-panel dh-grid-col-6">
                     <div class="dh-header__info">
                         <h1 class="dh-panel__header dh-grid-col-4">Biography</h1>
+                        <div class="dh-controls__wrapper">
+                            <div class="dh-control-button">
+                                <button type="button" class="combat-control" data-action="characterCreation">Character Creation</button>
+                            </div>
+                        </div>
                         {{#each actor.bio}}
                             {{#unless (arrayIncludes @key @root.dh.bio.primary)}}
                                 {{> systems/dark-heresy-2nd/templates/actor/partial/character-field.hbs key=@key value=this options=(getBioOptions @key)}}

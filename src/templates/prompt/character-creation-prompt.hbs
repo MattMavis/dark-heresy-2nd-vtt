@@ -1,0 +1,488 @@
+{{dhlog this}}
+<div class="dh-prompt">
+    <div class="dh-wrapper">
+        <div class="dh-attack">
+            <!-- Header -->
+            <div class="dh-panel dh-grid-col-full">
+                <div class="dh-header">
+                    <div class="dh-header__prompt dh-header__logo">
+                        <div class="dh-header__item-wrapper--span-4 dh-header__borderless">
+                            <img class="dh-header__logo-image-small" alt="{{this.actor.name}}" src="{{this.actor.img}}" />
+                            <span class="dh-header__title">Character Creation -- {{this.actor.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dh-field__wrapper">
+                    <span class="dh-field__span">Step {{stepNumber}} of {{stepCount}}</span>
+                    <span class="dh-field__span">{{stepLabel}}</span>
+                </div>
+                <div class="dh-field__wrapper">
+                    <span class="dh-field__span">Nothing is written to this character until Confirm on the final step. Closing this window early leaves the character exactly as it was.</span>
+                </div>
+            </div>
+
+            <!-- Step 1: Home World -->
+            {{#if onHomeworld}}
+                <div class="dh-panel dh-grid-col-full">
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">Home World</span>
+                        <select name="homeworldName">
+                            <option value="">-- choose --</option>
+                            {{#each homeworldOptions}}
+                                {{option this ../homeworldName this}}
+                            {{/each}}
+                        </select>
+                    </div>
+                    {{#if this.homeworld}}
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">Aptitude</span>
+                            <span class="dh-field__span">{{this.homeworld.aptitude}}</span>
+                        </div>
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">Bonus / Penalty</span>
+                            <span class="dh-field__span">+5 {{#each this.homeworld.bonus_characteristics}}{{this}}{{#unless @last}}, {{/unless}}{{/each}} -- -5 {{this.homeworld.negative_characteristic}}</span>
+                        </div>
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">Wounds / Fate</span>
+                            <span class="dh-field__span">{{this.homeworld.wounds}} Wounds -- Fate Threshold {{this.homeworld.fate_threshold}} (Emperor's Blessing {{this.homeworld.emperors_blessing}})</span>
+                        </div>
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">{{this.homeworld.home_world_bonus.name}}</span>
+                            <span class="dh-field__span">{{this.homeworld.home_world_bonus.benefit}}</span>
+                        </div>
+                        {{#if this.homeworldFixedSkills.length}}
+                            <div class="dh-field__wrapper"><span class="dh-field__span">Grants</span><span class="dh-field__span"></span></div>
+                            <ul>
+                                {{#each this.homeworldFixedSkills}}<li>{{this.skill}}{{#if this.speciality}} ({{this.speciality}}){{/if}}</li>{{/each}}
+                                {{#each this.homeworldFixedTalents}}<li>{{this.name}}{{#if this.speciality}} ({{this.speciality}}){{/if}}</li>{{/each}}
+                                {{#each this.homeworldFixedTraits}}<li>{{this.name}}{{#if this.speciality}} ({{this.speciality}}){{/if}}</li>{{/each}}
+                            </ul>
+                        {{/if}}
+                        {{#each this.homeworldSkillGroups}}{{> systems/dark-heresy-2nd/templates/prompt/partial/choice-group-row.hbs}}{{/each}}
+                        {{#each this.homeworldTalentGroups}}{{> systems/dark-heresy-2nd/templates/prompt/partial/choice-group-row.hbs}}{{/each}}
+                        {{#each this.homeworldTraitGroups}}{{> systems/dark-heresy-2nd/templates/prompt/partial/choice-group-row.hbs}}{{/each}}
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">Source</span>
+                            <span class="dh-field__span">{{this.homeworld.source}}</span>
+                        </div>
+                    {{/if}}
+                </div>
+            {{/if}}
+
+            <!-- Step 2: Background -->
+            {{#if onBackground}}
+                <div class="dh-panel dh-grid-col-full">
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">Background</span>
+                        <select name="backgroundName">
+                            <option value="">-- choose --</option>
+                            {{#each backgroundOptions}}
+                                {{option this ../backgroundName this}}
+                            {{/each}}
+                        </select>
+                    </div>
+                    {{#if this.background}}
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">Starting Skills</span>
+                            <span class="dh-field__span">{{this.background.starting_skills}}</span>
+                        </div>
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">Starting Talents</span>
+                            <span class="dh-field__span">{{this.background.starting_talents}}</span>
+                        </div>
+                        {{#if this.background.starting_traits}}
+                            <div class="dh-field__wrapper">
+                                <span class="dh-field__span">Starting Traits</span>
+                                <span class="dh-field__span">{{this.background.starting_traits.prose}}</span>
+                            </div>
+                        {{/if}}
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">Starting Equipment</span>
+                            <span class="dh-field__span">{{this.background.starting_equipment}}</span>
+                        </div>
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">{{this.background.background_bonus.name}}</span>
+                            <span class="dh-field__span">{{this.background.background_bonus.benefit}}</span>
+                        </div>
+
+                        {{#if this.backgroundFixedSkills.length}}
+                            <div class="dh-field__wrapper"><span class="dh-field__span">Grants</span><span class="dh-field__span"></span></div>
+                            <ul>
+                                {{#each this.backgroundFixedSkills}}<li>{{this.skill}}{{#if this.speciality}} ({{this.speciality}}){{/if}}</li>{{/each}}
+                                {{#each this.backgroundFixedTalents}}<li>{{this.name}}{{#if this.speciality}} ({{this.speciality}}){{/if}}</li>{{/each}}
+                                {{#each this.backgroundFixedTraits}}<li>{{this.name}}{{#if this.speciality}} ({{this.speciality}}){{/if}}</li>{{/each}}
+                            </ul>
+                        {{/if}}
+                        {{#each this.backgroundSkillGroups}}{{> systems/dark-heresy-2nd/templates/prompt/partial/choice-group-row.hbs}}{{/each}}
+                        {{#each this.backgroundTalentGroups}}{{> systems/dark-heresy-2nd/templates/prompt/partial/choice-group-row.hbs}}{{/each}}
+                        {{#each this.backgroundTraitGroups}}{{> systems/dark-heresy-2nd/templates/prompt/partial/choice-group-row.hbs}}{{/each}}
+
+                        {{#if this.backgroundAptitudeOptions.length}}
+                            <div class="dh-field__wrapper">
+                                <span class="dh-field__span">Aptitude ({{this.background.background_aptitude.prose}})</span>
+                                <select name="backgroundAptitudeValue">
+                                    <option value="">-- choose --</option>
+                                    {{#each this.backgroundAptitudeOptions}}
+                                        {{option this ../backgroundAptitudeValue this}}
+                                    {{/each}}
+                                </select>
+                            </div>
+                        {{/if}}
+
+                        <div class="dh-field__wrapper"><span class="dh-field__span">Equipment</span><span class="dh-field__span"></span></div>
+                        <ul>
+                            {{#each this.backgroundEquipment.fixed}}<li>{{this}}</li>{{/each}}
+                        </ul>
+                        {{#each this.backgroundEquipment.choiceGroups}}
+                            <div class="dh-field__wrapper">
+                                <span class="dh-field__span">Choose one</span>
+                                <select name="equipmentChoices.{{this.id}}" data-dtype="Number">
+                                    <option value="">-- choose --</option>
+                                    {{#each this.group.options}}
+                                        {{option @index ../selectedIndex this}}
+                                    {{/each}}
+                                </select>
+                            </div>
+                        {{/each}}
+
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">Source</span>
+                            <span class="dh-field__span">{{this.background.source}}</span>
+                        </div>
+                    {{/if}}
+                </div>
+            {{/if}}
+
+            <!-- Step 3: Role -->
+            {{#if onRole}}
+                <div class="dh-panel dh-grid-col-full">
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">Role</span>
+                        <select name="roleName">
+                            <option value="">-- choose --</option>
+                            {{#each roleOptions}}
+                                {{option this ../roleName this}}
+                            {{/each}}
+                        </select>
+                    </div>
+                    {{#if this.role}}
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">{{this.role.name}}</span>
+                            <span class="dh-field__span">{{this.role.flavor_text}}</span>
+                        </div>
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">{{this.role.role_bonus.name}}</span>
+                            <span class="dh-field__span">{{this.role.role_bonus.benefit}}</span>
+                        </div>
+                        <div class="dh-field__wrapper"><span class="dh-field__span">Aptitudes</span><span class="dh-field__span"></span></div>
+                        <ul>
+                            {{#each this.roleAptitudeFixed}}<li>{{this}}</li>{{/each}}
+                        </ul>
+                        {{#each this.roleAptitudeGroups}}
+                            <div class="dh-field__wrapper">
+                                <span class="dh-field__span">Choose one</span>
+                                <select name="roleAptitudeChoices.{{this.id}}">
+                                    <option value="">-- choose --</option>
+                                    {{#each this.options}}
+                                        {{option this ../selected this}}
+                                    {{/each}}
+                                </select>
+                            </div>
+                        {{/each}}
+
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">Role Talent</span>
+                            <select name="roleTalentIndex" data-dtype="Number">
+                                <option value="">-- choose --</option>
+                                {{#each this.roleTalentOptions}}
+                                    {{option this.index ../roleTalentIndex this.label}}
+                                {{/each}}
+                            </select>
+                        </div>
+                        {{#each this.roleTalentOptions}}
+                            {{#if this.needsSubchoice}}
+                                {{#if (eq this.index ../roleTalentIndex)}}
+                                    <div class="dh-field__wrapper">
+                                        <span class="dh-field__span">{{this.label}} specialisation</span>
+                                        <select name="roleTalentSubchoiceValue">
+                                            <option value="">-- choose --</option>
+                                            {{#each this.subchoiceOptions}}
+                                                {{option this ../../roleTalentSubchoiceValue this}}
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                {{/if}}
+                            {{/if}}
+                        {{/each}}
+
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">Source</span>
+                            <span class="dh-field__span">{{this.role.source}}</span>
+                        </div>
+                    {{/if}}
+                </div>
+            {{/if}}
+
+            <!-- Step 4: Characteristics -->
+            {{#if onCharacteristics}}
+                <div class="dh-panel dh-grid-col-full">
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">2d10+25 per characteristic. The home world's +5/-5 is applied automatically to a rolled value; a typed value is used exactly as entered.</span>
+                    </div>
+                    {{#each this.characteristicInputRows}}
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">{{this.label}}</span>
+                            <div class="dh-field__input cell-inline">
+                                <button type="button" class="dh-prompt__button" data-action="rollCharacteristic" data-key="{{this.key}}">Roll</button>
+                                <input type="number" data-dtype="Number" name="characteristics.{{this.key}}" value="{{this.value}}" />
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            {{/if}}
+
+            <!-- Step 5: Aptitudes -->
+            {{#if onAptitudes}}
+                <div class="dh-panel dh-grid-col-full">
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">Every aptitude below will be created as a real Aptitude item on this character (this is what makes later advancement pricing correct). Nothing to choose here -- go back to Home World / Background / Role to change any of it.</span>
+                    </div>
+                    <ul>
+                        {{#each this.plannedAptitudeNames}}<li>{{this}}</li>{{/each}}
+                    </ul>
+                </div>
+            {{/if}}
+
+            <!-- Step 6: Starting Experience -->
+            {{#if onXp}}
+                <div class="dh-panel dh-grid-col-full">
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">Starting XP Pool</span>
+                        <input type="number" data-dtype="Number" class="dh-field__input" name="startingXpPool" value="{{startingXpPool}}" />
+                    </div>
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">Available</span>
+                        <span class="dh-field__span">{{xpAvailable}}</span>
+                    </div>
+                    <div class="dh-table--border dh-advancementtable--border">
+                        <div class="table-row--head">
+                            <div class="table-cell--span2">Characteristic</div>
+                            <div class="table-cell">Rank</div>
+                            <div class="table-cell">Aptitudes</div>
+                            <div class="table-cell">Next Step</div>
+                            <div class="table-cell">Cost</div>
+                            <div class="table-cell--last">Buy</div>
+                        </div>
+                        {{#each xpCharacteristicRows}}
+                            <div class="table-row {{#unless this.nextCost}}is-maxed{{else}}{{#unless this.canAfford}}is-unaffordable{{/unless}}{{/unless}}">
+                                <div class="table-cell--span2">{{this.label}}</div>
+                                <div class="table-cell">{{this.rankLabel}}</div>
+                                <div class="table-cell">{{this.matches}}</div>
+                                <div class="table-cell">{{defaultVal this.nextLabel 'Max'}}</div>
+                                <div class="table-cell {{#if this.nextCost}}{{#unless this.canAfford}}cost--short{{/unless}}{{/if}}">{{defaultVal this.nextCost '--'}}</div>
+                                <div class="table-cell--last">
+                                    <button type="button" class="dh-prompt__button" data-action="buyCharacteristic" data-key="{{this.key}}" {{#unless this.canAfford}}disabled{{/unless}}>Buy</button>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                    <div class="dh-table--border dh-advancementtable--border">
+                        <div class="table-row--head">
+                            <div class="table-cell--span2">Skill</div>
+                            <div class="table-cell">Rank</div>
+                            <div class="table-cell">Aptitudes</div>
+                            <div class="table-cell">Next Step</div>
+                            <div class="table-cell">Cost</div>
+                            <div class="table-cell--last">Buy</div>
+                        </div>
+                        {{#each xpSkillRows}}
+                            <div class="table-row {{#unless this.nextCost}}is-maxed{{else}}{{#unless this.canAfford}}is-unaffordable{{/unless}}{{/unless}}">
+                                <div class="table-cell--span2">{{this.label}}</div>
+                                <div class="table-cell">{{this.rankLabel}}</div>
+                                <div class="table-cell">{{this.matches}}</div>
+                                <div class="table-cell">{{defaultVal this.nextLabel 'Max'}}</div>
+                                <div class="table-cell {{#if this.nextCost}}{{#unless this.canAfford}}cost--short{{/unless}}{{/if}}">{{defaultVal this.nextCost '--'}}</div>
+                                <div class="table-cell--last">
+                                    <button type="button" class="dh-prompt__button" data-action="buySkill" data-key="{{this.key}}" data-sp-key="{{this.spKey}}" {{#unless this.canAfford}}disabled{{/unless}}>Buy</button>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">Search Talents</span>
+                        <input class="dh-field__input" type="search" name="xpTalentSearch" value="{{xpTalentSearch}}" />
+                    </div>
+                    <div class="dh-table--border dh-advancementtable--border">
+                        <div class="table-row--head">
+                            <div class="table-cell--span2">Name</div>
+                            <div class="table-cell">Tier</div>
+                            <div class="table-cell">Prerequisites</div>
+                            <div class="table-cell">Matches</div>
+                            <div class="table-cell">Cost</div>
+                            <div class="table-cell--last">Buy</div>
+                        </div>
+                        {{#each xpVisibleTalents}}
+                            <div class="table-row {{#unless this.canAfford}}is-unaffordable{{/unless}}">
+                                <div class="table-cell--span2 cell-inline">
+                                    <img class="dh-field__image" alt="{{this.name}}" src="{{this.img}}" />
+                                    <div class="display">{{this.name}}</div>
+                                </div>
+                                <div class="table-cell">{{this.tier}}</div>
+                                <div class="table-cell">{{this.prerequisites}}</div>
+                                <div class="table-cell">{{this.matches}}</div>
+                                <div class="table-cell {{#unless this.canAfford}}cost--short{{/unless}}">{{this.cost}}</div>
+                                <div class="table-cell--last">
+                                    <button type="button" class="dh-prompt__button" data-action="buyTalent" data-pack="{{this.pack}}" data-item-id="{{this.itemId}}" {{#unless this.canAfford}}disabled{{/unless}}>Buy</button>
+                                </div>
+                            </div>
+                        {{else}}
+                            <div class="table-row"><div class="table-cell">No talents match the current filter, or the tier is not 1-3.</div></div>
+                        {{/each}}
+                    </div>
+                    {{#if xpLedger.length}}
+                        <div class="dh-field__wrapper"><span class="dh-field__span">Purchased this session</span><span class="dh-field__span"></span></div>
+                        <ul>
+                            {{#each xpLedger}}<li>{{this.label}} -- {{this.cost}} xp</li>{{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+            {{/if}}
+
+            <!-- Step 7: Divination -->
+            {{#if onDivination}}
+                <div class="dh-panel dh-grid-col-full">
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">1d100</span>
+                        <button type="button" class="dh-prompt__button" data-action="rollDivination">Roll Divination</button>
+                    </div>
+                    {{#if this.divination}}
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">Result ({{divinationRoll}})</span>
+                            <span class="dh-field__span">{{this.divination.name}}</span>
+                        </div>
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">Effect</span>
+                            <span class="dh-field__span">{{this.divination.effect_full_book_text}}</span>
+                        </div>
+                        {{#each this.divinationCharacteristicChoiceInputs}}
+                            <div class="dh-field__wrapper">
+                                <span class="dh-field__span">Choose ({{#if (gt this.amount 0)}}+{{/if}}{{this.amount}})</span>
+                                <select name="divinationCharacteristicChoices.{{this.index}}">
+                                    <option value="">-- choose --</option>
+                                    {{#each this.candidates}}
+                                        {{option this ../selected this}}
+                                    {{/each}}
+                                </select>
+                            </div>
+                        {{/each}}
+                        {{#if this.divinationTalentSubchoiceOptions.length}}
+                            <div class="dh-field__wrapper">
+                                <span class="dh-field__span">Talent specialisation</span>
+                                <select name="divinationTalentSubchoiceValue">
+                                    <option value="">-- choose --</option>
+                                    {{#each this.divinationTalentSubchoiceOptions}}
+                                        {{option this ../divinationTalentSubchoiceValue this}}
+                                    {{/each}}
+                                </select>
+                            </div>
+                        {{/if}}
+                        {{#if this.divinationEffect.manualTableRolls.length}}
+                            <div class="dh-field__wrapper">
+                                <span class="dh-field__span cost--short">This result also sends the character to roll on the Malignancies table -- not automated here; do it manually after Confirm.</span>
+                            </div>
+                        {{/if}}
+                    {{/if}}
+                </div>
+            {{/if}}
+
+            <!-- Step 8: Summary -->
+            {{#if onSummary}}
+                <div class="dh-panel dh-grid-col-full">
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">Home World / Background / Role</span>
+                        <span class="dh-field__span">{{homeworldName}} / {{backgroundName}} / {{roleName}}</span>
+                    </div>
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">Wounds / Fate</span>
+                        <div class="dh-field__input cell-inline">
+                            <button type="button" class="dh-prompt__button" data-action="rollWoundsFate">Roll</button>
+                            {{#if wounds}}<span>{{wounds.max}} Wounds, {{fate.max}} Fate</span>{{/if}}
+                        </div>
+                    </div>
+                    <div class="dh-field__wrapper"><span class="dh-field__span">Aptitudes</span><span class="dh-field__span"></span></div>
+                    <ul>{{#each this.plannedAptitudeNames}}<li>{{this}}</li>{{/each}}</ul>
+
+                    <div class="dh-field__wrapper"><span class="dh-field__span">Skills</span><span class="dh-field__span"></span></div>
+                    <ul>
+                        {{#each this.resolvedSkillGrants}}
+                            <li class="{{#unless (eq this.resolution.status 'ok')}}cost--short{{/unless}}">
+                                {{this.skill}}{{#if this.speciality}} ({{this.speciality}}){{/if}} -- {{this.source}}
+                                {{#unless (eq this.resolution.status 'ok')}} -- UNRESOLVED: {{this.resolution.reason}}{{/unless}}
+                            </li>
+                        {{/each}}
+                    </ul>
+
+                    <div class="dh-field__wrapper"><span class="dh-field__span">Talents</span><span class="dh-field__span"></span></div>
+                    <ul>
+                        {{#each this.resolvedTalentGrants}}
+                            <li class="{{#unless (eq this.resolution.status 'ok')}}cost--short{{/unless}}">
+                                {{this.name}}{{#if this.speciality}} ({{this.speciality}}){{/if}} -- {{this.source}}
+                                {{#unless (eq this.resolution.status 'ok')}} -- UNRESOLVED: {{this.resolution.reason}}{{/unless}}
+                            </li>
+                        {{/each}}
+                        {{#each xpLedger}}{{#if (eq this.kind 'talent')}}<li>{{this.label}} -- Starting XP</li>{{/if}}{{/each}}
+                    </ul>
+
+                    <div class="dh-field__wrapper"><span class="dh-field__span">Traits</span><span class="dh-field__span"></span></div>
+                    <ul>
+                        {{#each this.resolvedTraitGrants}}
+                            <li class="{{#unless (eq this.resolution.status 'ok')}}cost--short{{/unless}}">
+                                {{this.name}}{{#if this.speciality}} ({{this.speciality}}){{/if}} -- {{this.source}}
+                                {{#unless (eq this.resolution.status 'ok')}} -- UNRESOLVED: {{this.resolution.reason}}{{/unless}}
+                            </li>
+                        {{/each}}
+                    </ul>
+
+                    <div class="dh-field__wrapper"><span class="dh-field__span">Equipment</span><span class="dh-field__span"></span></div>
+                    <ul>
+                        {{#each this.equipmentSummary}}
+                            <li class="{{#unless this.found}}cost--short{{/unless}}">{{this.name}}{{#unless this.found}} -- not found in compendium, add manually{{/unless}}</li>
+                        {{/each}}
+                    </ul>
+
+                    {{#if this.divination}}
+                        <div class="dh-field__wrapper">
+                            <span class="dh-field__span">Divination</span>
+                            <span class="dh-field__span">{{this.divination.name}}</span>
+                        </div>
+                    {{/if}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <footer class="form-footer">
+        {{#unless isFirstStep}}
+            <button type="button" class="dh-prompt__button" data-action="back">
+                <i class="dh-material">arrow_back</i>
+                <span>Back</span>
+            </button>
+        {{/unless}}
+        {{#if isLastStep}}
+            <button type="button" class="dh-prompt__button" data-action="confirm" id="character-creation-confirm">
+                <i class="dh-material">check</i>
+                <span>Confirm</span>
+            </button>
+        {{else}}
+            <button type="button" class="dh-prompt__button" data-action="next" id="character-creation-next">
+                <i class="dh-material">arrow_forward</i>
+                <span>Next</span>
+            </button>
+        {{/if}}
+        <button type="button" class="dh-prompt__button" data-action="cancel" id="character-creation-cancel">
+            <i class="dh-material">close</i>
+            <span>Cancel</span>
+        </button>
+    </footer>
+</div>

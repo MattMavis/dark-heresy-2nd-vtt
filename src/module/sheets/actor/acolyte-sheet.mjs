@@ -7,10 +7,27 @@ import { prepareAssignDamageRoll } from '../../prompts/assign-damage-prompt.mjs'
 import { openRequisitionMenu } from '../../prompts/requisition-prompt.mjs';
 import { openAdvancementMenu } from '../../prompts/advancement-prompt.mjs';
 import { openAwardMenu } from '../../prompts/award-prompt.mjs';
+import { openCharacterCreationMenu } from '../../prompts/character-creation-prompt.mjs';
 import { RequisitionRollData } from '../../rolls/roll-data.mjs';
 import { buildRequisitionCandidates, getWarbandTracker } from '../../rules/requisition.mjs';
 import { DarkHeresySettings } from '../../dark-heresy-settings.mjs';
 import { SYSTEM_ID } from '../../hooks-manager.mjs';
+
+/**
+ * Roll a freshly-chosen home world's starting Wounds (its own dice formula) and Fate (its
+ * threshold, +1 if a 1d10 roll meets or beats its Emperor's Blessing number) -- the two rolls
+ * Table 2-3 prescribes. Exported so the character-creation wizard (character-creation-prompt.mjs)
+ * can reuse the exact same formulas rather than re-deriving them, instead of only
+ * {@link AcolyteSheet#_onHomeworldChange} being able to roll them.
+ */
+export async function rollWoundsAndFate(homeworld) {
+    const woundRoll = new Roll(homeworld.wounds);
+    await woundRoll.evaluate();
+    const fateRoll = new Roll('1d10');
+    await fateRoll.evaluate();
+    const fateMax = parseInt(homeworld.fate_threshold, 10) + (fateRoll.total >= homeworld.emperors_blessing ? 1 : 0);
+    return { woundsMax: woundRoll.total, fateMax, fateBlessingRoll: fateRoll.total };
+}
 
 export class AcolyteSheet extends ActorContainerSheet {
     /** @inheritDoc */
@@ -43,6 +60,9 @@ export class AcolyteSheet extends ActorContainerSheet {
             },
             advancement(event, target) {
                 return this._prepareAdvancement(event, target);
+            },
+            characterCreation(event, target) {
+                return this._prepareCharacterCreation(event, target);
             },
             deleteLedgerEntry(event, target) {
                 return this._deleteLedgerEntry(event, target);
@@ -161,6 +181,15 @@ export class AcolyteSheet extends ActorContainerSheet {
         await openAdvancementMenu(this.actor);
     }
 
+    /** Same ownership gate as Spend Experience -- the wizard writes to this actor only on its
+     * own final confirm, but nothing here should be reachable by someone who couldn't otherwise
+     * edit the sheet. */
+    async _prepareCharacterCreation(event, target) {
+        event.preventDefault();
+        if (!this.isEditable) return;
+        await openCharacterCreationMenu(this.actor);
+    }
+
     /** GM-only: the template already hides this control from non-GMs (see experience-panel.hbs's
      * `isGM` gate), but the handler checks again rather than trusting the client wasn't tampered
      * with -- Foundry would refuse the resulting actor update anyway, but fail with a clear
@@ -225,17 +254,10 @@ export class AcolyteSheet extends ActorContainerSheet {
         // Something is probably wrong -- we will skip this
         if (!this.actor.backgroundEffects?.homeworld) return;
 
-        // Roll Wounds
-        const woundRoll = new Roll(this.actor.backgroundEffects.homeworld.wounds);
-        await woundRoll.evaluate();
-        this.actor.wounds.max = woundRoll.total;
-
-        // Roll Fate
-        const fateRoll = new Roll('1d10');
-        await fateRoll.evaluate();
-        this.actor.fate.max =
-            parseInt(this.actor.backgroundEffects.homeworld.fate_threshold) +
-            (fateRoll.total >= this.actor.backgroundEffects.homeworld.emperors_blessing ? 1 : 0);
-        await this.render({ force: true });
+        // Roll Wounds and Fate, and persist them -- a bare `this.actor.wounds.max = ...` mutates
+        // the live in-memory document but is never written to the database, so the roll silently
+        // reverted to 0 on the next reload. Route it through actor.update() instead.
+        const { woundsMax, fateMax } = await rollWoundsAndFate(this.actor.backgroundEffects.homeworld);
+        await this.actor.update({ 'system.wounds.max': woundsMax, 'system.fate.max': fateMax });
     }
 }
