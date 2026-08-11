@@ -5,6 +5,7 @@ import {
     characteristicAdvanceCost, skillAdvanceCost, talentCost,
     progressionCost, remainingProgression,
     countMatchingAptitudes, normaliseAptitude, parseAptitudeList,
+    advanceRow,
 } from '../src/module/rules/advancement.mjs';
 import { check, done } from './harness.mjs';
 
@@ -43,6 +44,28 @@ check('remaining ladder from Trained skill, one aptitude',
     [{ rank: 3, label: 'Experienced', cost: 600, cumulative: 600 },
      { rank: 4, label: 'Veteran', cost: 800, cumulative: 1400 }]);
 check('nothing remains at max rank', remainingProgression('characteristic', 5, 2), []);
+
+// --- advanceRow: the shared table row for both the spend window and the wizard ---------------
+// Only the next rung is ever offered, which is what makes the cumulative rule automatic.
+check('an unadvanced characteristic offers Simple and reads rank "None"',
+    advanceRow('characteristic', { key: 'agility', label: 'Agility', rank: 0, matches: 2, available: 1000 }),
+    { key: 'agility', label: 'Agility', rankLabel: 'None', matches: 2, nextLabel: 'Simple', nextCost: 100, canAfford: true });
+check('a partly advanced skill names the rank it has and the one it can buy',
+    advanceRow('skill', { key: 'dodge', spKey: null, label: 'Dodge', rank: 2, matches: 1, available: 1000 }),
+    { key: 'dodge', spKey: null, label: 'Dodge', rankLabel: 'Trained', matches: 1, nextLabel: 'Experienced', nextCost: 600, canAfford: true });
+check('at the top of the ladder there is nothing left to buy',
+    advanceRow('characteristic', { key: 'agility', label: 'Agility', rank: 5, matches: 2, available: 99999 }),
+    { key: 'agility', label: 'Agility', rankLabel: 'Expert', matches: 2, nextLabel: null, nextCost: null, canAfford: false });
+check('too little XP makes the step unaffordable but still shows its price', () =>
+    advanceRow('skill', { key: 'dodge', spKey: null, label: 'Dodge', rank: 0, matches: 0, available: 299 }),
+{ key: 'dodge', spKey: null, label: 'Dodge', rankLabel: 'None', matches: 0, nextLabel: 'Known', nextCost: 300, canAfford: false });
+// A speciality row carries spKey so the buy handler knows which one to advance; a characteristic
+// row must not, or the template would render a stray data attribute.
+check('a speciality row carries its speciality key',
+    advanceRow('skill', { key: 'commonLore', spKey: 'imperialGuard', label: 'Common Lore: Imperial Guard', rank: 1, matches: 0, available: 1000 }).spKey,
+    'imperialGuard');
+check('a characteristic row has no spKey at all',
+    'spKey' in advanceRow('characteristic', { key: 'agility', label: 'Agility', rank: 0, matches: 0, available: 0 }), false);
 
 // --- aptitude matching ----------------------------------------------------------------------
 const owned = ['Agility', 'Finesse', 'Fieldcraft', 'Weapon Skill'];

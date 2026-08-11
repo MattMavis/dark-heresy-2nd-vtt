@@ -4,13 +4,12 @@ import { SYSTEM_ID } from '../hooks-manager.mjs';
 import {
     CHARACTERISTIC_APTITUDES,
     SKILL_APTITUDES,
-    CHARACTERISTIC_RANKS,
-    SKILL_RANKS,
-    characteristicAdvanceCost,
-    skillAdvanceCost,
     talentCost,
     countMatchingAptitudes,
     purchaseEntry,
+    advanceRow,
+    nextCharacteristicStep as characteristicStep,
+    nextSkillStep as skillStep,
 } from '../rules/advancement.mjs';
 import { evaluatePrerequisites } from '../rules/talent-prerequisites.mjs';
 
@@ -48,13 +47,9 @@ function buildPrerequisiteSnapshot(actor) {
  * can never disagree about what the next step is or what it costs.
  */
 function nextCharacteristicStep(actor, key) {
-    const characteristic = actor.system.characteristics[key];
-    const rank = Number(characteristic?.advance) || 0;
-    if (rank >= CHARACTERISTIC_RANKS.length) return null;
+    const rank = Number(actor.system.characteristics[key]?.advance) || 0;
     const matches = countMatchingAptitudes(ownedAptitudeNames(actor), CHARACTERISTIC_APTITUDES[key]);
-    const cost = characteristicAdvanceCost(rank + 1, matches);
-    if (cost === null) return null;
-    return { rank: rank + 1, matches, cost, label: CHARACTERISTIC_RANKS[rank] };
+    return characteristicStep(rank, matches);
 }
 
 /** Same shape as {@link nextCharacteristicStep}, for a skill or one of its specialities. */
@@ -62,12 +57,8 @@ function nextSkillStep(actor, key, spKey) {
     const skill = actor.system.skills[key];
     const node = spKey ? skill?.specialities?.[spKey] : skill;
     if (!node) return null;
-    const rank = Number(node.advance) || 0;
-    if (rank >= SKILL_RANKS.length) return null;
     const matches = countMatchingAptitudes(ownedAptitudeNames(actor), SKILL_APTITUDES[key]);
-    const cost = skillAdvanceCost(rank + 1, matches);
-    if (cost === null) return null;
-    return { rank: rank + 1, matches, cost, label: SKILL_RANKS[rank] };
+    return skillStep(Number(node.advance) || 0, matches);
 }
 
 /**
@@ -104,20 +95,16 @@ class AdvancementData {
 
     /** One row per Table 2-3 characteristic (Influence excluded -- it is never advanced this way). */
     get characteristicRows() {
+        const aptitudes = ownedAptitudeNames(this.actor);
         return Object.entries(CHARACTERISTIC_APTITUDES).map(([key, required]) => {
             const characteristic = this.actor.system.characteristics[key];
-            const rank = Number(characteristic.advance) || 0;
-            const matches = countMatchingAptitudes(ownedAptitudeNames(this.actor), required);
-            const step = nextCharacteristicStep(this.actor, key);
-            return {
+            return advanceRow('characteristic', {
                 key,
                 label: characteristic.label,
-                rankLabel: rank > 0 ? CHARACTERISTIC_RANKS[rank - 1] : 'None',
-                matches,
-                nextLabel: step?.label ?? null,
-                nextCost: step?.cost ?? null,
-                canAfford: !!step && step.cost <= this.available,
-            };
+                rank: characteristic.advance,
+                matches: countMatchingAptitudes(aptitudes, required),
+                available: this.available,
+            });
         });
     }
 
@@ -142,18 +129,7 @@ class AdvancementData {
     }
 
     _skillRow(label, key, spKey, node, matches) {
-        const rank = Number(node.advance) || 0;
-        const step = nextSkillStep(this.actor, key, spKey);
-        return {
-            key,
-            spKey,
-            label,
-            rankLabel: rank > 0 ? SKILL_RANKS[rank - 1] : 'None',
-            matches,
-            nextLabel: step?.label ?? null,
-            nextCost: step?.cost ?? null,
-            canAfford: !!step && step.cost <= this.available,
-        };
+        return advanceRow('skill', { key, spKey, label, rank: node.advance, matches, available: this.available });
     }
 
     /** Talent candidates filtered by the search box and annotated with this actor's live price

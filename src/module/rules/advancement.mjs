@@ -178,6 +178,53 @@ export function progressionCost(kind, fromRank, toRank, matches) {
 }
 
 /* -------------------------------------------- */
+/*  Steps and rows                              */
+/* -------------------------------------------- */
+
+/** The one step available from `rank`, or null at the top of the ladder. */
+export function nextCharacteristicStep(rank, matches) {
+    const current = Number(rank) || 0;
+    if (current >= CHARACTERISTIC_RANKS.length) return null;
+    const cost = characteristicAdvanceCost(current + 1, matches);
+    return cost === null ? null : { rank: current + 1, matches, cost, label: CHARACTERISTIC_RANKS[current] };
+}
+
+/** Same, for a skill or one of its specialities. */
+export function nextSkillStep(rank, matches) {
+    const current = Number(rank) || 0;
+    if (current >= SKILL_RANKS.length) return null;
+    const cost = skillAdvanceCost(current + 1, matches);
+    return cost === null ? null : { rank: current + 1, matches, cost, label: SKILL_RANKS[current] };
+}
+
+/**
+ * The view-model behind one row of an advancement table.
+ *
+ * The spend window and the creation wizard render identical tables; all that differs is where the
+ * three inputs come from -- a live actor in one case, the wizard's pending state in the other --
+ * so they are passed in rather than looked up here. Only the *next* rung is ever offered, which
+ * is what makes the cumulative rule automatic: a rank cannot be skipped because it is never shown.
+ *
+ * @param kind {'characteristic'|'skill'}
+ */
+export function advanceRow(kind, { key, spKey = null, label, rank, matches, available }) {
+    const isCharacteristic = kind === 'characteristic';
+    const ranks = isCharacteristic ? CHARACTERISTIC_RANKS : SKILL_RANKS;
+    const current = Number(rank) || 0;
+    const step = isCharacteristic ? nextCharacteristicStep(current, matches) : nextSkillStep(current, matches);
+    return {
+        key,
+        ...(isCharacteristic ? {} : { spKey }),
+        label,
+        rankLabel: current > 0 ? ranks[current - 1] : 'None',
+        matches,
+        nextLabel: step?.label ?? null,
+        nextCost: step?.cost ?? null,
+        canAfford: !!step && step.cost <= available,
+    };
+}
+
+/* -------------------------------------------- */
 /*  Ledger                                      */
 /* -------------------------------------------- */
 

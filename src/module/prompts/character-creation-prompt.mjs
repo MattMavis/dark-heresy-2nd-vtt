@@ -10,13 +10,12 @@ import { rollWoundsAndFate } from '../sheets/actor/acolyte-sheet.mjs';
 import {
     CHARACTERISTIC_APTITUDES,
     SKILL_APTITUDES,
-    CHARACTERISTIC_RANKS,
-    SKILL_RANKS,
-    characteristicAdvanceCost,
-    skillAdvanceCost,
     talentCost,
     countMatchingAptitudes,
     purchaseEntry,
+    advanceRow,
+    nextCharacteristicStep as characteristicStep,
+    nextSkillStep as skillStep,
 } from '../rules/advancement.mjs';
 import { evaluatePrerequisites } from '../rules/talent-prerequisites.mjs';
 import {
@@ -619,28 +618,18 @@ class CharacterCreationData {
     }
 
     get xpCharacteristicRows() {
-        return ROLLED_CHARACTERISTIC_KEYS.map((key) => {
-            const rank = this.xpCurrentCharacteristicRank(key);
-            const matches = countMatchingAptitudes(this.plannedAptitudeNames, CHARACTERISTIC_APTITUDES[key]);
-            const step = this._xpNextCharacteristicStep(key);
-            return {
-                key,
-                label: this.actor.system.characteristics[key].label,
-                rankLabel: rank > 0 ? CHARACTERISTIC_RANKS[rank - 1] : 'None',
-                matches,
-                nextLabel: step?.label ?? null,
-                nextCost: step?.cost ?? null,
-                canAfford: !!step && step.cost <= this.xpAvailable,
-            };
-        });
+        return ROLLED_CHARACTERISTIC_KEYS.map((key) => advanceRow('characteristic', {
+            key,
+            label: this.actor.system.characteristics[key].label,
+            rank: this.xpCurrentCharacteristicRank(key),
+            matches: countMatchingAptitudes(this.plannedAptitudeNames, CHARACTERISTIC_APTITUDES[key]),
+            available: this.xpAvailable,
+        }));
     }
 
     _xpNextCharacteristicStep(key) {
-        const rank = this.xpCurrentCharacteristicRank(key);
-        if (rank >= CHARACTERISTIC_RANKS.length) return null;
         const matches = countMatchingAptitudes(this.plannedAptitudeNames, CHARACTERISTIC_APTITUDES[key]);
-        const cost = characteristicAdvanceCost(rank + 1, matches);
-        return cost === null ? null : { rank: rank + 1, matches, cost, label: CHARACTERISTIC_RANKS[rank] };
+        return characteristicStep(this.xpCurrentCharacteristicRank(key), matches);
     }
 
     /** One row per skill, plus one row per speciality already granted at chargen -- an
@@ -664,26 +653,19 @@ class CharacterCreationData {
     }
 
     _xpSkillRow(label, key, spKey, matches) {
-        const rank = this.xpCurrentSkillRank(key, spKey);
-        const step = this._xpNextSkillStep(key, spKey);
-        return {
+        return advanceRow('skill', {
             key,
             spKey,
             label,
-            rankLabel: rank > 0 ? SKILL_RANKS[rank - 1] : 'None',
+            rank: this.xpCurrentSkillRank(key, spKey),
             matches,
-            nextLabel: step?.label ?? null,
-            nextCost: step?.cost ?? null,
-            canAfford: !!step && step.cost <= this.xpAvailable,
-        };
+            available: this.xpAvailable,
+        });
     }
 
     _xpNextSkillStep(key, spKey) {
-        const rank = this.xpCurrentSkillRank(key, spKey);
-        if (rank >= SKILL_RANKS.length) return null;
         const matches = countMatchingAptitudes(this.plannedAptitudeNames, SKILL_APTITUDES[key]);
-        const cost = skillAdvanceCost(rank + 1, matches);
-        return cost === null ? null : { rank: rank + 1, matches, cost, label: SKILL_RANKS[rank] };
+        return skillStep(this.xpCurrentSkillRank(key, spKey), matches);
     }
 
     /**
