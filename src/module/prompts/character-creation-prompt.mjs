@@ -1,6 +1,6 @@
 import { recursiveUpdate } from '../rolls/roll-helpers.mjs';
-import { SYSTEM_ID } from '../hooks-manager.mjs';
 import { DarkHeresy } from '../rules/config.mjs';
+import { fetchGrantData, grantItems, loadTalentCandidates, scanItemPackIndexes } from '../rules/compendium-grants.mjs';
 import { normaliseName, resolveSkillGrant } from '../rules/grant-resolution.mjs';
 import { homeworlds, homeworldNames } from '../rules/homeworlds.mjs';
 import { backgrounds, backgroundNames } from '../rules/backgrounds.mjs';
@@ -78,18 +78,11 @@ const STEP_LABELS = {
  */
 async function buildItemIndex() {
     const index = new Map();
-    const packs = game.packs.filter((p) => p.metadata.packageName === SYSTEM_ID && p.metadata.type === 'Item');
-    for (const pack of packs) {
-        let entries;
-        try {
-            entries = await pack.getIndex({ fields: ['name', 'type', 'system.choice', 'system.level', 'system.tier', 'system.aptitudes', 'system.prerequisites'] });
-        } catch (err) {
-            game.dh.error(`character creation: failed to index pack ${pack.metadata.id}`, err);
-            continue;
-        }
-        for (const entry of entries) {
+    await scanItemPackIndexes(
+        ['name', 'type', 'system.choice', 'system.level', 'system.tier', 'system.aptitudes', 'system.prerequisites'],
+        (entry, pack) => {
             const key = normaliseName(entry.name);
-            if (index.has(key)) continue;
+            if (index.has(key)) return;
             index.set(key, {
                 pack: pack.metadata.id,
                 itemId: entry._id,
@@ -101,8 +94,8 @@ async function buildItemIndex() {
                 choiceList: entry.system?.choice?.list ?? null,
                 hasLevel: entry.system?.level !== undefined,
             });
-        }
-    }
+        },
+    );
     return index;
 }
 
@@ -138,21 +131,14 @@ function findEquipmentEntry(index, text) {
     return null;
 }
 
-/** Fetch a compendium item's full data, ready for `createEmbeddedDocuments`, with an optional
- * choice/level/quantity override baked in. Mirrors `grantRequisitionedItem` (rules/requisition.mjs)
- * but deliberately skips its "bump quantity on an existing item" merge: two chargen grants of the
- * same talent with different specialisations (two Weapon Training entries, say) must stay two
- * separate items, not collapse into one. */
-async function buildGrantedItemData(entry, { selected = null, level = null, quantity = null } = {}) {
-    const pack = game.packs.get(entry.pack);
-    const doc = await pack?.getDocument(entry.itemId);
-    if (!doc) return null;
-    const data = doc.toObject();
-    delete data._id;
-    if (selected !== null) foundry.utils.setProperty(data, 'system.choice.selected', selected);
-    if (level !== null) foundry.utils.setProperty(data, 'system.level', level);
-    if (quantity !== null) foundry.utils.setProperty(data, 'system.quantity', quantity);
-    return data;
+/** A chargen grant's item data, naming the three fields this wizard ever overrides. Each is
+ * skipped when null, so the resolution of a grant that has no speciality or level writes neither. */
+function buildGrantedItemData(entry, { selected = null, level = null, quantity = null } = {}) {
+    return fetchGrantData(entry.pack, entry.itemId, {
+        'system.choice.selected': selected,
+        'system.level': level,
+        'system.quantity': quantity,
+    });
 }
 
 /* -------------------------------------------- */
@@ -756,32 +742,10 @@ class CharacterCreationData {
 /*  Async setup: talent candidates for the XP step */
 /* -------------------------------------------- */
 
-/** Every tier 1-3 talent not already planned for this character -- same tier restriction as
- * `buildTalentCandidates` (advancement-prompt.mjs) and for the same reason (Table 2-6 has no
- * column beyond tier 3). Rebuilt after every purchase so a bought talent drops off the list. */
+/** The whole buyable talent list. Nothing is excluded here: which of them are already planned
+ * changes with every click, so `xpVisibleTalents` filters that at render time instead. */
 async function refreshXpTalentCandidates(data) {
-    const pack = game.packs.get(`${SYSTEM_ID}.talents`);
-    if (!pack) {
-        game.dh.error('refreshXpTalentCandidates: talents pack not found');
-        data.xpTalentCandidates = [];
-        return;
-    }
-    const index = await pack.getIndex({ fields: ['name', 'img', 'system.tier', 'system.aptitudes', 'system.prerequisites'] });
-    const candidates = [];
-    for (const entry of index) {
-        const tier = Number(entry.system?.tier);
-        if (!Number.isInteger(tier) || tier < 1 || tier > 3) continue;
-        candidates.push({
-            pack: pack.metadata.id,
-            itemId: entry._id,
-            name: entry.name,
-            img: entry.img,
-            tier,
-            aptitudes: entry.system?.aptitudes ?? '',
-            prerequisites: entry.system?.prerequisites ?? '',
-        });
-    }
-    data.xpTalentCandidates = candidates;
+    data.xpTalentCandidates = await loadTalentCandidates();
 }
 
 /* -------------------------------------------- */
@@ -957,7 +921,9 @@ async function applyCharacterCreation(data) {
     systemUpdate.experience = { ledger: [...(actor.experience.ledger ?? []), ...ledgerWithTimestamps] };
 
     await actor.update({ system: systemUpdate });
-    if (itemsToCreate.length) await actor.createEmbeddedDocuments('Item', itemsToCreate);
+    // One batched creation, and no merging: two grants of the same talent with different
+    // specialisations (two Weapon Training entries, say) must stay two items.
+    await grantItems(actor, itemsToCreate);
 }
 
 /* -------------------------------------------- */

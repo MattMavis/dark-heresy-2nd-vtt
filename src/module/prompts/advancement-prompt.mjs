@@ -1,6 +1,11 @@
 import { recursiveUpdate } from '../rolls/roll-helpers.mjs';
-import { grantRequisitionedItem } from '../rules/requisition.mjs';
-import { SYSTEM_ID } from '../hooks-manager.mjs';
+import {
+    fetchGrantData,
+    grantItems,
+    grantSourceKey,
+    loadTalentCandidates,
+    sourceFlagPath,
+} from '../rules/compendium-grants.mjs';
 import {
     CHARACTERISTIC_APTITUDES,
     SKILL_APTITUDES,
@@ -153,37 +158,11 @@ class AdvancementData {
     }
 }
 
-/**
- * All talents this actor doesn't already own (matched by name -- a talent granted for free at
- * chargen has no compendium-source flag to match against, so name is the only ownership test that
- * actually works), restricted to tier 1-3: Table 2-6 has no column for anything else, and pricing
- * one would mean guessing rather than reading it off the book.
- */
-async function buildTalentCandidates(actor) {
-    const pack = game.packs.get(`${SYSTEM_ID}.talents`);
-    if (!pack) {
-        game.dh.error(`buildTalentCandidates: talents pack not found`);
-        return [];
-    }
-    const ownedNames = new Set(actor.items.filter((i) => i.isTalent).map((i) => i.name));
-    const index = await pack.getIndex({ fields: ['name', 'img', 'system.tier', 'system.aptitudes', 'system.prerequisites'] });
-
-    const candidates = [];
-    for (const entry of index) {
-        if (ownedNames.has(entry.name)) continue;
-        const tier = Number(entry.system?.tier);
-        if (!Number.isInteger(tier) || tier < 1 || tier > 3) continue;
-        candidates.push({
-            pack: pack.metadata.id,
-            itemId: entry._id,
-            name: entry.name,
-            img: entry.img,
-            tier,
-            aptitudes: entry.system?.aptitudes ?? '',
-            prerequisites: entry.system?.prerequisites ?? '',
-        });
-    }
-    return candidates;
+/** Every buyable talent this actor doesn't already own. */
+function buildTalentCandidates(actor) {
+    return loadTalentCandidates({
+        excludeNames: new Set(actor.items.filter((i) => i.isTalent).map((i) => i.name)),
+    });
 }
 
 /* -------------------------------------------- */
@@ -249,11 +228,13 @@ async function buySkill(actor, key, spKey) {
 }
 
 /**
- * Grants use the existing `grantRequisitionedItem` helper (rules/requisition.mjs): it fetches the
- * full compendium Document, strips the `_id`, and creates it on the actor. That is a document
- * creation (one operation) distinct from the actor's own data update the ledger entry needs
- * (a second operation) -- Foundry has no single call that does both, so a talent purchase is
- * unavoidably two actor-level operations rather than one.
+ * The grant is a document creation (one operation), distinct from the actor's own data update the
+ * ledger entry needs (a second operation) -- Foundry has no single call that does both, so a
+ * talent purchase is unavoidably two actor-level operations rather than one.
+ *
+ * Deliberately not `grantRequisitionedItem`: that path writes a `system.quantity` and merges
+ * repeat grants by it, and a talent has no such field. Bought talents are granted plainly, with
+ * the source flag kept purely as a record of where the item came from.
  */
 async function buyTalent(actor, candidate, ignorePrerequisites) {
     const matches = countMatchingAptitudes(ownedAptitudeNames(actor), candidate.aptitudes);
@@ -274,7 +255,10 @@ async function buyTalent(actor, candidate, ignorePrerequisites) {
         ui.notifications.warn(`${candidate.name}'s prerequisites are not met.`);
         return;
     }
-    const granted = await grantRequisitionedItem(actor, candidate.pack, candidate.itemId, 1);
+    const itemData = await fetchGrantData(candidate.pack, candidate.itemId, {
+        [sourceFlagPath()]: grantSourceKey(candidate.pack, candidate.itemId),
+    });
+    const granted = await grantItems(actor, [itemData]);
     if (!granted.length) return;
 
     const entry = purchaseEntry('talent', {

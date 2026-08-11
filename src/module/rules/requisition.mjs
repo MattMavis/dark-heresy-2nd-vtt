@@ -1,5 +1,12 @@
 import { SYSTEM_ID } from '../hooks-manager.mjs';
 import { DarkHeresy } from './config.mjs';
+import {
+    fetchGrantData,
+    grantItems,
+    grantSourceKey,
+    scanItemPackIndexes,
+    sourceFlagPath,
+} from './compendium-grants.mjs';
 
 // Core Rulebook p.140, Table 5-1: Availability Modifiers.
 // Ubiquitous is RAW "Automatic" (no test needed) -- modelled here as a flat 0 rather
@@ -82,17 +89,14 @@ export async function buildRequisitionCandidates(maxAvailability) {
     const maxIndex = tiers.indexOf(maxAvailability);
     const candidates = [];
 
-    const packs = game.packs.filter((p) => p.metadata.packageName === SYSTEM_ID && p.metadata.type === 'Item');
-    for (const pack of packs) {
-        const index = await pack.getIndex({
-            fields: ['name', 'img', 'type', 'system.availability', 'system.craftsmanship'],
-        });
-        for (const entry of index) {
-            if (!PHYSICAL_ITEM_TYPES.includes(entry.type)) continue;
+    await scanItemPackIndexes(
+        ['name', 'img', 'type', 'system.availability', 'system.craftsmanship'],
+        (entry, pack) => {
+            if (!PHYSICAL_ITEM_TYPES.includes(entry.type)) return;
 
             const availability = normalizeTier(entry.system?.availability, tiers, 'Common');
             const tierIndex = tiers.indexOf(availability);
-            if (tierIndex < 0 || tierIndex > maxIndex) continue;
+            if (tierIndex < 0 || tierIndex > maxIndex) return;
 
             const craftsmanship = normalizeTier(entry.system?.craftsmanship, Object.keys(CRAFTSMANSHIP_MODIFIERS), 'Common');
             candidates.push({
@@ -105,8 +109,8 @@ export async function buildRequisitionCandidates(maxAvailability) {
                 craftsmanship,
                 modifier: requisitionItemModifier(availability, craftsmanship),
             });
-        }
-    }
+        },
+    );
     return candidates;
 }
 
@@ -119,46 +123,19 @@ export function getWarbandTracker() {
     return game.actors.find((a) => a.getFlag(SYSTEM_ID, 'isWarbandTracker'));
 }
 
-/** Flag recording which compendium entry a granted item came from, so repeat grants can stack. */
-export const REQUISITION_SOURCE_FLAG = 'requisitionSourceId';
-
 /**
- * Grant `quantity` of a compendium item onto `actor`. Fetches the full
- * compendium Document (not the index entry) so nested ammo/attack-special flags
- * (DarkHeresyItemContainer) travel with it via `.toObject()`; weapons already carry
- * a full clip baked into their pack data, so a granted weapon is ready to use.
- * No RAW DoS-based bonus-quantity granting -- exactly `quantity`, no more.
+ * Grant `quantity` of a requisitioned compendium item onto `actor`. No RAW DoS-based
+ * bonus-quantity granting -- exactly `quantity`, no more.
  *
- * Requisitioning something the actor already has bumps that stack's quantity rather than
- * adding a second row. Matching is by source-compendium id, not by name: two items can share
- * a name but differ in craftsmanship, and merging those would silently upgrade or downgrade
- * one of them.
+ * Requisition is the one grant path that stacks: asking for a second lasgun bumps the first
+ * stack rather than adding a second row. Everything else granted from a compendium goes through
+ * {@link grantItems} without merging -- see its doc comment for why.
  */
 export async function grantRequisitionedItem(actor, packId, itemId, quantity = 1) {
-    const pack = game.packs.get(packId);
-    if (!pack) {
-        game.dh.error(`grantRequisitionedItem: pack ${packId} not found`);
-        return [];
-    }
-    const doc = await pack.getDocument(itemId);
-    if (!doc) {
-        game.dh.error(`grantRequisitionedItem: item ${itemId} not found in ${packId}`);
-        return [];
-    }
-
-    const count = Math.max(1, quantity);
-    const sourceKey = `${packId}.${itemId}`;
-
-    const existing = actor.items.find((i) => i.getFlag(SYSTEM_ID, REQUISITION_SOURCE_FLAG) === sourceKey);
-    if (existing) {
-        await existing.update({ 'system.quantity': existing.quantity + count });
-        return [existing];
-    }
-
-    const itemData = doc.toObject();
-    delete itemData._id;
-    itemData.system = itemData.system ?? {};
-    itemData.system.quantity = count;
-    foundry.utils.setProperty(itemData, `flags.${SYSTEM_ID}.${REQUISITION_SOURCE_FLAG}`, sourceKey);
-    return actor.createEmbeddedDocuments('Item', [itemData]);
+    const sourceKey = grantSourceKey(packId, itemId);
+    const itemData = await fetchGrantData(packId, itemId, {
+        'system.quantity': Math.max(1, quantity),
+        [sourceFlagPath()]: sourceKey,
+    });
+    return grantItems(actor, [itemData], { mergeBySourceFlag: true });
 }
