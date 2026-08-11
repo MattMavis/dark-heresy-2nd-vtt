@@ -411,6 +411,9 @@ export async function checkAndMigrateWorld() {
                     ],
                 });
                 break;
+            // The only notes a 1.8.5 upgrade shows: displayReleaseNotes is called once with the
+            // target worldVersion, not once per version in between, so this case has to cover
+            // everything in the release rather than only what the 187 migration step does.
             case 187:
                 await releaseNotes({
                     version: '1.8.5',
@@ -418,6 +421,9 @@ export async function checkAndMigrateWorld() {
                         'Experience is now tracked as a history on both sides of the account rather than two numbers you edit by hand, so the sheet cannot drift out of step with what you have actually been given or bought.',
                         'The GM can now award experience to a single character or to the whole party at once, with a reason recorded, from a new Award Experience button on the Experience panel.',
                         'Players can spend experience from a new Spend Experience button, which prices every advance against the character\'s own aptitudes and will not let them skip a rank.',
+                        'New Character Creation button on the Bio tab walks you through building an acolyte: home world, background, role, characteristics, aptitudes, starting experience and divination. It writes nothing to your character until you press Confirm on the last step, so you can back out at any point or change an earlier answer.',
+                        'Character creation grants what your choices entitle you to -- aptitudes, skills, talents, traits and starting equipment -- rather than leaving you to add each one by hand. Anything it cannot find in the compendiums is listed on the summary step for you to add yourself instead of being dropped silently.',
+                        'Talent prerequisites are now read from the talent and checked against your character, so the buy list shows what you qualify for at a glance. A prerequisite the system cannot make sense of never blocks a purchase, and the GM can override the check entirely with a tickbox.',
                         'Whatever your characters had already earned and spent is carried over as one opening award and one opening spend entry. Available XP is unchanged for everyone; earlier history is not itemised, because a character is given so much for free at creation that there is no way to tell a granted advance from a bought one after the fact.',
                         'Only player characters were touched. NPCs are statted directly rather than bought with experience, so they were left alone.',
                     ],
