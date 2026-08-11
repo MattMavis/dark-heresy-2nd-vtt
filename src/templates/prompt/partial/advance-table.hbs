@@ -1,0 +1,38 @@
+{{!-- The characteristic/skill advancement table, shared by the Spend Experience window and the
+      character creation wizard's Starting Experience step. Both feed it rows built by `advanceRow`
+      (rules/advancement.mjs), so the two tables cannot drift apart.
+
+      Parameters: `rows` (the advanceRow view-models), `heading` (the first column's title) and
+      `action` (the data-action the Buy button fires).
+
+      Six logical cells per row against the `dh-advancementtable--border` track list -- the first
+      spans two. Adding a cell here without adding a track wraps every row. --}}
+<div class="dh-table--border dh-advancementtable--border">
+    <div class="table-row--head">
+        <div class="table-cell--span2">{{heading}}</div>
+        <div class="table-cell">Rank</div>
+        <div class="table-cell">Aptitudes</div>
+        <div class="table-cell">Next Step</div>
+        <div class="table-cell">Cost</div>
+        <div class="table-cell--last">Buy</div>
+    </div>
+    {{#each rows}}
+        <div class="table-row {{#unless this.nextCost}}is-maxed{{else}}{{#unless this.canAfford}}is-unaffordable{{/unless}}{{/unless}}">
+            <div class="table-cell--span2">{{this.label}}</div>
+            <div class="table-cell">{{this.rankLabel}}</div>
+            <div class="table-cell">{{this.matches}}</div>
+            <div class="table-cell">{{defaultVal this.nextLabel 'Max'}}</div>
+            <div class="table-cell {{#if this.nextCost}}{{#unless this.canAfford}}cost--short{{/unless}}{{/if}}">{{defaultVal this.nextCost '--'}}</div>
+            <div class="table-cell--last">
+                <button
+                    type="button"
+                    class="dh-prompt__button"
+                    data-action="{{../action}}"
+                    data-key="{{this.key}}"
+                    {{#if this.spKey}}data-sp-key="{{this.spKey}}"{{/if}}
+                    {{#unless this.canAfford}}disabled{{/unless}}
+                >Buy</button>
+            </div>
+        </div>
+    {{/each}}
+</div>
