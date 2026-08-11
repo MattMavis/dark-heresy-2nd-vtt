@@ -8,6 +8,7 @@ import {
     countMatchingAptitudes,
     purchaseEntry,
     advanceRow,
+    talentRow,
     nextCharacteristicStep as characteristicStep,
     nextSkillStep as skillStep,
 } from '../rules/advancement.mjs';
@@ -141,20 +142,14 @@ class AdvancementData {
         const snapshot = buildPrerequisiteSnapshot(this.actor);
         return this.talentCandidates
             .filter((t) => !search || t.name.toLowerCase().includes(search))
-            .map((t) => {
-                const matches = countMatchingAptitudes(aptitudes, t.aptitudes);
-                const cost = talentCost(t.tier, matches);
-                const prereq = evaluatePrerequisites(t.prerequisites, snapshot);
-                const prereqBlocked = prereq.blocked && !this.ignorePrerequisites;
-                return {
-                    ...t,
-                    matches,
-                    cost,
-                    prereqClauses: prereq.clauses,
-                    prereqBlocked: prereq.blocked,
-                    canAfford: cost !== null && cost <= this.available && !prereqBlocked,
-                };
-            });
+            .map((t) =>
+                talentRow(t, {
+                    aptitudes,
+                    available: this.available,
+                    snapshot,
+                    ignorePrerequisites: this.ignorePrerequisites,
+                }),
+            );
     }
 }
 

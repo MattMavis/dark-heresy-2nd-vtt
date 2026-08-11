@@ -12,6 +12,7 @@
  * cross-checked against them and disagreed on exactly one entry -- it lists Common Lore's second
  * aptitude as General, where the book says Knowledge twice over. The book wins.
  */
+import { evaluatePrerequisites } from './talent-prerequisites.mjs';
 
 /** Progression ranks, in the order they must be bought. */
 export const CHARACTERISTIC_RANKS = ['Simple', 'Intermediate', 'Trained', 'Proficient', 'Expert'];
@@ -221,6 +222,30 @@ export function advanceRow(kind, { key, spKey = null, label, rank, matches, avai
         nextLabel: step?.label ?? null,
         nextCost: step?.cost ?? null,
         canAfford: !!step && step.cost <= available,
+    };
+}
+
+/**
+ * The view-model behind one row of a talent table, for the same two hosts as {@link advanceRow}.
+ *
+ * `prereqBlocked` is reported raw, before `ignorePrerequisites` is applied, so the row still shows
+ * a GM which talents they are overriding; only `canAfford` -- what the Buy button reads -- honours
+ * the override. A talent with no valid tier prices as null and can never be bought.
+ *
+ * The caller decides which candidates reach here: the spend window drops talents the actor already
+ * owns, the wizard drops ones it has already planned.
+ */
+export function talentRow(candidate, { aptitudes, available, snapshot, ignorePrerequisites = false }) {
+    const matches = countMatchingAptitudes(aptitudes, candidate.aptitudes);
+    const cost = talentCost(candidate.tier, matches);
+    const prereq = evaluatePrerequisites(candidate.prerequisites, snapshot);
+    return {
+        ...candidate,
+        matches,
+        cost,
+        prereqClauses: prereq.clauses,
+        prereqBlocked: prereq.blocked,
+        canAfford: cost !== null && cost <= available && !(prereq.blocked && !ignorePrerequisites),
     };
 }
 

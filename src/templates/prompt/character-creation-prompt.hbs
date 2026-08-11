@@ -312,6 +312,14 @@
                         <span class="dh-field__span">Search Talents</span>
                         <input class="dh-field__input" type="search" name="xpTalentSearch" value="{{xpTalentSearch}}" />
                     </div>
+                    {{#if isGM}}
+                        <div class="dh-field__wrapper">
+                            <label class="dh-field__span">
+                                <input type="checkbox" data-dtype="Boolean" name="ignorePrerequisites" {{checked ignorePrerequisites}} />
+                                GM: ignore talent prerequisites
+                            </label>
+                        </div>
+                    {{/if}}
                     <div class="dh-table--border dh-advancementtable--border">
                         <div class="table-row--head">
                             <div class="table-cell--span2">Name</div>

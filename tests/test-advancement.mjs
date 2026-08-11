@@ -5,7 +5,7 @@ import {
     characteristicAdvanceCost, skillAdvanceCost, talentCost,
     progressionCost, remainingProgression,
     countMatchingAptitudes, normaliseAptitude, parseAptitudeList,
-    advanceRow,
+    advanceRow, talentRow,
 } from '../src/module/rules/advancement.mjs';
 import { check, done } from './harness.mjs';
 
@@ -66,6 +66,35 @@ check('a speciality row carries its speciality key',
     'imperialGuard');
 check('a characteristic row has no spKey at all',
     'spKey' in advanceRow('characteristic', { key: 'agility', label: 'Agility', rank: 0, matches: 0, available: 0 }), false);
+
+// --- talentRow: the shared talent row for both hosts ------------------------------------------
+// The interesting behaviour is the GM prerequisite override, which the two hosts must apply
+// identically: it moves `canAfford` only. `prereqBlocked` stays raw so an overriding GM can still
+// see which talents they are pushing past.
+const TALENT = { name: 'Sound Constitution', tier: 1, aptitudes: 'Toughness, General', prerequisites: 'T 40' };
+const weak = { characteristics: { toughness: 30 }, skills: {}, talents: [] };
+const strong = { characteristics: { toughness: 45 }, skills: {}, talents: [] };
+const row = (opts) => talentRow(TALENT, { aptitudes: ['Toughness', 'General'], available: 1000, ...opts });
+
+check('a met prerequisite prices normally and can be bought',
+    () => { const r = row({ snapshot: strong }); return [r.cost, r.matches, r.prereqBlocked, r.canAfford]; },
+    [200, 2, false, true]);
+check('an unmet prerequisite blocks the buy',
+    () => { const r = row({ snapshot: weak }); return [r.prereqBlocked, r.canAfford]; },
+    [true, false]);
+check('the GM override frees canAfford but still reports the prerequisite as unmet',
+    () => { const r = row({ snapshot: weak, ignorePrerequisites: true }); return [r.prereqBlocked, r.canAfford]; },
+    [true, true]);
+check('the override cannot buy what the character cannot afford',
+    () => row({ snapshot: weak, ignorePrerequisites: true, available: 199 }).canAfford, false);
+// A tier outside 1-3 has no column in Table 2-6, so it prices as null rather than guessing -- and
+// no override makes an unpriceable talent buyable.
+check('an unpriceable tier is never affordable',
+    () => { const r = talentRow({ ...TALENT, tier: 4 }, { aptitudes: [], available: 99999, snapshot: strong, ignorePrerequisites: true }); return [r.cost, r.canAfford]; },
+    [null, false]);
+check('the candidate fields the template renders are carried through',
+    () => { const r = row({ snapshot: strong }); return [r.name, r.tier, r.prereqClauses.length]; },
+    ['Sound Constitution', 1, 1]);
 
 // --- aptitude matching ----------------------------------------------------------------------
 const owned = ['Agility', 'Finesse', 'Fieldcraft', 'Weapon Skill'];

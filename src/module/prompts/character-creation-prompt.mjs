@@ -14,6 +14,7 @@ import {
     countMatchingAptitudes,
     purchaseEntry,
     advanceRow,
+    talentRow,
     nextCharacteristicStep as characteristicStep,
     nextSkillStep as skillStep,
 } from '../rules/advancement.mjs';
@@ -202,6 +203,12 @@ class CharacterCreationData {
      * the first time that step is reached -- see {@link refreshXpTalentCandidates}. */
     xpTalentCandidates = [];
 
+    /** The same GM-only escape hatch the Spend Experience window carries (AdvancementData): a table
+     * house-rules prerequisites, and a GM must not be stuck behind this parser's judgement. A
+     * non-GM never sees the toggle, and `onBuyTalent` re-checks `game.user.isGM` rather than
+     * trusting this flag. */
+    ignorePrerequisites = false;
+
     divinationRoll = null;
     divinationCharacteristicChoices = {};
     divinationTalentSubchoiceValue = '';
@@ -217,6 +224,10 @@ class CharacterCreationData {
     }
 
     /* ---- lookups ---- */
+
+    get isGM() {
+        return game.user.isGM;
+    }
 
     get homeworld() {
         return homeworlds().find((h) => h.name === this.homeworldName) ?? null;
@@ -721,19 +732,14 @@ class CharacterCreationData {
         return this.xpTalentCandidates
             .filter((t) => !this.hasPlannedTalent(t.name))
             .filter((t) => !search || t.name.toLowerCase().includes(search))
-            .map((t) => {
-                const matches = countMatchingAptitudes(this.plannedAptitudeNames, t.aptitudes);
-                const cost = talentCost(t.tier, matches);
-                const prereq = evaluatePrerequisites(t.prerequisites, snapshot);
-                return {
-                    ...t,
-                    matches,
-                    cost,
-                    prereqClauses: prereq.clauses,
-                    prereqBlocked: prereq.blocked,
-                    canAfford: cost !== null && cost <= this.xpAvailable && !prereq.blocked,
-                };
-            });
+            .map((t) =>
+                talentRow(t, {
+                    aptitudes: this.plannedAptitudeNames,
+                    available: this.xpAvailable,
+                    snapshot,
+                    ignorePrerequisites: this.ignorePrerequisites,
+                }),
+            );
     }
 
     /* ---- summary ---- */
@@ -1167,7 +1173,9 @@ export class CharacterCreationDialog extends HandlebarsApplicationMixin(Applicat
         }
         // Re-checked here rather than trusting the button's disabled state, same as the cost
         // check just above -- see AdvancementDialog.onBuyTalent for the live-actor equivalent.
-        if (evaluatePrerequisites(candidate.prerequisites, this.data.prerequisiteSnapshot).blocked) {
+        // The override only takes effect for an actual GM, whatever a tampered client claims.
+        const blocked = evaluatePrerequisites(candidate.prerequisites, this.data.prerequisiteSnapshot).blocked;
+        if (blocked && !(this.data.ignorePrerequisites && game.user.isGM)) {
             ui.notifications.warn(`${candidate.name}'s prerequisites are not met.`);
             return;
         }
