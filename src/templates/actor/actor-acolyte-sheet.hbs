@@ -65,13 +65,17 @@
             </div>
             <div class="tab {{tabs.bio.cssClass}}" data-group="primary" data-tab="bio">
                 <div class="dh-panel dh-grid-col-6">
-                    <div class="dh-header__info">
-                        <h1 class="dh-panel__header dh-grid-col-4">Biography</h1>
-                        <div class="dh-controls__wrapper">
-                            <div class="dh-control-button">
-                                <button type="button" class="combat-control" data-action="characterCreation">Character Creation</button>
-                            </div>
+                    <h1 class="dh-panel__header">Biography</h1>
+                    {{! Outside dh-header__info deliberately: that grid lays out the bio fields, so
+                        a control placed inside it gets one narrow field-sized cell and its label
+                        clips. As a direct child of the panel it gets its own full-width row, the
+                        same way the experience panel's controls do. }}
+                    <div class="dh-controls__wrapper">
+                        <div class="dh-control-button">
+                            <button type="button" class="combat-control" data-action="characterCreation">Character Creation</button>
                         </div>
+                    </div>
+                    <div class="dh-header__info">
                         {{#each actor.bio}}
                             {{#unless (arrayIncludes @key @root.dh.bio.primary)}}
                                 {{> systems/dark-heresy-2nd/templates/actor/partial/character-field.hbs key=@key value=this options=(getBioOptions @key)}}
