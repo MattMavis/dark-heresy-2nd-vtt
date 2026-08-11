@@ -21,6 +21,7 @@ const FILES = [
     'test-advancement.mjs',
     'test-ledger.mjs',
     'test-grants.mjs',
+    'test-starting-equipment.mjs',
     'test-character-creation.mjs',
     'test-prerequisites.mjs',
     'test-combat-tables.mjs',

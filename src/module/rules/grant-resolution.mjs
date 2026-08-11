@@ -125,3 +125,30 @@ export function resolveSkillGrants(grants = [], skills = {}) {
     }
     return { resolved, unresolved };
 }
+
+/**
+ * Match a piece of starting-equipment text against an index of compendium entries keyed by
+ * {@link normaliseName}.
+ *
+ * Equipment is prose rather than structured grant data -- "3 doses of Stimm", "12 lho sticks",
+ * "Pulse Carbine (Photon Grenade)" -- so an exact match is tried first, then a second pass strips
+ * a leading count and unit phrase and any parenthetical before trying again.
+ *
+ * Anything that still does not match is surfaced in the wizard's summary as text the GM must add
+ * by hand, not silently dropped, and (unlike a skill grant) does not block Confirm: a missing
+ * starting weapon is obvious and easily added from the Gear tab, in a way a missing starting
+ * skill is not.
+ */
+export function findEquipmentEntry(index, text) {
+    const direct = index.get(normaliseName(text));
+    if (direct) return direct;
+    const stripped = String(text)
+        .replace(/^\d+\s*(doses?|vials?|extra\s+clips?|clips?)\s*(of\s+)?/i, '')
+        .replace(/\([^)]*\)/g, '')
+        .trim();
+    if (stripped && stripped.toLowerCase() !== String(text).toLowerCase()) {
+        const found = index.get(normaliseName(stripped));
+        if (found) return found;
+    }
+    return null;
+}

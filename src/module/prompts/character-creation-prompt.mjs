@@ -1,7 +1,7 @@
 import { DhPromptDialog } from './prompt-dialog.mjs';
 import { DarkHeresy } from '../rules/config.mjs';
 import { fetchGrantData, grantItems, loadTalentCandidates, scanItemPackIndexes } from '../rules/compendium-grants.mjs';
-import { normaliseName, resolveSkillGrant } from '../rules/grant-resolution.mjs';
+import { findEquipmentEntry, normaliseName, resolveSkillGrant } from '../rules/grant-resolution.mjs';
 import { homeworlds, homeworldNames } from '../rules/homeworlds.mjs';
 import { backgrounds, backgroundNames } from '../rules/backgrounds.mjs';
 import { roles, roleNames } from '../rules/roles.mjs';
@@ -107,26 +107,6 @@ function resolveNamedGrant(index, grant) {
     const spec = resolveGrantSpeciality(grant.speciality, { choiceList: entry.choiceList, hasLevel: entry.hasLevel });
     if (spec.unresolved) return { status: 'unresolved', reason: `${grant.name}: ${spec.unresolved}`, entry };
     return { status: 'ok', entry, selected: spec.selected, level: spec.level };
-}
-
-/** Equipment text is prose, not structured grant data ("2 doses of Stimm", "12 lho sticks") --
- * an exact match is tried first, then a second pass strips a leading quantity/"doses of"-style
- * phrase and any parenthetical before trying again. What still doesn't match is surfaced in the
- * summary as text only, not silently dropped, but (unlike skills) does not block Confirm: a
- * missing starting weapon is obvious and easy for a GM to add by hand from the Gear tab, in a way
- * a missing starting skill is not. */
-function findEquipmentEntry(index, text) {
-    const direct = index.get(normaliseName(text));
-    if (direct) return direct;
-    const stripped = String(text)
-        .replace(/^\d+\s*(doses?|vials?|extra\s+clips?|clips?)\s*(of\s+)?/i, '')
-        .replace(/\([^)]*\)/g, '')
-        .trim();
-    if (stripped && stripped.toLowerCase() !== String(text).toLowerCase()) {
-        const found = index.get(normaliseName(stripped));
-        if (found) return found;
-    }
-    return null;
 }
 
 /** A chargen grant's item data, naming the three fields this wizard ever overrides. Each is
