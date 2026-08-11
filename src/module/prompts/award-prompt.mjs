@@ -105,9 +105,7 @@ export class AwardDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     static PARTS = {
         body: {
             template: 'systems/dark-heresy-2nd/templates/prompt/award-prompt.hbs',
-            // Same gotcha as requisition-prompt.mjs/advancement-prompt.mjs (see their comments):
-            // this template's root is .dh-prompt with .dh-wrapper nested inside, so
-            // scrollable: [''] would target the wrong element.
+            // Explicit, not [''] -- see requisition-prompt.mjs's PARTS comment.
             scrollable: ['.dh-wrapper'],
         },
     };

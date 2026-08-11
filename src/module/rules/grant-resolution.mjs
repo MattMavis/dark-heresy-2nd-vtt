@@ -3,8 +3,8 @@
  *
  * The structured character-creation data records grants exactly as the rulebook prints them,
  * which is right for an audit trail but not directly usable: the book and this system spell a
- * few things differently. An audit of all 85 structured grants found three that do not match,
- * and all three are naming differences rather than missing content:
+ * few things differently. Three structured grants do not match, and all three are naming
+ * differences rather than missing content:
  *
  *   - "Tech-Use" -- the book hyphenates, this system's label is "Tech Use".
  *   - "Common Lore (Adeptus Administratum)" -- the speciality key here is `administratum`,

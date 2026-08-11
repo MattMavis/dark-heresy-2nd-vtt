@@ -70,10 +70,9 @@
 
 // Panel action buttons -- Spend Experience, Award Experience, Requisition, Attack.
 //
-// These all carried Foundry's `combat-control` class, which that core stylesheet only styles
-// inside the combat tracker. Out here they inherited nothing and rendered as bare text, so the
-// main things a player is meant to click looked like labels. Styled by their wrapper rather than
-// by class so any future panel control is included automatically.
+// They carry Foundry's `combat-control` class, which core CSS only styles inside the combat
+// tracker, so out here they inherit nothing. Styled by their wrapper rather than by class, so any
+// control added to a panel later is included without anyone having to remember.
 .dh-controls__wrapper {
     button {
         width: 100%;

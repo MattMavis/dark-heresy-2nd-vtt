@@ -187,31 +187,20 @@ export async function checkAndMigrateWorld() {
      * Give characters who predate the ledger a single opening entry for what they had already
      * spent, so their history starts from today rather than being invented.
      *
-     * An earlier version of this tried to reconstruct the history by pricing every advance,
-     * talent and power the character owns through the cost tables. That cannot work, and the
-     * reason is worth recording: **a character is given a great deal for free at creation**.
-     * Home world, background and role each grant skills, talents and characteristic advances
-     * that were never paid for, and nothing on the sheet distinguishes a granted advance from a
-     * bought one. Pricing what a character owns therefore measures chargen, not spending.
-     *
-     * It is not a near miss either. Run against the four player characters in the development
-     * world, reconstruction claimed 2700-4300 xp of purchases against lifetime totals of
-     * 1300-1850 -- more than the characters had ever earned, which is impossible for a purchase
-     * history and is the clearest possible proof the premise was wrong. Every character would
-     * have needed a large negative correction to cancel the invented entries back out.
-     *
-     * So the opening entry records only the number the character actually has, and real history
-     * accumulates from the next purchase onwards. Available XP is untouched by construction:
-     * the entry equals `used`, and `_computeExperience` derives `used` back from the ledger.
+     * Spend history cannot be reconstructed by pricing what a character owns: home world,
+     * background and role give a great deal away free at creation, and nothing on the sheet
+     * distinguishes a granted advance from a bought one, so pricing the sheet measures chargen
+     * rather than spending. The opening entry therefore records only the number the character
+     * actually has, and real history accumulates from the next purchase onwards. Available XP
+     * cannot move: the entry equals `used`, which `_computeExperience` derives back from the
+     * ledger.
      *
      * Only `acolyte` actors are considered. NPCs are a separate type, statted directly rather
      * than bought with experience, and record no XP at all.
      *
-     * Awards are the mirror image of this on the other side of the account, but they are a
-     * SEPARATE migration step at 187 rather than part of this one. That is not tidiness: a build
-     * shipped briefly with the ledger seeding here and no awards seeding at all, so a world that
-     * upgraded on it is already recorded as 186 and would never run the awards half if the two
-     * shared a version gate. Keep them separate.
+     * Awards are seeded by a SEPARATE migration step gated at 187, not here. Worlds that
+     * upgraded on an intermediate build are already stamped 186, so the awards seeding needs its
+     * own 187 gate or they will never run it.
      */
     async function migrateExperienceLedger(currentVersion) {
         if (currentVersion >= 186) return;
@@ -251,8 +240,8 @@ export async function checkAndMigrateWorld() {
      *
      * The mirror of the ledger seeding above: there is no record of which grants were awarded on
      * which date, only what the character has now, so one opening entry carries it and real
-     * history accrues from the next award. The entry equals `total` and `_computeExperience`
-     * derives `total` back from the awards, so available XP (`total - used`) cannot move.
+     * history accrues from the next award. Available XP cannot move: the entry equals `total`,
+     * which `_computeExperience` derives back from the awards.
      *
      * Gated at 187 deliberately -- see the note on the ledger migration above.
      */

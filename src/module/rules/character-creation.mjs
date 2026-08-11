@@ -116,9 +116,9 @@ export function collectTraitChoiceGroups(homeworld, background) {
     return [...hw, ...bg];
 }
 
-/** A `free_choice` group (see backgrounds.mjs's doc comment) names no candidate list -- its one
- * "option" only carries the skill the player must specialise within. Returns null for an
- * ordinary group. */
+/** A `free_choice` group names no candidate list -- the book says "pick one" without enumerating
+ * the options, so its single "option" only carries the skill the player must specialise within
+ * ("any one Scholastic Lore"). Returns null for an ordinary group. */
 export function freeChoiceSkillName(group) {
     if (!group?.free_choice) return null;
     return group.options?.[0]?.grants?.[0]?.skill ?? null;

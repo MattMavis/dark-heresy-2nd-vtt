@@ -1,10 +1,10 @@
 /**
  * WARNING: `role_talents` below is a flat 2-element array (e.g. ['Jaded', 'Leap Up']) that looks
  * like a fixed grant of both talents, but every single role page prints "ROLE TALENT: X or Y" - a
- * mandatory CHOICE of exactly one, on all 12 roles with zero exceptions (Phase 3 extraction,
- * verified against page images). Use the new `role_talent_choice` field instead, which correctly
- * encodes it as { choose: 1, options: [...] } (and handles the two roles - Chirurgeon, Hierophant -
- * whose chosen talent itself needs a further sub-pick, plus Mystic's pinned Resistance parameter).
+ * mandatory CHOICE of exactly one, with zero exceptions (verified against page images). Use the
+ * `role_talent_choice` field instead, which correctly encodes it as { choose: 1, options: [...] }
+ * (and handles the two roles - Chirurgeon, Hierophant - whose chosen talent itself needs a
+ * further sub-pick, plus Mystic's pinned Resistance parameter).
  * `role_talents` is left unchanged here because something else may already read it; do not delete it.
  */
 export function roles() {

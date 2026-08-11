@@ -98,9 +98,8 @@
                 {{> systems/dark-heresy-2nd/templates/actor/panel/corruption-panel.hbs}}
                 {{> systems/dark-heresy-2nd/templates/actor/panel/aptitude-panel.hbs}}
                 {{> systems/dark-heresy-2nd/templates/actor/panel/insanity-panel.hbs}}
-                {{! Experience is last and full width: it carries three tables now, and anything
-                    narrower squeezes their columns. Ordering it after the three 2-column panels
-                    means it starts a fresh row instead of leaving a gap beside them. }}
+                {{! Last and full width: its three tables need the room, and following the three
+                    2-column panels means it starts a fresh row rather than leaving a gap. }}
                 {{> systems/dark-heresy-2nd/templates/actor/panel/experience-panel.hbs}}
             </div>
             <div class="tab {{tabs.social.cssClass}}" data-group="primary" data-tab="social">

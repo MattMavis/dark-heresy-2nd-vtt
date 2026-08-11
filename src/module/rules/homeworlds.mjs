@@ -274,9 +274,9 @@ export function homeworlds() {
             },
             aptitude: 'Strength',
             wounds: '8+1d5',
-            // Deliberately not a page citation. This entry previously claimed 'PG 24 EI', which
-            // is the ordinary Agri-World's page, and that false citation cost a research pass
-            // hunting for content that was never in the book.
+            // Deliberately not a page citation: this is homebrew, not printed, so no page
+            // citation exists. Do not restore 'PG 24 EI' -- that is the ordinary Agri-World's
+            // page.
             source: 'Homebrew',
         },
         {

@@ -3,10 +3,10 @@
  * (e.g. `'WP 40, Rank 2 in Medicae skill'`) into something the spend-XP window and the character
  * creation wizard can actually enforce, instead of just printing it.
  *
- * A sweep of all 131 non-empty prerequisite strings in `src/packs/talents/talents.yml` found the
- * grammar below. Commas separate AND-ed clauses (but a comma *inside* parentheses is part of the
- * clause, e.g. "Two-Weapon Wielder (Melee, Ranged)" is one clause, not two). Within a clause,
- * " or " separates alternatives (also parenthesis-aware).
+ * The grammar below covers every non-empty prerequisite string in `src/packs/talents/talents.yml`.
+ * Commas separate AND-ed clauses (but a comma *inside* parentheses is part of the clause, e.g.
+ * "Two-Weapon Wielder (Melee, Ranged)" is one clause, not two). Within a clause, " or " separates
+ * alternatives (also parenthesis-aware).
  *
  * Every clause resolves to one of three states -- never just true/false:
  *   - 'met'           the snapshot satisfies it.
@@ -15,7 +15,7 @@
  *   - 'indeterminate' the clause is real but this parser cannot evaluate it (a genuinely unknown
  *                      pattern) or it is inherently unanswerable before purchase (a talent's own
  *                      not-yet-chosen specialisation, e.g. "Rank 4 in selected skill"). This must
- *                      never block -- see the module doc on `evaluatePrerequisites`.
+ *                      never block -- see {@link evaluatePrerequisites}.
  *
  * Deliberately free of Foundry globals: the caller passes a plain snapshot of the character in,
  * so this can be unit tested in plain node like the rest of `rules/`.

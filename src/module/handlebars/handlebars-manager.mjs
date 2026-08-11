@@ -53,8 +53,7 @@ export class HandlebarManager {
             'systems/dark-heresy-2nd/templates/actor/partial/display-toggle.hbs',
             'systems/dark-heresy-2nd/templates/actor/partial/trait-toggle.hbs',
 
-            // Prompt partials.
-            'systems/dark-heresy-2nd/templates/prompt/partial/choice-group-row.hbs',
+                'systems/dark-heresy-2nd/templates/prompt/partial/choice-group-row.hbs',
 
             // Item Panels
             'systems/dark-heresy-2nd/templates/item/panel/active-effects-panel.hbs',

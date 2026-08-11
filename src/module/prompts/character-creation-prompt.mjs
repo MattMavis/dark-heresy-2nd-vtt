@@ -589,8 +589,8 @@ class CharacterCreationData {
 
     /* ---- starting XP: reuses advancement.mjs's cost engine over the wizard's own state ---- */
 
-    /** Rank a skill/speciality already sits at from chargen grants alone (0 or 1 -- see
-     * character-creation-prompt.mjs's module doc: every chargen skill grant is Known/rank 1). */
+    /** Rank a skill/speciality already sits at from chargen grants alone. Only ever 0 or 1: the
+     * book grants starting skills at Known, never higher. */
     chargenSkillRank(key, spKey) {
         const mapKey = spKey ? `${key}.${spKey}` : key;
         const hit = this.resolvedSkillGrants.some((g) => {
@@ -859,8 +859,8 @@ function blockingIssues(data) {
  * resolving choices) happens first; the actor is only mutated by the two calls at the very end.
  *
  * Foundry has no cross-document transaction, so these two calls are not atomic with each other
- * (`grantRequisitionedItem`'s own doc comment notes the same limitation for a single talent
- * purchase) -- if `createEmbeddedDocuments` fails after `update` already succeeded, the actor is
+ * (buying a single talent in advancement-prompt.mjs has the same limitation, for the same
+ * reason) -- if `createEmbeddedDocuments` fails after `update` already succeeded, the actor is
  * left with correct bio/characteristics/skills/XP-ledger data but missing some items. The caller
  * surfaces this rather than pretending it can't happen.
  */
@@ -1019,8 +1019,7 @@ export class CharacterCreationDialog extends HandlebarsApplicationMixin(Applicat
     static PARTS = {
         body: {
             template: 'systems/dark-heresy-2nd/templates/prompt/character-creation-prompt.hbs',
-            // Same gotcha as every other prompt in this system (see advancement-prompt.mjs's
-            // comment): the template's root is .dh-prompt with .dh-wrapper nested inside.
+            // Explicit, not [''] -- see requisition-prompt.mjs's PARTS comment.
             scrollable: ['.dh-wrapper'],
         },
     };
@@ -1124,9 +1123,9 @@ export class CharacterCreationDialog extends HandlebarsApplicationMixin(Applicat
         this.render();
     }
 
-    /* ---- starting XP purchases: mirrors AdvancementDialog's buy handlers, but against the
-     * wizard's own state instead of a live actor -- see character-creation.mjs's module doc for
-     * why nothing here can safely reuse AdvancementDialog directly. */
+    /* ---- starting XP purchases: the same pricing as AdvancementDialog's buy handlers, but
+     * applied to the wizard's pending state rather than a live actor. Nothing is written until
+     * Confirm, so these push onto `xpLedger` instead of calling `actor.update`. ---- */
 
     static async onBuyCharacteristic(event, target) {
         event.preventDefault();

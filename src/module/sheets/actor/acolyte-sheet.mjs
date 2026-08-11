@@ -212,9 +212,7 @@ export class AcolyteSheet extends ActorContainerSheet {
     }
 
     /** GM-only: awarding is a GM action rather than something an owner does to their own
-     * character, unlike Spend Experience above -- the template already hides the control from
-     * non-GMs (experience-panel.hbs's `isGM` gate), but this checks again for the same reason
-     * _deleteLedgerEntry does. */
+     * character, unlike Spend Experience above. Re-checked as in _deleteLedgerEntry. */
     async _prepareAward(event, target) {
         event.preventDefault();
         if (!game.user.isGM) {
@@ -224,7 +222,7 @@ export class AcolyteSheet extends ActorContainerSheet {
         await openAwardMenu(this.actor);
     }
 
-    /** GM-only, same double-check pattern as _deleteLedgerEntry. */
+    /** GM-only, re-checked as in _deleteLedgerEntry. */
     async _deleteAwardEntry(event, target) {
         event.preventDefault();
         if (!game.user.isGM) {

@@ -34,8 +34,6 @@ $grid-tables: (
     // Four tracks for the same reason -- label spans two, then a value and the delete control.
     experiencelog: 1fr 1fr 0.5fr 2.5rem,
     // Requisition's candidate list: checkbox, name, availability, craftsmanship, modifier, qty.
-    // It previously borrowed `attackprompt`, which is three tracks wide, so all six cells wrapped
-    // onto two lines per row and the headings no longer sat above their values.
     requisition: 2rem 1.9fr 0.8fr 0.95fr 0.6fr 3.5rem,
 );
 
@@ -378,12 +376,11 @@ $grid-tables: (
     color: rgba(25, 24, 19, 0.4);
 }
 
-// Put an icon and its label on one line inside a table cell.
+// Put an icon and its label on one line inside a table cell. The label is a block-level div, so
+// without this it drops below the icon and doubles the row height.
 //
-// Composed alongside the existing cell classes (`table-cell cell-inline`) rather than being a
-// new cell variant, so it works with `--span2` and friends without duplicating their layout.
-// Without it the label, a block-level div, drops below the icon and doubles the row height --
-// which is what made the requisition and talent lists look so tall and loose.
+// Composed alongside the existing cell classes (`table-cell cell-inline`) rather than being a new
+// cell variant, so it works with `--span2` and friends without duplicating their layout.
 .cell-inline {
     display: flex;
     align-items: center;

@@ -1,12 +1,12 @@
 /**
  * WARNING: `aptitudes` below is a flat 2-element array (e.g. ['Knowledge', 'Social']) that looks
  * like a fixed grant of both, but every single Core Rulebook background's book text actually reads
- * "X or Social" - a mandatory CHOICE of exactly one, never both. This was true for all 7 CB
- * backgrounds with zero exceptions (Phase 3 extraction, verified against page images). Nothing in
- * this codebase currently reads `aptitudes` programmatically, but any future character-creation
- * wizard MUST NOT treat this array as "grant both" - use the new `background_aptitude.choice` field
- * instead, which correctly encodes it as { count: 1, options: [a, b] }. `aptitudes` itself is left
- * unchanged here because something else may already read it; do not delete it.
+ * "X or Social" - a mandatory CHOICE of exactly one, never both, with zero exceptions (verified
+ * against page images). Nothing in this codebase reads `aptitudes` programmatically, and the
+ * character-creation wizard MUST NOT treat this array as "grant both" - it uses the
+ * `background_aptitude.choice` field, which correctly encodes it as { count: 1, options: [a, b] }.
+ * `aptitudes` itself is left unchanged here because something else may already read it; do not
+ * delete it.
  */
 export function backgrounds() {
     return [

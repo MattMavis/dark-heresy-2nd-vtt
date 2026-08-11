@@ -2,8 +2,8 @@
  * Advancement costs.
  *
  * What an advance costs in Dark Heresy depends on how many of the character's aptitudes match
- * the thing being bought: two, one, or none. Nothing in this system knew that until now -- the
- * `cost` fields on characteristics and skills were never even editable, so they sat at zero.
+ * the thing being bought: two, one, or none. The `cost` fields template.json carries on
+ * characteristics and skills play no part in this and sit at zero.
  *
  * Deliberately free of Foundry globals so the arithmetic can be unit tested directly in node.
  * Every number below was read from the Core Rulebook page images (pages 80 and 81); the text
@@ -181,7 +181,7 @@ export function progressionCost(kind, fromRank, toRank, matches) {
 /*  Ledger                                      */
 /* -------------------------------------------- */
 
-/** Sum of a ledger. Entries may carry a negative cost (a refund or a downward adjustment). */
+/** Entries may carry a negative cost (a refund or a downward adjustment). */
 export function ledgerTotal(ledger) {
     if (!Array.isArray(ledger)) return 0;
     return ledger.reduce((sum, e) => sum + (Number(e?.cost) || 0), 0);
@@ -203,7 +203,6 @@ export function ledgerByKind(ledger) {
     return byKind;
 }
 
-/** The ledger, most recent purchase first, for the experience panel's history list. */
 export function ledgerSorted(ledger) {
     if (!Array.isArray(ledger)) return [];
     return [...ledger].sort((a, b) => (Number(b?.at) || 0) - (Number(a?.at) || 0));
@@ -218,15 +217,6 @@ export function awardsTotal(awards) {
     if (!Array.isArray(awards)) return 0;
     return awards.reduce((sum, a) => sum + (Number(a?.amount) || 0), 0);
 }
-
-/**
- * Deliberately absent: anything that prices a character's existing advances to infer what they
- * once spent. A character is granted skills, talents and characteristic advances free at
- * creation by their home world, background and role, and the sheet keeps no record of which
- * advances were granted and which were bought. Pricing what a character owns measures chargen,
- * not spending -- when this was tried it produced totals far larger than the characters' entire
- * lifetime experience. Spend history is only trustworthy going forward.
- */
 
 /**
  * Every remaining step for something at `currentRank`, as {rank, label, cost, cumulative}, for

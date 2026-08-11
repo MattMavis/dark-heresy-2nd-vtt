@@ -109,13 +109,11 @@ export function registerHandlebarsHelpers() {
     });
 
     Handlebars.registerHelper('option', function(option, current, name) {
-        // Compared as text, not with ===. These option values are written as string literals in
-        // the templates ({{option "1" this.advance "Known"}}) and a <select> without
-        // data-dtype="Number" stores what the user picked as a string too -- but anything that
-        // sets the same field from code writes a real number. A strict compare then matches
-        // nothing, the browser falls back to showing the first option, and a rank the character
-        // genuinely has reads as "Unknown". Worse, the next save submits that displayed value and
-        // silently undoes the advance.
+        // Compared as text, not with ===. Option values are string literals in the templates
+        // ({{option "1" this.advance "Known"}}), but code setting the same field writes a number,
+        // so a strict compare matches nothing and the browser falls back to the first option.
+        // That is not merely cosmetic: the displayed value is what the next save submits, so it
+        // would silently undo an advance the character had paid for.
         const selected = String(current) === String(option) ? 'selected="selected"' : '';
         let optionValue;
         if (Number.isInteger(option)) {

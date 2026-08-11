@@ -86,7 +86,7 @@ class AdvancementData {
     /** GM-only house-rule escape hatch: tables house-rule prerequisites constantly, and a GM must
      * not be stuck behind this parser's judgement. Defaults off; a non-GM never sees the toggle
      * (see `isGM`) and `buyTalent` re-checks `game.user.isGM` itself rather than trusting this
-     * flag blindly, the same "don't trust the client" posture `AcolyteSheet`'s XP handlers use. */
+     * flag. */
     ignorePrerequisites = false;
 
     constructor(actor) {
@@ -366,9 +366,7 @@ export class AdvancementDialog extends HandlebarsApplicationMixin(ApplicationV2)
     static PARTS = {
         body: {
             template: 'systems/dark-heresy-2nd/templates/prompt/advancement-prompt.hbs',
-            // Same gotcha as requisition-prompt.mjs (see its comment): this template's root is
-            // .dh-prompt with .dh-wrapper nested inside, so scrollable: [''] would target the
-            // wrong element and the (potentially long) talent list would silently not scroll.
+            // Explicit, not [''] -- see requisition-prompt.mjs's PARTS comment.
             scrollable: ['.dh-wrapper'],
         },
     };
