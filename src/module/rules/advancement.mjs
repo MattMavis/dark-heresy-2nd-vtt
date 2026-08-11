@@ -181,6 +181,32 @@ export function progressionCost(kind, fromRank, toRank, matches) {
 /*  Ledger                                      */
 /* -------------------------------------------- */
 
+/**
+ * One spend-ledger entry, in the shape `_computeExperience` sums and the experience panel renders.
+ *
+ * Both the spend window and the creation wizard append these, for characteristics, skills and
+ * talents -- six call sites that previously each wrote the field set out by hand and could drift
+ * apart. `rank` and `matches` are omitted when not supplied (a talent has no rank), and any extra
+ * fields a caller needs are carried through.
+ *
+ * `id` is a parameter rather than generated here so this module stays free of Foundry globals;
+ * callers pass `foundry.utils.randomID()`.
+ */
+export function purchaseEntry(kind, { id, cost, label, key, rank, matches, at = Date.now(), ...extra }) {
+    return {
+        id,
+        kind,
+        source: 'purchase',
+        cost,
+        label,
+        at,
+        ...(key === undefined ? {} : { key }),
+        ...(rank === undefined ? {} : { rank }),
+        ...(matches === undefined ? {} : { matches }),
+        ...extra,
+    };
+}
+
 /** Entries may carry a negative cost (a refund or a downward adjustment). */
 export function ledgerTotal(ledger) {
     if (!Array.isArray(ledger)) return 0;

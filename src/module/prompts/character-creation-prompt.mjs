@@ -16,6 +16,7 @@ import {
     skillAdvanceCost,
     talentCost,
     countMatchingAptitudes,
+    purchaseEntry,
 } from '../rules/advancement.mjs';
 import { evaluatePrerequisites } from '../rules/talent-prerequisites.mjs';
 import {
@@ -1136,17 +1137,14 @@ export class CharacterCreationDialog extends HandlebarsApplicationMixin(Applicat
             ui.notifications.warn('Not enough starting experience for that advance.');
             return;
         }
-        this.data.xpLedger.push({
+        this.data.xpLedger.push(purchaseEntry('characteristic', {
             id: foundry.utils.randomID(),
-            kind: 'characteristic',
-            source: 'purchase',
             cost: step.cost,
             label: `${this.data.actor.system.characteristics[key].label} -- ${step.label}`,
             key,
             rank: step.rank,
             matches: step.matches,
-            at: Date.now(),
-        });
+        }));
         this.render();
     }
 
@@ -1162,17 +1160,14 @@ export class CharacterCreationDialog extends HandlebarsApplicationMixin(Applicat
         }
         const skill = this.data.skills[key];
         const node = spKey ? skill.specialities[spKey] : skill;
-        this.data.xpLedger.push({
+        this.data.xpLedger.push(purchaseEntry('skill', {
             id: foundry.utils.randomID(),
-            kind: 'skill',
-            source: 'purchase',
             cost: step.cost,
             label: spKey ? `${skill.label}: ${node.label} -- ${step.label}` : `${skill.label} -- ${step.label}`,
             key: spKey ? `${key}.${spKey}` : key,
             rank: step.rank,
             matches: step.matches,
-            at: Date.now(),
-        });
+        }));
         this.render();
     }
 
@@ -1194,16 +1189,14 @@ export class CharacterCreationDialog extends HandlebarsApplicationMixin(Applicat
             ui.notifications.warn(`${candidate.name}'s prerequisites are not met.`);
             return;
         }
-        this.data.xpLedger.push({
+        this.data.xpLedger.push(purchaseEntry('talent', {
             id: foundry.utils.randomID(),
-            kind: 'talent',
-            source: 'purchase',
             cost,
             label: candidate.name,
-            talentName: candidate.name,
             matches,
-            at: Date.now(),
-        });
+            // Carried so the apply step can find the granted item by name without re-deriving it.
+            talentName: candidate.name,
+        }));
         this.render();
     }
 

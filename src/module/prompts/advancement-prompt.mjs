@@ -10,6 +10,7 @@ import {
     skillAdvanceCost,
     talentCost,
     countMatchingAptitudes,
+    purchaseEntry,
 } from '../rules/advancement.mjs';
 import { evaluatePrerequisites } from '../rules/talent-prerequisites.mjs';
 
@@ -237,17 +238,14 @@ async function buyCharacteristic(actor, key) {
         return;
     }
     const characteristic = actor.system.characteristics[key];
-    const entry = {
+    const entry = purchaseEntry('characteristic', {
         id: foundry.utils.randomID(),
-        kind: 'characteristic',
-        source: 'purchase',
         cost: step.cost,
         label: `${characteristic.label} -- ${step.label}`,
-        at: Date.now(),
         key,
         rank: step.rank,
         matches: step.matches,
-    };
+    });
     await actor.update({
         [`system.characteristics.${key}.advance`]: step.rank,
         'system.experience.ledger': [...(actor.experience.ledger ?? []), entry],
@@ -265,17 +263,14 @@ async function buySkill(actor, key, spKey) {
     const node = spKey ? skill.specialities[spKey] : skill;
     const label = spKey ? `${skill.label}: ${node.label} -- ${step.label}` : `${skill.label} -- ${step.label}`;
     const path = spKey ? `system.skills.${key}.specialities.${spKey}.advance` : `system.skills.${key}.advance`;
-    const entry = {
+    const entry = purchaseEntry('skill', {
         id: foundry.utils.randomID(),
-        kind: 'skill',
-        source: 'purchase',
         cost: step.cost,
         label,
-        at: Date.now(),
         key: spKey ? `${key}.${spKey}` : key,
         rank: step.rank,
         matches: step.matches,
-    };
+    });
     await actor.update({
         [path]: step.rank,
         'system.experience.ledger': [...(actor.experience.ledger ?? []), entry],
@@ -311,16 +306,13 @@ async function buyTalent(actor, candidate, ignorePrerequisites) {
     const granted = await grantRequisitionedItem(actor, candidate.pack, candidate.itemId, 1);
     if (!granted.length) return;
 
-    const entry = {
+    const entry = purchaseEntry('talent', {
         id: foundry.utils.randomID(),
-        kind: 'talent',
-        source: 'purchase',
         cost,
         label: candidate.name,
-        at: Date.now(),
         key: `${candidate.pack}.${candidate.itemId}`,
         matches,
-    };
+    });
     await actor.update({ 'system.experience.ledger': [...(actor.experience.ledger ?? []), entry] });
 }
 

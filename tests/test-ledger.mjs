@@ -22,7 +22,7 @@
 import {
     CHARACTERISTIC_APTITUDES, SKILL_APTITUDES,
     characteristicAdvanceCost, skillAdvanceCost, talentCost,
-    countMatchingAptitudes, ledgerTotal, ledgerByKind, ledgerSorted, awardsTotal,
+    countMatchingAptitudes, ledgerTotal, ledgerByKind, ledgerSorted, awardsTotal, purchaseEntry,
 } from '../src/module/rules/advancement.mjs';
 import { check, done } from './harness.mjs';
 
@@ -36,6 +36,23 @@ check('costs are summed', ledgerTotal([{ cost: 100 }, { cost: 250 }]), 350);
 check('negative entries (refunds) are honoured', ledgerTotal([{ cost: 500 }, { cost: -200 }]), 300);
 check('missing and non-numeric costs count as zero',
     ledgerTotal([{ cost: 100 }, {}, { cost: 'banana' }, { cost: null }]), 100);
+
+/* -------------------------------------------- */
+/*  purchaseEntry -- the shape all six buy sites write */
+/* -------------------------------------------- */
+
+check('a characteristic purchase carries the full field set', () =>
+    purchaseEntry('characteristic', { id: 'x', cost: 100, label: 'Agility -- Simple', key: 'agility', rank: 1, matches: 2, at: 7 }),
+{ id: 'x', kind: 'characteristic', source: 'purchase', cost: 100, label: 'Agility -- Simple', at: 7, key: 'agility', rank: 1, matches: 2 });
+
+// A talent has no rank, and the wizard's talent entries carry an extra field the spend window's
+// do not -- so absent fields must be omitted rather than written as undefined, and extras kept.
+check('a talent purchase omits rank and carries extras', () =>
+    purchaseEntry('talent', { id: 'y', cost: 400, label: 'Catfall', matches: 1, at: 7, talentName: 'Catfall' }),
+{ id: 'y', kind: 'talent', source: 'purchase', cost: 400, label: 'Catfall', at: 7, matches: 1, talentName: 'Catfall' });
+
+check('entries built this way are summed by ledgerTotal like any other', () =>
+    ledgerTotal([purchaseEntry('skill', { id: 'a', cost: 200, label: 'Dodge', key: 'dodge', rank: 1, matches: 1 })]), 200);
 
 /* -------------------------------------------- */
 /*  awardsTotal (the mirror image of ledgerTotal, for GM-awarded XP)  */
