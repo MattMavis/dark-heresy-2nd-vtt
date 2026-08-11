@@ -32,6 +32,12 @@ import { check, done } from './harness.mjs';
 check('trailing parenthetical splits into name + speciality', splitParenthetical('Brutal Charge (2)'), { name: 'Brutal Charge', speciality: '2' });
 check('no parenthetical leaves speciality null', splitParenthetical('Mechanicus Implants'), { name: 'Mechanicus Implants', speciality: null });
 check('empty input is safe', splitParenthetical(''), { name: '', speciality: null });
+// Two edge cases worth pinning, because talent-prerequisites used to carry its own copy of this
+// parser that behaved differently on both, and now shares this one.
+check('an empty parenthetical yields null, not an empty string',
+    splitParenthetical('Resistance ()'), { name: 'Resistance', speciality: null });
+check('a bare parenthetical is a speciality with no name, not an unparsed string',
+    splitParenthetical('(Fear)'), { name: '', speciality: 'Fear' });
 
 check('a plain string fixed grant normalises via splitParenthetical',
     normaliseFixedGrant('Brutal Charge (2)', 'Home World'), { name: 'Brutal Charge', speciality: '2', source: 'Home World' });

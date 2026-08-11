@@ -20,7 +20,7 @@
  * Deliberately free of Foundry globals: the caller passes a plain snapshot of the character in,
  * so this can be unit tested in plain node like the rest of `rules/`.
  */
-import { normaliseName, SPECIALITY_ALIASES } from './grant-resolution.mjs';
+import { findSkillKey, normaliseName, splitParenthetical, SPECIALITY_ALIASES } from './grant-resolution.mjs';
 
 /* -------------------------------------------- */
 /*  Characteristics                              */
@@ -50,42 +50,31 @@ const LORE_FAMILY_SKILL_KEYS = ['commonLore', 'forbiddenLore', 'scholasticLore']
 /*  Splitting -- comma and " or ", both parenthesis-aware                                        */
 /* -------------------------------------------- */
 
-/** Split `text` on `separator` (a single character), never inside parentheses. Used for the
- * top-level AND split (comma) and, on a talent's own specialisation list, the AND-of-specialisations
- * form ("Two-Weapon Wielder (Melee, Ranged)" needs *both* copies). */
+/**
+ * Split `text` on `separator`, never inside parentheses.
+ *
+ * The separator may be longer than one character and is matched case-insensitively, which is what
+ * lets one scanner serve both jobs here: the comma, which means AND, and the literal " or ".
+ * Commas inside a specialisation list stay put, so "Two-Weapon Wielder (Melee, Ranged)" survives
+ * a top-level comma split intact.
+ */
 export function splitTopLevel(text, separator = ',') {
-    const out = [];
-    let depth = 0;
-    let cur = '';
-    for (const ch of String(text ?? '')) {
-        if (ch === '(') depth++;
-        if (ch === ')') depth--;
-        if (ch === separator && depth === 0) {
-            out.push(cur.trim());
-            cur = '';
-        } else {
-            cur += ch;
-        }
-    }
-    if (cur.trim()) out.push(cur.trim());
-    return out;
-}
-
-/** Split on the literal " or " (case-insensitive), never inside parentheses. */
-function splitTopLevelOr(text) {
-    const out = [];
-    let depth = 0;
-    let cur = '';
     const s = String(text ?? '');
+    const sep = String(separator);
+    const haystack = s.toLowerCase();
+    const needle = sep.toLowerCase();
+    const out = [];
+    let depth = 0;
+    let cur = '';
     let i = 0;
     while (i < s.length) {
         const ch = s[i];
         if (ch === '(') depth++;
         if (ch === ')') depth--;
-        if (depth === 0 && s.slice(i, i + 4).toLowerCase() === ' or ') {
+        if (depth === 0 && needle && haystack.startsWith(needle, i)) {
             out.push(cur.trim());
             cur = '';
-            i += 4;
+            i += sep.length;
             continue;
         }
         cur += ch;
@@ -95,12 +84,12 @@ function splitTopLevelOr(text) {
     return out;
 }
 
-/** "Name (Specialisation)" -> {base: 'Name', spec: 'Specialisation'|null}. Not parenthesis-nested
- * anywhere in the real data, so a single non-greedy match is enough. */
+const splitTopLevelOr = (text) => splitTopLevel(text, ' or ');
+
+/** {base, spec} from "Name (Specialisation)", in the shape this module's lookups expect. */
 function parseNameSpec(text) {
-    const m = String(text ?? '').match(/^(.+?)\s*\(([^()]*)\)\s*$/);
-    if (!m) return { base: text.trim(), spec: null };
-    return { base: m[1].trim(), spec: m[2].trim() };
+    const { name, speciality } = splitParenthetical(text);
+    return { base: name, spec: speciality };
 }
 
 const met = () => ({ status: 'met' });
@@ -112,13 +101,6 @@ const indeterminate = (reason) => ({ status: 'indeterminate', reason });
 /*  Skill lookups against a snapshot shaped like actor.system.skills / template.json             */
 /* -------------------------------------------- */
 
-function findSkillKey(skills, name) {
-    const wanted = normaliseName(name);
-    for (const [key, def] of Object.entries(skills ?? {})) {
-        if (normaliseName(key) === wanted || normaliseName(def?.label ?? '') === wanted) return key;
-    }
-    return null;
-}
 
 /**
  * Resolve a speciality name against one skill's `specialities` object.

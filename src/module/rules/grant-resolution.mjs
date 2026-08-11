@@ -41,6 +41,38 @@ export const SPECIALITY_ALIASES = {
 /** A speciality the player picks at creation rather than one the book names. */
 const PLAYER_CHOICE = /choice|any|pick one|pick/i;
 
+const TRAILING_PAREN = /^(.*?)\s*\(([^()]*)\)\s*$/;
+
+/**
+ * "Brutal Charge (2)" -> {name: 'Brutal Charge', speciality: '2'}; "Mechanicus Implants" ->
+ * {name: 'Mechanicus Implants', speciality: null}.
+ *
+ * Every place a name can carry a parenthesised qualifier uses this: chargen's `fixed_talents` and
+ * `fixed_traits`, which mix plain strings with structured `{talent, speciality}` objects, and
+ * talent prerequisites, where the qualifier is a required specialisation. Parentheses never nest
+ * in the real data, so one non-greedy match is enough.
+ */
+export function splitParenthetical(text) {
+    if (!text) return { name: '', speciality: null };
+    const match = TRAILING_PAREN.exec(String(text).trim());
+    if (!match) return { name: String(text).trim(), speciality: null };
+    return { name: match[1].trim(), speciality: match[2].trim() || null };
+}
+
+/**
+ * A skill's key, matched against either its key or its label with punctuation and case folded --
+ * so "Tech-Use", "Tech Use" and `techUse` all find the same skill. Returns null if none matches.
+ * Shared with `talent-prerequisites.mjs`, which needs the same lookup before applying its own
+ * wildcard rules on top.
+ */
+export function findSkillKey(skills, name) {
+    const wanted = normaliseName(name);
+    for (const [key, def] of Object.entries(skills ?? {})) {
+        if (normaliseName(key) === wanted || normaliseName(def?.label ?? '') === wanted) return key;
+    }
+    return null;
+}
+
 /**
  * Resolve one `{skill, speciality}` grant against a skills object shaped like `template.json`'s
  * (or a live actor's `system.skills`).
@@ -56,14 +88,7 @@ export function resolveSkillGrant(grant, skills = {}) {
     const fail = (reason) => ({ status: 'unresolved', skillKey: null, specialityKey: null, alias: false, reason });
     if (!grant?.skill) return fail('no skill named');
 
-    const wanted = normaliseName(grant.skill);
-    let skillKey = null;
-    for (const [key, def] of Object.entries(skills)) {
-        if (normaliseName(key) === wanted || normaliseName(def?.label ?? '') === wanted) {
-            skillKey = key;
-            break;
-        }
-    }
+    const skillKey = findSkillKey(skills, grant.skill);
     if (!skillKey) return fail(`no skill matching "${grant.skill}"`);
 
     const spec = grant.speciality;

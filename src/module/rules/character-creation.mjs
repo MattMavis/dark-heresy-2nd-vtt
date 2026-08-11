@@ -8,24 +8,11 @@
  * and actor documents; everything here is pure data-in, data-out.
  */
 import { normaliseAptitude } from './advancement.mjs';
+import { splitParenthetical } from './grant-resolution.mjs';
 import { DarkHeresy } from './config.mjs';
 
-/* -------------------------------------------- */
-/*  Name/speciality parsing                      */
-/* -------------------------------------------- */
-
-const TRAILING_PAREN = /^(.*?)\s*\(([^()]*)\)\s*$/;
-
-/** "Brutal Charge (2)" -> {name: 'Brutal Charge', speciality: '2'}. "Mechanicus Implants" ->
- * {name: 'Mechanicus Implants', speciality: null}. Used because `fixed_talents`/`fixed_traits`
- * arrays mix two shapes: plain "Name (Detail)" strings, and structured {talent|trait,
- * speciality} objects from a choice group's `grants` -- both need to end up the same shape. */
-export function splitParenthetical(text) {
-    if (!text) return { name: '', speciality: null };
-    const match = TRAILING_PAREN.exec(String(text).trim());
-    if (!match) return { name: String(text).trim(), speciality: null };
-    return { name: match[1].trim(), speciality: match[2].trim() || null };
-}
+// Re-exported so callers of this module (and its tests) need not know where it moved to.
+export { splitParenthetical };
 
 /** Normalise one fixed talent/trait grant (string or {talent|trait, speciality} object) to a
  * common {name, speciality, source} shape. */
