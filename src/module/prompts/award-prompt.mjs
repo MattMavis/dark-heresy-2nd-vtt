@@ -1,6 +1,4 @@
-import { recursiveUpdate } from '../rolls/roll-helpers.mjs';
-
-const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
+import { DhPromptDialog } from './prompt-dialog.mjs';
 
 /**
  * "The whole party" is every `acolyte` actor with at least one non-GM user holding at least
@@ -69,80 +67,24 @@ async function awardExperience(actor, amount, reason) {
 /*  Dialog                                       */
 /* -------------------------------------------- */
 
-export class AwardDialog extends HandlebarsApplicationMixin(ApplicationV2) {
-    /**
-     * @param awardData {AwardData}
-     * @param options
-     */
-    constructor(awardData, options = {}) {
-        super(options);
-        this.data = awardData;
-    }
-
+export class AwardDialog extends DhPromptDialog {
     static DEFAULT_OPTIONS = {
         id: 'dh-award-dialog',
-        tag: 'form',
-        classes: ['dark-heresy-2nd', 'dh-prompt-app'],
         window: {
             title: 'Award Experience',
-            resizable: true,
         },
         position: {
             width: 500,
             height: 'auto',
         },
-        form: {
-            handler: AwardDialog.onSubmitForm,
-            submitOnChange: true,
-            closeOnSubmit: false,
-        },
         actions: {
             award: AwardDialog.onAward,
-            cancel: AwardDialog.onCancel,
         },
     };
 
     static PARTS = {
-        body: {
-            template: 'systems/dark-heresy-2nd/templates/prompt/award-prompt.hbs',
-            // Explicit, not [''] -- see requisition-prompt.mjs's PARTS comment.
-            scrollable: ['.dh-wrapper'],
-        },
+        body: DhPromptDialog.promptPart('systems/dark-heresy-2nd/templates/prompt/award-prompt.hbs'),
     };
-
-    async _prepareContext() {
-        return this.data;
-    }
-
-    /**
-     * ApplicationV2 form submission handler. Handles the amount, reason and "award to whole
-     * party" fields -- all real form-bound fields, via the standard recursiveUpdate idiom (see
-     * AdvancementDialog). The party toggle re-renders on every change so the recipient list
-     * updates live.
-     */
-    static async onSubmitForm(event, form, formData) {
-        recursiveUpdate(this.data, formData?.object ?? formData);
-        this.render();
-    }
-
-    static async onCancel() {
-        await this.close();
-    }
-
-    /**
-     * Pull the current field values straight off the form.
-     *
-     * `submitOnChange` only fires once a field emits `change`, which a text box does not do until
-     * it loses focus. Typing a reason and clicking Award goes straight from "reason not recorded
-     * yet" to the click, so without this the award would be rejected as having no reason. Read
-     * the live DOM instead of trusting that every field has already reported in.
-     */
-    _syncFromForm() {
-        const form = this.element instanceof HTMLFormElement ? this.element : this.element?.querySelector('form');
-        const FormDataClass = foundry.applications?.ux?.FormDataExtended ?? globalThis.FormDataExtended;
-        if (!form || !FormDataClass) return;
-        recursiveUpdate(this.data, new FormDataClass(form).object);
-    }
 
     static async onAward(event, target) {
         event.preventDefault();

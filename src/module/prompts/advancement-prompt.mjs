@@ -1,4 +1,4 @@
-import { recursiveUpdate } from '../rolls/roll-helpers.mjs';
+import { DhPromptDialog } from './prompt-dialog.mjs';
 import {
     fetchGrantData,
     grantItems,
@@ -18,8 +18,6 @@ import {
     nextSkillStep as skillStep,
 } from '../rules/advancement.mjs';
 import { evaluatePrerequisites } from '../rules/talent-prerequisites.mjs';
-
-const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 /** A character's aptitudes are the `aptitude` Items it owns -- `system.aptitudes` is dead schema
  * with no readers or writers left in this codebase, so it is never consulted here. */
@@ -275,65 +273,26 @@ async function buyTalent(actor, candidate, ignorePrerequisites) {
 /*  Dialog                                       */
 /* -------------------------------------------- */
 
-export class AdvancementDialog extends HandlebarsApplicationMixin(ApplicationV2) {
-    /**
-     * @param advancementData {AdvancementData}
-     * @param options
-     */
-    constructor(advancementData, options = {}) {
-        super(options);
-        this.data = advancementData;
-    }
-
+export class AdvancementDialog extends DhPromptDialog {
     static DEFAULT_OPTIONS = {
         id: 'dh-advancement-dialog',
-        tag: 'form',
-        classes: ['dark-heresy-2nd', 'dh-prompt-app'],
         window: {
             title: 'Spend Experience',
-            resizable: true,
         },
         position: {
             width: 900,
             height: 700,
         },
-        form: {
-            handler: AdvancementDialog.onSubmitForm,
-            submitOnChange: true,
-            closeOnSubmit: false,
-        },
         actions: {
             buyCharacteristic: AdvancementDialog.onBuyCharacteristic,
             buySkill: AdvancementDialog.onBuySkill,
             buyTalent: AdvancementDialog.onBuyTalent,
-            cancel: AdvancementDialog.onCancel,
         },
     };
 
     static PARTS = {
-        body: {
-            template: 'systems/dark-heresy-2nd/templates/prompt/advancement-prompt.hbs',
-            // Explicit, not [''] -- see requisition-prompt.mjs's PARTS comment.
-            scrollable: ['.dh-wrapper'],
-        },
+        body: DhPromptDialog.promptPart('systems/dark-heresy-2nd/templates/prompt/advancement-prompt.hbs'),
     };
-
-    async _prepareContext() {
-        return this.data;
-    }
-
-    /**
-     * ApplicationV2 form submission handler. Handles the talent search box -- the only form-bound
-     * field in this dialog -- via the standard recursiveUpdate idiom (see RequisitionDialog).
-     */
-    static async onSubmitForm(event, form, formData) {
-        recursiveUpdate(this.data, formData?.object ?? formData);
-        this.render();
-    }
-
-    static async onCancel() {
-        await this.close();
-    }
 
     static async onBuyCharacteristic(event, target) {
         event.preventDefault();

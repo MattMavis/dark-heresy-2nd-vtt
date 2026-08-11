@@ -1,4 +1,4 @@
-import { recursiveUpdate } from '../rolls/roll-helpers.mjs';
+import { DhPromptDialog } from './prompt-dialog.mjs';
 import { DarkHeresy } from '../rules/config.mjs';
 import { fetchGrantData, grantItems, loadTalentCandidates, scanItemPackIndexes } from '../rules/compendium-grants.mjs';
 import { normaliseName, resolveSkillGrant } from '../rules/grant-resolution.mjs';
@@ -34,8 +34,6 @@ import {
     applyHomeworldCharacteristicModifier,
     findDivinationForRoll,
 } from '../rules/character-creation.mjs';
-
-const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 /** A `<select>` with no `data-dtype="Number"` still submits `""` for an unpicked placeholder
  * option, and a field that starts life as `null`/`undefined` (never yet chosen) needs the exact
@@ -935,37 +933,19 @@ async function applyCharacterCreation(data) {
 /*  Dialog                                       */
 /* -------------------------------------------- */
 
-export class CharacterCreationDialog extends HandlebarsApplicationMixin(ApplicationV2) {
-    /**
-     * @param data {CharacterCreationData}
-     * @param options
-     */
-    constructor(data, options = {}) {
-        super(options);
-        this.data = data;
-    }
-
+export class CharacterCreationDialog extends DhPromptDialog {
     static DEFAULT_OPTIONS = {
         id: 'dh-character-creation-dialog',
-        tag: 'form',
-        classes: ['dark-heresy-2nd', 'dh-prompt-app'],
         window: {
             title: 'Character Creation',
-            resizable: true,
         },
         position: {
             width: 960,
             height: 760,
         },
-        form: {
-            handler: CharacterCreationDialog.onSubmitForm,
-            submitOnChange: true,
-            closeOnSubmit: false,
-        },
         actions: {
             back: CharacterCreationDialog.onBack,
             next: CharacterCreationDialog.onNext,
-            cancel: CharacterCreationDialog.onCancel,
             confirm: CharacterCreationDialog.onConfirm,
             rollCharacteristic: CharacterCreationDialog.onRollCharacteristic,
             buyCharacteristic: CharacterCreationDialog.onBuyCharacteristic,
@@ -977,30 +957,8 @@ export class CharacterCreationDialog extends HandlebarsApplicationMixin(Applicat
     };
 
     static PARTS = {
-        body: {
-            template: 'systems/dark-heresy-2nd/templates/prompt/character-creation-prompt.hbs',
-            // Explicit, not [''] -- see requisition-prompt.mjs's PARTS comment.
-            scrollable: ['.dh-wrapper'],
-        },
+        body: DhPromptDialog.promptPart('systems/dark-heresy-2nd/templates/prompt/character-creation-prompt.hbs'),
     };
-
-    async _prepareContext() {
-        return this.data;
-    }
-
-    /**
-     * Handles every plain form-bound field across all eight steps (home world/background/role
-     * selects, choice-group selects, characteristic inputs, XP pool/search, divination
-     * subchoices) via the standard recursiveUpdate idiom -- see AdvancementDialog.
-     */
-    static async onSubmitForm(event, form, formData) {
-        recursiveUpdate(this.data, formData?.object ?? formData);
-        this.render();
-    }
-
-    static async onCancel() {
-        await this.close();
-    }
 
     /* ---- step navigation ---- */
 
@@ -1026,18 +984,6 @@ export class CharacterCreationDialog extends HandlebarsApplicationMixin(Applicat
             this.data.step = nextStep;
         }
         this.render();
-    }
-
-    /**
-     * Pull the current field values straight off the form before acting on a button click --
-     * `submitOnChange` only fires on `change`, which a number input or search box does not emit
-     * until it loses focus (see award-prompt.mjs's `_syncFromForm`, same reasoning here).
-     */
-    _syncFromForm() {
-        const form = this.element instanceof HTMLFormElement ? this.element : this.element?.querySelector('form');
-        const FormDataClass = foundry.applications?.ux?.FormDataExtended ?? globalThis.FormDataExtended;
-        if (!form || !FormDataClass) return;
-        recursiveUpdate(this.data, new FormDataClass(form).object);
     }
 
     static async onRollCharacteristic(event, target) {

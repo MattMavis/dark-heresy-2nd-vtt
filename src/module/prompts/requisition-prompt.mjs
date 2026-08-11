@@ -1,57 +1,28 @@
-import { recursiveUpdate, roll1d100, getDegree } from '../rolls/roll-helpers.mjs';
+import { roll1d100, getDegree } from '../rolls/roll-helpers.mjs';
 import { grantRequisitionedItem } from '../rules/requisition.mjs';
+import { DhPromptDialog } from './prompt-dialog.mjs';
 
-const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
-
-export class RequisitionDialog extends HandlebarsApplicationMixin(ApplicationV2) {
-    /**
-     * @param requisitionRollData {RequisitionRollData}
-     * @param options
-     */
-    constructor(requisitionRollData, options = {}) {
-        super(options);
-        this.data = requisitionRollData;
-    }
-
+export class RequisitionDialog extends DhPromptDialog {
     static DEFAULT_OPTIONS = {
         id: 'dh-requisition-dialog',
-        tag: 'form',
-        classes: ['dark-heresy-2nd', 'dh-prompt-app'],
         window: {
             title: 'Requisition',
-            resizable: true,
         },
         position: {
             width: 900,
             height: 700,
         },
-        form: {
-            handler: RequisitionDialog.onSubmitForm,
-            submitOnChange: true,
-            closeOnSubmit: false,
-        },
         actions: {
             roll: RequisitionDialog.onRoll,
-            cancel: RequisitionDialog.onCancel,
         },
     };
 
     static PARTS = {
-        body: {
-            template: 'systems/dark-heresy-2nd/templates/prompt/requisition-prompt.hbs',
-            // Unlike the weapon/psychic-power prompts this class is otherwise modelled
-            // on, this dialog's candidate list is long enough to actually overflow --
-            // needs the same scrollable config actor/item sheets use for .dh-wrapper's
-            // height:100%/overflow-y:auto CSS to have a bounded height to resolve
-            // against (CLAUDE.md's ApplicationV2 scroll gotcha). Unlike sheet templates,
-            // where .dh-wrapper IS the part's root element (so scrollable: [''] -- "the
-            // part's own root" -- correctly targets it), this template's actual root is
-            // .dh-prompt, with .dh-wrapper nested one level inside -- '' would mark the
-            // wrong element scrollable. Target it explicitly instead.
-            scrollable: ['.dh-wrapper'],
-        },
+        body: DhPromptDialog.promptPart('systems/dark-heresy-2nd/templates/prompt/requisition-prompt.hbs'),
     };
 
+    /** The total modifier shown in the window is derived from the current selection, so it has to
+     * be recomputed before every render rather than read off stale state. */
     async _prepareContext() {
         await this.data.calculateTotalModifiers();
         return this.data;
@@ -88,20 +59,6 @@ export class RequisitionDialog extends HandlebarsApplicationMixin(ApplicationV2)
         event.stopPropagation();
         const { pack, itemId } = event.target.dataset;
         this.data.setQuantity(pack, itemId, event.target.value);
-    }
-
-    /**
-     * ApplicationV2 form submission handler. `this` is bound to the application instance.
-     * Handles the search box and availability-filter dropdown -- simple scalar fields,
-     * synced via the standard recursiveUpdate idiom rather than a bespoke listener.
-     */
-    static async onSubmitForm(event, form, formData) {
-        recursiveUpdate(this.data, formData?.object ?? formData);
-        this.render();
-    }
-
-    static async onCancel() {
-        await this.close();
     }
 
     static async onRoll() {
