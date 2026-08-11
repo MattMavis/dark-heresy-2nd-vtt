@@ -730,11 +730,16 @@ class CharacterCreationData {
 
     /* ---- summary ---- */
 
+    /** Each starting-equipment name with the compendium entry it resolved to, or null. `found` is
+     * what the summary step renders; `entry` is what the apply step grants. Both come from one
+     * lookup, so what the player is shown and what they receive cannot disagree. */
     get equipmentSummary() {
         const { fixed, choiceGroups } = this.backgroundEquipment;
         const chosen = choiceGroups.filter((g) => g.selectedIndex !== '').map((g) => g.group.options[Number(g.selectedIndex)]);
-        const names = [...fixed, ...chosen];
-        return names.map((name) => ({ name, found: !!findEquipmentEntry(this.itemIndex, name) }));
+        return [...fixed, ...chosen].map((name) => {
+            const entry = findEquipmentEntry(this.itemIndex, name);
+            return { name, entry, found: !!entry };
+        });
     }
 }
 
@@ -859,8 +864,8 @@ async function applyCharacterCreation(data) {
     }
 
     // Equipment: best-effort, does not block Confirm (see findEquipmentEntry's doc comment).
-    for (const { name, found } of data.equipmentSummary) {
-        if (found) itemBuilds.push(buildGrantedItemData(found));
+    for (const { entry } of data.equipmentSummary) {
+        if (entry) itemBuilds.push(buildGrantedItemData(entry));
     }
 
     const itemsToCreate = (await Promise.all(itemBuilds)).filter(Boolean);
