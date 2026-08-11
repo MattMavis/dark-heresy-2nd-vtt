@@ -4,19 +4,14 @@
 // genuinely-indeterminate ones below. A new unparseable pattern in future content fails this test,
 // rather than silently degrading into an "advisory" nobody notices.
 import { readFileSync } from 'node:fs';
+import { check, done } from './harness.mjs';
 import {
+    CHARACTERISTIC_CODE_TO_KEY,
     evaluatePrerequisiteClause,
     evaluatePrerequisites,
     splitTopLevel,
 } from '../src/module/rules/talent-prerequisites.mjs';
 
-let pass = 0, fail = 0;
-const check = (label, got, want) => {
-    const ok = JSON.stringify(got) === JSON.stringify(want);
-    console.log(`${ok ? 'PASS' : 'FAIL'}  ${label}`);
-    if (!ok) console.log(`        got  ${JSON.stringify(got)}\n        want ${JSON.stringify(want)}`);
-    ok ? pass++ : fail++;
-};
 
 /* -------------------------------------------- */
 /*  Snapshot builder                             */
@@ -74,6 +69,18 @@ check('empty string splits to nothing', splitTopLevel(''), []);
 
 check('characteristic threshold met', evalClause('WP 40', snapshot({ characteristics: { willpower: 40 } })), 'met');
 check('characteristic threshold unmet (one short)', evalClause('WP 40', snapshot({ characteristics: { willpower: 39 } })), 'unmet');
+
+// Every code, both ways round. Testing one code proves almost nothing: the 131-string sweep runs
+// against an all-zero character, so a code wired to the wrong characteristic still answers
+// "unmet" and passes it. Each code has to be shown reading the characteristic it names and no
+// other -- a WS/BS or Int/Per transposition is otherwise invisible.
+for (const [code, key] of Object.entries(CHARACTERISTIC_CODE_TO_KEY)) {
+    check(`"${code} 40" reads ${key}`, evalClause(`${code} 40`, snapshot({ characteristics: { [key]: 40 } })), 'met');
+    const others = Object.fromEntries(
+        Object.values(CHARACTERISTIC_CODE_TO_KEY).filter((k) => k !== key).map((k) => [k, 99]),
+    );
+    check(`"${code} 40" reads nothing but ${key}`, evalClause(`${code} 40`, snapshot({ characteristics: others })), 'unmet');
+}
 check('every documented code maps', evalClause('S 50', snapshot({ characteristics: { strength: 50 } })), 'met');
 
 /* -------------------------------------------- */
@@ -311,7 +318,17 @@ const INDETERMINATE_ALLOWLIST = new Set(['Rank 4 in selected skill']);
 const yaml = readFileSync(new URL('../src/packs/talents/talents.yml', import.meta.url), 'utf8');
 const prereqStrings = [...yaml.matchAll(/prerequisites:\s*'([^']*)'/g)].map((m) => m[1]).filter(Boolean);
 
-check('found the expected 131 non-empty prerequisite strings in talents.yml', prereqStrings.length, 131);
+// A floor, not an equality: adding a talent with a prerequisite is a legitimate content edit and
+// must not fail the suite. What does need guarding is the regex above, which only matches
+// single-quoted YAML scalars -- a double-quoted or block-scalar entry would be skipped silently
+// and its clauses never swept. So compare what it matched against every `prerequisites:` key in
+// the file that carries anything at all.
+const prereqKeysWithContent = [...yaml.matchAll(/^\s*prerequisites:[ \t]*(\S.*)$/gm)]
+    .map((m) => m[1].trim())
+    .filter((v) => v !== "''" && v !== '""' && v !== 'null' && v !== '~');
+check('at least as many prerequisite strings as when this sweep was written', prereqStrings.length >= 131, true);
+check('the extraction regex matched every non-empty prerequisites: key',
+    prereqStrings.length, prereqKeysWithContent.length);
 
 const emptySnapshot = snapshot();
 let cleanCount = 0;
@@ -336,5 +353,4 @@ for (const line of notClean) console.log(`        ${line}`);
 check('every prerequisite string either parses cleanly or is on the explicit allowlist', notClean.length, 0);
 check('exactly one real talent needs the allowlist', prereqStrings.filter((s) => INDETERMINATE_ALLOWLIST.has(s)).length, 1);
 
-console.log(`\n${pass} passed, ${fail} failed`);
-process.exit(fail ? 1 : 0);
+done();

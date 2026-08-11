@@ -22,14 +22,8 @@ import { homeworlds } from '../src/module/rules/homeworlds.mjs';
 import { backgrounds } from '../src/module/rules/backgrounds.mjs';
 import { roles } from '../src/module/rules/roles.mjs';
 import { divinations } from '../src/module/rules/divinations.mjs';
+import { check, done } from './harness.mjs';
 
-let pass = 0, fail = 0;
-const check = (label, got, want) => {
-    const ok = JSON.stringify(got) === JSON.stringify(want);
-    console.log(`${ok ? 'PASS' : 'FAIL'}  ${label}`);
-    if (!ok) console.log(`        got  ${JSON.stringify(got)}\n        want ${JSON.stringify(want)}`);
-    ok ? pass++ : fail++;
-};
 
 /* -------------------------------------------- */
 /*  splitParenthetical / normaliseFixedGrant     */
@@ -80,8 +74,11 @@ check('Penal Colony fixed talent grant is Peer (Criminal Cartels)',
 check('Agri-World fixed trait grant "Brutal Charge (2)" splits correctly',
     collectFixedTraitGrants(homeworlds().find((h) => h.name === 'Agri-World'), null),
     [{ name: 'Brutal Charge', speciality: '2', source: 'Home World' }]);
-check('Mutant has one trait choice group with 9 options',
-    collectTraitChoiceGroups(null, mutant)[0].group.options.length, 9);
+// The option count is content, not behaviour -- adding a mutation to the book data must not fail
+// the suite. What matters is that a background's trait box produces a choice group at all; the
+// 46-group sweep below covers their shape.
+check('Mutant\'s trait box becomes a choice group with options',
+    collectTraitChoiceGroups(null, mutant)[0].group.options.length > 0, true);
 check('a background with no starting traits reports zero fixed/choice trait grants',
     [collectFixedTraitGrants(null, adminAdmin).length, collectTraitChoiceGroups(null, adminAdmin).length], [0, 0]);
 
@@ -212,5 +209,4 @@ console.log(`\n  (swept ${groups.length} choice groups across every home world, 
 for (const g of emptyGroups) console.log(`        ${g.source} (${g.id}): no options`);
 check('every choice group across the real data has at least one option', emptyGroups.length, 0);
 
-console.log(`\n${pass} passed, ${fail} failed`);
-process.exit(fail ? 1 : 0);
+done();

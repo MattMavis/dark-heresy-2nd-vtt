@@ -10,14 +10,8 @@ import { normaliseName, resolveSkillGrant, resolveSkillGrants } from '../src/mod
 import { homeworlds } from '../src/module/rules/homeworlds.mjs';
 import { backgrounds } from '../src/module/rules/backgrounds.mjs';
 import { roles } from '../src/module/rules/roles.mjs';
+import { check, done } from './harness.mjs';
 
-let pass = 0, fail = 0;
-const check = (label, got, want) => {
-    const ok = JSON.stringify(got) === JSON.stringify(want);
-    console.log(`${ok ? 'PASS' : 'FAIL'}  ${label}`);
-    if (!ok) console.log(`        got  ${JSON.stringify(got)}\n        want ${JSON.stringify(want)}`);
-    ok ? pass++ : fail++;
-};
 
 const template = JSON.parse(readFileSync(new URL('../src/template.json', import.meta.url), 'utf8'));
 const SKILLS = template.Actor.templates.creature.skills;
@@ -124,5 +118,4 @@ console.log(`\n  (swept ${namedGrants.length} talent and trait grants against th
 for (const g of unknownNamed) console.log(`        ${g.where}: ${g.kind} "${g.name}" is not in the pack`);
 check('every talent and trait grant names something in the packs', unknownNamed.length, 0);
 
-console.log(`\n${pass} passed, ${fail} failed`);
-process.exit(fail ? 1 : 0);
+done();

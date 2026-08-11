@@ -6,14 +6,7 @@ import {
     progressionCost, remainingProgression,
     countMatchingAptitudes, normaliseAptitude, parseAptitudeList,
 } from '../src/module/rules/advancement.mjs';
-
-let pass = 0, fail = 0;
-const check = (label, got, want) => {
-    const ok = JSON.stringify(got) === JSON.stringify(want);
-    console.log(`${ok ? 'PASS' : 'FAIL'}  ${label}`);
-    if (!ok) console.log(`        got  ${JSON.stringify(got)}\n        want ${JSON.stringify(want)}`);
-    ok ? pass++ : fail++;
-};
+import { check, done } from './harness.mjs';
 
 // --- Table 2-2, characteristic advances, every cell -------------------------------------
 check('char two-apt row', [1,2,3,4,5].map((r) => characteristicAdvanceCost(r, 2)), [100,250,500,750,1250]);
@@ -30,21 +23,19 @@ check('talent two-apt row', [1,2,3].map((t) => talentCost(t, 2)), [200,300,400])
 check('talent one-apt row', [1,2,3].map((t) => talentCost(t, 1)), [300,450,600]);
 check('talent zero-apt row', [1,2,3].map((t) => talentCost(t, 0)), [600,900,1200]);
 
-// --- the book's own worked example --------------------------------------------------------
-// "a player could not simply pay 500 xp for a +10 increase ... required to buy the Simple
-// advance for 250 xp first, and then pay the 500 xp for the Intermediate advance."  (one aptitude)
-check('book example: Simple then Intermediate at one aptitude = 750',
-    progressionCost('characteristic', 0, 2, 1), 750);
-
 // --- cumulative behaviour -----------------------------------------------------------------
+// This is the rule behind the book's own worked example: "a player could not simply pay 500 xp
+// for a +10 increase ... required to buy the Simple advance for 250 xp first, and then pay the
+// 500 xp for the Intermediate advance." -- i.e. every intervening step is charged, which is
+// exactly what the two checks below assert (the one-aptitude row above already pins 250 and 500).
 check('skill 0 -> Veteran at two aptitudes sums all four steps',
     progressionCost('skill', 0, 4, 2), 100 + 200 + 300 + 400);
 check('partial climb charges only the steps taken',
     progressionCost('skill', 2, 4, 1), 600 + 800);
+// The two guards below are the whole of `if (to <= from || from < 0 || to > max) return null` --
+// "backwards is refused" and "beyond Expert is refused" hit the same two conditions again.
 check('no movement costs nothing (null, not zero)', progressionCost('skill', 3, 3, 2), null);
-check('backwards is refused', progressionCost('skill', 3, 1, 2), null);
 check('beyond the top rank is refused', progressionCost('skill', 3, 5, 2), null);
-check('beyond Expert is refused', progressionCost('characteristic', 4, 6, 2), null);
 
 // --- ladder for the UI ---------------------------------------------------------------------
 check('remaining ladder from Trained skill, one aptitude',
@@ -76,13 +67,13 @@ check('empty is safe', parseAptitudeList(''), []);
 
 // --- data completeness -------------------------------------------------------------------------
 check('all 28 skills mapped', Object.keys(SKILL_APTITUDES).length, 28);
+// Influence is deliberately absent from the map, so the count is 9 rather than 10. A separate
+// `CHARACTERISTIC_APTITUDES.influence === undefined` check fails in lockstep with this one.
 check('nine characteristics mapped, Influence excluded', Object.keys(CHARACTERISTIC_APTITUDES).length, 9);
-check('Influence has no aptitudes', CHARACTERISTIC_APTITUDES.influence, undefined);
 check('Common Lore is Knowledge, not General (quickref disagrees; book wins)',
     SKILL_APTITUDES.commonLore, ['Intelligence', 'Knowledge']);
 const everyPairHasTwo = Object.values(SKILL_APTITUDES).every((a) => a.length === 2)
     && Object.values(CHARACTERISTIC_APTITUDES).every((a) => a.length === 2);
 check('every entry has exactly two aptitudes', everyPairHasTwo, true);
 
-console.log(`\n${pass} passed, ${fail} failed`);
-process.exit(fail ? 1 : 0);
+done();

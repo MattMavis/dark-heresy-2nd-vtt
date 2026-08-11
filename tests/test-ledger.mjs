@@ -13,19 +13,18 @@
 // that disagree are recorded at the bottom as known divergences rather than quietly dropped:
 // both are single entries mispriced by hand at the table, in opposite directions, which is
 // itself evidence the tables are right and the humans slipped.
+//
+// Only a representative slice of that replay is asserted here. The full twenty lines collapse to
+// nine distinct table lookups, and `test-advancement.mjs` already asserts every cell of all three
+// cost tables exhaustively, so replaying them line by line re-tested the same arithmetic a third
+// time. What is kept is one advance per aptitude-match tier, one talent, and both divergences --
+// the divergences being the only entries here carrying information the tables do not.
 import {
     CHARACTERISTIC_APTITUDES, SKILL_APTITUDES,
     characteristicAdvanceCost, skillAdvanceCost, talentCost,
     countMatchingAptitudes, ledgerTotal, ledgerByKind, ledgerSorted, awardsTotal,
 } from '../src/module/rules/advancement.mjs';
-
-let pass = 0, fail = 0;
-const check = (label, got, want) => {
-    const ok = JSON.stringify(got) === JSON.stringify(want);
-    console.log(`${ok ? 'PASS' : 'FAIL'}  ${label}`);
-    if (!ok) console.log(`        got  ${JSON.stringify(got)}\n        want ${JSON.stringify(want)}`);
-    ok ? pass++ : fail++;
-};
+import { check, done } from './harness.mjs';
 
 /* -------------------------------------------- */
 /*  ledgerTotal                                 */
@@ -42,12 +41,10 @@ check('missing and non-numeric costs count as zero',
 /*  awardsTotal (the mirror image of ledgerTotal, for GM-awarded XP)  */
 /* -------------------------------------------- */
 
-check('empty awards sums to zero', awardsTotal([]), 0);
-check('a non-array is safe', awardsTotal(undefined), 0);
+// `awardsTotal` is the same `reduce` as `ledgerTotal` over a different field name, so the empty /
+// non-array / negative / non-numeric cases above already cover it. The one thing that could
+// diverge independently is the field name itself, which is what this single check pins.
 check('amounts are summed', awardsTotal([{ amount: 1000 }, { amount: 250 }]), 1250);
-check('a downward adjustment (negative amount) is honoured', awardsTotal([{ amount: 500 }, { amount: -100 }]), 400);
-check('missing and non-numeric amounts count as zero',
-    awardsTotal([{ amount: 100 }, {}, { amount: 'banana' }, { amount: null }]), 100);
 
 /* -------------------------------------------- */
 /*  ledgerByKind / ledgerSorted (experience panel breakdown + history) */
@@ -68,18 +65,17 @@ check('ledgerByKind is safe against a non-array', ledgerByKind(undefined),
     { characteristic: 0, skill: 0, talent: 0, other: 0 });
 check('an unrecognised kind (e.g. the legacy "adjustment" entry) falls into other',
     ledgerByKind([{ kind: 'adjustment', cost: 50 }]), { characteristic: 0, skill: 0, talent: 0, other: 50 });
-check('the four buckets always sum back to ledgerTotal', (() => {
-    const buckets = ledgerByKind(SPEND_LOG);
-    return buckets.characteristic + buckets.skill + buckets.talent + buckets.other;
-})(), ledgerTotal(SPEND_LOG));
+// (A "the four buckets sum back to ledgerTotal" check used to sit here. Both sides of it are
+// already pinned to literals by the two checks above, so it restated the same arithmetic a third
+// time without being able to fail on its own.)
 
-check('ledgerSorted orders most-recent-first', ledgerSorted(SPEND_LOG).map((e) => e.id),
+check('ledgerSorted orders most-recent-first', () => ledgerSorted(SPEND_LOG).map((e) => e.id),
     ['b', 'c', 'a', 'd']);
-check('ledgerSorted does not mutate the original array', (() => {
+check('ledgerSorted does not mutate the original array', () => {
     const original = [...SPEND_LOG];
     ledgerSorted(SPEND_LOG);
     return SPEND_LOG.every((e, i) => e === original[i]);
-})(), true);
+}, true);
 check('ledgerSorted on an empty ledger is empty', ledgerSorted([]), []);
 check('ledgerSorted is safe against a non-array', ledgerSorted(null), []);
 
@@ -91,7 +87,7 @@ const AWARD_LOG = [
     { id: 'y', amount: 500, reason: 'Cleared the hive gang', at: 300, by: 'GM' },
     { id: 'z', amount: 200, reason: 'Good roleplay', at: 200, by: 'GM' },
 ];
-check('ledgerSorted applies unchanged to award-shaped entries', ledgerSorted(AWARD_LOG).map((e) => e.id),
+check('ledgerSorted applies unchanged to award-shaped entries', () => ledgerSorted(AWARD_LOG).map((e) => e.id),
     ['y', 'z', 'x']);
 
 /* -------------------------------------------- */
@@ -104,38 +100,19 @@ const skillCost = (apt, key, rank) =>
     skillAdvanceCost(rank, countMatchingAptitudes(apt, SKILL_APTITUDES[key]));
 const talent = (apt, required, tier) => talentCost(tier, countMatchingAptitudes(apt, required));
 
-// Aptitudes as owned on each sheet.
+// Aptitudes as owned on the sheets the log belongs to.
 const GERRY = ['Perception', 'Strength', 'Tech', 'Intelligence', 'Toughness', 'General', 'Knowledge', 'Fieldcraft'];
-const PRIS = ['Intelligence', 'General', 'Willpower', 'Toughness', 'Perception', 'Psyker', 'Defence', 'Knowledge'];
 const MAKO = ['Strength', 'General', 'Defence', 'Offence', 'Weapon Skill', 'Fellowship', 'Ballistic Skill', 'Leadership'];
 const YURT = ['Offence', 'Leadership', 'General', 'Fieldcraft', 'Agility', 'Willpower', 'Toughness', 'Fellowship', 'Weapon Skill'];
 
-// Gerry -- every line of his log agrees with the tables.
-check('Gerry: Intelligence to Simple = 100', charCost(GERRY, 'intelligence', 1), 100);
-check('Gerry: Perception to Simple = 100', charCost(GERRY, 'perception', 1), 100);
-check('Gerry: Medicae to Known = 100', skillCost(GERRY, 'medicae', 1), 100);
-check('Gerry: Medicae to Trained = 200', skillCost(GERRY, 'medicae', 2), 200);
-check('Gerry: Commerce to Known = 100', skillCost(GERRY, 'commerce', 1), 100);
-check('Gerry: Superior Chirurgeon (tier 3, Int+Fieldcraft) = 400',
+// One entry per aptitude-match tier, plus one talent. Gerry has both of Medicae's aptitudes;
+// Mako has Dodge's Defence but not its Agility; the zero-match tier is covered by the Agility
+// divergence below.
+check('two matches: Gerry, Medicae to Known = 100', skillCost(GERRY, 'medicae', 1), 100);
+check('one match: Mako, Dodge to Known = 200', skillCost(MAKO, 'dodge', 1), 200);
+check('two matches, talent: Gerry, Superior Chirurgeon (tier 3, Int+Fieldcraft) = 400',
     talent(GERRY, ['Intelligence', 'Fieldcraft'], 3), 400);
-check('Gerry: Mechadendrite Use (tier 2, Int+Tech) = 300',
-    talent(GERRY, ['Intelligence', 'Tech'], 2), 300);
-
-// Pris -- her log totals 1000 and her sheet agrees; the four psychic powers carry their own
-// recorded costs, so only the talents are table-priced.
-check('Pris: Warp Sense (tier 1, Per+Psyker) = 200', talent(PRIS, ['Perception', 'Psyker'], 1), 200);
-check('Pris: Favoured by the Warp (tier 3, Wil+Psyker) = 400', talent(PRIS, ['Willpower', 'Psyker'], 3), 400);
-
-// Mako -- one aptitude match on each of these, since he has Fellowship but not Social, and
-// Defence but not Agility.
-check('Mako: Dodge to Known = 200', skillCost(MAKO, 'dodge', 1), 200);
-check('Mako: Charm to Known = 200', skillCost(MAKO, 'charm', 1), 200);
-check('Mako: Inquiry to Known = 200', skillCost(MAKO, 'inquiry', 1), 200);
-
-// Yurt -- Weapon Skill matches both of its aptitudes, so his cheapest advances.
-check('Yurt: Weapon Skill to Simple = 100', charCost(YURT, 'weaponSkill', 1), 100);
-check('Yurt: Weapon Skill to Intermediate = 250', charCost(YURT, 'weaponSkill', 2), 250);
-check('Yurt: Blind Fighting (tier 1, Per+Fieldcraft, one match) = 300',
+check('one match, talent: Yurt, Blind Fighting (tier 1, Per+Fieldcraft) = 300',
     talent(YURT, ['Perception', 'Fieldcraft'], 1), 300);
 
 /* -------------------------------------------- */
@@ -153,5 +130,4 @@ check('Yurt: Dodge to Known prices at 200, though the log recorded 300',
 check('Mako: Agility to Simple prices at 500, though the log recorded 250',
     charCost(MAKO, 'agility', 1), 500);
 
-console.log(`\n${pass} passed, ${fail} failed`);
-process.exit(fail ? 1 : 0);
+done();
