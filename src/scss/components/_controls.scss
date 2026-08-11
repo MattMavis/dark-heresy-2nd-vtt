@@ -68,87 +68,36 @@
     }
 }
 
-// Panel action buttons -- Spend Experience, Award Experience, Requisition, Attack.
+// The shared look of every deliberately-styled button in this system: the panel action buttons
+// and the buttons inside prompt dialogs. Both carry classes core Foundry CSS does not reach, so
+// without this they would be browser-default.
 //
-// They carry Foundry's `combat-control` class, which core CSS only styles inside the combat
-// tracker, so out here they inherit nothing. Styled by their wrapper rather than by class, so any
-// control added to a panel later is included without anyone having to remember.
-.dh-controls__wrapper {
-    button {
-        width: 100%;
-        margin: 0;
-        padding: 0.3rem 0.5rem;
-        cursor: pointer;
-        font-family: inherit;
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        // The panel's cells align text left; a button label wants to sit centred in its own box.
-        text-align: center;
-        line-height: 1.4;
-        white-space: nowrap;
-        color: #f3ece0;
-        background: linear-gradient(180deg, lighten($form-button-background, 8%), $form-button-background);
-        border: 1px solid darken($form-button-background, 18%);
-        border-radius: 2px;
-        // A bright top edge and a dark bottom one read as a raised, pressable surface against
-        // the parchment without needing an image.
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 1px 2px rgba(0, 0, 0, 0.45);
-        transition: background 0.12s ease, box-shadow 0.12s ease, transform 0.05s ease;
-
-        &:hover {
-            background: linear-gradient(180deg, lighten($form-button-background, 16%), lighten($form-button-background, 4%));
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 0 6px rgba(196, 62, 44, 0.65), 0 1px 2px rgba(0, 0, 0, 0.45);
-            color: #fff;
-        }
-
-        &:active {
-            transform: translateY(1px);
-            box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        &:focus-visible {
-            outline: 2px solid rgba(196, 62, 44, 0.9);
-            outline-offset: 1px;
-        }
-
-        &:disabled {
-            cursor: not-allowed;
-            opacity: 0.45;
-            box-shadow: none;
-        }
-    }
-}
-
-// Buttons inside prompt dialogs -- the Buy buttons in the advancement window, and the
-// confirm/cancel pair in every prompt's footer. `dh-prompt__button` had no styling of its own
-// either, so these were browser-default and easy to miss in a long table.
-.dh-prompt__button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.25rem;
-    min-width: 3.25rem;
+// Only the appearance lives here. Metrics (size, padding, spacing) and the disabled treatment
+// differ between the two for real reasons and stay with each rule.
+//
+// Defined above both users because `@extend` emits the shared selector where the placeholder is,
+// and a specificity tie is settled by source order.
+%dh-button-base {
     margin: 0;
-    padding: 0.15rem 0.5rem;
     cursor: pointer;
     font-family: inherit;
-    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 0.05em;
     text-transform: uppercase;
     white-space: nowrap;
     color: #f3ece0;
     background: linear-gradient(180deg, lighten($form-button-background, 8%), $form-button-background);
     border: 1px solid darken($form-button-background, 18%);
     border-radius: 2px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.4);
+    // A bright top edge and a dark bottom one read as a raised, pressable surface against the
+    // parchment without needing an image.
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 1px 2px rgba(0, 0, 0, 0.45);
     transition: background 0.12s ease, box-shadow 0.12s ease, transform 0.05s ease;
 
+    // `:not(:disabled)` on both, or a button that cannot be pressed still lights up and sinks
+    // under the cursor, which is precisely the opposite of what a disabled control should say.
     &:hover:not(:disabled) {
         background: linear-gradient(180deg, lighten($form-button-background, 16%), lighten($form-button-background, 4%));
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26), 0 0 6px rgba(196, 62, 44, 0.65), 0 1px 2px rgba(0, 0, 0, 0.4);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 0 6px rgba(196, 62, 44, 0.65), 0 1px 2px rgba(0, 0, 0, 0.45);
         color: #fff;
     }
 
@@ -162,14 +111,56 @@
         outline-offset: 1px;
     }
 
-    // Unaffordable or maxed out. Flat, colourless and obviously not pressable, so a player
-    // scanning the list can tell at a glance what is actually available to them.
     &:disabled {
         cursor: not-allowed;
+        box-shadow: none;
+    }
+}
+
+// Panel action buttons -- Spend Experience, Award Experience, Requisition, Attack.
+//
+// They carry Foundry's `combat-control` class, which core CSS only styles inside the combat
+// tracker, so out here they inherit nothing. Styled by their wrapper rather than by class, so any
+// control added to a panel later is included without anyone having to remember.
+.dh-controls__wrapper {
+    button {
+        @extend %dh-button-base;
+
+        width: 100%;
+        padding: 0.3rem 0.5rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        // The panel's cells align text left; a button label wants to sit centred in its own box.
+        text-align: center;
+        line-height: 1.4;
+
+        &:disabled {
+            opacity: 0.45;
+        }
+    }
+}
+
+// Buttons inside prompt dialogs -- the Buy buttons in the advancement window, and the
+// confirm/cancel pair in every prompt's footer.
+.dh-prompt__button {
+    @extend %dh-button-base;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    min-width: 3.25rem;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+
+    // Unaffordable or maxed out. Flat, colourless and obviously not pressable, so a player
+    // scanning the list can tell at a glance what is actually available to them. Deliberately
+    // heavier than the panel button's simple fade, because a table has many of these at once.
+    &:disabled {
         color: #6b675e;
         background: #d8d2c6;
         border-color: #a9a294;
-        box-shadow: none;
         text-shadow: none;
     }
 }
