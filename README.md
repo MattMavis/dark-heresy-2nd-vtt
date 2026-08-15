@@ -53,11 +53,21 @@ What that means in practice:
 
 🏷️ **Talents and traits with a specialisation.** Peer, Enemy, Hatred, Resistance, Weapon Training and Unnatural Characteristic let you pick what they were taken for. The choice sets the item's name, the bonus it advises, and — for Unnatural Characteristic — which characteristic is actually raised. Ratings scale properly, so Peer at rank 2 advises +20.
 
+📈 **Experience kept as a history, not a number you edit.** Spending and awards are both recorded as entries, and the totals are derived from them — so what the sheet says and what you have actually bought cannot drift apart. The Experience panel shows both histories, with a GM-only delete per row.
+
+🛒 **Spend Experience.** A player-facing window prices every characteristic, skill, speciality and talent against that character's own aptitudes, and will not let them skip a rank. Talent prerequisites are read from the talent itself and checked against the character, so the list shows what they qualify for at a glance — though anything the system cannot make sense of stays advisory rather than blocking a purchase, and the GM can override the check entirely.
+
+🎁 **Award Experience.** GM-only, to a single character or the whole party at once, with a reason recorded and the recipients named before you confirm.
+
+🧭 **Character creation wizard.** Eight steps on the Bio tab: home world, background, role, characteristics, aptitudes, starting experience and divination. It grants what your choices entitle you to — aptitudes, skills, talents, traits and starting equipment — rather than leaving you to add each by hand, and anything it cannot find in the compendiums is listed on the summary for you to add yourself instead of being dropped silently. Nothing is written to the character until you press Confirm on the last step.
+
 💰 **Requisition Menu and Warband Subtlety.** A player-facing menu browses available gear by Availability, rolls the Influence test for you, and grants items on success. A shared Warband Tracker holds the party's Subtlety, spent automatically for scarce requisitions.
 
 🩸 **Critical damage automation.** Critical results apply their mechanical consequences — Fatigue, Stunned, Prone, Blinded, Blood Loss, death — with one click, and log a permanent injury record. The genuinely conditional and branching results stay as prose on purpose.
 
 💫 **Status effects that affect dice.** Stunned, Prone and Blinded have real numeric consequences on rolls and action availability rather than being cosmetic icons.
+
+📚 **Filled-out compendiums.** Kit that the books describe as several distinct things but the packs held as one generic entry has been split out properly — the five mechadendrite patterns (utility, manipulator, medicae, optical and ballistic) are now separate items rather than a single "Mechadendrite", and odds and ends like Lho-Stubs have been added alongside their more common cousins.
 
 🔧 **Under the hood.** Ammunition and weapon modifications are real items on a character instead of data hidden inside the weapon, which is what lets them carry effects at all. Cybernetic armour points now reach the character, carry weight counts what's loaded inside a weapon, and a cancelled drag no longer destroys the item being dragged.
 
@@ -79,6 +89,12 @@ The original, unmodified system by Matt Keathley:
 ### Releasing (notes to self)
 
 `npx gulp build` writes `archive/dark-heresy-2nd-<version>.zip`. Publish a GitHub release tagged `v<version>` with both that zip and the built `system.json` attached. The `manifest` URL always resolves to the newest release, while `download` is pinned per release — so bump `version` and the version in `download` together in `src/system.json` before tagging.
+
+Both assets matter: Foundry reads `system.json` from the release to discover the update, so a release with only the zip leaves everyone on the previous version.
+
+**Do not bump the version with `npm run version` on Windows.** The script is written for a POSIX shell; under PowerShell `$npm_config_next` never expands and the literal string is written into both files as the version. Use `npx json -I -f <file> -e "this.version='X.Y.Z'"` on `src/system.json` and `package.json`, and update `download` by hand — the script does not touch it.
+
+`displayReleaseNotes` shows only the case matching the target `worldVersion`, not every version in between, so the notes for a new `worldVersion` need to describe the whole release rather than just its own migration step.
 
 ## Links
   - [Foundry VTT](https://foundryvtt.com/)
