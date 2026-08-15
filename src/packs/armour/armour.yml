@@ -12,7 +12,7 @@ data:
     maxAgility: 0
     type: Basic
     weight: 5
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/armoured-bodyglove.webp'
 name: Armoured Bodyglove
 type: armour
 ---
@@ -30,7 +30,7 @@ data:
     maxAgility: 35
     type: Basic
     weight: 15
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/chainmail-suit.webp'
 name: Chainmail Suit
 type: armour
 ---
@@ -48,7 +48,7 @@ data:
     maxAgility: 25
     type: Basic
     weight: 30
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/feudal-world-plate.webp'
 name: Feudal World Plate
 type: armour
 ---
@@ -66,7 +66,7 @@ data:
     maxAgility: 0
     type: Basic
     weight: 5
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/heavy-leathers.webp'
 name: Heavy Leathers
 type: armour
 ---
@@ -84,7 +84,7 @@ data:
     maxAgility: 0
     type: Basic
     weight: 4
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/imperial-robes.webp'
 name: Imperial Robes
 type: armour
 ---
@@ -112,7 +112,7 @@ data:
           value: 10
           condition: to resist extreme temperatures or being set on fire
     weight: 10
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/mould-suit.webp'
 name: Mould Suit
 type: armour
 ---
@@ -134,7 +134,7 @@ data:
     maxAgility: 35
     type: Basic
     weight: 35
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/obsidian-plate.webp'
 name: Obsidian Plate
 type: armour
 ---
@@ -152,7 +152,7 @@ data:
     maxAgility: 50
     type: Basic
     weight: 20
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/xenos-hide-vest.webp'
 name: Xenos Hide Vest
 type: armour
 ---
@@ -170,7 +170,7 @@ data:
     maxAgility: 55
     type: Carapace
     weight: 7
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/carapace-chestplate.webp'
 name: Carapace Chestplate
 type: armour
 ---
@@ -188,7 +188,7 @@ data:
     maxAgility: 0
     type: Carapace
     weight: 2
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/carapace-gauntlets.webp'
 name: Carapace Gauntlets
 type: armour
 ---
@@ -206,7 +206,7 @@ data:
     maxAgility: 0
     type: Carapace
     weight: 3
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/carapace-greaves.webp'
 name: Carapace Greaves
 type: armour
 ---
@@ -224,7 +224,7 @@ data:
     maxAgility: 0
     type: Carapace
     weight: 2
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/carapace-helm.webp'
 name: Carapace Helm
 type: armour
 ---
@@ -242,7 +242,7 @@ data:
     maxAgility: 45
     type: Carapace
     weight: 15
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/enforcer-light-carapace.webp'
 name: Enforcer Light Carapace
 type: armour
 ---
@@ -260,7 +260,7 @@ data:
     maxAgility: 45
     type: Carapace
     weight: 15
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/militarum-tempestus-carapace.webp'
 name: Militarum Tempestus Carapace
 type: armour
 ---
@@ -278,7 +278,7 @@ data:
     maxAgility: 55
     type: Flak
     weight: 8
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/flak-cloak.webp'
 name: Flak Cloak
 type: armour
 ---
@@ -296,7 +296,7 @@ data:
     maxAgility: 60
     type: Flak
     weight: 5
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/flak-coat.webp'
 name: Flak Coat
 type: armour
 ---
@@ -314,7 +314,7 @@ data:
     maxAgility: 0
     type: Flak
     weight: 1
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/flak-gauntlets.webp'
 name: Flak Gauntlets
 type: armour
 ---
@@ -332,7 +332,7 @@ data:
     maxAgility: 0
     type: Flak
     weight: 2
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/flak-helmet.webp'
 name: Flak Helmet
 type: armour
 ---
@@ -350,7 +350,7 @@ data:
     maxAgility: 60
     type: Flak
     weight: 5
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/flak-vest.webp'
 name: Flak Vest
 type: armour
 ---
@@ -368,7 +368,7 @@ data:
     maxAgility: 50
     type: Flak
     weight: 11
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/imperial-guard-flak-armour.webp'
 name: Imperial Guard Flak Armour
 type: armour
 ---
@@ -386,7 +386,7 @@ data:
     maxAgility: 55
     type: Flak
     weight: 4
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/light-flak-cloak.webp'
 name: Light Flak Cloak
 type: armour
 ---
@@ -405,7 +405,7 @@ data:
     maxAgility: 0
     type: Force Field
     weight: 1
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/conversion-field.webp'
 name: Conversion Field
 type: armour
 ---
@@ -426,7 +426,7 @@ data:
     maxAgility: 0
     type: Force Field
     weight: 2
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/displacer-field.webp'
 name: Displacer Field
 type: armour
 ---
@@ -449,7 +449,7 @@ data:
     maxAgility: 0
     type: Force Field
     weight: 18
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/field-wall-generator.webp'
 name: Field Wall Generator
 type: armour
 ---
@@ -469,7 +469,7 @@ data:
     maxAgility: 0
     type: Force Field
     weight: 3
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/flare-shield.webp'
 name: Flare Shield
 type: armour
 ---
@@ -488,7 +488,7 @@ data:
     maxAgility: 0
     type: Force Field
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/icon-of-the-just.webp'
 name: Icon of the Just
 type: armour
 ---
@@ -507,7 +507,7 @@ data:
     maxAgility: 0
     type: Force Field
     weight: 50
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/power-field-personal.webp'
 name: Power Field (Personal)
 type: armour
 ---
@@ -526,7 +526,7 @@ data:
     maxAgility: 0
     type: Force Field
     weight: 500
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/power-field-vehicle-emplacement.webp'
 name: Power Field (Vehicle/Emplacement)
 type: armour
 ---
@@ -544,7 +544,7 @@ data:
     maxAgility: 0
     type: Force Field
     weight: 2
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/refractor-field.webp'
 name: Refractor Field
 type: armour
 ---
@@ -564,7 +564,7 @@ data:
     maxAgility: 0
     type: Force Field
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/rosarius.webp'
 name: Rosarius
 type: armour
 ---
@@ -582,7 +582,7 @@ data:
     maxAgility: 60
     type: Mesh
     weight: 3
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/mesh-cloak.webp'
 name: Mesh Cloak
 type: armour
 ---
@@ -600,7 +600,7 @@ data:
     maxAgility: 0
     type: Mesh
     weight: 2
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/mesh-vest.webp'
 name: Mesh Vest
 type: armour
 ---
@@ -618,7 +618,7 @@ data:
     maxAgility: 50
     type: Power
     weight: 35
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/adepta-sororitas-power-armour.webp'
 name: Adepta Sororitas Power Armour
 type: armour
 ---
@@ -641,7 +641,7 @@ data:
     maxAgility: 35
     type: Power
     weight: 65
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/heavy-power-armour.webp'
 name: Heavy Power Armour
 type: armour
 ---
@@ -660,7 +660,7 @@ data:
     maxAgility: 40
     type: Power
     weight: 40
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/light-power-armour.webp'
 name: Light Power Armour
 type: armour
 ---
@@ -682,7 +682,7 @@ data:
     maxAgility: 50
     type: Power
     weight: 16
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/praetor-armour.webp'
 name: Praetor Armour
 type: armour
 ---
@@ -704,7 +704,7 @@ data:
     maxAgility: 0
     type: Force Field
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/clone-field.webp'
 name: Clone Field
 type: armour
 ---
@@ -725,6 +725,6 @@ data:
     maxAgility: 0
     type: Force Field
     weight: 1
-img: systems/dark-heresy-2nd/icons/items/armor/armor_s09.png
+img: 'systems/dark-heresy-2nd/icons/gen/armour/shimmershield.webp'
 name: Shimmershield
 type: armour

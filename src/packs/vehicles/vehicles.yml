@@ -1,6 +1,6 @@
 _id: NdRbOmmgsmCV6ZKu
 name: Aelurus Heavy Trike
-img: icons/svg/mystery-man.svg
+img: 'systems/dark-heresy-2nd/icons/gen/vehicles/aelurus-heavy-trike.webp'
 type: vehicle
 system:
     front: 12
@@ -137,7 +137,7 @@ items:
 ---
 _id: NBUDfuMHNCJG9nfD
 name: Aquila Lander
-img: icons/svg/mystery-man.svg
+img: 'systems/dark-heresy-2nd/icons/gen/vehicles/aquila-lander.webp'
 type: vehicle
 system:
     front: 24
@@ -395,7 +395,7 @@ items:
 ---
 _id: Lm4SIyVtnYHFRNNA
 name: Arvus Lighter
-img: icons/svg/mystery-man.svg
+img: 'systems/dark-heresy-2nd/icons/gen/vehicles/arvus-lighter.webp'
 type: vehicle
 system:
     front: 22
@@ -529,7 +529,7 @@ items:
 ---
 _id: qZmJeOHNKXceA9P5
 name: Sentinel
-img: icons/svg/mystery-man.svg
+img: 'systems/dark-heresy-2nd/icons/gen/vehicles/sentinel.webp'
 type: vehicle
 system:
     front: 15
@@ -839,7 +839,7 @@ items:
 ---
 _id: WVpy0TfDSavf17rF
 name: Skerab Walker
-img: icons/svg/mystery-man.svg
+img: 'systems/dark-heresy-2nd/icons/gen/vehicles/skerab-walker.webp'
 type: vehicle
 system:
     front: 35
@@ -1027,7 +1027,7 @@ items:
 ---
 _id: Mp765dBoRYAv2JDE
 name: Wildcat Transport Buggy
-img: icons/svg/mystery-man.svg
+img: 'systems/dark-heresy-2nd/icons/gen/vehicles/wildcat-transport-buggy.webp'
 type: vehicle
 system:
     front: 18
@@ -1261,7 +1261,7 @@ items:
 ---
 _id: Vk9yr1eAsltCrr7q
 name: Valkyrie Assault Carrier
-img: icons/svg/mystery-man.svg
+img: 'systems/dark-heresy-2nd/icons/gen/vehicles/valkyrie-assault-carrier.webp'
 type: vehicle
 system:
     front: 22

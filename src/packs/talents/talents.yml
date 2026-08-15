@@ -5,7 +5,7 @@ data:
     prerequisites: 'Ag 30'
     source: PG 123 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/items/swords/swords_01_b.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/ambidextrous.webp'
 name: Ambidextrous
 type: talent
 ---
@@ -17,7 +17,7 @@ data:
     prerequisites: 'Per 30'
     source: PG 123 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_02.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/blind-fighting.webp'
 name: Blind Fighting
 type: talent
 ---
@@ -32,7 +32,7 @@ data:
     prerequisites: 'Ag 35'
     source: PG 60 EB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/items/armor/helmet_s05.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/bodyguard.webp'
 name: Bodyguard
 type: talent
 ---
@@ -48,7 +48,7 @@ data:
         - key: acrobatics
           value: 20
           condition: when using Jump
-img: systems/dark-heresy-2nd/icons/psykana/wind-grasp-magenta-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/catfall.webp'
 name: Catfall
 type: talent
 ---
@@ -60,7 +60,7 @@ data:
     prerequisites: 'Fel 30'
     source: PG 124 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/clues-from-the-crowds.webp'
 name: Clues from the Crowds
 type: talent
 ---
@@ -72,7 +72,7 @@ data:
     prerequisites: 'WP 40'
     source: PG 125 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/die-hard.webp'
 name: Die Hard
 type: talent
 ---
@@ -84,7 +84,7 @@ data:
     prerequisites: 'Ag 30'
     source: PG 125 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/items/armor/gloves_s08.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/disarm.webp'
 name: Disarm
 type: talent
 ---
@@ -99,7 +99,7 @@ data:
         - key: weaponSkill
           value: 10
           condition: when outnumbering the opponent
-img: systems/dark-heresy-2nd/icons/talents/violet/p_29.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/talents/double-team.webp'
 name: Double Team
 type: talent
 ---
@@ -123,7 +123,7 @@ data:
           value: -10
           perLevel: true
           condition: 'when dealing with {choice}'
-img: systems/dark-heresy-2nd/icons/talents/violet/p_21.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/talents/enemy.webp'
 name: Enemy
 type: talent
 ---
@@ -135,7 +135,7 @@ data:
     prerequisites: 'Ferric Lure Implants, Mechanicus Implants'
     source: PG 127 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_02.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/ferric-summons.webp'
 name: Ferric Summons
 type: talent
 ---
@@ -146,7 +146,7 @@ data:
     prerequisites: ''
     source: PG 57 EI
     tier: '1'
-img: systems/dark-heresy-2nd/icons/items/flail/flail_03_t.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/talents/flagellant.webp'
 name: Flagellant
 type: talent
 ---
@@ -163,7 +163,7 @@ data:
     prerequisites: ''
     source: PG 127 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/red/r_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/frenzy.webp'
 name: Frenzy
 type: talent
 ---
@@ -176,7 +176,7 @@ data:
     prerequisites: 'BS 35'
     source: PG 62 EO
     tier: '1'
-img: systems/dark-heresy-2nd/icons/items/grenade/grenade_04.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/grenadier.webp'
 name: Grenadier
 type: talent
 ---
@@ -187,7 +187,7 @@ data:
     prerequisites: 'T 40'
     source: PG 128 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/iron-jaw.webp'
 name: Iron Jaw
 type: talent
 ---
@@ -198,7 +198,7 @@ data:
     prerequisites: 'WP 40'
     source: PG 128 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/jaded.webp'
 name: Jaded
 type: talent
 ---
@@ -213,7 +213,7 @@ data:
         - key: awareness
           value: -10
           condition: on the single permitted retry
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/keen-intuition.webp'
 name: Keen Intuition
 type: talent
 ---
@@ -224,7 +224,7 @@ data:
     prerequisites: 'Ag 30'
     source: PG 129 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/leap-up.webp'
 name: Leap Up
 type: talent
 ---
@@ -236,7 +236,7 @@ data:
     prerequisites: 'Ag 35, Rank 2 in Dodge skill'
     source: PG 63 EO
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/leaping-dodge.webp'
 name: Leaping Dodge
 type: talent
 ---
@@ -248,7 +248,7 @@ data:
     prerequisites: ''
     source: PG 58 EI
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/mounted-warrior.webp'
 name: Mounted Warrior
 type: talent
 ---
@@ -259,7 +259,7 @@ data:
     prerequisites: 'Per 30'
     source: PG 130 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/nowhere-to-hide.webp'
 name: Nowhere to Hide
 type: talent
 ---
@@ -280,7 +280,7 @@ data:
           value: 10
           perLevel: true
           condition: 'when dealing with {choice}'
-img: systems/dark-heresy-2nd/icons/psykana/evil-eye-eerie-2.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/peer.webp'
 name: Peer
 type: talent
 ---
@@ -291,7 +291,7 @@ data:
     prerequisites: ''
     source: PG 131 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/items/pistols/pistols_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/quick-draw.webp'
 name: Quick Draw
 type: talent
 ---
@@ -302,7 +302,7 @@ data:
     prerequisites: ''
     source: PG 131 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/rapid-reload.webp'
 name: Rapid Reload
 type: talent
 ---
@@ -323,7 +323,7 @@ data:
         - key: willpower
           value: 10
           condition: 'to resist {choice}'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/resistance.webp'
 name: Resistance
 type: talent
 ---
@@ -338,7 +338,7 @@ data:
     prerequisites: 'Rank 2 in any Operate skill'
     source: PG 63 EO
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/skilled-rider.webp'
 name: Skilled Rider
 type: talent
 ---
@@ -349,7 +349,7 @@ data:
     prerequisites: ''
     source: PG 131 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/sound-constitution.webp'
 name: Sound Constitution
 type: talent
 ---
@@ -360,7 +360,7 @@ data:
     prerequisites: ''
     source: PG 132 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/takedown.webp'
 name: Takedown
 type: talent
 ---
@@ -371,7 +371,7 @@ data:
     prerequisites: 'Int 30'
     source: PG 132 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_21.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/technical-knock.webp'
 name: Technical Knock
 type: talent
 ---
@@ -382,7 +382,7 @@ data:
     prerequisites: 'Psy Rating, Psyniscience, Per 30'
     source: PG 133 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/psykana/evil-eye-eerie-3.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/warp-sense.webp'
 name: Warp Sense
 type: talent
 ---
@@ -396,7 +396,7 @@ data:
     choice:
         list: weapon_group
         selected: ''
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/weapon-training.webp'
 name: Weapon Training
 type: talent
 ---
@@ -409,7 +409,7 @@ data:
     prerequisites: 'Tech Use +10, Int 40'
     source: PG 133 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/weapon-tech.webp'
 name: Weapon-Tech
 type: talent
 ---
@@ -422,7 +422,7 @@ data:
     prerequisites: 'Fel 35, Int 35'
     source: PG 62 EO
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/ambassador-imperialis.webp'
 name: Ambassador Imperialis
 type: talent
 ---
@@ -434,7 +434,7 @@ data:
     prerequisites: 'Int 40'
     source: PG 62 EO
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/archivator.webp'
 name: Archivator
 type: talent
 ---
@@ -445,7 +445,7 @@ data:
     prerequisites: 'Int 35, Tech-Use, Trade (Armourer)'
     source: PG 123 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_07.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/armor-monger.webp'
 name: Armor-Monger
 type: talent
 ---
@@ -457,7 +457,7 @@ data:
     prerequisites: 'Frenzy'
     source: PG 123 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/psykana/evil-eye-red-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/battle-rage.webp'
 name: Battle Rage
 type: talent
 ---
@@ -473,7 +473,7 @@ data:
         - key: athletics
           value: 20
           condition: when using Heft
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/bulging-biceps.webp'
 name: Bulging Biceps
 type: talent
 ---
@@ -486,7 +486,7 @@ data:
     prerequisites: 'WP 45, Iron Faith'
     source: PG 60 EB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/psykana/haste-sky-3.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/bulwark-of-faith.webp'
 name: Bulwark of Faith
 type: talent
 ---
@@ -497,7 +497,7 @@ data:
     prerequisites: 'WS 30'
     source: PG 124 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/items/armor/helmet_s10.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/combat-master.webp'
 name: Combat Master
 type: talent
 ---
@@ -509,7 +509,7 @@ data:
     prerequisites: 'Int 35 or Per 35, Awareness +10'
     source: PG 124 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/psykana/evil-eye-eerie-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/constant-vigilance.webp'
 name: Constant Vigilance
 type: talent
 ---
@@ -520,7 +520,7 @@ data:
     prerequisites: 'Cover-Up, Int 35'
     source: PG 124 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/contact-network.webp'
 name: Contact Network
 type: talent
 ---
@@ -532,7 +532,7 @@ data:
     prerequisites: 'S 40 or WP 40, Clues from the Crowds'
     source: PG 124 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/coordinated-interrogation.webp'
 effects:
     - name: Coordinated Interrogation
       img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
@@ -558,7 +558,7 @@ data:
         - key: weaponSkill
           value: -20
           condition: on the attack following a successful Parry
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/counter-attack.webp'
 name: Counter Attack
 type: talent
 ---
@@ -569,7 +569,7 @@ data:
     prerequisites: 'Int 35'
     source: PG 125 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/cover-up.webp'
 name: Cover-Up
 type: talent
 ---
@@ -581,7 +581,7 @@ data:
     prerequisites: 'Forbidden Lore (Daemonology), WP 40'
     source: PG 60 EB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/red/r_36.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/daemonhunter.webp'
 name: Daemonhunter
 type: talent
 ---
@@ -594,7 +594,7 @@ data:
     prerequisites: 'Psy rating 3, WP 45, Forbidden Lore (Daemonology)'
     source: PG 60 EB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/red/r_29.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/daemonologist.webp'
 name: Daemonologist
 type: talent
 ---
@@ -605,7 +605,7 @@ data:
     prerequisites: 'WP 35'
     source: PG 125 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/psykana/haste-royal-2.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/deny-the-witch.webp'
 name: Deny the Witch
 type: talent
 ---
@@ -617,7 +617,7 @@ data:
     prerequisites: 'WS 35'
     source: PG 125 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/devastating-assault.webp'
 name: Devastating Assault
 type: talent
 ---
@@ -629,7 +629,7 @@ data:
     prerequisites: 'Two-Weapon Wielder'
     source: PG 125 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/items/pistols/pistols_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/double-tap.webp'
 name: Double Tap
 type: talent
 ---
@@ -640,7 +640,7 @@ data:
     prerequisites: ''
     source: PG 127 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/items/spear/stave_04_b.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/exotic-weapon-training.webp'
 name: Exotic Weapon Training
 type: talent
 ---
@@ -651,7 +651,7 @@ data:
     prerequisites: 'Fel 35, Clues from the Crowds'
     source: PG 127 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/green/g_11.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/face-in-a-crowd.webp'
 name: Face in a Crowd
 type: talent
 ---
@@ -665,7 +665,7 @@ data:
     prerequisites: 'BS or WS 40, Forbidden Lore (Xenos - Any), Rank 2 in Medicae skill'
     source: PG 62 EO
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/field-vivisection.webp'
 name: Field Vivisection
 type: talent
 ---
@@ -676,7 +676,7 @@ data:
     prerequisites: 'Ag 40'
     source: PG 128 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/hard-target.webp'
 name: Hard Target
 type: talent
 ---
@@ -689,7 +689,7 @@ data:
     prerequisites: ''
     source: PG 61 EB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/harden-soul.webp'
 name: Harden Soul
 type: talent
 ---
@@ -700,7 +700,7 @@ data:
     prerequisites: 'T 40'
     source: PG 128 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/hardy.webp'
 name: Hardy
 type: talent
 ---
@@ -719,7 +719,7 @@ data:
         - key: weaponSkill
           value: 10
           condition: 'when attacking {choice}'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/hatred.webp'
 name: Hatred
 type: talent
 ---
@@ -731,7 +731,7 @@ data:
     prerequisites: 'BS 40, Ag 40'
     source: PG 128 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/hip-shooting.webp'
 name: Hip Shooting
 type: talent
 ---
@@ -745,7 +745,7 @@ data:
     prerequisites: 'Rank 2 in Survival or any Operate skill, Ag 35'
     source: PG 62 EO
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/hotshot-pilot.webp'
 name: Hotshot Pilot
 type: talent
 ---
@@ -756,7 +756,7 @@ data:
     prerequisites: 'BS 40'
     source: PG 128 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/independent-targeting.webp'
 name: Independent Targeting
 type: talent
 ---
@@ -768,7 +768,7 @@ data:
     prerequisites: 'BS 40 or WS 40, Per 35'
     source: PG 128 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/inescapable-attack.webp'
 name: Inescapable Attack
 type: talent
 ---
@@ -782,7 +782,7 @@ data:
     prerequisites: 'Halo of Command'
     source: PG 61 EB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/inspiring-aura.webp'
 name: Inspiring Aura
 type: talent
 ---
@@ -794,7 +794,7 @@ data:
     prerequisites: 'Resistance (Fear), Jaded'
     source: PG 61 EB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/iron-resolve.webp'
 name: Iron Resolve
 type: talent
 ---
@@ -805,7 +805,7 @@ data:
     prerequisites: 'WS 50'
     source: PG 129 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/killing-strike.webp'
 name: Killing Strike
 type: talent
 ---
@@ -817,7 +817,7 @@ data:
     prerequisites: 'Rank 3 in Linguistics (Any)'
     source: PG 63 EO
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/lexographer.webp'
 name: Lexographer
 type: talent
 ---
@@ -830,7 +830,7 @@ data:
     prerequisites: 'Luminen Capacitors, Mechanicus Implants'
     source: PG 129 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/psykana/lighting-eerie-2.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/luminen-shock.webp'
 name: Luminen Shock
 type: talent
 ---
@@ -844,7 +844,7 @@ data:
     prerequisites: 'Maglev Coils, Mechanicus Implants'
     source: PG 129 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/maglev-transcendence.webp'
 name: Maglev Transcendence
 type: talent
 ---
@@ -855,7 +855,7 @@ data:
     prerequisites: 'BS 35'
     source: PG 130 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/items/rifles/rifle_03.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/marksman.webp'
 name: Marksman
 type: talent
 ---
@@ -866,7 +866,7 @@ data:
     prerequisites: 'Mechanicus Implants'
     source: PG 130 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/mechadendrite-use.webp'
 name: Mechadendrite Use
 type: talent
 ---
@@ -879,7 +879,7 @@ data:
     prerequisites: 'WS 40'
     source: PG 61 EB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/one-on-one.webp'
 name: One-on-One
 type: talent
 ---
@@ -891,7 +891,7 @@ data:
     prerequisites: ''
     source: PG 58 EI
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/penitent-psyker.webp'
 name: Penitent Psyker
 type: talent
 ---
@@ -902,7 +902,7 @@ data:
     prerequisites: 'BS 40 or WS 40'
     source: PG 130 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/precision-killer.webp'
 name: Precision Killer
 type: talent
 ---
@@ -914,7 +914,7 @@ data:
     prerequisites: 'Autosanguine Implants, Mechanicus Implants'
     source: PG 131 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/prosanguine.webp'
 name: Prosanguine
 type: talent
 ---
@@ -928,7 +928,7 @@ data:
     choice:
         list: faction
         selected: ''
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/purity-of-hatred.webp'
 name: Purity of Hatred
 type: talent
 ---
@@ -942,7 +942,7 @@ data:
     prerequisites: 'Common Lore (Imperial Creed) +10 or Forbidden Lore (Daemonology)'
     source: PG 61 EB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/rites-of-banishment.webp'
 name: Rites of Banishment
 type: talent
 ---
@@ -953,7 +953,7 @@ data:
     prerequisites: 'WP 30, Resistance (Psychic Powers)'
     source: PG 131 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/red/r_27.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/strong-minded.webp'
 name: Strong Minded
 type: talent
 ---
@@ -964,7 +964,7 @@ data:
     prerequisites: 'WS 30'
     source: PG 131 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/swift-attack.webp'
 name: Swift Attack
 type: talent
 ---
@@ -977,7 +977,7 @@ data:
     prerequisites: ''
     source: PG 58 EI
     tier: '2'
-img: systems/dark-heresy-2nd/icons/psykana/horror-red-3.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/tainted-psyker.webp'
 name: Tainted Psyker
 type: talent
 ---
@@ -996,7 +996,7 @@ data:
         - key: ballisticSkill
           value: -20
           condition: when attacking with two weapons
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/two-weapon-wielder.webp'
 name: Two-Weapon Wielder
 type: talent
 ---
@@ -1008,7 +1008,7 @@ data:
     prerequisites: 'Ambidextrous, Ag 35, WS 35'
     source: PG 132 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/unarmed-specialist.webp'
 name: Unarmed Specialist
 type: talent
 ---
@@ -1020,7 +1020,7 @@ data:
     prerequisites: 'Psy Rating, Strong Minded, WP 50'
     source: PG 132 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/warp-conduit.webp'
 name: Warp Conduit
 type: talent
 ---
@@ -1034,7 +1034,7 @@ data:
     prerequisites: 'WS 40'
     source: PG 133 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/whirlwind-of-death.webp'
 name: Whirlwind of Death
 type: talent
 ---
@@ -1046,7 +1046,7 @@ data:
     prerequisites: ''
     source: PG 58 EI
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/witch-finder.webp'
 name: Witch Finder
 type: talent
 ---
@@ -1058,7 +1058,7 @@ data:
     prerequisites: 'Rank 3 in Forbidden Lore (Xenos - Any)'
     source: PG 63 EO
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/xenosavant.webp'
 name: Xenosavant
 type: talent
 ---
@@ -1071,7 +1071,7 @@ data:
     prerequisites: 'Jaded, Resistance (Fear), WP 45'
     source: PG 123 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/violet/p_06.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/adamantium-faith.webp'
 name: Adamantium Faith
 type: talent
 ---
@@ -1082,7 +1082,7 @@ data:
     prerequisites: 'Shared Destiny, Shield of Contempt, Hatred (any)'
     source: PG 57 EI
     tier: '3'
-img: systems/dark-heresy-2nd/icons/psykana/link-eerie-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/aegis-of-contempt.webp'
 name: Aegis of Contempt
 type: talent
 ---
@@ -1095,7 +1095,7 @@ data:
     prerequisites: 'Ag 40, Acrobatics'
     source: PG 123 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/gr_10.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/talents/assassin-strike.webp'
 name: Assassin Strike
 type: talent
 ---
@@ -1107,7 +1107,7 @@ data:
     prerequisites: 'Psy Rating, Strong Minded, WP 40'
     source: PG 123 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/psykana/protect-blue-2.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/bastion-of-iron-will.webp'
 name: Bastion of Iron Will
 type: talent
 ---
@@ -1119,7 +1119,7 @@ data:
     prerequisites: 'WS 30, Weapon Training (any Melee)'
     source: PG 123 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/items/swords/swords_06_b.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/talents/blademaster.webp'
 name: Blademaster
 type: talent
 ---
@@ -1130,7 +1130,7 @@ data:
     prerequisites: 'WS 40'
     source: PG 125 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/items/maces/mace_09_b.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/crushing-blow.webp'
 name: Crushing Blow
 type: talent
 ---
@@ -1143,7 +1143,7 @@ data:
     prerequisites: 'Bane of the Daemon, WP 50, Untouchable elite advance'
     source: PG 60 EB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/violet/p_19.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/talents/daemonic-disruption.webp'
 name: Daemonic Disruption
 type: talent
 ---
@@ -1156,7 +1156,7 @@ data:
     prerequisites: 'Hardened Soul, 20 Corruption points'
     source: PG 60 EB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_32.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/dark-soul.webp'
 name: Dark Soul
 type: talent
 ---
@@ -1169,7 +1169,7 @@ data:
     prerequisites: 'WP 35, 10 Corruption points'
     source: PG 60 EB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/hardened-soul.webp'
 name: Hardened Soul
 type: talent
 ---
@@ -1180,7 +1180,7 @@ data:
     prerequisites: 'BS 45 or WS 45'
     source: PG 125 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/items/rifles/rifle_06.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/deathdealer.webp'
 name: Deathdealer
 type: talent
 ---
@@ -1192,7 +1192,7 @@ data:
     prerequisites: 'Fel 50, Coordinated Interrogation'
     source: PG 125 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/delicate-interrogation.webp'
 name: Delicate Interrogation
 type: talent
 ---
@@ -1203,7 +1203,7 @@ data:
     prerequisites: ''
     source: PG 57 EI
     tier: '3'
-img: systems/dark-heresy-2nd/icons/psykana/heal-sky-3.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/divine-protection.webp'
 name: Divine Protection
 type: talent
 ---
@@ -1215,7 +1215,7 @@ data:
     prerequisites: 'BS 50'
     source: PG 127 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/psykana/evil-eye-red-3.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/eye-of-vengeance.webp'
 name: Eye of Vengeance
 type: talent
 ---
@@ -1226,7 +1226,7 @@ data:
     prerequisites: 'WP 35'
     source: PG 127 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/green/g_23.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/talents/favored-by-the-warp.webp'
 name: Favored by the Warp
 type: talent
 ---
@@ -1237,7 +1237,7 @@ data:
     prerequisites: 'Int 40, Contact Network, Coordinated Interrogation'
     source: PG 127 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/flash-of-insight.webp'
 name: Flash of Insight
 type: talent
 ---
@@ -1248,7 +1248,7 @@ data:
     prerequisites: 'Fel 40, WP 40'
     source: PG 127 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/halo-of-command.webp'
 name: Halo of Command
 type: talent
 ---
@@ -1261,7 +1261,7 @@ data:
     prerequisites: 'Crushing Blow'
     source: PG 128 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/items/maces/mace_02_b.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/hammer-blow.webp'
 name: Hammer Blow
 type: talent
 ---
@@ -1275,7 +1275,7 @@ data:
     prerequisites: 'Rank 2 in Survival or any Operate skill'
     source: PG 62 EO
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/hull-down.webp'
 name: Hull Down
 type: talent
 ---
@@ -1287,7 +1287,7 @@ data:
     prerequisites: ''
     source: PG 57 EI
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/indomitable-conviction.webp'
 name: Indomitable Conviction
 type: talent
 ---
@@ -1298,7 +1298,7 @@ data:
     prerequisites: 'Int 40, Lore (any one)'
     source: PG 128 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/infused-knowledge.webp'
 name: Infused Knowledge
 type: talent
 ---
@@ -1313,7 +1313,7 @@ data:
     prerequisites: 'WP 50'
     source: PG 61 EB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/instrument-of-his-will.webp'
 name: Instrument of His Will
 type: talent
 ---
@@ -1324,7 +1324,7 @@ data:
     prerequisites: ''
     source: PG 57 EI
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/into-the-jaws-of-hell.webp'
 name: Into the Jaws of Hell
 type: talent
 ---
@@ -1335,7 +1335,7 @@ data:
     prerequisites: 'Iron Resolve'
     source: PG 61 EB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/iron-faith.webp'
 name: Iron Faith
 type: talent
 ---
@@ -1346,7 +1346,7 @@ data:
     prerequisites: 'Swift Attack'
     source: PG 129 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/psykana/enchant-sky-2.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/lightning-attack.webp'
 name: Lightning Attack
 type: talent
 ---
@@ -1359,7 +1359,7 @@ data:
     prerequisites: 'Luminen Shock, Luminen Capacitors, Mechanicus Implants'
     source: PG 129 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/psykana/lighting-eerie-3.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/luminen-blast.webp'
 name: Luminen Blast
 type: talent
 ---
@@ -1372,7 +1372,7 @@ data:
     prerequisites: 'Rank 4 in selected skill'
     source: PG 130 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/mastery.webp'
 name: Mastery
 type: talent
 ---
@@ -1383,7 +1383,7 @@ data:
     prerequisites: 'BS 40'
     source: PG 130 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/mighty-shot.webp'
 name: Mighty Shot
 type: talent
 ---
@@ -1395,7 +1395,7 @@ data:
     prerequisites: 'WP 50, T 50'
     source: PG 130 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/never-die.webp'
 name: Never Die
 type: talent
 ---
@@ -1406,7 +1406,7 @@ data:
     prerequisites: 'WS 40, Ag 50'
     source: PG 130 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/preternatural-speed.webp'
 name: Preternatural Speed
 type: talent
 ---
@@ -1420,7 +1420,7 @@ data:
     prerequisites: 'Rank 2 in Survival or any Operate skill, Tech-Use'
     source: PG 63 EO
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/push-the-limit.webp'
 name: Push the Limit
 type: talent
 ---
@@ -1433,7 +1433,7 @@ data:
     prerequisites: 'Daemonologist, Favoured by the Warp, WP 50'
     source: PG 61 EB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/sanctic-purity.webp'
 name: Sanctic Purity
 type: talent
 ---
@@ -1445,7 +1445,7 @@ data:
     prerequisites: 'Ambidextrous, WS 40'
     source: PG 61 EB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_19.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/talents/shield-wall.webp'
 name: Shield Wall
 type: talent
 ---
@@ -1456,7 +1456,7 @@ data:
     prerequisites: ''
     source: PG 131 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/sprint.webp'
 name: Sprint
 type: talent
 ---
@@ -1467,7 +1467,7 @@ data:
     prerequisites: 'Ag 40, Dodge or Parry'
     source: PG 131 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/step-aside.webp'
 name: Step Aside
 type: talent
 ---
@@ -1479,7 +1479,7 @@ data:
     prerequisites: 'Rank 2 in Medicae skill'
     source: PG 131 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/superior-chirurgeon.webp'
 effects:
     - name: Superior Chirurgeon
       img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
@@ -1502,7 +1502,7 @@ data:
     prerequisites: 'BS 50'
     source: PG 132 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/target-selection.webp'
 name: Target Selection
 type: talent
 ---
@@ -1513,7 +1513,7 @@ data:
     prerequisites: 'S 50'
     source: PG 132 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/psykana/lighting-acid-2.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/talents/thunder-charge.webp'
 name: Thunder Charge
 type: talent
 ---
@@ -1524,7 +1524,7 @@ data:
     prerequisites: 'T 40'
     source: PG 132 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/true-grit.webp'
 name: True Grit
 type: talent
 ---
@@ -1535,7 +1535,7 @@ data:
     prerequisites: 'Ag 45, Ambidextrous, BS 40 or WS 40, Two-Weapon Wielder (Melee, Ranged)'
     source: PG 132 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/two-weapon-master.webp'
 name: Two-Weapon Master
 type: talent
 ---
@@ -1549,7 +1549,7 @@ data:
     prerequisites: 'Psy Rating, Strong Minded, WP 50'
     source: PG 133 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/warp-lock.webp'
 name: Warp Lock
 type: talent
 ---
@@ -1561,7 +1561,7 @@ data:
     prerequisites: 'Exotic Weapon Training (Any)'
     source: PG 63 EO
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/weapon-intuition.webp'
 name: Weapon Intuition
 type: talent
 ---
@@ -1573,7 +1573,7 @@ data:
     prerequisites: 'Per 45'
     source: PG 88 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/complete-control.webp'
 name: Complete Control
 type: talent
 ---
@@ -1585,7 +1585,7 @@ data:
     prerequisites: 'Inspired Intuition, Shield of Contempt, Strength Through Conviction'
     source: PG 88 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/fated.webp'
 name: Fated
 type: talent
 ---
@@ -1599,7 +1599,7 @@ data:
     prerequisites: 'Int 50'
     source: PG 88 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/inspired-intuition.webp'
 name: Inspired Intuition
 type: talent
 ---
@@ -1611,7 +1611,7 @@ data:
     prerequisites: 'Int 45'
     source: PG 89 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/jack-of-all-trades.webp'
 name: Jack of all Trades
 type: talent
 ---
@@ -1623,7 +1623,7 @@ data:
     prerequisites: 'Int 55, Jack of all Trades'
     source: PG 89 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/master-of-all-trades.webp'
 name: Master of all Trades
 type: talent
 ---
@@ -1638,7 +1638,7 @@ data:
     prerequisites: 'WP 40'
     source: PG 89 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/shared-destiny.webp'
 name: Shared Destiny
 type: talent
 ---
@@ -1650,7 +1650,7 @@ data:
     prerequisites: 'WP 50'
     source: PG 89 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/shield-of-contempt.webp'
 name: Shield of Contempt
 type: talent
 ---
@@ -1662,7 +1662,7 @@ data:
     prerequisites: 'WP 50'
     source: PG 89 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/strength-through-conviction.webp'
 name: Strength Through Conviction
 type: talent
 ---
@@ -1675,7 +1675,7 @@ data:
     prerequisites: 'Fated, Int 50, Per 50, WP 55'
     source: PG 89 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/will-of-the-inquisitor.webp'
 name: Will of the Inquisitor
 type: talent
 ---
@@ -1688,7 +1688,7 @@ data:
     prerequisites: 'WP 40'
     source: PG 92 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/bane-of-the-daemon.webp'
 name: Bane of the Daemon
 type: talent
 ---
@@ -1700,7 +1700,7 @@ data:
     prerequisites: 'Warp Anathema, WP 55'
     source: PG 92 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/daemonic-anathema.webp'
 name: Daemonic Anathema
 type: talent
 ---
@@ -1712,7 +1712,7 @@ data:
     prerequisites: 'Psychic Null, WP 50'
     source: PG 92 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/null-field.webp'
 name: Null Field
 type: talent
 ---
@@ -1727,7 +1727,7 @@ data:
     prerequisites: 'WP 40'
     source: PG 92 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/psychic-null.webp'
 name: Psychic Null
 type: talent
 ---
@@ -1739,7 +1739,7 @@ data:
     prerequisites: 'WP 30'
     source: PG 92 CB
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/soulless-aura.webp'
 name: Soulless Aura
 type: talent
 ---
@@ -1754,7 +1754,7 @@ data:
     prerequisites: 'Warp Disruption, WP 55'
     source: PG 92 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/warp-anathema.webp'
 name: Warp Anathema
 type: talent
 ---
@@ -1767,7 +1767,7 @@ data:
     prerequisites: 'Warp Disruption, WP 55'
     source: PG 92 CB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/warp-bane.webp'
 name: Warp Bane
 type: talent
 ---
@@ -1780,7 +1780,7 @@ data:
     prerequisites: 'WP 45'
     source: PG 92 CB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/warp-disruption.webp'
 name: Warp Disruption
 type: talent
 ---
@@ -1795,7 +1795,7 @@ data:
     prerequisites: 'Ceaseless Crusader, Shielding Faith'
     source: PG 38 EI
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/blessed-martyrdom.webp'
 name: Blessed Martyrdom
 type: talent
 ---
@@ -1809,7 +1809,7 @@ data:
     prerequisites: 'WP 45'
     source: PG 38 EI
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/ceaseless-crusader.webp'
 name: Ceaseless Crusader
 type: talent
 ---
@@ -1821,7 +1821,7 @@ data:
     prerequisites: 'BS 40'
     source: PG 38 EI
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/cleanse-with-fire.webp'
 name: Cleanse with Fire
 type: talent
 ---
@@ -1833,7 +1833,7 @@ data:
     prerequisites: 'Cleanse with Fire, BS 45'
     source: PG 38 EI
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/divine-vengeance.webp'
 name: Divine Vengeance
 type: talent
 ---
@@ -1846,7 +1846,7 @@ data:
     prerequisites: 'Insanity 25, Furious Zeal'
     source: PG 39 EI
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/emperor-s-guidance.webp'
 name: Emperor's Guidance
 type: talent
 ---
@@ -1859,7 +1859,7 @@ data:
     prerequisites: 'Insanity 10, Hatred (Any One)'
     source: PG 39 EI
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/furious-zeal.webp'
 name: Furious Zeal
 type: talent
 ---
@@ -1872,7 +1872,7 @@ data:
     prerequisites: 'Insanity 20, Furious Zeal'
     source: PG 39 EI
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/spirit-of-the-martyr.webp'
 name: Spirit of the Martyr
 type: talent
 ---
@@ -1887,7 +1887,7 @@ data:
     prerequisites: 'Deny the Witch'
     source: PG 39 EI
     tier: '1'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/shielding-faith.webp'
 name: Shielding Faith
 type: talent
 ---
@@ -1901,7 +1901,7 @@ data:
     prerequisites: 'Fel 35, Spirit of the Martyr'
     source: PG 39 EI
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/zealot-s-passion.webp'
 name: Zealot's Passion
 type: talent
 ---
@@ -1917,7 +1917,7 @@ data:
     prerequisites: 'Warp Lock'
     source: PG 36 EB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/bound-to-the-highest-power.webp'
 name: Bound to the Highest Power
 type: talent
 ---
@@ -1931,7 +1931,7 @@ data:
     prerequisites: 'Fel 40, WP 50'
     source: PG 36 EB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/supreme-telepath.webp'
 name: Supreme Telepath
 type: talent
 ---
@@ -1943,7 +1943,7 @@ data:
     prerequisites: 'Per 35'
     source: PG 36 EB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/second-sight.webp'
 name: Second Sight
 type: talent
 ---
@@ -1957,7 +1957,7 @@ data:
     prerequisites: 'Strong Minded, WP 50'
     source: PG 36 EB
     tier: '3'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/soul-ward.webp'
 name: Soul Ward
 type: talent
 ---
@@ -1969,6 +1969,6 @@ data:
     prerequisites: 'Warp Sense'
     source: PG 37 EB
     tier: '2'
-img: systems/dark-heresy-2nd/icons/talents/blue/b_18.png
+img: 'systems/dark-heresy-2nd/icons/gen/talents/warp-awareness.webp'
 name: Warp Awareness
 type: talent

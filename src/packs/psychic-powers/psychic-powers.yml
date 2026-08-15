@@ -20,7 +20,7 @@ system:
     target:
         bonus: -20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/aura-of-fear.webp'
 name: Aura of Fear
 type: psychicPower
 ---
@@ -50,7 +50,7 @@ system:
         isOpposed: true
         opposedBonus: 10
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/deja-vu.webp'
 name: Deja Vu
 type: psychicPower
 ---
@@ -81,7 +81,7 @@ system:
         bonus: -10
         useSkill: true
         skill: psyniscience
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/foretelling.webp'
 name: Foretelling
 type: psychicPower
 ---
@@ -112,7 +112,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/ignite.webp'
 name: Ignite
 type: psychicPower
 ---
@@ -145,7 +145,7 @@ system:
         isOpposed: true
         useOpposedSkill: true
         opposedSkill: logic
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/ill-omen.webp'
 name: Ill Omen
 type: psychicPower
 ---
@@ -175,7 +175,7 @@ system:
     target:
         bonus: 10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/impel.webp'
 name: Impel
 type: psychicPower
 ---
@@ -203,7 +203,7 @@ system:
         bonus: 0
         useSkill: true
         skill: awareness
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/luck.webp'
 name: Luck
 type: psychicPower
 ---
@@ -234,7 +234,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/suggestion.webp'
 name: Suggestion
 type: psychicPower
 ---
@@ -261,7 +261,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/summon-vermin.webp'
 name: Summon Vermin
 type: psychicPower
 ---
@@ -289,7 +289,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/weapon-jinx.webp'
 name: Weapon Jinx
 type: psychicPower
 ---
@@ -325,7 +325,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/word-of-beasts.webp'
 name: Word of Beasts
 type: psychicPower
 ---
@@ -352,7 +352,7 @@ system:
     target:
         bonus: 10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/call-item.webp'
 name: Call Item
 type: psychicPower
 ---
@@ -375,7 +375,7 @@ system:
     target:
         bonus: 10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/staunch-bleeding.webp'
 name: Staunch Bleeding
 type: psychicPower
 ---
@@ -406,7 +406,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: toughness
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/enfeeble.webp'
 name: Enfeeble
 type: psychicPower
 ---
@@ -432,7 +432,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/endurance.webp'
 name: Endurance
 type: psychicPower
 ---
@@ -463,7 +463,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: toughness
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/haemorrhage.webp'
 name: Haemorrhage
 type: psychicPower
 ---
@@ -490,7 +490,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/invigourate.webp'
 name: Invigourate
 type: psychicPower
 ---
@@ -516,7 +516,7 @@ system:
     target:
         bonus: -20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/iron-arm.webp'
 name: Iron Arm
 type: psychicPower
 ---
@@ -546,7 +546,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: toughness
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/life-leech.webp'
 name: Life Leech
 type: psychicPower
 ---
@@ -585,7 +585,7 @@ system:
     target:
         bonus: 10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/shape-flesh.webp'
 name: Shape Flesh
 type: psychicPower
 ---
@@ -611,7 +611,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/smite.webp'
 name: Smite
 type: psychicPower
 ---
@@ -635,7 +635,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/warp-speed.webp'
 name: Warp Speed
 type: psychicPower
 ---
@@ -663,7 +663,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/bio-lightning.webp'
 name: Bio-Lightning
 type: psychicPower
 ---
@@ -696,7 +696,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/regeneration.webp'
 name: Regeneration
 type: psychicPower
 ---
@@ -732,7 +732,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: toughness
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/blood-boil.webp'
 name: Blood Boil
 type: psychicPower
 ---
@@ -773,7 +773,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/sharpened-senses.webp'
 name: Sharpened Senses
 type: psychicPower
 ---
@@ -799,7 +799,7 @@ system:
     target:
         bonus: -10
         characteristic: perception
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/foreboding.webp'
 name: Foreboding
 type: psychicPower
 ---
@@ -825,7 +825,7 @@ system:
     target:
         bonus: 0
         skill: psyniscience
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/forewarning.webp'
 name: Forewarning
 type: psychicPower
 ---
@@ -854,7 +854,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/misfortune.webp'
 name: Misfortune
 type: psychicPower
 ---
@@ -882,7 +882,7 @@ system:
         bonus: -10
         useSkill: true
         skill: psyniscience
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/perfect-timing.webp'
 name: Perfect Timing
 type: psychicPower
 ---
@@ -911,7 +911,7 @@ system:
         bonus: -20
         useSkill: true
         skill: psyniscience
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/precognition.webp'
 name: Precognition
 type: psychicPower
 ---
@@ -937,7 +937,7 @@ system:
         bonus: 0
         useSkill: true
         skill: psyniscience
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/prescience.webp'
 name: Prescience
 type: psychicPower
 ---
@@ -977,7 +977,7 @@ system:
         bonus: 0
         useSkill: true
         skill: psyniscience
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/scrier-s-gaze.webp'
 name: Scrier's Gaze
 type: psychicPower
 ---
@@ -1001,7 +1001,7 @@ system:
         bonus: 0
         useSkill: true
         skill: psyniscience
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/warp-perception.webp'
 name: Warp Perception
 type: psychicPower
 ---
@@ -1026,7 +1026,7 @@ system:
         bonus: -10
         useSkill: true
         skill: psyniscience
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/winding-fate.webp'
 name: Winding Fate
 type: psychicPower
 ---
@@ -1053,7 +1053,7 @@ system:
         bonus: -10
         useSkill: true
         skill: psyniscience
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/the-action-again.webp'
 name: The Action Again
 type: psychicPower
 ---
@@ -1079,7 +1079,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/in-harms-way.webp'
 name: In Harms Way
 type: psychicPower
 ---
@@ -1105,7 +1105,7 @@ system:
         bonus: 0
         useSkill: true
         skill: psyniscience
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/foreshadow.webp'
 name: Foreshadow
 type: psychicPower
 ---
@@ -1134,7 +1134,7 @@ system:
         bonus: 0
         useSkill: true
         skill: psyniscience
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/precognitive-dodge.webp'
 name: Precognitive Dodge
 type: psychicPower
 ---
@@ -1163,7 +1163,7 @@ system:
         bonus: 0
         useSkill: true
         skill: psyniscience
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/preternatural-awareness.webp'
 name: Preternatural Awareness
 type: psychicPower
 ---
@@ -1188,7 +1188,7 @@ system:
     target:
         bonus: 20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/cauterise.webp'
 name: Cauterise
 type: psychicPower
 ---
@@ -1212,7 +1212,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/flame-breath.webp'
 name: Flame Breath
 type: psychicPower
 ---
@@ -1239,7 +1239,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/fiery-form.webp'
 name: Fiery Form
 type: psychicPower
 ---
@@ -1266,7 +1266,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/fire-shield.webp'
 name: Fire Shield
 type: psychicPower
 ---
@@ -1291,7 +1291,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/inferno.webp'
 name: Inferno
 type: psychicPower
 ---
@@ -1317,7 +1317,7 @@ system:
     target:
         bonus: 20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/manipulate-flame.webp'
 name: Manipulate Flame
 type: psychicPower
 ---
@@ -1341,7 +1341,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/molten-beam.webp'
 name: Molten Beam
 type: psychicPower
 ---
@@ -1365,7 +1365,7 @@ system:
     target:
         bonus: 10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/spontaneous-combustion.webp'
 name: Spontaneous Combustion
 type: psychicPower
 ---
@@ -1389,7 +1389,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/sunburst.webp'
 name: Sunburst
 type: psychicPower
 ---
@@ -1419,7 +1419,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/wall-of-fire.webp'
 name: Wall of FIre
 type: psychicPower
 ---
@@ -1449,7 +1449,7 @@ system:
     target:
         bonus: -20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/incinerate.webp'
 name: Incinerate
 type: psychicPower
 ---
@@ -1475,7 +1475,7 @@ system:
     target:
         bonus: 10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/assail.webp'
 name: Assail
 type: psychicPower
 ---
@@ -1503,7 +1503,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: toughness
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/crush.webp'
 name: Crush
 type: psychicPower
 ---
@@ -1535,7 +1535,7 @@ system:
     target:
         bonus: -20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/gate-of-infinity.webp'
 name: Gate of Infinity
 type: psychicPower
 ---
@@ -1561,7 +1561,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/objuration-mechanicum.webp'
 name: Objuration Mechanicum
 type: psychicPower
 ---
@@ -1587,7 +1587,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/shockwave.webp'
 name: Shockwave
 type: psychicPower
 ---
@@ -1615,7 +1615,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/telekine-dome.webp'
 name: Telekine Dome
 type: psychicPower
 ---
@@ -1642,7 +1642,7 @@ system:
     target:
         bonus: 20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/telekine-shield.webp'
 name: Telekine Shield
 type: psychicPower
 ---
@@ -1668,7 +1668,7 @@ system:
     target:
         bonus: 20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/telekinetic-control.webp'
 name: Telekinetic Control
 type: psychicPower
 ---
@@ -1712,7 +1712,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/vortex-of-doom.webp'
 name: Vortex of Doom
 type: psychicPower
 ---
@@ -1741,7 +1741,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/death-grip.webp'
 name: Death Grip
 type: psychicPower
 ---
@@ -1768,7 +1768,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/psycho-kinetic-shield.webp'
 name: Psycho-Kinetic Shield
 type: psychicPower
 ---
@@ -1801,7 +1801,7 @@ system:
     target:
         bonus: 10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/precision-telekinesis.webp'
 name: Precision Telekinesis
 type: psychicPower
 ---
@@ -1832,7 +1832,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/telekinetic-weapon.webp'
 name: Telekinetic Weapon
 type: psychicPower
 ---
@@ -1857,7 +1857,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/storm-of-force.webp'
 name: Storm of Force
 type: psychicPower
 ---
@@ -1888,7 +1888,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/force-shards.webp'
 name: Force Shards
 type: psychicPower
 ---
@@ -1918,7 +1918,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/dominate.webp'
 name: Dominate
 type: psychicPower
 ---
@@ -1948,7 +1948,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/erasure.webp'
 name: Erasure
 type: psychicPower
 ---
@@ -1976,7 +1976,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/hallucination.webp'
 name: Hallucination
 type: psychicPower
 ---
@@ -2004,7 +2004,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/invisibility.webp'
 name: Invisibility
 type: psychicPower
 ---
@@ -2029,7 +2029,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/mental-fortitude.webp'
 name: Mental Fortitude
 type: psychicPower
 ---
@@ -2053,7 +2053,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/psychic-shriek.webp'
 name: Psychic Shriek
 type: psychicPower
 ---
@@ -2086,7 +2086,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/puppet-master.webp'
 name: Puppet Master
 type: psychicPower
 ---
@@ -2121,7 +2121,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/telepathic-link.webp'
 name: Telepathic Link
 type: psychicPower
 ---
@@ -2153,7 +2153,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/terrify.webp'
 name: Terrify
 type: psychicPower
 ---
@@ -2180,7 +2180,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/chaos-mind.webp'
 name: Chaos Mind
 type: psychicPower
 ---
@@ -2205,7 +2205,7 @@ system:
     target:
         bonus: 10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/mental-alacrity.webp'
 name: Mental Alacrity
 type: psychicPower
 ---
@@ -2239,7 +2239,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/beastmaster.webp'
 name: Beastmaster
 type: psychicPower
 ---
@@ -2267,7 +2267,7 @@ system:
     target:
         bonus: -20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/banishment.webp'
 name: Banishment
 type: psychicPower
 ---
@@ -2294,7 +2294,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/cleansing-flame.webp'
 name: Cleansing Flame
 type: psychicPower
 ---
@@ -2322,7 +2322,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/exorcism.webp'
 name: Exorcism
 type: psychicPower
 ---
@@ -2348,7 +2348,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/hammerhand.webp'
 name: Hammerhand
 type: psychicPower
 ---
@@ -2377,7 +2377,7 @@ system:
     target:
         bonus: -20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/holocaust.webp'
 name: Holocaust
 type: psychicPower
 ---
@@ -2402,7 +2402,7 @@ system:
     target:
         bonus: 10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/psychic-communion.webp'
 name: Psychic Communion
 type: psychicPower
 ---
@@ -2430,7 +2430,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/purge-soul.webp'
 name: Purge Soul
 type: psychicPower
 ---
@@ -2457,7 +2457,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/sanctuary.webp'
 name: Sanctuary
 type: psychicPower
 ---
@@ -2482,7 +2482,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/word-of-the-emperor.webp'
 name: Word of the Emperor
 type: psychicPower
 ---
@@ -2512,7 +2512,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/cursed-earth.webp'
 name: Cursed Earth
 type: psychicPower
 ---
@@ -2539,7 +2539,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/dark-flame.webp'
 name: Dark Flame
 type: psychicPower
 ---
@@ -2567,7 +2567,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/infernal-gaze.webp'
 name: Infernal Gaze
 type: psychicPower
 ---
@@ -2591,7 +2591,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/incursion.webp'
 name: Incursion
 type: psychicPower
 ---
@@ -2623,7 +2623,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/possession.webp'
 name: Possession
 type: psychicPower
 ---
@@ -2650,7 +2650,7 @@ system:
     target:
         bonus: 10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/sacrifice.webp'
 name: Sacrifice
 type: psychicPower
 ---
@@ -2674,7 +2674,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/summoning.webp'
 name: Summoning
 type: psychicPower
 ---
@@ -2704,7 +2704,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/astral-telepathy.webp'
 name: Astral Telepathy
 type: psychicPower
 ---
@@ -2736,7 +2736,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/telepathic-bond.webp'
 name: Telepathic Bond
 type: psychicPower
 ---
@@ -2772,7 +2772,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/mind-scan.webp'
 name: Mind Scan
 type: psychicPower
 ---
@@ -2798,7 +2798,7 @@ system:
     target:
         bonus: -20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/thought-shield.webp'
 name: Thought Shield
 type: psychicPower
 ---
@@ -2821,7 +2821,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/time-shift.webp'
 name: Time Shift
 type: psychicPower
 ---
@@ -2847,7 +2847,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: toughness
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/temporal-stasis.webp'
 name: Temporal Stasis
 type: psychicPower
 ---
@@ -2871,7 +2871,7 @@ system:
     target:
         bonus: -20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/chronological-removal.webp'
 name: Chronological Removal
 type: psychicPower
 ---
@@ -2895,7 +2895,7 @@ system:
     target:
         bonus: -20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/stop-time.webp'
 name: Stop Time
 type: psychicPower
 ---
@@ -2918,7 +2918,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/slow-time.webp'
 name: Slow Time
 type: psychicPower
 ---
@@ -2944,7 +2944,7 @@ system:
     target:
         bonus: -20
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/chrono-shield.webp'
 name: Chrono Shield
 type: psychicPower
 ---
@@ -2968,7 +2968,7 @@ system:
     target:
         bonus: 10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/chrono-shift.webp'
 name: Chrono Shift
 type: psychicPower
 ---
@@ -2994,7 +2994,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/time-warp.webp'
 name: Time Warp
 type: psychicPower
 ---
@@ -3018,7 +3018,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/temporal-crush.webp'
 name: Temporal Crush
 type: psychicPower
 ---
@@ -3042,7 +3042,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/chronosphere.webp'
 name: Chronosphere
 type: psychicPower
 ---
@@ -3076,7 +3076,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/the-voids-touch.webp'
 name: The Voids Touch
 type: psychicPower
 ---
@@ -3101,7 +3101,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/breathstealing-barrage.webp'
 name: Breathstealing Barrage
 type: psychicPower
 ---
@@ -3126,7 +3126,7 @@ system:
     target:
         bonus: -10
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/freeze-the-soul.webp'
 name: Freeze the Soul
 type: psychicPower
 ---
@@ -3162,7 +3162,7 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/embrace-of-emptiness.webp'
 name: Embrace of Emptiness
 type: psychicPower
 ---
@@ -3197,7 +3197,7 @@ system:
         characteristic: willpower
         isOpposed: true
         opposed: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/black-sleep.webp'
 name: Black Sleep
 type: psychicPower
 ---
@@ -3229,6 +3229,6 @@ system:
     target:
         bonus: 0
         characteristic: willpower
-img: systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg
+img: 'systems/dark-heresy-2nd/icons/gen/psychic-powers/void-substantiation.webp'
 name: Void Substantiation
 type: psychicPower

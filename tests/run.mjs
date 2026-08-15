@@ -25,6 +25,7 @@ const FILES = [
     'test-character-creation.mjs',
     'test-prerequisites.mjs',
     'test-combat-tables.mjs',
+    'test-icons.mjs',
 ];
 
 const rule = (s) => `${'='.repeat(78)}\n  ${s}\n${'='.repeat(78)}`;

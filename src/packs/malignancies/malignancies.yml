@@ -3,7 +3,7 @@ data:
         The character suffers from numerous minor tics, shakes, and tremors with
         no medical cause. Reduce his Agility by 1d10.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/palsy.webp'
 name: Palsy
 type: malignancy
 ---
@@ -12,7 +12,7 @@ data:
         The character grows increasingly cruel, callous, and vindictive. Reduce
         his Fellowship by 1d10.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/dark-hearted.webp'
 name: Dark-hearted
 type: malignancy
 ---
@@ -22,7 +22,7 @@ data:
         Whenever this character uses a Fate point, roll 1d10. On a result of
         7-10, the Fate point has no effect but is spent anyway.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/ill-fortuned.webp'
 name: Ill-fortuned
 type: malignancy
 ---
@@ -32,7 +32,7 @@ data:
         disgusting features across his body. He suffers a -20 penalty to all
         Charm tests.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/skin-afflictions.webp'
 name: Skin Afflictions
 type: malignancy
 ---
@@ -42,7 +42,7 @@ data:
         he shields his eyes, he suffers a -20 penalty on all tests made in an
         area of bright light.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/night-eyes.webp'
 name: Night Eyes
 type: malignancy
 ---
@@ -52,7 +52,7 @@ data:
         increasingly macabre and he becomes prone to tortured, gloom-filled
         trains of thought. Reduce his Intelligence by 1d10.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/morbid.webp'
 name: Morbid
 type: malignancy
 ---
@@ -62,7 +62,7 @@ data:
         concealable mutation. It is small, but perhaps enough to bring him to
         death if found out by a fanatical witch hunter.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/witch-mark.webp'
 name: Witch-mark
 type: malignancy
 ---
@@ -73,7 +73,7 @@ data:
         collecting finger-bone trophies, ritual sacrifice, carrying out
         meaningless vivisections, etc.).
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/fell-obsession.webp'
 name: Fell Obsession
 type: malignancy
 ---
@@ -85,7 +85,7 @@ data:
         make a Toughness test or suffer a -10 penalty to all tests as long as he
         remains in its presence.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/irrational-nausea.webp'
 name: Irrational Nausea
 type: malignancy
 ---
@@ -94,7 +94,7 @@ data:
         The character's pallor becomes corpse-like and his muscles waste away.
         Reduce his Strength by 1d10.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/wasted-frame.webp'
 name: Wasted Frame
 type: malignancy
 ---
@@ -103,7 +103,7 @@ data:
         The character is plagued by daemonic visions in his sleep. This
         functions identically to the Horrific Nightmares Disorder on page 289.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/night-terrors.webp'
 name: Night Terrors
 type: malignancy
 ---
@@ -113,7 +113,7 @@ data:
         his wounds never seem to fully heal. Reduce the character's Toughness by
         1d10.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/poor-health.webp'
 name: Poor Health
 type: malignancy
 ---
@@ -123,7 +123,7 @@ data:
         others. He suffers a -10 penalty to Fellowship tests when dealing with
         strangers.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/distrustful.webp'
 name: Distrustful
 type: malignancy
 ---
@@ -132,7 +132,7 @@ data:
         The world seems to darken, tarnish, and rot if the character looks at
         anything too long. Reduce the character's Perception by 1d10.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/malign-sight.webp'
 name: Malign Sight
 type: malignancy
 ---
@@ -142,7 +142,7 @@ data:
         character, and he can barely stomach eating. Recovering from Fatigue
         takes twice as long for him than normal (see page 233).
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/ashen-taste.webp'
 name: Ashen Taste
 type: malignancy
 ---
@@ -154,7 +154,7 @@ data:
         incapacitated, rather than killing them outright, even if his intent is
         otherwise.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/bloodlust.webp'
 name: Bloodlust
 type: malignancy
 ---
@@ -164,7 +164,7 @@ data:
         what happens during them is up to the Game Master, who should inform the
         player of the details of what (if anything) he remembers on awakening.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/blackouts.webp'
 name: Blackouts
 type: malignancy
 ---
@@ -175,6 +175,6 @@ data:
         etc.). This acts like a Minor Disorder for Compulsion (see page 288),
         but is freakish enough to cause serious suspicion if discovered.
     source: PG 290 CB
-img: systems/dark-heresy-2nd/icons/talents/red/r_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/malignancies/strange-addiction.webp'
 name: Strange Addiction
 type: malignancy

@@ -7,7 +7,7 @@ data:
     installed: false
     upgrades: Any Las, Solid Projectile, or Bolt weapons of the Basic class
     weight: 2.5
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/auxiliary-grenade-launcher.webp'
 name: Auxiliary Grenade Launcher
 type: weaponModification
 ---
@@ -19,7 +19,7 @@ data:
     installed: false
     upgrades: Any Bolt, Flame, Las, Melta, Plasma, and Solid Projectile weapon.
     weight: 15
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/backpack-ammo-supply.webp'
 name: Backpack Ammo Supply
 type: weaponModification
 ---
@@ -32,7 +32,7 @@ data:
     upgrades: Any Pistol or any Las, Solid Projectile, Flame, Bolt, or Plasma weapon
         of the Basic class.
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/compact.webp'
 name: Compact
 type: weaponModification
 ---
@@ -43,7 +43,7 @@ data:
     installed: false
     upgrades: Any weapon
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/custom-grip.webp'
 name: Custom Grip
 type: weaponModification
 ---
@@ -54,7 +54,7 @@ data:
     installed: false
     upgrades: Any weapon
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/deactivated-safety-features.webp'
 name: Deactivated Safety Features
 type: weaponModification
 ---
@@ -65,7 +65,7 @@ data:
     installed: false
     upgrades: Ranged weapons
     weight: 1
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/expanded-magazine.webp'
 name: Expanded Magazine
 type: weaponModification
 ---
@@ -77,7 +77,7 @@ data:
     installed: false
     upgrades: Any weapon except Pistol or Thrown.
     weight: 1
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/exterminator.webp'
 name: Exterminator
 type: weaponModification
 ---
@@ -89,7 +89,7 @@ data:
     upgrades: Any Bolt, Launcher, and Solid Projectile weapon of the Pistol or Basic
         class.
     weight: 1
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/fire-selector.webp'
 name: Fire Selector
 type: weaponModification
 ---
@@ -101,7 +101,7 @@ data:
     installed: false
     upgrades: Any ranged weapon capable of Semi-Automatic fore.
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/fluid-action.webp'
 name: Fluid Action
 type: weaponModification
 ---
@@ -112,7 +112,7 @@ data:
     installed: false
     upgrades: Any Las, Low-Tech, Solid Projectile, Bolt, or Melta of the Pistol class.
     weight: 1
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/forearm-weapon-mounting.webp'
 name: Forearm Weapon Mounting
 type: weaponModification
 ---
@@ -123,7 +123,7 @@ data:
     installed: false
     upgrades: Any Basic ranged weapon.
     weight: 2
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/melee-attachment.webp'
 name: Melee Attachment
 type: weaponModification
 ---
@@ -134,7 +134,7 @@ data:
     installed: false
     upgrades: Any Weapon
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/modified-stock.webp'
 name: Modified Stock
 type: weaponModification
 ---
@@ -146,7 +146,7 @@ data:
     installed: false
     upgrades: Any Low-Tech or Power Melee weapon.
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/mono.webp'
 name: Mono
 type: weaponModification
 ---
@@ -157,7 +157,7 @@ data:
     installed: false
     upgrades: Any Ranged weapon (except Low-Tech) Capable of Semi-Auto or Full Auto.
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/motion-predictor.webp'
 name: Motion Predictor
 type: weaponModification
 ---
@@ -170,7 +170,7 @@ data:
     upgrades: Any ranged Las, Solid Projectile, Bolt, Low-Tech or Plasma weapon of the
         Basic class.
     weight: 2
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/omni-scope.webp'
 name: Omni-Scope
 type: weaponModification
 ---
@@ -187,7 +187,7 @@ data:
     installed: false
     upgrades: Any armour.
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/pentagramatic-wards.webp'
 name: Pentagramatic Wards
 type: weaponModification
 ---
@@ -199,7 +199,7 @@ data:
     upgrades: Any ranged Las, Solid Projectile, Bolt, Low-Tech or Plasma weapon of the
         Basic class.
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/photo-sight.webp'
 name: Photo Sight
 type: weaponModification
 ---
@@ -210,7 +210,7 @@ data:
     installed: false
     upgrades: Any Basic ranged weapon.
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/pistol-grip.webp'
 name: Pistol Grip
 type: weaponModification
 ---
@@ -223,7 +223,7 @@ data:
     upgrades: Any ranged Las, Solid Projectile, Bolt, Low-Tech or Plasma weapon of the
         Basic class.
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/preysense-sight.webp'
 name: Preysense Sight
 type: weaponModification
 ---
@@ -234,7 +234,7 @@ data:
     installed: false
     upgrades: Any ranged weapon.
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/quick-release.webp'
 name: Quick-Release
 type: weaponModification
 ---
@@ -246,7 +246,7 @@ data:
     upgrades: Any ranged Las, Solid Projectile, Bolt, Low-Tech or Plasma weapon of the
         Pistol or Basic class.
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/red-dot-laser-sight.webp'
 name: Red-Dot Laser Sight
 type: weaponModification
 ---
@@ -259,7 +259,7 @@ data:
     installed: false
     upgrades: Any Weapon
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/reinforced.webp'
 name: Reinforced
 type: weaponModification
 ---
@@ -274,7 +274,7 @@ data:
     installed: false
     upgrades: Any armour.
     weight: 3
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/sacred-incense-burner.webp'
 name: Sacred Incense Burner
 type: weaponModification
 ---
@@ -285,7 +285,7 @@ data:
     installed: false
     upgrades: Any Weapon
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/sacred-inscriptions.webp'
 name: Sacred Inscriptions
 type: weaponModification
 ---
@@ -297,7 +297,7 @@ data:
     installed: false
     upgrades: Any Solid Projectile weapon of the Basic or Pistol class.
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/silencer.webp'
 name: Silencer
 type: weaponModification
 ---
@@ -309,7 +309,7 @@ data:
     installed: false
     upgrades: Any Heavy Weapon
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/suspensors.webp'
 name: Suspensors
 type: weaponModification
 ---
@@ -321,7 +321,7 @@ data:
     installed: false
     upgrades: Any Las, Solid Projectile, Bolt, or Heavy weapon.
     weight: 1.5
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/targeter.webp'
 name: Targeter
 type: weaponModification
 ---
@@ -334,7 +334,7 @@ data:
     upgrades: Any ranged Las, Solid Projectile, Bolt, Low-Tech or Plasma weapon of the
         Basic class.
     weight: 1
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/telescopic-sight.webp'
 name: Telescopic Sight
 type: weaponModification
 ---
@@ -346,7 +346,7 @@ data:
     installed: false
     upgrades: Any Low-Tech or Chain Melee Weapon
     weight: 0.75
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/tox-dispenser.webp'
 name: Tox Dispenser
 type: weaponModification
 ---
@@ -359,7 +359,7 @@ data:
     installed: false
     upgrades: Any Basic or Heavy weapon.
     weight: 2
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/tripod-bipod.webp'
 name: Tripod/Bipod
 type: weaponModification
 ---
@@ -372,7 +372,7 @@ data:
     installed: false
     upgrades: Any armour.
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/truesilver-filigree.webp'
 name: Truesilver Filigree
 type: weaponModification
 ---
@@ -384,7 +384,7 @@ data:
     installed: false
     upgrades: Any Low-Tech melee weapon.
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/truesilver-gilding.webp'
 name: Truesilver Gilding
 type: weaponModification
 ---
@@ -399,7 +399,7 @@ data:
     installed: false
     upgrades: Any Launcher, Low-Tech, or Solid Projectile ranged weapon.
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/truesilver-weaving.webp'
 name: Truesilver Weaving
 type: weaponModification
 ---
@@ -419,7 +419,7 @@ data:
     installed: false
     upgrades: Any armour.
     weight: 0
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/unguents-of-warding.webp'
 name: Unguents of Warding
 type: weaponModification
 ---
@@ -432,7 +432,7 @@ data:
     upgrades: Any Pistol, Basic, Launcher, or Heavy weapon that is not of the Low-Tech
         type
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/vox-operated.webp'
 name: Vox-Operated
 type: weaponModification
 ---
@@ -444,6 +444,6 @@ data:
     installed: false
     upgrades: Any Solid Projectile weapon without a silencer.
     weight: 1
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png
+img: 'systems/dark-heresy-2nd/icons/gen/weapon-mods/warpleech-canister.webp'
 name: Warpleech Canister
 type: weaponModification

@@ -8,7 +8,7 @@ data:
         to access a basic alien system, less 30 seconds for each degree of success on
         the users Security test (to a minimum of 30 seconds).
     weight: 4
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/adaptive-logis-engine.webp'
 name: Adaptive Logis-Engine
 type: tool
 ---
@@ -23,7 +23,7 @@ data:
           value: 20
           condition: when actively scanning
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/auspex-scanner.webp'
 name: Auspex/Scanner
 type: tool
 ---
@@ -32,7 +32,7 @@ data:
     craftsmanship: Common
     description: Grants +10 to recording data
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/auto-quill.webp'
 name: Auto Quill
 type: tool
 ---
@@ -45,7 +45,7 @@ data:
           value: 30
           condition: when climbing
     weight: 2
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/clip-drop-harness.webp'
 name: Clip/Drop Harness
 type: tool
 ---
@@ -65,7 +65,7 @@ effects:
                 type: add
                 value: 10
                 phase: initial
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/combi-tool.webp'
 name: Combi-tool
 type: tool
 ---
@@ -75,7 +75,7 @@ data:
     description: Can hack a transmission with Tech-Use. Usable for minutes equal to
         Degrees of Success
     weight: 1
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/comm-leech.webp'
 name: Comm Leech
 type: tool
 ---
@@ -86,7 +86,7 @@ data:
         dataslates can also re-record new information, or transmit and receive data from
         other devices.
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/dataslate.webp'
 name: Dataslate
 type: tool
 ---
@@ -97,7 +97,7 @@ data:
         (count as Krak Grenades), 100 meter det-cord (burns at 10 sec per meter), and
         pressure detonator.'
     weight: 4
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/demolition-kit.webp'
 name: Demolition Kit
 type: tool
 ---
@@ -113,7 +113,7 @@ data:
           value: 20
           condition: to determine proper treatment
     weight: 4
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/diagnostor.webp'
 name: Diagnostor
 type: tool
 ---
@@ -133,7 +133,7 @@ effects:
                 type: add
                 value: 10
                 phase: initial
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/disguise-kit.webp'
 name: Disguise Kit
 type: tool
 ---
@@ -153,7 +153,7 @@ effects:
                 type: add
                 value: 20
                 phase: initial
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/excruciator-kit.webp'
 name: Excruciator Kit
 type: tool
 ---
@@ -166,7 +166,7 @@ data:
           value: 30
           condition: to stop Blood Loss
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/field-suture.webp'
 name: Field Suture
 type: tool
 ---
@@ -177,7 +177,7 @@ data:
         12 metres, while a stablight projects a narrower conical beam to twice that range.
         Either runs for about five hours before the power cell must be recharged or replaced.
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/glow-globe-stablight.webp'
 name: Glow-globe/Stablight
 type: tool
 ---
@@ -188,7 +188,7 @@ data:
         m away. The built-in winch can lift the user roughly 5 m per round, and supports
         150 kg (200 kg if of Good craftsmanship).
     weight: 2
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/grapnel-line.webp'
 name: 'Grapnel & Line'
 type: tool
 ---
@@ -199,7 +199,7 @@ data:
         test, and allows for a safe, guided fall from any height; otherwise counts as
         having fallen two metres for each degree of failure
     weight: 15
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/grav-chute.webp'
 name: Grav Chute
 type: tool
 ---
@@ -213,7 +213,7 @@ data:
           value: 20
           condition: with Indirect weapons, next shot only
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/hand-held-targeter.webp'
 name: Hand-Held Targeter
 type: tool
 ---
@@ -237,7 +237,7 @@ data:
           value: 20
           condition: once deployed
     weight: 6
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/holo-spectus.webp'
 name: Holo-Spectus
 type: tool
 ---
@@ -246,7 +246,7 @@ data:
     craftsmanship: Common
     description: Holds drugs that can be administered as a Half Action.
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/inhaler-injector.webp'
 name: Inhaler/Injector
 type: tool
 ---
@@ -256,7 +256,7 @@ data:
     description: Cuts or welds 10 cm of metal and counts as a Heavy weapon on targets
         within 2 meters.
     weight: 4
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/lascutter.webp'
 name: Lascutter
 type: tool
 ---
@@ -265,7 +265,7 @@ data:
     craftsmanship: Common
     description: Megaphone of space.
     weight: 4
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/laud-hailer.webp'
 name: Laud Hailer
 type: tool
 ---
@@ -274,7 +274,7 @@ data:
     craftsmanship: Common
     description: Reduces Agility bonus by 2 but allows to grip to metallic surfaces.
     weight: 2
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/magboots.webp'
 name: Magboots
 type: tool
 ---
@@ -283,7 +283,7 @@ data:
     craftsmanship: Common
     description: Telescope.
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/magnoculars.webp'
 name: Magnoculars
 type: tool
 ---
@@ -292,7 +292,7 @@ data:
     craftsmanship: Common
     description: Handcuffs.
     weight: 1
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/manacles.webp'
 name: Manacles
 type: tool
 ---
@@ -312,7 +312,7 @@ effects:
                 type: add
                 value: 10
                 phase: initial
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/medi-kit.webp'
 name: Medi-kit
 type: tool
 ---
@@ -321,7 +321,7 @@ data:
     craftsmanship: Common
     description: Can talk to others up to 1 km away.
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/micro-bead.webp'
 name: Micro-bead
 type: tool
 ---
@@ -332,7 +332,7 @@ data:
         of a Auspex Illumination: Lights up a 20 meter area.Land Hailer: Records speech
         and amplifies voice.Medicae: Counts as a Medi-kit. Utility: Counts as a Combi-tool'
     weight: 2
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/monotask-servo-skull.webp'
 name: Monotask Servo-Skull
 type: tool
 ---
@@ -356,7 +356,7 @@ effects:
                 type: add
                 value: 20
                 phase: initial
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/multicompass.webp'
 name: Multicompass
 type: tool
 ---
@@ -369,7 +369,7 @@ data:
           value: 30
           condition: when opening locks
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/multikey.webp'
 name: Multikey
 type: tool
 ---
@@ -381,7 +381,7 @@ data:
         protection from psychic attacks by a +30 bonus to resist any psychic power that
         directly affects him.
     weight: 1
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/null-rod.webp'
 name: Null Rod
 type: tool
 ---
@@ -390,7 +390,7 @@ data:
     craftsmanship: Common
     description: Camcorder
     weight: 1
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/pict-recorder.webp'
 name: Pict Recorder
 type: tool
 ---
@@ -399,7 +399,7 @@ data:
     craftsmanship: Common
     description: Grants +10 to Focus Power Tests
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/psy-focus.webp'
 name: Psy Focus
 type: tool
 ---
@@ -413,7 +413,7 @@ data:
           value: 10
           condition: with an opponent, the day after a game
     weight: 1
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/regicide-set.webp'
 name: Regicide Set
 type: tool
 ---
@@ -423,7 +423,7 @@ data:
     description: Activate by Tech-use test. It has a perception of 75 for detecting
         movement and when triggered sounds an alarm.
     weight: 2
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/screamer.webp'
 name: Screamer
 type: tool
 ---
@@ -432,7 +432,7 @@ data:
     craftsmanship: Common
     description: Jams other transmissions within 1km.
     weight: 2
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/signal-jammer.webp'
 name: Signal Jammer
 type: tool
 ---
@@ -444,7 +444,7 @@ data:
         take any actions, and outside of cannot attack or interact with anything inside.
         Compacts into a flat plate 3 meters across.
     weight: 6
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/stasis-cage.webp'
 name: Stasis Cage
 type: tool
 ---
@@ -453,7 +453,7 @@ data:
     craftsmanship: Common
     description: Broadcast static to all comm systems within 30 meters
     weight: 3
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/static-generator.webp'
 name: Static Generator
 type: tool
 ---
@@ -474,7 +474,7 @@ effects:
                 type: add
                 value: 30
                 phase: initial
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/stummer.webp'
 name: Stummer
 type: tool
 ---
@@ -483,7 +483,7 @@ data:
     craftsmanship: Common
     description: Offers communication to up to 100 km
     weight: 4
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/vox-caster.webp'
 name: Vox-caster
 type: tool
 ---
@@ -492,6 +492,6 @@ data:
     craftsmanship: Common
     description: Pen and paper.
     weight: 2
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/tools/writing-kit.webp'
 name: Writing Kit
 type: tool

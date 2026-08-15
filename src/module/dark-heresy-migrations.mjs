@@ -2,8 +2,80 @@ import { DarkHeresySettings } from './dark-heresy-settings.mjs';
 import { SYSTEM_ID } from './hooks-manager.mjs';
 import { DH_CONTAINED_BY, DH_CONTAINER_ID } from './documents/item-container.mjs';
 
+
+/**
+ * The 63 icon paths every pack document shared before each item was given its own art. An item
+ * still pointing at one of these has never had art chosen for it, so it is safe to re-point.
+ * Anything else is a deliberate choice and is left untouched.
+ */
+const PLACEHOLDER_ICONS = new Set([
+    'systems/dark-heresy-2nd/icons/items/pistols/pistols_09.png',
+    'systems/dark-heresy-2nd/icons/psykana/beam-blue-1.jpg',
+    'systems/dark-heresy-2nd/icons/talents/blue/b_18.png',
+    'systems/dark-heresy-2nd/icons/talents/red/gr_08.png',
+    'systems/dark-heresy-2nd/icons/talents/red/r_01.png',
+    'systems/dark-heresy-2nd/icons/talents/blue/b_33.png',
+    'systems/dark-heresy-2nd/icons/items/armor/armor_s09.png',
+    'systems/dark-heresy-2nd/icons/items/ammo/ammo_13.png',
+    'systems/dark-heresy-2nd/icons/talents/blue/b_35.png',
+    'systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG',
+    'systems/dark-heresy-2nd/icons/talents/violet/p_04.png',
+    'systems/dark-heresy-2nd/icons/talents/red/r_02.png',
+    'systems/dark-heresy-2nd/icons/talents/green/g_13.PNG',
+    'systems/dark-heresy-2nd/icons/talents/violet/p_01.png',
+    'icons/svg/mystery-man.svg',
+    'systems/dark-heresy-2nd/icons/talents/red/r_08.png',
+    'systems/dark-heresy-2nd/icons/talents/blue/b_02.png',
+    'systems/dark-heresy-2nd/icons/talents/blue/b_32.png',
+    'systems/dark-heresy-2nd/icons/psykana/beam-acid-1.jpg',
+    'systems/dark-heresy-2nd/icons/psykana/beam-acid-3.jpg',
+    'systems/dark-heresy-2nd/icons/items/swords/swords_01_b.png',
+    'systems/dark-heresy-2nd/icons/items/armor/helmet_s05.png',
+    'systems/dark-heresy-2nd/icons/psykana/wind-grasp-magenta-1.jpg',
+    'systems/dark-heresy-2nd/icons/items/armor/gloves_s08.png',
+    'systems/dark-heresy-2nd/icons/talents/violet/p_29.PNG',
+    'systems/dark-heresy-2nd/icons/talents/violet/p_21.PNG',
+    'systems/dark-heresy-2nd/icons/items/flail/flail_03_t.PNG',
+    'systems/dark-heresy-2nd/icons/items/grenade/grenade_04.png',
+    'systems/dark-heresy-2nd/icons/psykana/evil-eye-eerie-2.jpg',
+    'systems/dark-heresy-2nd/icons/items/pistols/pistols_18.png',
+    'systems/dark-heresy-2nd/icons/talents/blue/b_21.png',
+    'systems/dark-heresy-2nd/icons/psykana/evil-eye-eerie-3.jpg',
+    'systems/dark-heresy-2nd/icons/talents/blue/b_07.png',
+    'systems/dark-heresy-2nd/icons/psykana/evil-eye-red-1.jpg',
+    'systems/dark-heresy-2nd/icons/psykana/haste-sky-3.jpg',
+    'systems/dark-heresy-2nd/icons/items/armor/helmet_s10.png',
+    'systems/dark-heresy-2nd/icons/psykana/evil-eye-eerie-1.jpg',
+    'systems/dark-heresy-2nd/icons/talents/red/r_36.png',
+    'systems/dark-heresy-2nd/icons/talents/red/r_29.png',
+    'systems/dark-heresy-2nd/icons/psykana/haste-royal-2.jpg',
+    'systems/dark-heresy-2nd/icons/items/pistols/pistols_13.png',
+    'systems/dark-heresy-2nd/icons/items/spear/stave_04_b.png',
+    'systems/dark-heresy-2nd/icons/talents/green/g_11.png',
+    'systems/dark-heresy-2nd/icons/psykana/lighting-eerie-2.jpg',
+    'systems/dark-heresy-2nd/icons/items/rifles/rifle_03.png',
+    'systems/dark-heresy-2nd/icons/talents/red/r_27.png',
+    'systems/dark-heresy-2nd/icons/psykana/horror-red-3.jpg',
+    'systems/dark-heresy-2nd/icons/talents/violet/p_06.png',
+    'systems/dark-heresy-2nd/icons/psykana/link-eerie-1.jpg',
+    'systems/dark-heresy-2nd/icons/talents/blue/gr_10.PNG',
+    'systems/dark-heresy-2nd/icons/psykana/protect-blue-2.jpg',
+    'systems/dark-heresy-2nd/icons/items/swords/swords_06_b.PNG',
+    'systems/dark-heresy-2nd/icons/items/maces/mace_09_b.png',
+    'systems/dark-heresy-2nd/icons/talents/violet/p_19.PNG',
+    'systems/dark-heresy-2nd/icons/items/rifles/rifle_06.png',
+    'systems/dark-heresy-2nd/icons/psykana/heal-sky-3.jpg',
+    'systems/dark-heresy-2nd/icons/psykana/evil-eye-red-3.jpg',
+    'systems/dark-heresy-2nd/icons/talents/green/g_23.PNG',
+    'systems/dark-heresy-2nd/icons/items/maces/mace_02_b.png',
+    'systems/dark-heresy-2nd/icons/psykana/enchant-sky-2.jpg',
+    'systems/dark-heresy-2nd/icons/psykana/lighting-eerie-3.jpg',
+    'systems/dark-heresy-2nd/icons/talents/blue/b_19.PNG',
+    'systems/dark-heresy-2nd/icons/psykana/lighting-acid-2.jpg',
+]);
+
 export async function checkAndMigrateWorld() {
-    const worldVersion = 187;
+    const worldVersion = 188;
 
     const currentVersion = game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.worldVersion);
     if (worldVersion !== currentVersion && game.user.isGM) {
@@ -44,6 +116,9 @@ export async function checkAndMigrateWorld() {
 
         // ...and the award history on the other side of the account
         await migrateExperienceAwards(currentVersion);
+
+        // Give existing items the new per-item artwork
+        await migrateItemArtwork(currentVersion);
 
         // Display Release Notes
         await displayReleaseNotes(worldVersion);
@@ -277,6 +352,61 @@ export async function checkAndMigrateWorld() {
         }
     }
 
+    /**
+     * Re-point items at the artwork their compendium entry now carries.
+     *
+     * Matches by name and type against the system's own compendiums, and only overwrites an `img`
+     * that is one of {@link PLACEHOLDER_ICONS}. Items a GM gave their own art, and homebrew with no
+     * compendium entry, are both left exactly as they are.
+     */
+    async function migrateItemArtwork(currentVersion) {
+        if (currentVersion >= 188) return;
+
+        // name+type -> img, built once from every Item compendium this system ships.
+        const art = new Map();
+        for (const pack of game.packs.filter((p) => p.metadata.packageName === SYSTEM_ID && p.metadata.type === 'Item')) {
+            try {
+                const index = await pack.getIndex({ fields: ['type', 'name', 'img'] });
+                for (const entry of index) {
+                    if (entry.img) art.set(`${entry.type}::${entry.name.toLowerCase().trim()}`, entry.img);
+                }
+            } catch (e) {
+                console.warn(`Dark Heresy | could not index ${pack.collection} for artwork: ${e.message}`);
+            }
+        }
+        if (!art.size) return;
+
+        const repoint = (item) => {
+            if (!PLACEHOLDER_ICONS.has(item.img)) return null;
+            const img = art.get(`${item.type}::${item.name.toLowerCase().trim()}`);
+            return img && img !== item.img ? { _id: item.id, img } : null;
+        };
+
+        let count = 0;
+        for (const actor of game.actors.contents) {
+            const updates = actor.items.contents.map(repoint).filter(Boolean);
+            if (!updates.length) continue;
+            try {
+                await actor.updateEmbeddedDocuments('Item', updates);
+                count += updates.length;
+            } catch (e) {
+                console.error(`Dark Heresy | artwork migration failed for ${actor.name}: ${e.message}`);
+            }
+        }
+
+        const worldUpdates = game.items.contents.map(repoint).filter(Boolean);
+        if (worldUpdates.length) {
+            try {
+                await Item.updateDocuments(worldUpdates);
+                count += worldUpdates.length;
+            } catch (e) {
+                console.error(`Dark Heresy | artwork migration failed for world items: ${e.message}`);
+            }
+        }
+
+        if (count) console.log(`Dark Heresy | gave ${count} item(s) their new artwork`);
+    }
+
     async function migrateItemData(item, currentVersion) {
         if (currentVersion < 180) {
             // Get itemcollection.contentsData flag
@@ -426,6 +556,16 @@ export async function checkAndMigrateWorld() {
                         'Talent prerequisites are now read from the talent and checked against your character, so the buy list shows what you qualify for at a glance. A prerequisite the system cannot make sense of never blocks a purchase, and the GM can override the check entirely with a tickbox.',
                         'Whatever your characters had already earned and spent is carried over as one opening award and one opening spend entry. Available XP is unchanged for everyone; earlier history is not itemised, because a character is given so much for free at creation that there is no way to tell a granted advance from a bought one after the fact.',
                         'Only player characters were touched. NPCs are statted directly rather than bought with experience, so they were left alone.',
+                    ],
+                });
+                break;
+            case 188:
+                await releaseNotes({
+                    version: '1.8.6',
+                    notes: [
+                        'Every item in the compendiums now has its own artwork. Previously 842 items shared 62 pictures between them, so all 178 weapons looked like the same pistol and every psychic power like the same blue beam.',
+                        'Items already on your characters have been given the new art too, but only where they were still using one of the old shared placeholders. Anything you picked art for yourself has been left exactly as it was.',
+                        'Added the five mechadendrite patterns (utility, manipulator, medicae, optical and ballistic) as their own items rather than one generic entry, along with Lho-Stubs and a Dark Soul trait.',
                     ],
                 });
                 break;

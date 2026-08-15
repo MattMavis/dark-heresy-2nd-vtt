@@ -5,7 +5,7 @@ data:
         is because they sometimes refuse to stay dead, or have inhabited his
         flesh...
     source: PG 288 CB
-img: systems/dark-heresy-2nd/icons/talents/violet/p_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/fear-of-the-dead.webp'
 name: Fear of the Dead
 type: mentalDisorder
 ---
@@ -15,7 +15,7 @@ data:
         character's waking nightmares: faceless, numberless, and hungry, forever
         hungry.
     source: PG 288 CB
-img: systems/dark-heresy-2nd/icons/talents/violet/p_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/fear-of-insects.webp'
 name: Fear of Insects
 type: mentalDisorder
 ---
@@ -25,7 +25,7 @@ data:
         Often the character attaches no value to the items, he just feels the
         need to steal them.
     source: PG 288 CB
-img: systems/dark-heresy-2nd/icons/talents/violet/p_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/kleptomania.webp'
 name: Kleptomania
 type: mentalDisorder
 ---
@@ -36,7 +36,7 @@ data:
         may be tied to a particular event, such as killing or thinking impure
         thoughts.
     source: PG 288 CB
-img: systems/dark-heresy-2nd/icons/talents/violet/p_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/self-mortification.webp'
 name: Self-Mortification
 type: mentalDisorder
 ---
@@ -46,7 +46,7 @@ data:
         and problems. He becomes increasingly obsessed with surgical
         modification and bionic replacement.
     source: PG 288 CB
-img: systems/dark-heresy-2nd/icons/talents/violet/p_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/the-flesh-is-weak.webp'
 name: The Flesh is Weak
 type: mentalDisorder
 ---
@@ -57,7 +57,7 @@ data:
         character. At a Severe level he may even have visions of his friend, or
         converse with him if his condition becomes Acute.
     source: PG 289 CB
-img: systems/dark-heresy-2nd/icons/talents/violet/p_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/dead-acolyte.webp'
 name: Dead Acolyte
 type: mentalDisorder
 ---
@@ -68,7 +68,7 @@ data:
         The length and vividness of these episodes varies according to the
         seriousness of his condition.
     source: PG 289 CB
-img: systems/dark-heresy-2nd/icons/talents/violet/p_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/flashbacks.webp'
 name: Flashbacks
 type: mentalDisorder
 ---
@@ -79,7 +79,7 @@ data:
         Willpower test to avoid taking a vastly superior force instead of
         exercising due caution.
     source: PG 289 CB
-img: systems/dark-heresy-2nd/icons/talents/violet/p_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/invulnerability.webp'
 name: Invulnerability
 type: mentalDisorder
 ---
@@ -91,7 +91,7 @@ data:
         when the evidence for a change in tactics is necessary becomes
         overwhelming.
     source: PG 289 CB
-img: systems/dark-heresy-2nd/icons/talents/violet/p_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/righteousness.webp'
 name: Righteousness
 type: mentalDisorder
 ---
@@ -104,6 +104,6 @@ data:
         asleep. If he fails, he suffers 1 level of Fatigue (see page 233) on the
         following day.
     source: PG 289 CB
-img: systems/dark-heresy-2nd/icons/talents/violet/p_01.png
+img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/horrific-nightmares.webp'
 name: Horrific Nightmares
 type: mentalDisorder

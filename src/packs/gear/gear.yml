@@ -5,7 +5,7 @@ data:
         backpack or combat vest at a time.
     source: PG 170 CB
     weight: 2
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/backpack.webp'
 name: Backpack
 type: gear
 ---
@@ -16,7 +16,7 @@ data:
         suffer -30 until start of his next turn.
     source: PG 170 CB
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/chameleoline-cloak.webp'
 name: Chameleoline Cloak
 type: gear
 ---
@@ -26,7 +26,7 @@ data:
     description: Personal timepiece. No direct game effect.
     source: PG 170 CB
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/chrono.webp'
 name: Chrono
 type: gear
 ---
@@ -36,7 +36,7 @@ data:
     description: No inherent effect; availability varies with style at GM discretion.
     source: PG 170 CB
     weight: 2
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/clothing.webp'
 name: Clothing
 type: gear
 ---
@@ -47,7 +47,7 @@ data:
         Action. Only one backpack or combat vest at a time.
     source: PG 170 CB
     weight: 2
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/combat-vest.webp'
 name: Combat Vest
 type: gear
 ---
@@ -58,7 +58,7 @@ data:
         Readying becomes Full instead of Half (or Half instead of Free).
     source: PG 170 CB
     weight: 1
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/concealed-holster.webp'
 name: Concealed Holster
 type: gear
 ---
@@ -73,7 +73,7 @@ data:
           value: 20
           condition: vs sonic effects and auditory Concussive
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/deadspace-earpiece.webp'
 name: Deadspace Earpiece
 type: gear
 ---
@@ -85,7 +85,7 @@ data:
         requires a Hard (-20) Tech-Use test; failing by 2+ degrees detonates.
     source: PG 170 CB
     weight: 3
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/explosive-collar.webp'
 name: Explosive Collar
 type: gear
 ---
@@ -100,7 +100,7 @@ data:
           value: 20
           condition: to resist damaging gases
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/filtration-plugs.webp'
 name: Filtration Plugs
 type: gear
 ---
@@ -111,7 +111,7 @@ data:
         flash grenades.
     source: PG 171 CB
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/photo-visors-contacts.webp'
 name: Photo-Visors/Contacts
 type: gear
 ---
@@ -126,7 +126,7 @@ data:
           value: 20
           condition: for vision-based tests at night
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/preysense-goggles.webp'
 name: Preysense Goggles
 type: gear
 ---
@@ -137,7 +137,7 @@ data:
         lasts 2 hours; Poor takes 2 Full Actions. Canisters are Scarce.
     source: PG 171 CB
     weight: 1
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/rebreather.webp'
 name: Rebreather
 type: gear
 ---
@@ -148,7 +148,7 @@ data:
         pistols one-handed without penalty. Untrained -20 still applies.
     source: PG 171 CB
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/recoil-glove.webp'
 name: Recoil Glove
 type: gear
 ---
@@ -163,7 +163,7 @@ data:
           value: 30
           condition: to resist gas, and may re-roll a failure
     weight: 0.5
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/respirator-gas-mask.webp'
 name: Respirator/Gas Mask
 type: gear
 ---
@@ -178,7 +178,7 @@ data:
           value: 20
           condition: to withstand extreme temperatures
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/survival-suit.webp'
 name: Survival Suit
 type: gear
 ---
@@ -200,7 +200,7 @@ effects:
                 type: add
                 value: 10
                 phase: initial
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/synskin.webp'
 name: Synskin
 type: gear
 ---
@@ -212,7 +212,7 @@ data:
         grants air with no Agility penalty.
     source: PG 172 CB
     weight: 8
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/void-suit.webp'
 name: Void Suit
 type: gear
 ---
@@ -235,7 +235,7 @@ data:
           value: 30
           condition: when the skull consents, at the GM's discretion
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/animus-skull.webp'
 name: Animus Skull
 type: gear
 ---
@@ -253,7 +253,7 @@ data:
         protection against holy weapons and psychic attacks.
     source: PG 52 EI
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/bones-of-cardinal-cassille.webp'
 name: Bones of Cardinal Cassille
 type: gear
 ---
@@ -274,7 +274,7 @@ data:
         listless and ineffective as the unholy light from the candles burns reality itself.
     source: PG 53 EI
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/candles-of-ending.webp'
 name: Candles of Ending
 type: gear
 ---
@@ -295,7 +295,7 @@ data:
         with flickering Gellar fields and cracking hull plates.
     source: PG 53 EI
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/carmine-aquila.webp'
 name: Carmine Aquila
 type: gear
 ---
@@ -316,7 +316,7 @@ data:
         to the result.
     source: PG 53 EI
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/chalice-of-tears.webp'
 name: Chalice of Tears
 type: gear
 ---
@@ -337,7 +337,7 @@ data:
         a cult into violent uprising.
     source: PG 54 EI
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/eye-of-chaos.webp'
 name: Eye of Chaos
 type: gear
 ---
@@ -355,7 +355,7 @@ data:
         eras could inflict Insanity points or worse.
     source: PG 54 EI
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/foundation-stone-of-house-dane.webp'
 name: Foundation Stone of House Dane
 type: gear
 ---
@@ -373,7 +373,7 @@ data:
         Corruption points for each adversary he killed using the Hammer.
     source: PG 54 EI
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/hammer-of-saint-lucillius.webp'
 name: Hammer of Saint Lucillius
 type: gear
 ---
@@ -399,7 +399,7 @@ data:
         for each Corruption point he gains as a result of reading this version.
     source: PG 55 EI
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/libris-maleficarum.webp'
 name: Libris Maleficarum
 type: gear
 ---
@@ -418,7 +418,7 @@ data:
         Corruption points as each note takes something away from his soul.
     source: PG 56 EI
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/madani-s-music-box.webp'
 name: Madani's Music Box
 type: gear
 ---
@@ -439,7 +439,7 @@ data:
         horrific facial deformities if used to remove too much Corruption.
     source: PG 56 EI
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/vocram-s-effigies.webp'
 name: Vocram's Effigies
 type: gear
 ---
@@ -455,7 +455,7 @@ data:
         Mastery of the exorcism.
     source: PG 47 EB
     weight: 8
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/banishing-rod.webp'
 name: Banishing Rod
 type: gear
 ---
@@ -469,7 +469,7 @@ data:
         subsequent Focus Power test, he may re-roll the result.
     source: PG 47 EB
     weight: 1
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/consecrated-scrolls.webp'
 name: Consecrated Scrolls
 type: gear
 ---
@@ -486,7 +486,7 @@ data:
         target.
     source: PG 47 EB
     weight: 1
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/empyrean-brain-mine.webp'
 name: Empyrean Brain Mine
 type: gear
 ---
@@ -510,7 +510,7 @@ data:
           value: 10
           condition: against psykers and Daemonic targets it has illuminated
     weight: 1.5
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/psyocculum.webp'
 name: Psyocculum
 type: gear
 ---
@@ -534,7 +534,7 @@ data:
         effects of Psychic Phenomena.
     source: PG 48 EB
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/balestone.webp'
 name: Balestone
 type: gear
 ---
@@ -557,7 +557,7 @@ data:
         Gellar Fields into puddles of tainted energies.
     source: PG 48 EB
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/cursed-carillon.webp'
 name: Cursed Carillon
 type: gear
 ---
@@ -601,7 +601,7 @@ effects:
                 type: add
                 value: 30
                 phase: initial
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/hound-s-teeth-gauntlet.webp'
 name: Hound's Teeth Gauntlet
 type: gear
 ---
@@ -626,7 +626,7 @@ data:
         quality in place of the Daemonbane quality.
     source: PG 49 EB
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/realitus.webp'
 name: Realitus
 type: gear
 ---
@@ -648,7 +648,7 @@ data:
         revealed.
     source: PG 49 EB
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/spectral-flame.webp'
 name: Spectral Flame
 type: gear
 ---
@@ -670,7 +670,7 @@ data:
         mortals.
     source: PG 49 EB
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/void-talon.webp'
 name: Void Talon
 type: gear
 ---
@@ -691,7 +691,7 @@ data:
         collapses with him still inside.
     source: PG 58 EO
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/aetheric-cube.webp'
 name: Aetheric Cube
 type: gear
 ---
@@ -709,7 +709,7 @@ data:
         far as the dreaded Halo Stars.
     source: PG 58 EO
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/alreen-s-diamonds.webp'
 name: Alreen's Diamonds
 type: gear
 ---
@@ -731,7 +731,7 @@ data:
         seconds, no matter the means used, and cannot be used again.
     source: PG 59 EO
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/cranial-leeches.webp'
 name: Cranial Leeches
 type: gear
 ---
@@ -759,7 +759,7 @@ data:
         possible in both directions while it remains open.
     source: PG 59 EO
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/farnov-s-doorway.webp'
 name: Farnov's Doorway
 type: gear
 ---
@@ -778,7 +778,7 @@ data:
         perils.
     source: PG 60 EO
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/helm-of-zachariah.webp'
 name: Helm of Zachariah
 type: gear
 ---
@@ -802,7 +802,7 @@ data:
         normal reality can withstand.
     source: PG 60 EO
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/remains-of-narwil-v.webp'
 name: Remains of Narwil V
 type: gear
 ---
@@ -822,7 +822,7 @@ data:
         +20 Weapon Skill bonus against him.
     source: PG 61 EO
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/wounded-staff.webp'
 name: Wounded Staff
 type: gear
 ---
@@ -845,6 +845,6 @@ data:
         with only their clothing and gear left behind.
     source: PG 61 EO
     weight: 0
-img: systems/dark-heresy-2nd/icons/talents/red/gr_08.png
+img: 'systems/dark-heresy-2nd/icons/gen/gear/zehnn-obelisk.webp'
 name: Zehnn Obelisk
 type: gear

@@ -5,7 +5,7 @@ data:
     special: {}
     weapon_type: Stub revolvers, stub automatics, shotguns (all types), sniper rifles,
         hand cannons, autopistols, and autoguns.
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/amputator-shells.webp'
 name: Amputator Shells
 type: ammunition
 ---
@@ -16,7 +16,7 @@ data:
         concussive: 5
         reliable: true
     weapon_type: Quillgun
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/ataractic-quill.webp'
 name: Ataractic Quill
 type: ammunition
 ---
@@ -26,7 +26,7 @@ data:
         or until treated.
     special: {}
     weapon_type: Stub revolvers, stub automatics, hand cannons, autopistols, and autoguns.
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/bleeder-rounds.webp'
 name: Bleeder Rounds
 type: ammunition
 ---
@@ -36,7 +36,7 @@ data:
     effect: Target gets double armour points against this ammo.
     special: {}
     weapon_type: Stub revolvers, stub automatics, sniper rifles, and hand cannons.
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/dumdum-bullets.webp'
 name: Dumdum Bullets
 type: ammunition
 ---
@@ -51,7 +51,7 @@ data:
         melta: true
         primitive: false
     weapon_type: Crossbows
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/emperors-light-thermal-bolts.webp'
 name: Emperors Light Thermal Bolts
 type: ammunition
 ---
@@ -61,7 +61,7 @@ data:
     special:
         crippling: 2
     weapon_type: Crossbows
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/emperors-wrath-shard-bolts.webp'
 name: Emperors Wrath Shard Bolts
 type: ammunition
 ---
@@ -72,7 +72,7 @@ data:
     penetration: 1
     special: {}
     weapon_type: Stub revolvers, stub automatics, sniper rifles, autopistols, and autoguns.
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/expander-rounds.webp'
 name: Expander Rounds
 type: ammunition
 ---
@@ -84,7 +84,7 @@ data:
         blast: 1
         primitive: false
     weapon_type: Bows and crossbows.
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/explosive-arrows-quarrels.webp'
 name: Explosive Arrows/Quarrels
 type: ammunition
 ---
@@ -96,7 +96,7 @@ data:
         flame: true
         unreliable: true
     weapon_type: Bows, Crossbows, Shotguns.
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/heretics-match-incendiary-rounds.webp'
 name: Heretics Match Incendiary Rounds
 type: ammunition
 ---
@@ -109,7 +109,7 @@ data:
         reliable: false
         tearing: true
     weapon_type: Laspistols, lascarbines, lasguns, and long las weapons.
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/hot-shot-charge-packs.webp'
 name: Hot-Shot Charge Packs
 type: ammunition
 ---
@@ -119,7 +119,7 @@ data:
     special:
         flame: true
     weapon_type: Shotgun and all Bolt weapons.
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/inferno-shells.webp'
 name: Inferno Shells
 type: ammunition
 ---
@@ -130,7 +130,7 @@ data:
     special: {}
     weapon_type: Stub revolvers, stub automatics, hand cannons, sniper rifles, autopistols,
         and autoguns.
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/man-stopper-bullets.webp'
 name: Man-Stopper Bullets
 type: ammunition
 ---
@@ -142,7 +142,7 @@ data:
     special:
         sanctified: true
     weapon_type: Purgatus Crossbow only.
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/purgatus-stakes.webp'
 name: Purgatus Stakes
 type: ammunition
 ---
@@ -152,7 +152,7 @@ data:
     special:
         haywire: 2
     weapon_type: Crossbows.
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/purity-bolts.webp'
 name: Purity Bolts
 type: ammunition
 ---
@@ -162,7 +162,7 @@ data:
     special:
         sanctified: true
     weapon_type: Bows, Crossbows, Flame, Solid Projectile weapons.
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/sanctified-ammunition.webp'
 name: Sanctified Ammunition
 type: ammunition
 ---
@@ -173,7 +173,7 @@ data:
         hallucinogenic: 2
         recharge: true
     weapon_type: Bolt and Solid Projectile weapons
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/scrambler-rounds.webp'
 name: Scrambler Rounds
 type: ammunition
 ---
@@ -183,7 +183,7 @@ data:
     special:
         sanctified: true
     weapon_type: Crossbows
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/silver-stakes.webp'
 name: Silver Stakes
 type: ammunition
 ---
@@ -194,7 +194,7 @@ data:
     special:
         shocking: true
     weapon_type: Bolt pistols, boltguns, and heavy bolters.
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/tempest-bolt-shells.webp'
 name: Tempest Bolt Shells
 type: ammunition
 ---
@@ -206,7 +206,7 @@ data:
         blast: 5
         concussive: 5
     weapon_type: Crossbows
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/theta-pattern-concussion-bolts.webp'
 name: Theta-Pattern Concussion Bolts
 type: ammunition
 ---
@@ -218,7 +218,7 @@ data:
     special:
         shocking: true
     weapon_type: Crossbows
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/theta-pattern-shock-bolts.webp'
 name: Theta-Pattern Shock Bolts
 type: ammunition
 ---
@@ -229,7 +229,7 @@ data:
     special:
         toxic: 1
     weapon_type: Bolt and Solid Projectile weapons
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/tox-rounds.webp'
 name: Tox Rounds
 type: ammunition
 ---
@@ -243,7 +243,7 @@ data:
         reliable: true
         toxic: 4
     weapon_type: Quillgun
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/venenum-quill.webp'
 name: Venenum Quill
 type: ammunition
 ---
@@ -257,7 +257,7 @@ data:
         sanctified: false
         tainted: true
     weapon_type: Bolt weapons and crossbows
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/abyssal-bolts.webp'
 name: Abyssal Bolts
 type: ammunition
 ---
@@ -269,7 +269,7 @@ data:
         this weapon, it must immediately test for Instability with a 10 penalty.
     special: {}
     weapon_type: Combat shotguns, shotguns
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/nitidus-rounds.webp'
 name: Nitidus Rounds
 type: ammunition
 ---
@@ -281,7 +281,7 @@ data:
         daemonbane: true
         sanctified: true
     weapon_type: Bolt Weapons
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/psybolts.webp'
 name: Psybolts
 type: ammunition
 ---
@@ -293,7 +293,7 @@ data:
     special:
         sanctified: true
     weapon_type: Flame Weapons
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/psyflame.webp'
 name: Psyflame
 type: ammunition
 ---
@@ -305,7 +305,7 @@ data:
     penetration: 1
     special: {}
     weapon_type: Kroot Rifle
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/kroot-rifle-pulse-round.webp'
 name: Kroot Rifle (Pulse Round)
 type: ammunition
 ---
@@ -318,7 +318,7 @@ data:
     special:
         accurate: true
     weapon_type: Kroot Rifle
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/kroot-rifle-sniper-round.webp'
 name: Kroot Rifle (Sniper Round)
 type: ammunition
 ---
@@ -328,6 +328,6 @@ data:
     special:
         blast: 12
     weapon_type: Pulse Carbine
-img: systems/dark-heresy-2nd/icons/items/ammo/ammo_06.PNG
+img: 'systems/dark-heresy-2nd/icons/gen/ammo/pulse-carbine-photon-grenade.webp'
 name: Pulse Carbine (Photon Grenade)
 type: ammunition
