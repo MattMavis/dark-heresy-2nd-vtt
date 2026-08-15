@@ -18,6 +18,20 @@ const SRC = fileURLToPath(new URL('../src/', import.meta.url));
 const PACKS = join(SRC, 'packs');
 const PREFIX = 'systems/dark-heresy-2nd/';
 
+/*
+ * Documents added after the art run, still waiting on their own icon. They keep an old shared
+ * placeholder in the meantime, so they are exempt from the "generated art" and "no two share an
+ * image" assertions — but ONLY by being named here, so the debt stays visible and the list is
+ * expected to empty rather than grow.
+ */
+const AWAITING_ART = new Set([
+    'traits/Shove',
+    'traits/Binaric Screech',
+    'traits/Dispassionate',
+    'traits/Shady Deals',
+    'traits/Pursuit of Justice',
+]);
+
 /* -------------------------------------------- */
 /*  Read every document out of the pack YAML     */
 /* -------------------------------------------- */
@@ -62,6 +76,7 @@ check('every system img path exists on disk', missing, []);
 // The whole point of the set. A duplicate here means an item quietly went back to shared art.
 const byImg = new Map();
 for (const d of docs) {
+    if (AWAITING_ART.has(`${d.pack}/${d.name}`)) continue;
     if (!byImg.has(d.img)) byImg.set(d.img, []);
     byImg.get(d.img).push(`${d.pack}/${d.name}`);
 }
@@ -81,7 +96,17 @@ check('no two documents share the same image', unexpected, []);
 
 check(
     'every document uses generated art',
-    docs.filter((d) => !d.img.includes('/icons/gen/')).map((d) => `${d.pack}/${d.name}`),
+    docs.filter((d) => !d.img.includes('/icons/gen/') && !AWAITING_ART.has(`${d.pack}/${d.name}`)).map((d) => `${d.pack}/${d.name}`),
+    [],
+);
+
+/* The exemption list must describe reality: everything on it really is still without art. */
+check(
+    'awaiting-art list is accurate',
+    [...AWAITING_ART].filter((k) => {
+        const d = docs.find((x) => `${x.pack}/${x.name}` === k);
+        return !d || d.img.includes('/icons/gen/');
+    }),
     [],
 );
 

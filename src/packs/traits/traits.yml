@@ -556,3 +556,58 @@ data:
 img: 'systems/dark-heresy-2nd/icons/gen/traits/dark-soul.webp'
 name: Dark Soul
 type: trait
+---
+data:
+    choice:
+        list: ''
+        selected: ''
+    description: 'When this creature successfully inflicts damage with a melee attack, it can choose to shove its target away in addition to dealing damage. The target suffers damage as normal and is moved directly away a number of metres equal to half the damage inflicted, after reduction for Armour and Toughness.'
+    level: 0
+    source: 'DH2 - Adversaries'
+img: 'systems/dark-heresy-2nd/icons/talents/blue/b_33.png'
+name: Shove
+type: trait
+---
+data:
+    choice:
+        list: ''
+        selected: ''
+    description: 'The character releases a deafening screech in the mysterious language of the Mechanicum that causes technology to shut down or malfunction. He chooses a point in line of sight within 30 metres and, as a Half Action, makes an Ordinary (+10) Tech-Use test. On a success a Haywire Field is created, centred at that point with a radius equal to the character''s Intelligence bonus in metres, as if the location had been struck by a weapon with the Haywire quality.'
+    level: 0
+    source: 'DH2 - Adversaries'
+img: 'systems/dark-heresy-2nd/icons/talents/blue/b_33.png'
+name: Binaric Screech
+type: trait
+---
+data:
+    choice:
+        list: ''
+        selected: ''
+    description: 'All skill tests made to socially interact with this creature suffer a -20 penalty.'
+    level: 0
+    source: 'DH2 - Adversaries'
+img: 'systems/dark-heresy-2nd/icons/talents/blue/b_33.png'
+name: Dispassionate
+type: trait
+---
+data:
+    choice:
+        list: ''
+        selected: ''
+    description: 'This creature can use its illicit connections to acquire hard-to-find items for player characters. If a PC uses this, he gains a +10 bonus to his next Requisition test; if that test fails, the warband''s Subtlety decreases by 2d10.'
+    level: 0
+    source: 'DH2 - Adversaries'
+img: 'systems/dark-heresy-2nd/icons/talents/blue/b_33.png'
+name: Shady Deals
+type: trait
+---
+data:
+    choice:
+        list: ''
+        selected: ''
+    description: 'This creature counts its Agility bonus as 2 higher, giving Movement values of 5/10/15/30, for the purpose of determining movement distance when chasing or moving towards a character it views as a criminal.'
+    level: 0
+    source: 'DH2 - Adversaries'
+img: 'systems/dark-heresy-2nd/icons/talents/blue/b_33.png'
+name: Pursuit of Justice
+type: trait

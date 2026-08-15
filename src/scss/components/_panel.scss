@@ -15,6 +15,18 @@
         border: 3px solid transparent;
         border-image: url('../images/panel_border.png') 8 / 2 / 0 repeat;
 
+        /*
+         * The warning tint has to be layered OVER the parchment, not behind it: 40k_back.png is
+         * fully opaque, so a background-color alone would never show. Restating the image here
+         * also means a panel keeps its parchment when it gains .error — losing it is what made
+         * an overweight character's Encumbrance and Backpack panels look like they had vanished.
+         */
+        &.error {
+            background:
+                linear-gradient(rgba(190, 30, 30, 0.22), rgba(190, 30, 30, 0.22)),
+                url('../images/40k_back.png') #eff2f1 center/cover;
+        }
+
         &.spacer {
             padding-bottom: 5pt;
         }

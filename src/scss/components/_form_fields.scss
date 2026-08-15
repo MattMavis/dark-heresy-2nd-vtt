@@ -17,12 +17,18 @@ select {
     }
 }
 
+/*
+ * Tint only. These were the `background` SHORTHAND, which also resets background-image — so a
+ * panel that gained .error lost the parchment behind it and its opaque backing, leaving a faint
+ * red film over the dark sheet and dark text sitting illegibly on top. An overweight character's
+ * Encumbrance and Backpack panels both vanished this way.
+ */
 .error {
-    background: rgba(255, 0, 0, 0.1);
+    background-color: rgba(255, 0, 0, 0.1);
 }
 
 .success {
-    background: rgba(104, 195, 163, 0.3);
+    background-color: rgba(104, 195, 163, 0.3);
 }
 
 input[disabled],
