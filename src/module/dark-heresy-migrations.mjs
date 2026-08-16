@@ -80,6 +80,7 @@ export async function checkAndMigrateWorld() {
     const currentVersion = game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.worldVersion);
     if (worldVersion !== currentVersion && game.user.isGM) {
         ui.notifications.info('Upgrading the world, please wait...');
+        const failures = [];
 
         // Update Actors
         for (let actor of game.actors.contents) {
@@ -87,6 +88,7 @@ export async function checkAndMigrateWorld() {
                 await migrateActorData(actor, currentVersion);
             } catch (e) {
                 console.error(e);
+                failures.push(`actor ${actor.name}: ${e.message}`);
             }
         }
 
@@ -96,6 +98,7 @@ export async function checkAndMigrateWorld() {
                 await migrateItemData(item, currentVersion);
             } catch (e) {
                 console.error(e);
+                failures.push(`world item ${item.name}: ${e.message}`);
             }
         }
 
@@ -117,18 +120,35 @@ export async function checkAndMigrateWorld() {
         // ...and the award history on the other side of the account
         await migrateExperienceAwards(currentVersion);
 
-        // Give existing items the new per-item artwork
+        // Give existing items the new per-item artwork. This is cosmetic: a failed icon update
+        // is logged and skipped, never allowed to hold back the version or abort the load.
         await migrateItemArtwork(currentVersion);
+
+        // A partial migration of real data must not be stamped complete. Leave the version
+        // untouched so the next launch retries -- every step above is guarded/idempotent, so a
+        // re-run self-skips the parts that succeeded. We surface it loudly but deliberately do
+        // NOT throw: aborting the ready hook would also skip the unrelated setup that follows
+        // this call, and a deterministic failure would then repeat that abort on every launch.
+        if (failures.length) {
+            console.error(
+                `Dark Heresy | world migration incomplete, version left at ${currentVersion} to retry next launch:\n  ${failures.join('\n  ')}`,
+            );
+            ui.notifications.error(
+                `World upgrade incomplete: ${failures.length} document(s) failed to migrate. See the console (F12). It will retry on next launch.`,
+                { permanent: true },
+            );
+            return;
+        }
 
         // Display Release Notes
         await displayReleaseNotes(worldVersion);
 
-        game.settings.set(SYSTEM_ID, DarkHeresySettings.SETTINGS.worldVersion, worldVersion);
+        await game.settings.set(SYSTEM_ID, DarkHeresySettings.SETTINGS.worldVersion, worldVersion);
         ui.notifications.info('Upgrade complete!');
     }
 
-    async function updateCompendiumPermissions(currentVersion) {
-        if (currentVersion < 181) {
+    async function updateCompendiumPermissions(version) {
+        if (version < 181) {
             // Every compendium in our system should be owned by everyone and have full owner permissions.
             // Otherwise, issues will occur when trying to create items from the compendium.
             const compendiums = game.packs.filter((p) => p.metadata.packageName === SYSTEM_ID);
@@ -153,8 +173,8 @@ export async function checkAndMigrateWorld() {
         }
     }
 
-    async function ensureWarbandTracker(currentVersion) {
-        if (currentVersion < 182) {
+    async function ensureWarbandTracker(version) {
+        if (version < 182) {
             // Every table needs exactly one shared, GM-owned Subtlety tracker for the
             // Requisition Menu to read/write. Auto-create it, pre-permissioned, so a GM
             // can't forget the ownership step and silently break player writes.
@@ -183,8 +203,8 @@ export async function checkAndMigrateWorld() {
      * Idempotent -- a container that already has real contents is skipped -- so it is safe to
      * re-run against a world that was partially converted.
      */
-    async function migrateContainment(currentVersion) {
-        if (currentVersion >= 184) return;
+    async function migrateContainment(version) {
+        if (version >= 184) return;
 
         let containers = 0;
         let contents = 0;
@@ -250,8 +270,8 @@ export async function checkAndMigrateWorld() {
      * directory, and their originals are still intact in each container's legacy flag, so
      * removing them restores exactly the previous state.
      */
-    async function cleanupStrayContainedWorldItems(currentVersion) {
-        if (currentVersion >= 185) return;
+    async function cleanupStrayContainedWorldItems(version) {
+        if (version >= 185) return;
         const strays = game.items.filter((i) => !!i.getFlag?.(SYSTEM_ID, DH_CONTAINED_BY));
         if (!strays.length) return;
         console.log(`Removing ${strays.length} contained items wrongly created in the world directory`);
@@ -277,8 +297,8 @@ export async function checkAndMigrateWorld() {
      * upgraded on an intermediate build are already stamped 186, so the awards seeding needs its
      * own 187 gate or they will never run it.
      */
-    async function migrateExperienceLedger(currentVersion) {
-        if (currentVersion >= 186) return;
+    async function migrateExperienceLedger(version) {
+        if (version >= 186) return;
 
         const report = [];
         for (const actor of game.actors.contents) {
@@ -320,8 +340,8 @@ export async function checkAndMigrateWorld() {
      *
      * Gated at 187 deliberately -- see the note on the ledger migration above.
      */
-    async function migrateExperienceAwards(currentVersion) {
-        if (currentVersion >= 187) return;
+    async function migrateExperienceAwards(version) {
+        if (version >= 187) return;
 
         const report = [];
         for (const actor of game.actors.contents) {
@@ -359,8 +379,8 @@ export async function checkAndMigrateWorld() {
      * that is one of {@link PLACEHOLDER_ICONS}. Items a GM gave their own art, and homebrew with no
      * compendium entry, are both left exactly as they are.
      */
-    async function migrateItemArtwork(currentVersion) {
-        if (currentVersion >= 188) return;
+    async function migrateItemArtwork(version) {
+        if (version >= 188) return;
 
         // name+type -> img, built once from every Item compendium this system ships.
         const art = new Map();
@@ -407,8 +427,8 @@ export async function checkAndMigrateWorld() {
         if (count) console.log(`Dark Heresy | gave ${count} item(s) their new artwork`);
     }
 
-    async function migrateItemData(item, currentVersion) {
-        if (currentVersion < 180) {
+    async function migrateItemData(item, version) {
+        if (version < 180) {
             // Get itemcollection.contentsData flag
             const itemCollection = item.flags['itemcollection'];
             if (itemCollection && itemCollection.contentsData) {
@@ -417,8 +437,8 @@ export async function checkAndMigrateWorld() {
         }
     }
 
-    async function migrateActorData(actor, currentVersion) {
-        if (currentVersion < 1) {
+    async function migrateActorData(actor, version) {
+        if (version < 1) {
             // Update Storage Locations to Hold Consumables
             for (const location of actor.items.filter((i) => i.isStorageLocation)) {
                 await location.update({
@@ -441,7 +461,7 @@ export async function checkAndMigrateWorld() {
             }
         }
 
-        if (currentVersion < 180) {
+        if (version < 180) {
             // Update User Items to be Nested
             for (const item of actor.items) {
                 // Get itemcollection.contentsData flag

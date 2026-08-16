@@ -196,10 +196,10 @@ export class DarkHeresyItem extends DarkHeresyItemContainer {
         return this.type === 'peer';
     }
 
-    _onCreate(data, options, user) {
+    async _onCreate(data, options, user) {
         game.dh.log('Determining nested items for', this);
-        this._determineNestedItems();
-        this._expandLegacyContents();
+        await this._determineNestedItems();
+        await this._expandLegacyContents();
         return super._onCreate(data, options, user);
     }
 
@@ -219,6 +219,39 @@ export class DarkHeresyItem extends DarkHeresyItemContainer {
         if (!legacy.length) return;
         game.dh.log(`Expanding ${legacy.length} contained item(s) onto ${this.parent.name}`, this.name);
         await this.createNestedDocuments(legacy);
+    }
+
+    /**
+     * A contained item is a sibling of its container, not a child of it, so Foundry's own
+     * "redraw the changed document and its ancestors" pass reaches this item's sheet and the
+     * actor's, but never the container's. Equipping a weapon mod therefore left the weapon
+     * sheet showing the old state until something else forced it to redraw -- switching tabs,
+     * or reopening the sheet.
+     */
+    _onUpdate(changed, options, userId) {
+        super._onUpdate(changed, options, userId);
+        this._renderContainerSheets();
+    }
+
+    /** Same staleness on removal: the container must be read before the item leaves the collection. */
+    _onDelete(options, userId) {
+        const container = this.containerItem;
+        super._onDelete(options, userId);
+        this._renderContainerSheets(container);
+    }
+
+    /**
+     * Redraw any open sheet up the containment chain, not just the immediate container: a
+     * container's displayed weight includes its contents, so a change deep inside one is visible
+     * several levels above it. Only sheets already on screen are touched, and the seen-set stops
+     * a corrupt containerId loop from hanging the client.
+     */
+    _renderContainerSheets(from = this.containerItem) {
+        const seen = new Set();
+        for (let c = from; c && !seen.has(c.id); c = c.containerItem) {
+            seen.add(c.id);
+            if (c.sheet?.rendered) c.sheet.render();
+        }
     }
 
     /**

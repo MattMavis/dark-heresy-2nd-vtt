@@ -1,21 +1,21 @@
 export function uuid() {
     const chars = '0123456789abcdef'.split('');
 
-    let uuid = [],
+    let parts = [],
         rnd = Math.random,
         r;
-    uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
-    uuid[14] = '4'; // version 4
+    parts[8] = parts[13] = parts[18] = parts[23] = '-';
+    parts[14] = '4'; // version 4
 
     for (let i = 0; i < 36; i++) {
-        if (!uuid[i]) {
+        if (!parts[i]) {
             r = 0 | (rnd() * 16);
 
-            uuid[i] = chars[i === 19 ? (r & 0x3) | 0x8 : r & 0xf];
+            parts[i] = chars[i === 19 ? (r & 0x3) | 0x8 : r & 0xf];
         }
     }
 
-    return uuid.join('');
+    return parts.join('');
 }
 
 export function getDegree(a, b) {

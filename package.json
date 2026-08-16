@@ -1,6 +1,6 @@
 {
   "name": "dark-heresy-2nd",
-  "version": "1.8.6.2",
+  "version": "1.8.6.3",
   "description": "Dark Heresy 2nd Edition Foundry VTT",
   "scripts": {
     "version": "json -I -f package.json -e \"this.version='$npm_config_next'\" && json -I -f src/system.json -e \"this.version='$npm_config_next'\"",
@@ -9,7 +9,9 @@
     "packs": "gulp packs",
     "scss": "gulp scss",
     "watch": "gulp",
-    "test": "node tests/run.mjs"
+    "test": "node tests/run.mjs",
+    "lint": "eslint \"src/**/*.mjs\" \"tests/**/*.mjs\"",
+    "verify": "npm run lint && npm test && npm run build"
   },
   "browserslist": [
     "last 3 versions"

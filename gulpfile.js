@@ -44,18 +44,26 @@ function compilePacks() {
 
   // process each folder into a compendium db
   const packs = folders.map((folder) => {
-    const db = new Datastore({ filename: path.resolve(__dirname, BUILD_DIR, "packs", `${folder}.db`), autoload: true });
+    const filename = path.resolve(__dirname, BUILD_DIR, "packs", `${folder}.db`);
+    // `gulp packs` is an advertised task as well as a step of a clean build. Start each pack
+    // from scratch so invoking it twice cannot append a second copy of every document.
+    fs.mkdirSync(path.dirname(filename), { recursive: true });
+    fs.rmSync(filename, { force: true });
+    const db = new Datastore({ filename, autoload: true });
     return gulp.src(path.join(PACK_SRC, folder, "/**/*.yml")).pipe(
         through2.obj((file, enc, cb) => {
           try {
             const fileContents = file.contents.toString();
-            let json = yaml.loadAll(fileContents);
-            db.insert(json, (err, newDoc) => {
+            const json = yaml.loadAll(fileContents).filter(Boolean);
+            db.insert(json, (err) => {
               if (err) {
-                console.error(`Error inserting into Datastore:`, err);
+                cb(new Error(`Error inserting ${file.path} into Datastore: ${err.message}`));
+                return;
               }
+              // Do not tell Gulp this transform is done until NeDB has flushed this document.
+              // Otherwise createArchive can race it and ship a truncated compendium.
+              cb(null, file);
             });
-            cb(null, file);
           } catch (err) {
             console.error(`Error processing file ${file.path}:`, err);
             cb(err, file);

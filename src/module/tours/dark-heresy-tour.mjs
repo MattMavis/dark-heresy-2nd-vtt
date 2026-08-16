@@ -16,10 +16,10 @@ export class DarkHeresyTour extends Tour {
                 return;
             }
 
-            const observer = new MutationObserver((mutations, observer) => {
+            const observer = new MutationObserver((mutations, mutationObserver) => {
                 document.querySelectorAll(selector).forEach((el) => {
                     resolve(el);
-                    observer.disconnect();
+                    mutationObserver.disconnect();
                 });
             })
 

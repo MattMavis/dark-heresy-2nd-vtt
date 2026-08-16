@@ -206,7 +206,10 @@ export class BasicActionManager {
         const penetration = this._datasetNumber(dataset.penetration);
         const fatigue = this._datasetNumber(dataset.fatigue);
 
-        const actor = (await fromUuid(actorUuid))?.actor;
+        const resolved = await fromUuid(actorUuid);
+        // Chat cards can target either an Actor UUID or a TokenDocument UUID. An Actor is the
+        // document we need directly; only a token exposes its actor through `.actor`.
+        const actor = resolved?.documentName === 'Actor' ? resolved : resolved?.actor;
         if (!actor) {
             ui.notifications.warn(`Cannot determine actor to assign hit.`);
             return;
@@ -451,7 +454,7 @@ export class BasicActionManager {
 
     async assignDamageTool() {
         const sourceToken = DHTargetedActionManager.getSourceToken();
-        const sourceActorData = sourceToken ? sourceToken.actor : source;
+        const sourceActorData = sourceToken?.actor;
         if(!sourceActorData) return;
 
         const hitData = new Hit();
