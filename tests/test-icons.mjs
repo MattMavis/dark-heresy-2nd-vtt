@@ -25,11 +25,8 @@ const PREFIX = 'systems/dark-heresy-2nd/';
  * expected to empty rather than grow.
  */
 const AWAITING_ART = new Set([
-    'traits/Shove',
-    'traits/Binaric Screech',
-    'traits/Dispassionate',
-    'traits/Shady Deals',
-    'traits/Pursuit of Justice',
+    // Empty: every document has its own generated art. Add a '<pack>/<Name>' here only while an
+    // entry is genuinely waiting on an icon -- the check below fails if this list goes stale.
 ]);
 
 /* -------------------------------------------- */
