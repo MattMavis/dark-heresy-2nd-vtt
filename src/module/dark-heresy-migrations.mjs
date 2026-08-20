@@ -2,6 +2,53 @@ import { DarkHeresySettings } from './dark-heresy-settings.mjs';
 import { SYSTEM_ID } from './hooks-manager.mjs';
 import { DH_CONTAINED_BY, DH_CONTAINER_ID } from './documents/item-container.mjs';
 
+/*
+ * Selectable talents/traits store their chosen option in the name -- "Weapon Training (Las)",
+ * "Unnatural Toughness (x2)" -- while the compendium holds one generic entry that carries the
+ * `choice.list` those copies are missing. These two helpers reduce such a name to the generic
+ * compendium name so migration 189 can find the source and copy its `choice.list`. Kept in step
+ * with refresh-items-from-compendium.js (the GM macro that does the same repair on demand).
+ */
+const SELECTABLE_BASES = [
+    'weapon training', 'sound constitution', 'resistance', 'peer', 'hatred', 'dark soul',
+    'fear', 'daemonic', 'machine', 'hoverer', 'baneful presence', 'size', 'unnatural senses',
+    'natural armor', 'natural weapons', 'toxic', 'crawler', 'flyer', 'multiple arms', 'stampede',
+    'sturdy', 'undying', 'from beyond', 'brutal charge',
+];
+
+const UNNATURAL_CHARACTERISTICS = {
+    'weapon skill': 'weaponSkill', weaponskill: 'weaponSkill', ws: 'weaponSkill',
+    'ballistic skill': 'ballisticSkill', ballisticskill: 'ballisticSkill', bs: 'ballisticSkill',
+    strength: 'strength', toughness: 'toughness', agility: 'agility', agilty: 'agility',
+    intelligence: 'intelligence', perception: 'perception',
+    willpower: 'willpower', 'will power': 'willpower', fellowship: 'fellowship',
+};
+
+/** Reduce a selectable name to its compendium base ("Weapon Training (Las)" -> "weapon training"), or null. */
+function selectableBase(name) {
+    const n = name.toLowerCase().replace(/\s*\(/, ' (').trim();
+    for (const base of SELECTABLE_BASES) {
+        if (n === base || n.startsWith(base + ' (') || n.startsWith(base + '(')) return base;
+    }
+    return null;
+}
+
+/** Parse an "Unnatural Toughness (x2)" style name into { characteristic, level }, or null. */
+function parseUnnatural(rawName) {
+    const n = rawName.toLowerCase().trim();
+    if (!n.startsWith('unnatural')) return null;
+    if (/^unnatural\s+(senses|arms)\b/.test(n)) return null; // different items entirely
+    if (/\bcurse\b/.test(n)) return null; // a penalty, not the bonus trait
+    let characteristic = null;
+    for (const [word, key] of Object.entries(UNNATURAL_CHARACTERISTICS)) {
+        if (new RegExp(`\\b${word}\\b`).test(n)) { characteristic = key; break; }
+    }
+    if (!characteristic) return null;
+    const m = n.match(/\(\s*x?\s*(\d+)\s*\)|\)\s*x\s*(\d+)|\b\w+\s+(\d+)\s*\)/);
+    const level = m ? Number(m[1] ?? m[2] ?? m[3]) : null;
+    return { characteristic, level };
+}
+
 
 /**
  * The 63 icon paths every pack document shared before each item was given its own art. An item
@@ -75,7 +122,7 @@ const PLACEHOLDER_ICONS = new Set([
 ]);
 
 export async function checkAndMigrateWorld() {
-    const worldVersion = 188;
+    const worldVersion = 189;
 
     const currentVersion = game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.worldVersion);
     if (worldVersion !== currentVersion && game.user.isGM) {
@@ -123,6 +170,11 @@ export async function checkAndMigrateWorld() {
         // Give existing items the new per-item artwork. This is cosmetic: a failed icon update
         // is logged and skipped, never allowed to hold back the version or abort the load.
         await migrateItemArtwork(currentVersion);
+
+        // Restore the specialisation dropdown (choice.list) on items that predate the compendium
+        // carrying it -- Unnatural Characteristic, Weapon Training, Peer, Hatred and friends. Best
+        // effort: a per-actor failure is logged and skipped, never allowed to block the load.
+        await migrateSelectableChoiceList(currentVersion);
 
         // A partial migration of real data must not be stamped complete. Leave the version
         // untouched so the next launch retries -- every step above is guarded/idempotent, so a
@@ -427,6 +479,91 @@ export async function checkAndMigrateWorld() {
         if (count) console.log(`Dark Heresy | gave ${count} item(s) their new artwork`);
     }
 
+    /**
+     * Restore `system.choice.list` on selectable items created before the compendium carried it.
+     *
+     * `choice.list` is what the item sheet reads to show the "Specialisation" dropdown and what the
+     * acolyte reads to apply an Unnatural Characteristic bonus; without it the dropdown is invisible
+     * and the bonus never lands. We match each item to its generic compendium entry by name/type
+     * (handling "Weapon Training (Las)" and "Unnatural Toughness (x2)" style names) and copy the
+     * source's `choice.list`. For Unnatural traits we also recover the characteristic and rank the
+     * player typed into the name, but only into fields that are still empty -- a value someone set
+     * is never overwritten, and the item's own name is left alone.
+     *
+     * Best effort and idempotent: once the fields match the source there is nothing to write.
+     */
+    async function migrateSelectableChoiceList(version) {
+        if (version >= 189) return;
+
+        // type::name -> choice.list, for every compendium item that offers a selection.
+        const choiceByKey = new Map();
+        for (const pack of game.packs.filter((p) => p.metadata.packageName === SYSTEM_ID && p.metadata.type === 'Item')) {
+            try {
+                const index = await pack.getIndex({ fields: ['type', 'name', 'system.choice.list'] });
+                for (const entry of index) {
+                    const list = foundry.utils.getProperty(entry, 'system.choice.list');
+                    if (list) choiceByKey.set(`${entry.type}::${entry.name.toLowerCase().trim()}`, list);
+                }
+            } catch (e) {
+                console.warn(`Dark Heresy | could not index ${pack.collection} for choice.list: ${e.message}`);
+            }
+        }
+        if (!choiceByKey.size) return;
+
+        // The choice.list this item's compendium source carries, or null.
+        const wantedList = (item) => {
+            const exact = choiceByKey.get(`${item.type}::${item.name.toLowerCase().trim()}`);
+            if (exact) return exact;
+            const base = selectableBase(item.name);
+            if (base) {
+                const viaBase = choiceByKey.get(`${item.type}::${base}`);
+                if (viaBase) return viaBase;
+            }
+            if (parseUnnatural(item.name)) return choiceByKey.get('trait::unnatural characteristic') ?? null;
+            return null;
+        };
+
+        const repair = (item) => {
+            const update = {};
+            const want = wantedList(item);
+            if (want && want !== (foundry.utils.getProperty(item.system, 'choice.list') ?? '')) {
+                update['system.choice.list'] = want;
+            }
+            const unnatural = parseUnnatural(item.name);
+            if (unnatural) {
+                if (!foundry.utils.getProperty(item.system, 'choice.selected') && unnatural.characteristic) {
+                    update['system.choice.selected'] = unnatural.characteristic;
+                }
+                if (!Number(foundry.utils.getProperty(item.system, 'level') ?? 0) && unnatural.level) {
+                    update['system.level'] = unnatural.level;
+                }
+            }
+            return Object.keys(update).length ? { _id: item.id, ...update } : null;
+        };
+
+        let count = 0;
+        for (const actor of game.actors.contents) {
+            const updates = actor.items.contents.map(repair).filter(Boolean);
+            if (!updates.length) continue;
+            try {
+                await actor.updateEmbeddedDocuments('Item', updates);
+                count += updates.length;
+            } catch (e) {
+                console.error(`Dark Heresy | choice.list repair failed for ${actor.name}: ${e.message}`);
+            }
+        }
+        const worldUpdates = game.items.contents.map(repair).filter(Boolean);
+        if (worldUpdates.length) {
+            try {
+                await Item.updateDocuments(worldUpdates);
+                count += worldUpdates.length;
+            } catch (e) {
+                console.error(`Dark Heresy | choice.list repair failed for world items: ${e.message}`);
+            }
+        }
+        if (count) console.log(`Dark Heresy | restored the specialisation dropdown on ${count} item(s)`);
+    }
+
     async function migrateItemData(item, version) {
         if (version < 180) {
             // Get itemcollection.contentsData flag
@@ -586,6 +723,16 @@ export async function checkAndMigrateWorld() {
                         'Every item in the compendiums now has its own artwork. Previously 842 items shared 62 pictures between them, so all 178 weapons looked like the same pistol and every psychic power like the same blue beam.',
                         'Items already on your characters have been given the new art too, but only where they were still using one of the old shared placeholders. Anything you picked art for yourself has been left exactly as it was.',
                         'Added the five mechadendrite patterns (utility, manipulator, medicae, optical and ballistic) as their own items rather than one generic entry, along with Lho-Stubs and a Dark Soul trait.',
+                    ],
+                });
+                break;
+            case 189:
+                await releaseNotes({
+                    version: '1.8.6.4',
+                    notes: [
+                        'Installing a weapon modification -- or changing anything on a contained item like a loaded round or a fitted quality -- now updates the weapon\'s open sheet at once, instead of waiting until you switched tabs or reopened it.',
+                        'The Assign Damage, Apply Damage, bleeding and burning chat cards apply damage again. They had been failing with "Cannot determine actor to assign hit" and doing nothing.',
+                        'The specialisation dropdown has been restored on items that were missing it -- Unnatural Characteristic, Weapon Training, Peer, Hatred and the like -- and where an Unnatural Characteristic had its characteristic and rank typed into its name, those have been filled into the proper fields so the bonus applies. Anything you had already set is left untouched.',
                     ],
                 });
                 break;
