@@ -122,7 +122,7 @@ const PLACEHOLDER_ICONS = new Set([
 ]);
 
 export async function checkAndMigrateWorld() {
-    const worldVersion = 189;
+    const worldVersion = 190;
 
     const currentVersion = game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.worldVersion);
     if (worldVersion !== currentVersion && game.user.isGM) {
@@ -175,6 +175,10 @@ export async function checkAndMigrateWorld() {
         // carrying it -- Unnatural Characteristic, Weapon Training, Peer, Hatred and friends. Best
         // effort: a per-actor failure is logged and skipped, never allowed to block the load.
         await migrateSelectableChoiceList(currentVersion);
+
+        // Fill in the prerequisite text on psychic powers that predate the field being declared
+        // on the item. Best effort, for the same reason as the step above.
+        await migratePsychicPowerPrerequisites(currentVersion);
 
         // A partial migration of real data must not be stamped complete. Leave the version
         // untouched so the next launch retries -- every step above is guarded/idempotent, so a
@@ -564,6 +568,64 @@ export async function checkAndMigrateWorld() {
         if (count) console.log(`Dark Heresy | restored the specialisation dropdown on ${count} item(s)`);
     }
 
+    /**
+     * `prerequisite` was carried in the psychic-power pack long before it was declared on the
+     * psychicPower template, so copies already on a character were created without it and the
+     * buy list has nothing to check them against. Copy the text back from the compendium, keyed
+     * on name, and only where the item's own field is still empty -- anything a GM has written
+     * themselves is left alone.
+     *
+     * Best effort and idempotent: once the field matches the source there is nothing to write.
+     */
+    async function migratePsychicPowerPrerequisites(version) {
+        if (version >= 190) return;
+
+        // name -> prerequisite, for every psychic power in the compendiums.
+        const prerequisiteByName = new Map();
+        for (const pack of game.packs.filter((p) => p.metadata.packageName === SYSTEM_ID && p.metadata.type === 'Item')) {
+            try {
+                const index = await pack.getIndex({ fields: ['type', 'name', 'system.prerequisite'] });
+                for (const entry of index) {
+                    if (entry.type !== 'psychicPower') continue;
+                    const prerequisite = foundry.utils.getProperty(entry, 'system.prerequisite');
+                    if (prerequisite) prerequisiteByName.set(entry.name.toLowerCase().trim(), prerequisite);
+                }
+            } catch (e) {
+                console.warn(`Dark Heresy | could not index ${pack.collection} for psychic power prerequisites: ${e.message}`);
+            }
+        }
+        if (!prerequisiteByName.size) return;
+
+        const repair = (item) => {
+            if (item.type !== 'psychicPower') return null;
+            if (foundry.utils.getProperty(item.system, 'prerequisite')) return null;
+            const want = prerequisiteByName.get(item.name.toLowerCase().trim());
+            return want ? { _id: item.id, 'system.prerequisite': want } : null;
+        };
+
+        let count = 0;
+        for (const actor of game.actors.contents) {
+            const updates = actor.items.contents.map(repair).filter(Boolean);
+            if (!updates.length) continue;
+            try {
+                await actor.updateEmbeddedDocuments('Item', updates);
+                count += updates.length;
+            } catch (e) {
+                console.error(`Dark Heresy | psychic power prerequisite backfill failed for ${actor.name}: ${e.message}`);
+            }
+        }
+        const worldUpdates = game.items.contents.map(repair).filter(Boolean);
+        if (worldUpdates.length) {
+            try {
+                await Item.updateDocuments(worldUpdates);
+                count += worldUpdates.length;
+            } catch (e) {
+                console.error(`Dark Heresy | psychic power prerequisite backfill failed for world items: ${e.message}`);
+            }
+        }
+        if (count) console.log(`Dark Heresy | filled in the prerequisite on ${count} psychic power(s)`);
+    }
+
     async function migrateItemData(item, version) {
         if (version < 180) {
             // Get itemcollection.contentsData flag
@@ -733,6 +795,16 @@ export async function checkAndMigrateWorld() {
                         'Installing a weapon modification -- or changing anything on a contained item like a loaded round or a fitted quality -- now updates the weapon\'s open sheet at once, instead of waiting until you switched tabs or reopened it.',
                         'The Assign Damage, Apply Damage, bleeding and burning chat cards apply damage again. They had been failing with "Cannot determine actor to assign hit" and doing nothing.',
                         'The specialisation dropdown has been restored on items that were missing it -- Unnatural Characteristic, Weapon Training, Peer, Hatred and the like -- and where an Unnatural Characteristic had its characteristic and rank typed into its name, those have been filled into the proper fields so the bonus applies. Anything you had already set is left untouched.',
+                    ],
+                });
+                break;
+            case 190:
+                await releaseNotes({
+                    version: '1.8.6.5',
+                    notes: [
+                        'Taking the Psyker elite advance now grants the whole package rather than leaving you to add it by hand: Psy Rating 1, the Psyker trait, the Psyker aptitude, and a roll of 1d10+3 Corruption. The Corruption is not charged to a Sanctioned Psyker, and the advance can be re-applied without re-rolling it.',
+                        'Psychic powers now carry their prerequisites, and the Spend Experience list checks them against your character the way it already did for talents. Powers already on your characters have had their prerequisites filled in from the compendium; anything you had written yourself is left untouched.',
+                        'Corrected the prerequisites the books print inconsistently or misspell, so a power is no longer unbuyable because its requirement could not be read.',
                     ],
                 });
                 break;
