@@ -1,0 +1,47 @@
+{{!-- The buyable-psychic-power table, the same shape as talent-table.hbs, fed rows built by
+      `psychicPowerRow` (rules/advancement.mjs). There is no Tier/Matches column here -- a power's
+      cost is its own flat `system.cost`, not aptitude-priced -- and Discipline stands in their
+      place, since that is what the discipline filter above the table groups by.
+
+      Parameter: `rows`. `is-prereq-unmet` reflects the raw prerequisite state, same as the talent
+      table, so a GM overriding it still sees which rows they are pushing past. --}}
+<div class="dh-table--border dh-psychicpowertable--border">
+    <div class="table-row--head">
+        <div class="table-cell--span2">Name</div>
+        <div class="table-cell">Discipline</div>
+        <div class="table-cell">Prerequisites</div>
+        <div class="table-cell">Cost</div>
+        <div class="table-cell--last">Buy</div>
+    </div>
+    {{#each rows}}
+        <div class="table-row {{#unless this.canAfford}}is-unaffordable{{/unless}} {{#if this.prereqBlocked}}is-prereq-unmet{{/if}}">
+            <div class="table-cell--span2 cell-inline">
+                <img class="dh-field__image" alt="{{this.name}}" src="{{this.img}}" />
+                <div class="display">{{this.name}}</div>
+            </div>
+            <div class="table-cell">{{this.discipline}}</div>
+            <div class="table-cell prereq-list">
+                {{#each this.prereqClauses}}
+                    <div class="prereq-clause prereq-clause--{{this.status}}">{{this.text}}</div>
+                {{else}}
+                    <span class="prereq-none">--</span>
+                {{/each}}
+            </div>
+            <div class="table-cell {{#unless this.canAfford}}cost--short{{/unless}}">{{this.cost}}</div>
+            <div class="table-cell--last">
+                <button
+                    type="button"
+                    class="dh-prompt__button"
+                    data-action="buyPsychicPower"
+                    data-pack="{{this.pack}}"
+                    data-item-id="{{this.itemId}}"
+                    {{#unless this.canAfford}}disabled{{/unless}}
+                >Buy</button>
+            </div>
+        </div>
+    {{else}}
+        <div class="table-row">
+            <div class="table-cell">No psychic powers match the current filter.</div>
+        </div>
+    {{/each}}
+</div>

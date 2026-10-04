@@ -103,6 +103,19 @@ export function collectTraitChoiceGroups(homeworld, background) {
     return [...hw, ...bg];
 }
 
+/**
+ * The elite advance a role grants automatically at character creation (Mystic's "Stare into the
+ * Warp" role bonus grants Psyker -- roles.mjs), or null for a role with no such grant. Driven off
+ * the role's own `role_bonus.clauses[].effect_type === 'grant_elite_advance'` entry rather than a
+ * hardcoded role name, so a future role documented the same way is picked up here with no code
+ * change, and the wizard's apply step (character-creation-prompt.mjs) cannot drift out of step
+ * with what roles.mjs actually declares.
+ */
+export function roleGrantedEliteAdvance(role) {
+    const clause = (role?.role_bonus?.clauses ?? []).find((c) => c.effect_type === 'grant_elite_advance');
+    return clause?.effect_details?.elite_advance ?? null;
+}
+
 /** A `free_choice` group names no candidate list -- the book says "pick one" without enumerating
  * the options, so its single "option" only carries the skill the player must specialise within
  * ("any one Scholastic Lore"). Returns null for an ordinary group. */

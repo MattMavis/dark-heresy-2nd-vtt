@@ -2,7 +2,7 @@
   "id": "dark-heresy-2nd",
   "title": "Dark Heresy 2nd Edition: Expanded",
   "description": "Dark Heresy 2nd Edition for Foundry VTT, originally by Matt Keathley. This fork adds further automation: item effects that reach the character, usable consumables, situational bonuses surfaced on the roll they apply to, specialisable talents and traits, and a Requisition menu.",
-  "version": "1.8.6.4",
+  "version": "1.8.6.5",
   "compatibility": {
     "minimum": 13,
     "verified": "14.365"
@@ -174,7 +174,7 @@
   "secondaryTokenAttribute": "fate",
   "url": "https://github.com/MattMavis/dark-heresy-2nd-vtt",
   "manifest": "https://github.com/MattMavis/dark-heresy-2nd-vtt/releases/latest/download/system.json",
-  "download": "https://github.com/MattMavis/dark-heresy-2nd-vtt/releases/download/v1.8.6.4/dark-heresy-2nd-1.8.6.4.zip",
+  "download": "https://github.com/MattMavis/dark-heresy-2nd-vtt/releases/download/v1.8.6.5/dark-heresy-2nd-1.8.6.5.zip",
   "license": "LICENSE.txt",
   "readme": "https://github.com/MattMavis/dark-heresy-2nd-vtt#readme",
   "changelog": "https://github.com/MattMavis/dark-heresy-2nd-vtt/releases",

@@ -50,15 +50,40 @@
                     <div class="dh-field__wrapper">
                         <label class="dh-field__span">
                             <input type="checkbox" data-dtype="Boolean" name="ignorePrerequisites" {{checked ignorePrerequisites}} />
-                            GM: ignore talent prerequisites
+                            GM: ignore talent/psychic power prerequisites
                         </label>
                     </div>
                 {{/if}}
                 {{> "systems/dark-heresy-2nd/templates/prompt/partial/talent-table.hbs" rows=visibleTalents}}
-                <div class="dh-field__wrapper">
-                    <span class="dh-field__span">Psychic powers are not priced from this window -- their cost is not aptitude-table driven.</span>
-                </div>
             </div>
+
+            {{!-- Psychic Powers -- only psykers can learn them, so the section is hidden entirely
+                  for non-psykers rather than offering them 114 powers they cannot take. --}}
+            {{#if isPsyker}}
+            <div class="dh-panel dh-grid-col-full">
+                <div class="dh-header">
+                    <div class="dh-header__info">
+                        <div class="dh-header__item-wrapper--span-4 dh-header__borderless">
+                            <span class="dh-header__subtitle">Psychic Powers</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dh-field__wrapper">
+                    <span class="dh-field__span">Search</span>
+                    <input class="dh-field__input" type="search" name="powerSearch" value="{{powerSearch}}" />
+                </div>
+                <div class="dh-field__wrapper">
+                    <span class="dh-field__span">Discipline</span>
+                    <select class="dh-field__input" name="disciplineFilter">
+                        <option value="" {{#unless disciplineFilter}}selected{{/unless}}>All</option>
+                        {{#each disciplines}}
+                            <option value="{{this}}" {{#if (eq this ../disciplineFilter)}}selected{{/if}}>{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                {{> "systems/dark-heresy-2nd/templates/prompt/partial/psychic-power-table.hbs" rows=visiblePsychicPowers}}
+            </div>
+            {{/if}}
         </div>
     </div>
 

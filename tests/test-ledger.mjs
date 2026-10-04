@@ -75,13 +75,15 @@ const SPEND_LOG = [
 ];
 
 check('ledgerByKind buckets by kind', ledgerByKind(SPEND_LOG),
-    { characteristic: 100, skill: 200, talent: 300, other: 1300 });
+    { characteristic: 100, skill: 200, talent: 300, psychicPower: 0, other: 1300 });
 check('ledgerByKind on an empty ledger is all zeroes', ledgerByKind([]),
-    { characteristic: 0, skill: 0, talent: 0, other: 0 });
+    { characteristic: 0, skill: 0, talent: 0, psychicPower: 0, other: 0 });
 check('ledgerByKind is safe against a non-array', ledgerByKind(undefined),
-    { characteristic: 0, skill: 0, talent: 0, other: 0 });
+    { characteristic: 0, skill: 0, talent: 0, psychicPower: 0, other: 0 });
 check('an unrecognised kind (e.g. the legacy "adjustment" entry) falls into other',
-    ledgerByKind([{ kind: 'adjustment', cost: 50 }]), { characteristic: 0, skill: 0, talent: 0, other: 50 });
+    ledgerByKind([{ kind: 'adjustment', cost: 50 }]), { characteristic: 0, skill: 0, talent: 0, psychicPower: 0, other: 50 });
+check('a psychicPower purchase buckets into its own kind',
+    ledgerByKind([{ kind: 'psychicPower', cost: 150 }]), { characteristic: 0, skill: 0, talent: 0, psychicPower: 150, other: 0 });
 // (A "the four buckets sum back to ledgerTotal" check used to sit here. Both sides of it are
 // already pinned to literals by the two checks above, so it restated the same arithmetic a third
 // time without being able to fail on its own.)

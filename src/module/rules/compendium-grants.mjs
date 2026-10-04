@@ -161,3 +161,67 @@ export async function loadTalentCandidates({ excludeNames = new Set() } = {}) {
     }
     return candidates;
 }
+
+/**
+ * Every psychic power in the psychic-powers pack, priced-ready for the spend window. Unlike
+ * {@link loadTalentCandidates} there is no tier filter -- powers have no tier -- and the price is
+ * read straight off the power's own `system.cost` rather than looked up in an aptitude table (see
+ * `advancement.mjs`'s `psychicPowerRow`).
+ *
+ * Note the field name: the pack stores the prerequisite text under `system.prerequisite`
+ * (singular), not `system.prerequisites` like a talent -- see the fix to
+ * item-psychic-power-sheet.hbs, which read the wrong (plural) field and rendered blank.
+ *
+ * `excludeNames` drops powers by name, the same "a granted power has no source flag to match
+ * against" reasoning {@link loadTalentCandidates} documents for talents.
+ */
+export async function loadPsychicPowerCandidates({ excludeNames = new Set() } = {}) {
+    const pack = game.packs.get(`${SYSTEM_ID}.psychic-powers`);
+    if (!pack) {
+        game.dh.error('loadPsychicPowerCandidates: psychic-powers pack not found');
+        return [];
+    }
+    let index;
+    try {
+        index = await pack.getIndex({ fields: ['name', 'img', 'system.cost', 'system.discipline', 'system.prerequisite'] });
+    } catch (err) {
+        game.dh.error('loadPsychicPowerCandidates: failed to index the psychic-powers pack', err);
+        return [];
+    }
+
+    const candidates = [];
+    for (const entry of index) {
+        if (excludeNames.has(entry.name)) continue;
+        candidates.push({
+            pack: pack.metadata.id,
+            itemId: entry._id,
+            name: entry.name,
+            img: entry.img,
+            cost: Number(entry.system?.cost) || 0,
+            discipline: entry.system?.discipline ?? '',
+            prerequisite: entry.system?.prerequisite ?? '',
+        });
+    }
+    return candidates;
+}
+
+/**
+ * Every talent and psychic-power NAME this system ships, as raw strings. Feeds the prerequisite
+ * parser's `knownAdvanceNames` set (see rules/talent-prerequisites.mjs) so a bare-name prerequisite
+ * clause naming an advance the character doesn't own is a definite block only when the advance is
+ * real -- an unrecognised name is advisory instead of a hard refusal. Returns whatever it can read;
+ * a missing pack costs coverage, not a throw, matching the other loaders here.
+ */
+export async function loadAdvanceNames() {
+    const names = [];
+    for (const collection of [`${SYSTEM_ID}.talents`, `${SYSTEM_ID}.psychic-powers`]) {
+        const pack = game.packs.get(collection);
+        if (!pack) continue;
+        try {
+            for (const entry of await pack.getIndex({ fields: ['name'] })) names.push(entry.name);
+        } catch (err) {
+            game.dh.error(`loadAdvanceNames: failed to index ${collection}`, err);
+        }
+    }
+    return names;
+}

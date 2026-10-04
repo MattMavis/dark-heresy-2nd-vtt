@@ -13,6 +13,7 @@
  * aptitude as General, where the book says Knowledge twice over. The book wins.
  */
 import { evaluatePrerequisites } from './talent-prerequisites.mjs';
+import { evaluatePsychicPowerPrerequisites } from './psychic-power-prerequisites.mjs';
 
 /** Progression ranks, in the order they must be bought. */
 export const CHARACTERISTIC_RANKS = ['Simple', 'Intermediate', 'Trained', 'Proficient', 'Expert'];
@@ -249,6 +250,33 @@ export function talentRow(candidate, { aptitudes, available, snapshot, ignorePre
     };
 }
 
+/**
+ * The view-model behind one row of a psychic power table, for the Spend Experience window.
+ *
+ * Unlike {@link talentRow}, cost is not aptitude-priced -- it is the power's own flat
+ * `system.cost` (see `compendium-grants.mjs`'s `loadPsychicPowerCandidates`), so there is no
+ * `matches`/`aptitudes` input here. A power priced at 0 (a data gap in a few pack entries, not a
+ * deliberately free power) is still shown and still buyable -- `canAfford` only asks whether
+ * `cost <= available`, which 0 always satisfies, rather than treating 0 as "unpriced" the way
+ * `talentRow` treats a null tier cost.
+ *
+ * `prereqClauses`/`prereqBlocked` come from {@link evaluatePsychicPowerPrerequisites}, which
+ * rewrites the pack's non-standard prerequisite phrasings (see psychic-power-prerequisites.mjs)
+ * before handing off to the same three-valued clause grammar a talent's prerequisites use --
+ * including the "owns another power" clauses that encode a discipline's power tree.
+ */
+export function psychicPowerRow(candidate, { available, snapshot, ignorePrerequisites = false }) {
+    const cost = Number(candidate.cost) || 0;
+    const prereq = evaluatePsychicPowerPrerequisites(candidate.prerequisite, snapshot);
+    return {
+        ...candidate,
+        cost,
+        prereqClauses: prereq.clauses,
+        prereqBlocked: prereq.blocked,
+        canAfford: cost <= available && !(prereq.blocked && !ignorePrerequisites),
+    };
+}
+
 /* -------------------------------------------- */
 /*  Ledger                                      */
 /* -------------------------------------------- */
@@ -287,13 +315,13 @@ export function ledgerTotal(ledger) {
 
 /**
  * Partitions a ledger's cost by `kind`, for the experience panel's spend-by-category display.
- * Anything outside the three recognised kinds (including the `'adjustment'` kind the legacy
+ * Anything outside the four recognised kinds (including the `'adjustment'` kind the legacy
  * opening-balance entry from `migrateExperienceLedger` uses) falls into `other` rather than being
- * dropped, so the four buckets always sum to {@link ledgerTotal} exactly.
+ * dropped, so the five buckets always sum to {@link ledgerTotal} exactly.
  */
 export function ledgerByKind(ledger) {
-    const byKind = { characteristic: 0, skill: 0, talent: 0, other: 0 };
-    const knownKinds = ['characteristic', 'skill', 'talent'];
+    const byKind = { characteristic: 0, skill: 0, talent: 0, psychicPower: 0, other: 0 };
+    const knownKinds = ['characteristic', 'skill', 'talent', 'psychicPower'];
     for (const entry of Array.isArray(ledger) ? ledger : []) {
         const bucket = knownKinds.includes(entry?.kind) ? entry.kind : 'other';
         byKind[bucket] += Number(entry?.cost) || 0;
