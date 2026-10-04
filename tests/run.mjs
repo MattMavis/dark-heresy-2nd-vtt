@@ -28,6 +28,7 @@ const FILES = [
     'test-psychic-powers.mjs',
     'test-combat-tables.mjs',
     'test-icons.mjs',
+    'test-templates.mjs',
 ];
 
 const rule = (s) => `${'='.repeat(78)}\n  ${s}\n${'='.repeat(78)}`;
