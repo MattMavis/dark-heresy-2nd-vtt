@@ -1,0 +1,75 @@
+name: Bug report
+description: Something in the system behaves wrongly, or throws an error.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing: if you can reproduce the problem with **only this system and no other
+        modules active**, say so below. A surprising share of reports turn out to be a module
+        interaction, and that one detail saves the most time of anything here.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, and what the system did instead of what you expected.
+      placeholder: |
+        Opened Spend Experience on a psyker. The dialog did not open and an error appeared in
+        the console. I expected the list of advances.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Enough for someone else to see it happen on a fresh world.
+      placeholder: |
+        1. Create an Acolyte
+        2. Take the Psyker elite advance
+        3. Open Spend Experience
+    validations:
+      required: true
+
+  - type: input
+    id: system-version
+    attributes:
+      label: System version
+      description: Shown in Foundry under Game Settings, next to "Dark Heresy 2nd Edition".
+      placeholder: "1.8.6.6"
+    validations:
+      required: true
+
+  - type: input
+    id: foundry-version
+    attributes:
+      label: Foundry version
+      description: The full build, e.g. 13.346 or 14.365.
+      placeholder: "14.365"
+    validations:
+      required: true
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console output
+      description: |
+        Press F12, open the Console tab, and paste the red error in full — including the
+        `Caused by` lines, which usually name the real culprit. Reload and reproduce first if
+        the console has scrolled away.
+      render: text
+    validations:
+      required: false
+
+  - type: dropdown
+    id: modules
+    attributes:
+      label: Other modules active?
+      options:
+        - 'No — reproduced with this system alone'
+        - 'Yes, and it still happens with them all disabled'
+        - 'Yes, and I have not tried disabling them'
+        - 'Not sure'
+    validations:
+      required: true
