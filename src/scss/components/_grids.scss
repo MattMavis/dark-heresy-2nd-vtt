@@ -31,6 +31,10 @@ $grid-tables: (
     attackprompt: 2rem 1fr 3rem,
     // Seven tracks, not six: the name cell is `--span2`, which covers the first two.
     advancement: 1fr 1fr 0.6fr 0.6fr 0.9fr 0.5fr 4rem,
+    // Six tracks, not five: the name cell is `--span2`. One fewer track than `advancement`
+    // because a psychic power has no Tier/Matches column -- it isn't aptitude-priced -- so
+    // Prerequisites gets the room a dedicated `advancement` row would give Matches.
+    psychicpower: 1fr 1fr 0.7fr 1fr 0.5fr 4rem,
     // Four tracks for the same reason -- label spans two, then a value and the delete control.
     experiencelog: 1fr 1fr 0.5fr 2.5rem,
     // Requisition's candidate list: checkbox, name, availability, craftsmanship, modifier, qty.

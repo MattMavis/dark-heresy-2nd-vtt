@@ -33,6 +33,7 @@ import {
     resolveDivinationEffect,
     applyHomeworldCharacteristicModifier,
     findDivinationForRoll,
+    roleGrantedEliteAdvance,
 } from '../rules/character-creation.mjs';
 
 /** A `<select>` with no `data-dtype="Number"` still submits `""` for an unpicked placeholder
@@ -890,10 +891,15 @@ async function applyCharacterCreation(data) {
         foundry.utils.setProperty(systemUpdate, `characteristics.${key}.base`, current + delta.amount);
     }
 
+    // A role's own role_bonus can grant an elite advance outright (Mystic's "Stare into the
+    // Warp" grants Psyker, see roleGrantedEliteAdvance) -- setting it here, as part of the same
+    // update as the rest of bio.*, is what makes DarkHeresyAcolyte#_onUpdate's bio.elite ===
+    // 'Psyker' hook fire for a Mystic built through this wizard.
     systemUpdate.bio = {
         homeWorld: data.homeworldName,
         background: data.backgroundName,
         role: data.roleName,
+        elite: roleGrantedEliteAdvance(data.role) ?? '',
         divination: data.divination?.name ?? '',
     };
     systemUpdate.wounds = { max: data.wounds.max, rolled: true };

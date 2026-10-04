@@ -17,6 +17,9 @@ import { SYSTEM_ID } from '../hooks-manager.mjs';
 import { DarkHeresySettings } from '../dark-heresy-settings.mjs';
 import { collectConditionalBonuses, conditionalBonusKey } from '../rules/conditional-bonuses.mjs';
 import { ledgerTotal, ledgerByKind, ledgerSorted, awardsTotal } from '../rules/advancement.mjs';
+import { PSYKER_GRANTED_FLAG, planPsykerGrantApplication } from '../rules/psyker-grant.mjs';
+import { fetchGrantData, grantItems, scanItemPackIndexes } from '../rules/compendium-grants.mjs';
+import { normaliseName } from '../rules/grant-resolution.mjs';
 
 export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
 
@@ -66,6 +69,120 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
 
     get backgroundEffects() {
         return this.system.backgroundEffects;
+    }
+
+    /**
+     * Fires on every actor update; the only thing it acts on is `bio.elite` reading "Psyker" once
+     * `super._onUpdate()` has applied this update's changes to `this` -- the Bio tab dropdown
+     * (actor-acolyte-sheet.hbs) and character creation's Mystic-role grant
+     * (character-creation-prompt.mjs) both set it through an ordinary `actor.update()`, so this
+     * one hook point covers both without either caller needing to know about the grant.
+     *
+     * Checked against `this.bio.elite` (the actor's current state) rather than diffed out of
+     * `changed` deliberately: Foundry does not document `changed`'s exact shape (flattened dotted
+     * keys vs. an expanded nested object) closely enough to parse reliably, and reading current
+     * state sidesteps the question entirely. This does mean `applyPsykerElite` gets called on
+     * every later update to an already-granted psyker (a wounds change, a name edit, ...), not
+     * just the one that set `bio.elite` -- cheap, because `applyPsykerElite` starts with a single
+     * flag check and returns immediately once granted (see rules/psyker-grant.mjs).
+     *
+     * `_onUpdate` runs on every connected client once the change is broadcast, not just the one
+     * that made it -- guarding on `userId === game.user.id` keeps only the initiating client
+     * granting the items, so a table full of players watching someone else's sheet does not all
+     * race to create the same trait/aptitude. `applyPsykerElite` is itself idempotent, so this
+     * guard is a race-avoidance optimisation, not the only thing standing between this and a
+     * duplicate grant.
+     * @inheritDoc
+     */
+    _onUpdate(changed, options, userId) {
+        super._onUpdate(changed, options, userId);
+        // The flag check is hoisted here (not left to applyPsykerElite alone) so an already-granted
+        // psyker does not spawn a throwaway async grant on every unrelated update -- a wounds tick, a
+        // token move. applyPsykerElite re-checks the flag anyway; this is the cheap early-out.
+        if (userId === game.user.id && this.bio?.elite === 'Psyker' && !this.getFlag(SYSTEM_ID, PSYKER_GRANTED_FLAG)) {
+            this.applyPsykerElite().catch((err) => game.dh.error(`Psyker elite advance grant failed for ${this.name}`, err));
+        }
+    }
+
+    /**
+     * Apply the Psyker elite advance's mechanical grants (elite-advances.mjs): Psy Rating 1, the
+     * Psyker trait, the Psyker aptitude, and -- unless the character already has the Sanctioned
+     * trait -- 1d10+3 Corruption. A deliberate write, not something `prepareDerivedData` could do:
+     * creating embedded items and rolling dice are side effects, and Foundry re-runs data
+     * preparation far too often for either to live there safely.
+     *
+     * Idempotent via `flags.dark-heresy-2nd.psykerGranted` (see rules/psyker-grant.mjs, which owns
+     * the actual decision logic): once set, re-opening the sheet, re-preparing data, or flipping
+     * `bio.elite` away from and back to "Psyker" can never re-grant the trait/aptitude/rating or
+     * re-roll corruption.
+     *
+     * Two Foundry writes, not one transaction -- the same limitation
+     * character-creation-prompt.mjs's `applyCharacterCreation` documents: `this.update()` sets the
+     * flag/rating/corruption first, then `grantItems` creates the trait/aptitude. If the second
+     * call fails, the actor is left flagged as granted with the rating/corruption already applied
+     * but missing an item; the error is logged via `game.dh.error` rather than swallowed; because
+     * the flag is already set, re-triggering (re-saving the sheet) will not retry it, so a failure
+     * here needs the item added by hand.
+     */
+    async applyPsykerElite() {
+        const alreadyGranted = !!this.getFlag(SYSTEM_ID, PSYKER_GRANTED_FLAG);
+        const result = await planPsykerGrantApplication(this, {
+            alreadyGranted,
+            flagPath: `flags.${SYSTEM_ID}.${PSYKER_GRANTED_FLAG}`,
+            rollCorruption: async () => (await new Roll('1d10+3').evaluate()).total,
+        });
+        if (!result) return null;
+        const { plan, corruptionGained } = result;
+
+        await this.update(result.update);
+
+        // What we set out to create, so a fetch or create failure can be reported specifically
+        // rather than swallowed. The flag is already set above, so a failure here is NOT retried on
+        // the next update -- the GM must add the missing item by hand, and needs telling so.
+        const wanted = [];
+        if (plan.grantTrait) wanted.push('trait');
+        if (plan.grantAptitude) wanted.push('aptitude');
+        const itemsToCreate = (await Promise.all(wanted.map((type) => this._fetchNamedCompendiumItem(type, 'Psyker')))).filter(Boolean);
+        let grantedCount = 0;
+        if (itemsToCreate.length) {
+            try {
+                grantedCount = (await grantItems(this, itemsToCreate)).length;
+            } catch (err) {
+                game.dh.error(`Psyker elite advance: granting the Psyker trait/aptitude to ${this.name} failed`, err);
+            }
+        }
+        const missing = wanted.length - grantedCount;
+        if (missing > 0) {
+            ui.notifications?.error(
+                `${this.name} became a psyker, but the Psyker ${wanted.slice(grantedCount).join(' and ')} could not be added automatically -- add ${missing > 1 ? 'them' : 'it'} by hand.`,
+            );
+        }
+
+        ui.notifications?.info(
+            corruptionGained
+                ? `${this.name} gains the Psyker elite advance and ${corruptionGained} Corruption (not Sanctioned).`
+                : `${this.name} gains the Psyker elite advance.`,
+        );
+
+        return { plan, corruptionGained };
+    }
+
+    /** The first compendium item of `type` named `name` across every system Item pack, ready for
+     * `createEmbeddedDocuments`, or null if no pack has one -- logged rather than thrown, the same
+     * best-effort contract `compendium-grants.mjs`'s other loaders use, so a missing pack entry
+     * costs this one grant rather than the whole update. */
+    async _fetchNamedCompendiumItem(type, name) {
+        const target = normaliseName(name);
+        let found = null;
+        await scanItemPackIndexes(['name', 'type'], (entry, pack) => {
+            if (found || entry.type !== type || normaliseName(entry.name) !== target) return;
+            found = { pack: pack.metadata.id, itemId: entry._id };
+        });
+        if (!found) {
+            game.dh.error(`Psyker elite advance: ${type} "${name}" not found in any compendium pack -- not granted`);
+            return null;
+        }
+        return fetchGrantData(found.pack, found.itemId);
     }
 
     /**

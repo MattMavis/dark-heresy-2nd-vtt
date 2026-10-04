@@ -23,7 +23,9 @@ const FILES = [
     'test-grants.mjs',
     'test-starting-equipment.mjs',
     'test-character-creation.mjs',
+    'test-psyker-grant.mjs',
     'test-prerequisites.mjs',
+    'test-psychic-powers.mjs',
     'test-combat-tables.mjs',
     'test-icons.mjs',
 ];

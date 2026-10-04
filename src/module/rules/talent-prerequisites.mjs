@@ -184,11 +184,20 @@ function resolveSkillThreshold(nameText, snapshot, requiredRank) {
 }
 
 /* -------------------------------------------- */
-/*  Talent ownership against snapshot.talents (display-name strings, e.g. "Resistance (Fear)")   */
+/*  Talent (and psychic power) ownership against snapshot.talents / snapshot.psychicPowers        */
+/*  (display-name strings, e.g. "Resistance (Fear)")                                              */
 /* -------------------------------------------- */
 
+/**
+ * A bare-name clause ("Smite", "Iron Arm OR Endurace") never says whether it names a talent or a
+ * psychic power -- the psychic power pack's prerequisites lean on this constantly to encode a
+ * discipline's power tree ("T 35, Smite" on a power that requires the psyker already knows
+ * Smite). So both owned lists are checked as one pool; `snapshot.psychicPowers` is simply absent
+ * (=> `[]`) for a caller, such as the existing talent-purchase snapshot, that has nothing to add.
+ */
 function ownedTalentBaseSpecs(snapshot) {
-    return (snapshot.talents ?? []).map((name) => parseNameSpec(name));
+    const names = [...(snapshot.talents ?? []), ...(snapshot.psychicPowers ?? [])];
+    return names.map((name) => parseNameSpec(name));
 }
 
 /**
@@ -251,14 +260,33 @@ function resolveBareAtom(text, snapshot) {
 
     if (spec && /^any(\s+one)?\b/i.test(spec)) {
         if (normaliseName(base) === 'lore') return statusFrom(loreWildcardRank(snapshot.skills) >= 1);
-        return statusFrom(hasTalent(snapshot, base, null, true));
+        return unknownAdvance(snapshot, base) ?? statusFrom(hasTalent(snapshot, base, null, true));
     }
 
     const skillResult = resolveSkillThreshold(text, snapshot, 1);
     if (skillResult) return skillResult;
 
+    const unknown = unknownAdvance(snapshot, base);
+    if (unknown) return unknown;
     const specs = spec ? splitTopLevel(spec, ',') : null;
     return statusFrom(hasTalent(snapshot, base, specs, false));
+}
+
+/**
+ * A bare name that is neither a skill nor a recognised talent/psychic power cannot be judged before
+ * purchase: treating "a name I don't understand" as "a power you definitely don't own" is a hard
+ * block on content this parser simply doesn't model, which violates the module's own contract that
+ * only a *definite* unmet prerequisite blocks. When the caller supplies `snapshot.knownAdvanceNames`
+ * (the full set of real talent + psychic-power names, normalised), an unrecognised bare name is
+ * advisory instead. Without that set -- unit tests, the character-creation snapshot -- behaviour is
+ * unchanged: the name resolves owned/not-owned as before, so the discipline-tree block on a *known*
+ * unowned power is never weakened.
+ * @returns an `indeterminate` result to short-circuit with, or null to carry on with the owned check.
+ */
+function unknownAdvance(snapshot, base) {
+    if (!snapshot.knownAdvanceNames) return null;
+    if (snapshot.knownAdvanceNames.has(normaliseName(base))) return null;
+    return indeterminate(`"${base}" is not a recognised talent or psychic power`);
 }
 
 /** "Rank N in X" -- X may itself be an OR of alternatives ("Rank 2 in Survival or any Operate
@@ -323,6 +351,7 @@ function resolveOrGroup(parts, snapshot) {
  *   characteristics: Object<string, number>,
  *   skills: Object<string, {label?: string, advance?: number, specialities?: Object<string, {label?: string, advance?: number}>}>,
  *   talents: string[],
+ *   psychicPowers?: string[],
  *   psyRating: number,
  *   corruption: number,
  *   insanity: number,
