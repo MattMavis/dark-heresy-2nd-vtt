@@ -42,7 +42,7 @@ data:
     rightLeg: 0
   availability: Near Unique
   craftsmanship: Common
-  description: 'A character with this implant has a weapon in his eye that counts as a hot-shot laspistol (see page 154) with a range of 10m. The baleful eye can be fired even if the character’s hands are full. It has no clip size, however a jam result causes the character to lose sight in the eye for a number of rounds equal to the degrees of failure on the attack.'
+  description: 'A character with this implant has a weapon in their eye that counts as a hot-shot laspistol (see page 154) with a range of 10m. The baleful eye can be fired even if the character’s hands are full. It has no clip size, however a jam result causes the character to lose sight in the eye for a number of rounds equal to the degrees of failure on the attack.'
   weight: 0
   equipped: false
 img: 'systems/dark-heresy-2nd/icons/gen/cybernetics/baleful-eye.webp'
@@ -93,7 +93,7 @@ data:
     rightLeg: 0
   availability: Scarce
   craftsmanship: Common
-  description: 'These bionics are fully integrated into the hip with a spinal link, and Common versions allow the user to walk, run, and climb at normal human levels. Poor craftsmanship models are lumbering affairs that reduce a character’s Movement rate by 1, and when running, the user must succeed on an Ordinary (+10) Agility test or fall Prone at the end of his movement. Good craftsmanship bionic legs grant the owner the Sprint talent, and add a +20 bonus to Agility tests that he makes when attempting to jump or leap.'
+  description: 'These bionics are fully integrated into the hip with a spinal link, and Common versions allow the user to walk, run, and climb at normal human levels. Poor craftsmanship models are lumbering affairs that reduce a character’s Movement rate by 1, and when running, the user must succeed on an Ordinary (+10) Agility test or fall Prone at the end of their movement. Good craftsmanship bionic legs grant the owner the Sprint talent, and add a +20 bonus to Agility tests that they make when attempting to jump or leap.'
   weight: 0
   equipped: false
 img: 'systems/dark-heresy-2nd/icons/gen/cybernetics/bionic-legs.webp'
@@ -110,7 +110,7 @@ data:
     rightLeg: 0
   availability: Rare
   craftsmanship: Common
-  description: 'Common bionic lungs and implanted respiratory systems mimic the action of human lungs and keep the body supplied with oxygen. Such characters gain a +20 bonus to Toughness tests made to resist airborne toxins and gas weapons. Poor bionic lungs offer the same benefits as the Common system, but are raucously loud affairs and characters suffer a –20 penalty to Stealth tests. Their generally poor oxygen supply to the body means that the character suffers a –10 penalty on all tests involving strenuous physical activity. Good bionic lungs count as a full life support system—if for any reason the user’s own respiratory system fails, his bionic lungs keep his blood oxygenated—and can be designed to be unnoticeable if desired.'
+  description: 'Common bionic lungs and implanted respiratory systems mimic the action of human lungs and keep the body supplied with oxygen. Such characters gain a +20 bonus to Toughness tests made to resist airborne toxins and gas weapons. Poor bionic lungs offer the same benefits as the Common system, but are raucously loud affairs and characters suffer a –20 penalty to Stealth tests. Their generally poor oxygen supply to the body means that the character suffers a –10 penalty on all tests involving strenuous physical activity. Good bionic lungs count as a full life support system—if for any reason the user’s own respiratory system fails, their bionic lungs keep their blood oxygenated—and can be designed to be unnoticeable if desired.'
   conditionalBonuses:
     - key: toughness
       value: 20
@@ -176,7 +176,7 @@ data:
     rightLeg: 0
   availability: Very Rare
   craftsmanship: Common
-  description: 'Commonly used to repair a severely damaged brain or (hopefully) augment its abilities, these often-risky implant systems represent a major step from simply replacing a limb to altering a character from human to mechanism. Common-level implants can restore paralysed and brain-damaged users to a semblance of normality, but with a permanent loss of 1d10 points from the character’s Weapon Skill, Ballistic Skill, Agility, Intelligence, and Fellowship characteristics. Poor versions restore brain function, but destroy the subject’s personality and memories, rendering them no better than a servitor, and as such are unsuitable for PCs. Good cerebral implants are very rare even among high ranking Imperial officials, and are exceedingly difficult to acquire, becoming Near Unique in Availability. These grant the user the Unnatural Intelligence (2) trait (see page 139) and a +20 bonus to Logic and Lore tests, thanks to the superior mental capabilities he now enjoys.'
+  description: 'Commonly used to repair a severely damaged brain or (hopefully) augment its abilities, these often-risky implant systems represent a major step from simply replacing a limb to altering a character from human to mechanism. Common-level implants can restore paralysed and brain-damaged users to a semblance of normality, but with a permanent loss of 1d10 points from the character’s Weapon Skill, Ballistic Skill, Agility, Intelligence, and Fellowship characteristics. Poor versions restore brain function, but destroy the subject’s personality and memories, rendering them no better than a servitor, and as such are unsuitable for PCs. Good cerebral implants are very rare even among high ranking Imperial officials, and are exceedingly difficult to acquire, becoming Near Unique in Availability. These grant the user the Unnatural Intelligence (2) trait (see page 139) and a +20 bonus to Logic and Lore tests, thanks to the superior mental capabilities they now enjoy.'
   weight: 0
   equipped: false
 img: 'systems/dark-heresy-2nd/icons/gen/cybernetics/cerebral-implants.webp'
@@ -210,7 +210,7 @@ data:
     rightLeg: 0
   availability: Very Rare
   craftsmanship: Common
-  description: 'Powerful electromagnets are implanted in the Acolyte, allowing him to cast forth a net of invisible energy as a Full Action after a successful Challenging (+0) Willpower test. He can call an unsecured metal object into his hand; the object cannot mass more than 1 kg per point of Willpower bonus, and must be within 20 metres. He must already have Mechanicus Implants trait (see page 137) for this system to function, and it can be improved through certain talents as described in Chapter IV: Talents & Traits.'
+  description: 'Powerful electromagnets are implanted in the Acolyte, allowing them to cast forth a net of invisible energy as a Full Action after a successful Challenging (+0) Willpower test. They can call an unsecured metal object into their hand; the object cannot mass more than 1 kg per point of Willpower bonus, and must be within 20 metres. They must already have Mechanicus Implants trait (see page 137) for this system to function, and it can be improved through certain talents as described in Chapter IV: Talents & Traits.'
   weight: 0
   equipped: false
 img: 'systems/dark-heresy-2nd/icons/gen/cybernetics/ferric-lure-implants.webp'
@@ -227,7 +227,7 @@ data:
     rightLeg: 0
   availability: Rare
   craftsmanship: Common
-  description: 'The Acolyte now has a mechanical port implanted in his body, commonly in the rear of the neck, which can be connected to machines via a data cable. This allows the user faster and smoother access to the valuable information within, and grants a +10 bonus to Common Lore, Inquiry, or Tech-Use tests whilst connected to a relevant mechanism or data spool.'
+  description: 'The Acolyte now has a mechanical port implanted in their body, commonly in the rear of the neck, which can be connected to machines via a data cable. This allows the user faster and smoother access to the valuable information within, and grants a +10 bonus to Common Lore, Inquiry, or Tech-Use tests whilst connected to a relevant mechanism or data spool.'
   conditionalBonuses:
     - key: techUse
       value: 10
@@ -302,7 +302,7 @@ data:
     rightLeg: 0
   availability: Very Rare
   craftsmanship: Common
-  description: 'Archaeotech systems of powerful gravimetric coils are implanted in the body, allowing the user to become unshackled from gravity’s grasp for short periods. Using a Half Action, the user may hover 20-30 centimetres off the ground for a number of minutes equal to 1d10 plus the character’s Toughness bonus. The character must employ a Half Action each round to concentrate on operating this implant and may use the other action to move normally. The character can slow his rate of descent when falling so long as this implant is active when the character reaches the ground, reducing all falling damage to a maximum of 1d10+3 Impact damage. Each time the character activates the coils, it drains the stored power and cannot be used again until recharged (which takes 24 hours).'
+  description: 'Archaeotech systems of powerful gravimetric coils are implanted in the body, allowing the user to become unshackled from gravity’s grasp for short periods. Using a Half Action, the user may hover 20-30 centimetres off the ground for a number of minutes equal to 1d10 plus the character’s Toughness bonus. The character must employ a Half Action each round to concentrate on operating this implant and may use the other action to move normally. The character can slow their rate of descent when falling so long as this implant is active when the character reaches the ground, reducing all falling damage to a maximum of 1d10+3 Impact damage. Each time the character activates the coils, it drains the stored power and cannot be used again until recharged (which takes 24 hours).'
   weight: 0
   equipped: false
 img: 'systems/dark-heresy-2nd/icons/gen/cybernetics/maglev-coils.webp'
@@ -319,7 +319,7 @@ data:
     rightLeg: 0
   availability: Very Rare
   craftsmanship: Common
-  description: 'Mechadendrites are mechanical attachments of brass and steel that act as additional arms. They are normally mounted on the shoulders or back, though some within the Mechanicum also project these cybernetics from their waists or chests. Each is usually 2 metres in length when fully extended, and has a specialised function based around the mechanisms affixed at their end. The number of mechadendrites coiled or folded around a Tech-Priest’s crimson- robed figure is often an excellent indicator of his rank within the Priesthood of Mars. Unless stated otherwise, mechadendrites can only be used to perform tasks that the owner already knows how to do. For example, a character with a medicae mechadendrite must have the Medicae skill in order to take advantage of the extra abilities the limb grants. A character must have the appropriate Mechadendrite Use talent (see page 130) to operate his mechadendrite, and the maximum number of mechadendrites he can have installed upon his body is equal to his Toughness bonus.'
+  description: 'Mechadendrites are mechanical attachments of brass and steel that act as additional arms. They are normally mounted on the shoulders or back, though some within the Mechanicum also project these cybernetics from their waists or chests. Each is usually 2 metres in length when fully extended, and has a specialised function based around the mechanisms affixed at their end. The number of mechadendrites coiled or folded around a Tech-Priest’s crimson- robed figure is often an excellent indicator of their rank within the Priesthood of Mars. Unless stated otherwise, mechadendrites can only be used to perform tasks that the owner already knows how to do. For example, a character with a medicae mechadendrite must have the Medicae skill in order to take advantage of the extra abilities the limb grants. A character must have the appropriate Mechadendrite Use talent (see page 130) to operate their mechadendrite, and the maximum number of mechadendrites they can have installed upon their body is equal to their Toughness bonus.'
   weight: 0
   equipped: false
 img: 'systems/dark-heresy-2nd/icons/gen/cybernetics/mechadendrite.webp'
@@ -371,7 +371,7 @@ data:
   availability: Rare
   craftsmanship: Common
   description: '
-Unlike the more advanced MIU version normally only granted to priests of the Adeptus Mechanicus, this model is more simplified, allowing the user to remotely operate a single weapon which is attached user’s body. While not as elaborate, it is easier to use and a favourite of many militant professions. This system allows the user to fire the linked ranged weapon as a Free Action during his turn. Note that he can still only take a single Action with the Attack subtype during his turn. This additional weapon must be connected to the user via the MIU weapon interface, and is usually equipped as a shoulder mount.'
+Unlike the more advanced MIU version normally only granted to priests of the Adeptus Mechanicus, this model is more simplified, allowing the user to remotely operate a single weapon which is attached user’s body. While not as elaborate, it is easier to use and a favourite of many militant professions. This system allows the user to fire the linked ranged weapon as a Free Action during their turn. Note that they can still only take a single Action with the Attack subtype during their turn. This additional weapon must be connected to the user via the MIU weapon interface, and is usually equipped as a shoulder mount.'
   weight: 0
   equipped: false
 img: 'systems/dark-heresy-2nd/icons/gen/cybernetics/miu-weapon-interface.webp'
@@ -477,7 +477,7 @@ data:
     rightLeg: 0
   availability: Rare
   craftsmanship: Common
-  description: 'The subject has cranial surgery to implant neural receptors and artificial nerve routing, and can be compelled not to reveal a certain item of information, remain within a set area, or perform a specific task. If the subject attempts—or is forced—to counter this compulsion, his brain shuts down into unconsciousness, or even death for some severe volitor patterns.'
+  description: 'The subject has cranial surgery to implant neural receptors and artificial nerve routing, and can be compelled not to reveal a certain item of information, remain within a set area, or perform a specific task. If the subject attempts—or is forced—to counter this compulsion, their brain shuts down into unconsciousness, or even death for some severe volitor patterns.'
   weight: 0
   equipped: false
 img: 'systems/dark-heresy-2nd/icons/gen/cybernetics/volitor-implant.webp'
@@ -528,7 +528,7 @@ data:
         rightLeg: 0
     availability: 'Very Rare'
     craftsmanship: Common
-    description: 'A mechadendrite fitted with injector needles, clamps and surgical instruments, allowing its bearer to treat wounds and administer drugs without occupying his hands.'
+    description: 'A mechadendrite fitted with injector needles, clamps and surgical instruments, allowing its bearer to treat wounds and administer drugs without occupying their hands.'
     equipped: false
     weight: 0
 img: 'systems/dark-heresy-2nd/icons/gen/cybernetics/medicae-mechadendrite.webp'
@@ -562,7 +562,7 @@ data:
         rightLeg: 0
     availability: 'Very Rare'
     craftsmanship: Common
-    description: 'A mechadendrite mounting a pistol-class weapon on an articulated arm, able to fire independently of its bearer while his own hands remain occupied.'
+    description: 'A mechadendrite mounting a pistol-class weapon on an articulated arm, able to fire independently of its bearer while their own hands remain occupied.'
     equipped: false
     weight: 0
 img: 'systems/dark-heresy-2nd/icons/gen/cybernetics/ballistic-mechadendrite.webp'

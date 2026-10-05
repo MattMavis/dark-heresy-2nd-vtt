@@ -10,7 +10,7 @@ type: drug
 data:
   availability: Scarce
   craftsmanship: Common
-  description: 'A dose of lasts 1d10 rounds, and the user immediately suffers 1 Fatigue as his body spins wildly. A character under the effects of the drug can take advantage of the skewed perspective this gives him: once during this time, he may invert the result of any 1d100 roll, exchanging the tens digit for the ones digit (turning a 73 into a 37 or a 91 into a 19, etc.).'
+  description: 'A dose of lasts 1d10 rounds, and the user immediately suffers 1 Fatigue as their body spins wildly. A character under the effects of the drug can take advantage of the skewed perspective this gives them: once during this time, they may invert the result of any 1d100 roll, exchanging the tens digit for the ones digit (turning a 73 into a 37 or a 91 into a 19, etc.).'
   weight: 0
 img: 'systems/dark-heresy-2nd/icons/gen/consumables/desoleum-fungus.webp'
 name: Desoleum Fungus
@@ -19,7 +19,7 @@ type: drug
 data:
   availability: Rare
   craftsmanship: Common
-  description: 'A dose immediately ends the effects, both positive and negative, for any chemicals the subject has inhaled, ingested, or injected, unless the item specifically states de-tox cannot work against it. Its use is extremely unpleasant, however, with common side-effects so extreme (excessive vomiting and diarrhoea being the mildest) that many would rather abide their current woes. Upon taking this drug, a character is Stunned for a number of rounds equal to 1d10 minus his Toughness bonus. A result of 0 or less means that the character suffers no ill effects.'
+  description: 'A dose immediately ends the effects, both positive and negative, for any chemicals the subject has inhaled, ingested, or injected, unless the item specifically states de-tox cannot work against it. Its use is extremely unpleasant, however, with common side-effects so extreme (excessive vomiting and diarrhoea being the mildest) that many would rather abide their current woes. Upon taking this drug, a character is Stunned for a number of rounds equal to 1d10 minus their Toughness bonus. A result of 0 or less means that the character suffers no ill effects.'
   weight: 0
 img: 'systems/dark-heresy-2nd/icons/gen/consumables/de-tox.webp'
 name: De-Tox
@@ -91,7 +91,7 @@ type: drug
 data:
   availability: Rare
   craftsmanship: Common
-  description: 'If a character without any psy rating takes a dose of this drug, he must successfully make a Challenging (+0) Willpower test or gain 1d5 Insanity points due to his mind being filled with terrifying visions of the Warp. If he succeeds, the user gains a psychic power from Table 5–16: Spook Effects (see descriptions in Chapter VI: Psychic Powers). The power lasts for 1d5 hours, and the user makes all Focus Power tests during this time as if he had a psy rating of 1. If a character with a psy rating of 1 or more uses spook, he must make a Challenging (+0) Willpower test. If he fails, he gain 1 Insanity Point and the drug has no further effects. If he passes, he adds 1 to his psy rating for the next hour. However, add +25 to rolls he makes on Table 6–2: Psychic Phenomena (see page 196).'
+  description: 'If a character without any psy rating takes a dose of this drug, they must successfully make a Challenging (+0) Willpower test or gain 1d5 Insanity points due to their mind being filled with terrifying visions of the Warp. If they succeed, the user gains a psychic power from Table 5–16: Spook Effects (see descriptions in Chapter VI: Psychic Powers). The power lasts for 1d5 hours, and the user makes all Focus Power tests during this time as if they had a psy rating of 1. If a character with a psy rating of 1 or more uses spook, they must make a Challenging (+0) Willpower test. If they fail, they gain 1 Insanity Point and the drug has no further effects. If they pass, they add 1 to their psy rating for the next hour. However, add +25 to rolls they make on Table 6–2: Psychic Phenomena (see page 196).'
   weight: 0
 img: 'systems/dark-heresy-2nd/icons/gen/consumables/spook.webp'
 name: Spook
@@ -100,7 +100,7 @@ type: drug
 data:
   availability: Average
   craftsmanship: Common
-  description: 'A dose of stimm is enough to energise the weary and mask pain with short-term vitality, often enough to finally bring a protracted combat to a successful conclusion. Each dose lasts for 3d10 rounds. During this time, a character ignores any negative effects to his characteristics from damage, Critical damage, and Fatigue, and cannot be Stunned. When the stimm wears off, the character suffers a –20 penalty to Strength, Toughness, and Agility tests for one hour and gains one level of Fatigue. Stimm is Addictive.'
+  description: 'A dose of stimm is enough to energise the weary and mask pain with short-term vitality, often enough to finally bring a protracted combat to a successful conclusion. Each dose lasts for 3d10 rounds. During this time, a character ignores any negative effects to their characteristics from damage, Critical damage, and Fatigue, and cannot be Stunned. When the stimm wears off, the character suffers a –20 penalty to Strength, Toughness, and Agility tests for one hour and gains one level of Fatigue. Stimm is Addictive.'
   weight: 0
 img: 'systems/dark-heresy-2nd/icons/gen/consumables/stimm.webp'
 name: Stimm

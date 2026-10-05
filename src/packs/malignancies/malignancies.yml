@@ -1,7 +1,7 @@
 data:
     description: >-
         The character suffers from numerous minor tics, shakes, and tremors with
-        no medical cause. Reduce his Agility by 1d10.
+        no medical cause. Reduce their Agility by 1d10.
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/palsy.webp'
 name: Palsy
@@ -10,7 +10,7 @@ type: malignancy
 data:
     description: >-
         The character grows increasingly cruel, callous, and vindictive. Reduce
-        his Fellowship by 1d10.
+        their Fellowship by 1d10.
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/dark-hearted.webp'
 name: Dark-hearted
@@ -29,7 +29,7 @@ type: malignancy
 data:
     description: >-
         The character is plagued by boils, scabs, weeping sores and other
-        disgusting features across his body. He suffers a -20 penalty to all
+        disgusting features across their body. They suffer a -20 penalty to all
         Charm tests.
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/skin-afflictions.webp'
@@ -38,8 +38,8 @@ type: malignancy
 ---
 data:
     description: >-
-        Light pains the character, echoing the growing stain on his soul. Unless
-        he shields his eyes, he suffers a -20 penalty on all tests made in an
+        Light pains the character, echoing the growing stain on their soul. Unless
+        they shield their eyes, they suffer a -20 penalty on all tests made in an
         area of bright light.
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/night-eyes.webp'
@@ -48,9 +48,9 @@ type: malignancy
 ---
 data:
     description: >-
-        The character finds it hard to concentrate as his mind turns
-        increasingly macabre and he becomes prone to tortured, gloom-filled
-        trains of thought. Reduce his Intelligence by 1d10.
+        The character finds it hard to concentrate as their mind turns
+        increasingly macabre and they become prone to tortured, gloom-filled
+        trains of thought. Reduce their Intelligence by 1d10.
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/morbid.webp'
 name: Morbid
@@ -59,7 +59,7 @@ type: malignancy
 data:
     description: >-
         The character develops some minor physical deformity or easily
-        concealable mutation. It is small, but perhaps enough to bring him to
+        concealable mutation. It is small, but perhaps enough to bring them to
         death if found out by a fanatical witch hunter.
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/witch-mark.webp'
@@ -81,8 +81,8 @@ data:
     description: >-
         The character feels sick at the sight, sound, or smell of something
         otherwise innocuous (such as holy items, bare flesh, human laughter,
-        fresh food, etc.). When he encounters an object of his revulsion he must
-        make a Toughness test or suffer a -10 penalty to all tests as long as he
+        fresh food, etc.). When they encounter an object of their revulsion they must
+        make a Toughness test or suffer a -10 penalty to all tests as long as they
         remains in its presence.
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/irrational-nausea.webp'
@@ -91,8 +91,8 @@ type: malignancy
 ---
 data:
     description: >-
-        The character's pallor becomes corpse-like and his muscles waste away.
-        Reduce his Strength by 1d10.
+        The character's pallor becomes corpse-like and their muscles waste away.
+        Reduce their Strength by 1d10.
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/wasted-frame.webp'
 name: Wasted Frame
@@ -100,7 +100,7 @@ type: malignancy
 ---
 data:
     description: >-
-        The character is plagued by daemonic visions in his sleep. This
+        The character is plagued by daemonic visions in their sleep. This
         functions identically to the Horrific Nightmares Disorder on page 289.
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/night-terrors.webp'
@@ -110,7 +110,7 @@ type: malignancy
 data:
     description: >-
         The character constantly suffers petty illnesses and phantom pains, and
-        his wounds never seem to fully heal. Reduce the character's Toughness by
+        their wounds never seem to fully heal. Reduce the character's Toughness by
         1d10.
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/poor-health.webp'
@@ -119,8 +119,8 @@ type: malignancy
 ---
 data:
     description: >-
-        The character cannot conceal the distrust and antipathy he has for
-        others. He suffers a -10 penalty to Fellowship tests when dealing with
+        The character cannot conceal the distrust and antipathy they have for
+        others. They suffer a -10 penalty to Fellowship tests when dealing with
         strangers.
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/distrustful.webp'
@@ -139,8 +139,8 @@ type: malignancy
 data:
     description: >-
         Food and drink taste foul and provide little sustenance to the
-        character, and he can barely stomach eating. Recovering from Fatigue
-        takes twice as long for him than normal (see page 233).
+        character, and they can barely stomach eating. Recovering from Fatigue
+        takes twice as long for them than normal (see page 233).
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/ashen-taste.webp'
 name: Ashen Taste
@@ -149,9 +149,9 @@ type: malignancy
 data:
     description: >-
         Murderous rage is never far from the character's mind. After suffering
-        damage (after Armour and Toughness bonus) in combat, he must succeed at
-        a Willpower test to allow his enemies to flee, be captured, or
-        incapacitated, rather than killing them outright, even if his intent is
+        damage (after Armour and Toughness bonus) in combat, they must succeed at
+        a Willpower test to allow their enemies to flee, be captured, or
+        incapacitated, rather than killing them outright, even if their intent is
         otherwise.
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/bloodlust.webp'
@@ -162,7 +162,7 @@ data:
     description: >-
         The character suffers from inexplicable blackouts. When they occur and
         what happens during them is up to the Game Master, who should inform the
-        player of the details of what (if anything) he remembers on awakening.
+        player of the details of what (if anything) they remember on awakening.
     source: PG 290 CB
 img: 'systems/dark-heresy-2nd/icons/gen/malignancies/blackouts.webp'
 name: Blackouts

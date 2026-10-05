@@ -24,10 +24,10 @@ type: talent
 data:
     aptitudes: Agility, Defence
     benefit: After an enemy makes a successful attack against an ally, the character
-        may use a Reaction to move up to his Half Move distance in order to interpose
-        himself between the attacker and target. The attack is then resolved against the
+        may use a Reaction to move up to their Half Move distance in order to interpose
+        themselves between the attacker and target. The attack is then resolved against the
         character instead of the originaltarget. In the case of a melee attack, the character
-        may also attempt to Parry the attack as part of his Reaction.
+        may also attempt to Parry the attack as part of their Reaction.
     cost: 0
     prerequisites: 'Ag 35'
     source: PG 60 EB
@@ -39,7 +39,7 @@ type: talent
 data:
     aptitudes: Agility, Fieldcraft
     benefit: Reduces the effective distance of all falls by a number of metres equal
-        to his Agility bonus. Also adds +20 to his Acrobatics skill tests when using Jump
+        to their Agility bonus. Also adds +20 to their Acrobatics skill tests when using Jump
     cost: 0
     prerequisites: 'Ag 30'
     source: PG 124 CB
@@ -54,7 +54,7 @@ type: talent
 ---
 data:
     aptitudes: General, Social
-    benefit: Once per day, he can re-roll a test made to gather information from a group
+    benefit: Once per day, they can re-roll a test made to gather information from a group
         of people.
     cost: 0
     prerequisites: 'Fel 30'
@@ -129,7 +129,7 @@ type: talent
 ---
 data:
     aptitudes: Willpower, Tech
-    benefit: Can summon larger metallic objects up to 2 kilograms per point of his Willpower
+    benefit: Can summon larger metallic objects up to 2 kilograms per point of their Willpower
         bonus, and can summon such objects up to 40 metres.
     cost: 0
     prerequisites: 'Ferric Lure Implants, Mechanicus Implants'
@@ -155,7 +155,7 @@ data:
     benefit: May spend one full round to enter Frenzy gaining +10 bonus to Weapon Skill,
         Strength, Toughness, and Willpower, but suffering a 20 penalty to Ballistic Skill,
         Intelligence, and Fellowship and is immune to Fear, Pinning, Stunning effects,
-        and the effects of Fatigue; he cannot Parry, retreat, or flee. He remains Frenzied
+        and the effects of Fatigue; they cannot Parry, retreat, or flee. They remain Frenzied
         for the duration of the combat, and cannot  use psychic powers while Frenzied.
         After combat ends can make a Willpower test to snap out and cannot Frenzy again
         for at least an hour.
@@ -170,8 +170,8 @@ type: talent
 data:
     aptitudes: Ballistic Skill, Finesse
     benefit: When the character misses with a thrown weapon or weapon with the Blast
-        quality, he may reduce the distance it scatters by a number of metres up to half
-        his BS bonus
+        quality, they may reduce the distance it scatters by a number of metres up to half
+        their BS bonus
     cost: 0
     prerequisites: 'BS 35'
     source: PG 62 EO
@@ -230,8 +230,8 @@ type: talent
 ---
 data:
     aptitudes: Agility, Defence
-    benefit: When he would make an Agility test to avoid attacks from weapons with the
-        Spray quality, he may make the test using his Dodge (Ag) skill instead.
+    benefit: When they would make an Agility test to avoid attacks from weapons with the
+        Spray quality, they may make the test using their Dodge (Ag) skill instead.
     cost: 0
     prerequisites: 'Ag 35, Rank 2 in Dodge skill'
     source: PG 63 EO
@@ -266,8 +266,8 @@ type: talent
 data:
     aptitudes: Fellowship, Social
     benefit: Character has good reputation amongst chosen group with bonus to Fellowship
-        tests increases to +10 times X. Additionally, when the character acquires his
-        talent, also increases his Influence by 1.
+        tests increases to +10 times X. Additionally, when the character acquires their
+        talent, also increases their Influence by 1.
     cost: 0
     prerequisites: 'Fel 30'
     source: PG 130 CB
@@ -329,9 +329,9 @@ type: talent
 ---
 data:
     aptitudes: Agility, Fieldcraft
-    benefit: Whenever the character would be thrown from or tossed about within his
-        vehicle, he makes an Ordinary (+10) Agility test. If he succeeds, the character
-        may choose to either land safely on his feet or retain in his original position
+    benefit: Whenever the character would be thrown from or tossed about within their
+        vehicle, they make an Ordinary (+10) Agility test. If they succeed, the character
+        may choose to either land safely on their feet or retain in their original position
         in the vehicle. In addition, once per round the character can attempt an Ordinary
         (+10) Agility test to Mount or Dismount a vehicle as a Free Action.
     cost: 0
@@ -416,7 +416,7 @@ type: talent
 data:
     aptitudes: Perception, Social
     benefit: The character reduces any penalty to Interaction skill tests for dealing
-        with xenos or non-Imperial NPCs by 20. In addition, once per encounter, he can
+        with xenos or non-Imperial NPCs by 20. In addition, once per encounter, they can
         reroll a failed Interaction skill test when interacting with such an NPC.
     cost: 0
     prerequisites: 'Fel 35, Int 35'
@@ -440,7 +440,7 @@ type: talent
 ---
 data:
     aptitudes: Intelligence, Tech
-    benefit: The character gains an extra amount of Armour points equal to his Intelligence bonus, which he can distribute to any locations that his armour would normally cover, as long as he has at least an hour each day to clean and repair it or make minor modifications. This bonus applies only to armour when the Acolyte is wearing it, as it combines his training with his skill at armoury.
+    benefit: The character gains an extra amount of Armour points equal to their Intelligence bonus, which they can distribute to any locations that their armour would normally cover, as long as they have at least an hour each day to clean and repair it or make minor modifications. This bonus applies only to armour when the Acolyte is wearing it, as it combines their training with their skill at armoury.
     cost: 0
     prerequisites: 'Int 35, Tech-Use, Trade (Armourer)'
     source: PG 123 CB
@@ -463,7 +463,7 @@ type: talent
 ---
 data:
     aptitudes: Strength, Offence
-    benefit: Remove bracing requirement from Heavy weapons, and +20 to his Athletics
+    benefit: Remove bracing requirement from Heavy weapons, and +20 to their Athletics
         skill test when using Heft.
     cost: 0
     prerequisites: 'S 45'
@@ -576,7 +576,7 @@ type: talent
 data:
     aptitudes: Offence, Willpower
     benefit: May re-roll failed Awareness and Psyniscience Tests to detect the presence
-        of Daemons. In addition, his attacks against Daemons gain the Proven (3) quality.
+        of Daemons. In addition, their attacks against Daemons gain the Proven (3) quality.
     cost: 0
     prerequisites: 'Forbidden Lore (Daemonology), WP 40'
     source: PG 60 EB
@@ -588,7 +588,7 @@ type: talent
 data:
     aptitudes: Psyker, Willpower
     benefit: When the character takes the Focus Power action and the target of the psychic
-        power is a Daemon, he gains a +10 bonus to the Focus Power test. At the GMs discretion,
+        power is a Daemon, they gain a +10 bonus to the Focus Power test. At the GMs discretion,
         this bonus may apply to other tests, such as rituals to summon or bind a Daemon.
     cost: 0
     prerequisites: 'Psy rating 3, WP 45, Forbidden Lore (Daemonology)'
@@ -659,7 +659,7 @@ data:
     aptitudes: Ballistic Skill/Weapon Skill, Knowledge
     benefit: When using the Called Shot action with a melee or ranged attack (depending
         on the Specialisation) against a target for which the character has the appropriate
-        Forbidden Lore (Xenos) skill, he makes a Medicae (WS) or Medicae (BS) test in
+        Forbidden Lore (Xenos) skill, they make a Medicae (WS) or Medicae (BS) test in
         place of the normal Weapon Skill or Ballistic Skill test.
     cost: 0
     prerequisites: 'BS or WS 40, Forbidden Lore (Xenos - Any), Rank 2 in Medicae skill'
@@ -671,7 +671,7 @@ type: talent
 ---
 data:
     aptitudes: Agility, Defence
-    benefit: -20 to hit character when he Charges or Runs.
+    benefit: -20 to hit character when they Charge or Runs.
     cost: 0
     prerequisites: 'Ag 40'
     source: PG 128 CB
@@ -682,7 +682,7 @@ type: talent
 ---
 data:
     aptitudes: Defence, Willpower
-    benefit: Whenever the character would gain Corruption points, he may reduce the
+    benefit: Whenever the character would gain Corruption points, they may reduce the
         amount gained by half (rounded up) and gain Insanity points equal to the amount
         reduced.
     cost: 0
@@ -725,7 +725,7 @@ type: talent
 ---
 data:
     aptitudes: Ballistic Skill, Finesse
-    benefit: As a Full Action, can both move up to his Full Move rate and make a single
+    benefit: As a Full Action, can both move up to their Full Move rate and make a single
         shot attack with a ranged weapon per weapon.
     cost: 0
     prerequisites: 'BS 40, Ag 40'
@@ -737,10 +737,10 @@ type: talent
 ---
 data:
     aptitudes: Agility, Tech
-    benefit: On an succesful Operate test, he may voluntarily suffer 1 level of Fatigue
-        to add a number of DoS equal to half of his Agility bonus. When failed an Operate
-        test, he may voluntarily suffer 1 level of Fatigue in order to reduce the degrees
-        of failure by an amount equal to his Agility bonus, to a minimum of 1.
+    benefit: On an succesful Operate test, they may voluntarily suffer 1 level of Fatigue
+        to add a number of DoS equal to half of their Agility bonus. When failed an Operate
+        test, they may voluntarily suffer 1 level of Fatigue in order to reduce the degrees
+        of failure by an amount equal to their Agility bonus, to a minimum of 1.
     cost: 0
     prerequisites: 'Rank 2 in Survival or any Operate skill, Ag 35'
     source: PG 62 EO
@@ -811,7 +811,7 @@ type: talent
 ---
 data:
     aptitudes: Intelligence, Knowledge
-    benefit: The character can attempt any Linguistics skill in which he is not trained
+    benefit: The character can attempt any Linguistics skill in which they are not trained
         as an untrained skill test as if it were not a Specialist skill.
     cost: 0
     prerequisites: 'Rank 3 in Linguistics (Any)'
@@ -823,7 +823,7 @@ type: talent
 ---
 data:
     aptitudes: Weapon Skill, Tech
-    benefit: Counts as a melee weapon that inflicts 1d10 plus his WPB in Energy damage,
+    benefit: Counts as a melee weapon that inflicts 1d10 plus their WPB in Energy damage,
         with Pen 0 and the Shocking quality. Must pass a Toughness test or suffer 1 level
         of Fatigue after attack.
     cost: 0
@@ -836,8 +836,8 @@ type: talent
 ---
 data:
     aptitudes: Intelligence, Tech
-    benefit: Can hover for a number of minutes equal to 1d10 plus twice his Toughness
-        bonus. He can move his Run speed when making a Half Move action and suffers no
+    benefit: Can hover for a number of minutes equal to 1d10 plus twice their Toughness
+        bonus. They can move their Run speed when making a Half Move action and suffers no
         damage from falling if the coils are active. Each use drains half the power stored
         in the coils (can use the coils twice before recharging them).
     cost: 0
@@ -873,7 +873,7 @@ type: talent
 data:
     aptitudes: Finesse, Weapon Skill
     benefit: When fighting a single enemy in melee combat, the character scores extra
-        degrees of success on successful Weapon Skill tests equal to half of his Weapon
+        degrees of success on successful Weapon Skill tests equal to half of their Weapon
         Skill bonus (rounded down).
     cost: 0
     prerequisites: 'WS 40'
@@ -935,7 +935,7 @@ type: talent
 data:
     aptitudes: Offence, Willpower
     benefit: Once per round as a Half Action, the character may speak the litanies and
-        invocations to disrupt Daemons. Until the beginning of his next turn, Daemons
+        invocations to disrupt Daemons. Until the beginning of their next turn, Daemons
         within a distance equal to twice the characters Willpower bonus in meters suffer
         a 10 penalty to Willpower tests.
     cost: 0
@@ -971,7 +971,7 @@ type: talent
 data:
     aptitudes: Knowledge, Psyker
     benefit: When making a Focus Power test, the character may gain a number of Corruption
-        points up to his psy rating. For each point he gains in this way, he gains a +10
+        points up to their psy rating. For each point they gain in this way, they gain a +10
         bonus but adds +5 to rolls on Table 6-2 Psychic Phenomena
     cost: 0
     prerequisites: ''
@@ -1014,7 +1014,7 @@ type: talent
 ---
 data:
     aptitudes: Willpower, Psyker
-    benefit: 'Spend Fate point to add 1d5 to psy rating however he adds +30 to rolls
+    benefit: 'Spend Fate point to add 1d5 to psy rating however they add +30 to rolls
         on Table 62: Psychic Phenomena'
     cost: 0
     prerequisites: 'Psy Rating, Strong Minded, WP 50'
@@ -1029,7 +1029,7 @@ data:
     benefit: As a Half Action, may make one Standard Attack action with a melee weapon
         against a foe, plus one additional Standard Attack action with the same weapon
         targeting each other foe also engaged in melee combat with the character beyond
-        the first (to a maximum number of attacks up to his Weapon Skill bonus).
+        the first (to a maximum number of attacks up to their Weapon Skill bonus).
     cost: 0
     prerequisites: 'WS 40'
     source: PG 133 CB
@@ -1041,7 +1041,7 @@ type: talent
 data:
     aptitudes: Knowledge, Perception
     benefit: Counts as possessing the Psyniscience skill at Rank 1 (Known), even though
-        he is not a psyker.
+        they are not a psyker.
     cost: 0
     prerequisites: ''
     source: PG 58 EI
@@ -1052,7 +1052,7 @@ type: talent
 ---
 data:
     aptitudes: Intelligence, Knowledge
-    benefit: The character can attempt any Forbidden Lore (Xenos) test in which he is
+    benefit: The character can attempt any Forbidden Lore (Xenos) test in which they are
         not trained as an untrained skill test as if it were not a Specialist skill.
     cost: 0
     prerequisites: 'Rank 3 in Forbidden Lore (Xenos - Any)'
@@ -1064,8 +1064,8 @@ type: talent
 ---
 data:
     aptitudes: Willpower, Defence
-    benefit: Subtract Willpower bonus from his degrees of failure on a failed Fear or
-        Pinning test. If this reduces the result to zero or less, he counts as having
+    benefit: Subtract Willpower bonus from their degrees of failure on a failed Fear or
+        Pinning test. If this reduces the result to zero or less, they count as having
         passed the Fear test with 1 degree of success.
     cost: 0
     prerequisites: 'Jaded, Resistance (Fear), WP 45'
@@ -1101,7 +1101,7 @@ type: talent
 ---
 data:
     aptitudes: Willpower, Psyker
-    benefit: Adds 5 x his psy rating to any Opposed test when defending against psychic
+    benefit: Adds 5 x their psy rating to any Opposed test when defending against psychic
         powers.
     cost: 0
     prerequisites: 'Psy Rating, Strong Minded, WP 40'
@@ -1150,8 +1150,8 @@ type: talent
 data:
     aptitudes: Toughness, Willpower
     benefit: When the character would test to gain a mutation as a result of increasing
-        Corruption, he may choose to automatically pass the test. If he does, he also
-        gains a Malignancy and increases his Corruption total by 1d10.
+        Corruption, they may choose to automatically pass the test. If they do, they also
+        gains a Malignancy and increases their Corruption total by 1d10.
     cost: 0
     prerequisites: 'Hardened Soul, 20 Corruption points'
     source: PG 60 EB
@@ -1162,7 +1162,7 @@ type: talent
 ---
 data:
     aptitudes: Defence, Willpower
-    benefit: Whenever the character would gain Corruption points, he may reduce the
+    benefit: Whenever the character would gain Corruption points, they may reduce the
         amount gained by half (rounded up) and gain Insanity points equal to the amount
         reduced.
     cost: 0
@@ -1175,7 +1175,7 @@ type: talent
 ---
 data:
     aptitudes: Perception, Finesse
-    benefit: 'The Acolyte can place his hits where they inflict maximum harm, such as gaps or joints in armour. When this talent is taken, the character selects the Specialisation that matches the prerequisite used in purchase (Melee with Weapon Skill, Ranged with Ballistic Skill). When the character’s attack in that combat type inflicts Critical damage, he adds his Perception bonus to the damage result.'
+    benefit: 'The Acolyte can place their hits where they inflict maximum harm, such as gaps or joints in armour. When this talent is taken, the character selects the Specialisation that matches the prerequisite used in purchase (Melee with Weapon Skill, Ranged with Ballistic Skill). When the character’s attack in that combat type inflicts Critical damage, they add their Perception bonus to the damage result.'
     cost: 0
     prerequisites: 'BS 45 or WS 45'
     source: PG 125 CB
@@ -1254,8 +1254,8 @@ type: talent
 ---
 data:
     aptitudes: Strength, Offence
-    benefit: When he uses an All Out Attack action to make a single attack, he can add
-        half his Strength bonus (rounded up) to the weapons penetration. The attack also
+    benefit: When they use an All Out Attack action to make a single attack, they can add
+        half their Strength bonus (rounded up) to the weapons penetration. The attack also
         counts as having the Concussive (2) weapon quality.
     cost: 0
     prerequisites: 'Crushing Blow'
@@ -1268,8 +1268,8 @@ type: talent
 data:
     aptitudes: Agility, Fieldcraft
     benefit: When the character takes a vehicle combat action with the Movement subtype,
-        his vehicle or steed counts the value of its Size trait as being one lower for
-        purposes of attack modifiers and the benefits of cover until the start of his
+        their vehicle or steed counts the value of its Size trait as being one lower for
+        purposes of attack modifiers and the benefits of cover until the start of their
         next turn.
     cost: 0
     prerequisites: 'Rank 2 in Survival or any Operate skill'
@@ -1306,8 +1306,8 @@ data:
     aptitudes: Offence, Willpower
     benefit: After making a successful attack against a Daemon (this can include striking
         it with a psychic power), the character may spend a Fate point to increase the
-        damage of the first hit he inflicts as part of that attack by an amount equal
-        to twice his Willpower bonus. This additional damage ignores armour and Toughness
+        damage of the first hit they inflict as part of that attack by an amount equal
+        to twice their Willpower bonus. This additional damage ignores armour and Toughness
         bonus.
     cost: 0
     prerequisites: 'WP 50'
@@ -1353,7 +1353,7 @@ type: talent
 data:
     aptitudes: Ballistic Skill, Tech
     benefit: Counts as being equipped with a single shot Pistol weapon with a 10m range
-        and deals 1d10 plus twice his Willpower bonus in Energy damage. Must pass a Toughness
+        and deals 1d10 plus twice their Willpower bonus in Energy damage. Must pass a Toughness
         test or suffer 1 level of Fatigue after attack.
     cost: 0
     prerequisites: 'Luminen Shock, Luminen Capacitors, Mechanicus Implants'
@@ -1365,7 +1365,7 @@ type: talent
 ---
 data:
     aptitudes: Intelligence, Knowledge
-    benefit: May spend Fate point to succeed on test if the final modifier to his skill
+    benefit: May spend Fate point to succeed on test if the final modifier to their skill
         test is Challenging (+0) or better, score a number of degrees of success equal
         to the characteristic bonus.
     cost: 0
@@ -1413,8 +1413,8 @@ type: talent
 data:
     aptitudes: Perception, Tech
     benefit: 'Once per round, the character may add +20 to an Operate test  however,
-        if he fails the test by 4 or more degrees of failure, immediately roll 1d5 on
-        Table 732: Motive Systems Critical Hit effects and apply the result. If he is
+        if they fail the test by 4 or more degrees of failure, immediately roll 1d5 on
+        Table 732: Motive Systems Critical Hit effects and apply the result. If they are
         riding a living mount, roll 1d5 on Table 718: Impact Critical effects  Leg'
     cost: 0
     prerequisites: 'Rank 2 in Survival or any Operate skill, Tech-Use'
@@ -1427,7 +1427,7 @@ type: talent
 data:
     aptitudes: Psyker, Willpower
     benefit: When the character triggers Psychic Phenomena when manifesting a power
-        from the Sanctic Daemonology discipline, he may spend a Fate point in order to
+        from the Sanctic Daemonology discipline, they may spend a Fate point in order to
         negate the result entirely.
     cost: 0
     prerequisites: 'Daemonologist, Favoured by the Warp, WP 50'
@@ -1544,7 +1544,7 @@ data:
     benefit: Ignore Psychic Phenomenon once per session. Suers 1d5 Energy damage to
         the Head location (not reduced by Armour or Toughness) as a result, and cannot
         make any Focus Power tests or sustain other psychic powers until the beginning
-        of his next turn.
+        of their next turn.
     cost: 0
     prerequisites: 'Psy Rating, Strong Minded, WP 50'
     source: PG 133 CB
@@ -1567,8 +1567,8 @@ type: talent
 ---
 data:
     aptitudes: Intelligence, Social
-    benefit: The character may spend a Fate point to increase or decrease his
-        warband's Subtlety value by 1d10 + his Willpower bonus at any time.
+    benefit: The character may spend a Fate point to increase or decrease their
+        warband's Subtlety value by 1d10 + their Willpower bonus at any time.
     cost: 0
     prerequisites: 'Per 45'
     source: PG 88 CB
@@ -1580,7 +1580,7 @@ type: talent
 data:
     aptitudes: Knowledge, Willpower
     benefit: When this talent is acquired, the character immediately increases
-        his Fate threshold by one.
+        their Fate threshold by one.
     cost: 0
     prerequisites: 'Inspired Intuition, Shield of Contempt, Strength Through Conviction'
     source: PG 88 CB
@@ -1592,7 +1592,7 @@ type: talent
 data:
     aptitudes: Perception, Social
     benefit: The character may spend a Fate point to gain exceptional insight
-        into his immediate status. This is represented by the player asking
+        into their immediate status. This is represented by the player asking
         the GM a question about the current situation the character faces,
         which the GM should answer as helpfully as possible.
     cost: 0
@@ -1645,7 +1645,7 @@ type: talent
 data:
     aptitudes: Defence, Toughness
     benefit: Whenever this character would gain any amount of Corruption points,
-        he may spend a Fate point to gain 0 instead.
+        they may spend a Fate point to gain 0 instead.
     cost: 0
     prerequisites: 'WP 50'
     source: PG 89 CB
@@ -1657,7 +1657,7 @@ type: talent
 data:
     aptitudes: Defence, Willpower
     benefit: Whenever this character would gain any amount of Insanity points,
-        he may spend a Fate point to gain 0 instead.
+        they may spend a Fate point to gain 0 instead.
     cost: 0
     prerequisites: 'WP 50'
     source: PG 89 CB
@@ -1718,7 +1718,7 @@ type: talent
 ---
 data:
     aptitudes: Defence, Willpower
-    benefit: The character gains the Deny the Witch talent. He also gains a
+    benefit: The character gains the Deny the Witch talent. They also gain a
         +20 bonus when making Evasion tests against psychic attacks and when
         making Opposed tests to resist psychic powers. This talent stacks with
         Resistance (Psychic Powers) and can be purchased multiple times; each
@@ -1787,9 +1787,9 @@ type: talent
 data:
     aptitudes: Leadership, Willpower
     benefit: Whenever this character burns Fate threshold to survive a mortal
-        blow, each other friendly character who witnesses her miraculous survival
+        blow, each other friendly character who witnesses their miraculous survival
         regains 1 spent Fate point. When this character dies in battle, each
-        other friendly character who witnesses her glorious demise regains
+        other friendly character who witnesses their glorious demise regains
         all spent Fate points.
     cost: 0
     prerequisites: 'Ceaseless Crusader, Shielding Faith'
@@ -1802,7 +1802,7 @@ type: talent
 data:
     aptitudes: Leadership, Willpower
     benefit: As a free action, this character may spend a Fate point to ignore
-        the effects of Fatigue until the end of the encounter. When she does
+        the effects of Fatigue until the end of the encounter. When they do
         so, each other friendly character within 30 metres removes 1 level
         of Fatigue.
     cost: 0
@@ -1816,7 +1816,7 @@ type: talent
 data:
     aptitudes: Willpower, Offence
     benefit: When attacking with a weapon with the Flame quality, this character
-        can re-roll any results lower than her Willpower bonus on damage rolls.
+        can re-roll any results lower than their Willpower bonus on damage rolls.
     cost: 0
     prerequisites: 'BS 40'
     source: PG 38 EI
@@ -1828,7 +1828,7 @@ type: talent
 data:
     aptitudes: Ballistic Skill, Offence
     benefit: The first time in each combat that this character inflicts Righteous
-        Fury upon an enemy, she regains 1 spent Fate point.
+        Fury upon an enemy, they regain 1 spent Fate point.
     cost: 0
     prerequisites: 'Cleanse with Fire, BS 45'
     source: PG 38 EI
@@ -1840,8 +1840,8 @@ type: talent
 data:
     aptitudes: Willpower, Offence
     benefit: As a Free Action, this character may spend a Fate point to increase
-        the penetration of her weapon by her Insanity bonus until the end of
-        her next turn.
+        the penetration of their weapon by their Insanity bonus until the end of
+        their next turn.
     cost: 0
     prerequisites: 'Insanity 25, Furious Zeal'
     source: PG 39 EI
@@ -1852,8 +1852,8 @@ type: talent
 ---
 data:
     aptitudes: Weapon Skill, Offence
-    benefit: This character adds her Insanity bonus to damage she inflicts
-        with melee attacks against targets included in one or more of her
+    benefit: This character adds their Insanity bonus to damage they inflict
+        with melee attacks against targets included in one or more of their
         Hatred talents.
     cost: 0
     prerequisites: 'Insanity 10, Hatred (Any One)'
@@ -1866,8 +1866,8 @@ type: talent
 data:
     aptitudes: Willpower, Defence
     benefit: As a free action, this character may spend a Fate point to gain
-        additional Armour points on all locations equal to her Insanity bonus
-        until the end of her next turn.
+        additional Armour points on all locations equal to their Insanity bonus
+        until the end of their next turn.
     cost: 0
     prerequisites: 'Insanity 20, Furious Zeal'
     source: PG 39 EI
@@ -1881,7 +1881,7 @@ data:
     benefit: When using the Deny the Witch talent to make an Evasion reaction
         against a psychic power, this character may spend a Fate point to
         automatically pass the test with a number of degrees of success equal
-        to her Willpower bonus. If she does so, the psyker must make a Fear
+        to their Willpower bonus. If they do so, the psyker must make a Fear
         test against a Fear rating of 1.
     cost: 0
     prerequisites: 'Deny the Witch'
@@ -1894,8 +1894,8 @@ type: talent
 data:
     aptitudes: Fellowship, Offence
     benefit: As a Free Action, this character may spend a Fate point and choose
-        a foe. Until the end of the encounter, she and each of her allies within
-        ten times her Willpower bonus in metres count as possessing the Hatred
+        a foe. Until the end of the encounter, they and each of their allies within
+        ten times their Willpower bonus in metres count as possessing the Hatred
         talent against that kind of enemy.
     cost: 0
     prerequisites: 'Fel 35, Spirit of the Martyr'
@@ -1909,10 +1909,10 @@ data:
     aptitudes: Willpower, Defence
     benefit: 'The Astropath may spend a Fate Point to ignore a result on Table
         6-2: Psychic Phenomena (see page 196 of the Dark Heresy Core Rulebook)
-        he has rolled (including a result of Perils of the Warp), completely
-        negating its effects. Doing so requires him to distance himself from
-        the Warp, and he cannot use the Focus Power action or sustain psychic
-        powers until the start of his next turn.'
+        they have rolled (including a result of Perils of the Warp), completely
+        negating its effects. Doing so requires them to distance themselves from
+        the Warp, and they cannot use the Focus Power action or sustain psychic
+        powers until the start of their next turn.'
     cost: 0
     prerequisites: 'Warp Lock'
     source: PG 36 EB
@@ -1925,8 +1925,8 @@ data:
     aptitudes: Fellowship
     benefit: Before making a Focus Power test to manifest a power from the
         Telepathy discipline or the Astropath elite advance, the Astropath
-        may spend a Fate point to increase his psy rating by an amount equal
-        to half his Willpower bonus (rounded down) for that test.
+        may spend a Fate point to increase their psy rating by an amount equal
+        to half their Willpower bonus (rounded down) for that test.
     cost: 0
     prerequisites: 'Fel 40, WP 50'
     source: PG 36 EB
@@ -1938,7 +1938,7 @@ type: talent
 data:
     aptitudes: Perception, Willpower
     benefit: The value of the Astropath's Unnatural Senses trait increases
-        to twice his Willpower characteristic.
+        to twice their Willpower characteristic.
     cost: 0
     prerequisites: 'Per 35'
     source: PG 36 EB
@@ -1949,7 +1949,7 @@ type: talent
 ---
 data:
     aptitudes: Defence, Willpower
-    benefit: 'The Astropath may re-roll Willpower tests he must make due to
+    benefit: 'The Astropath may re-roll Willpower tests they must make due to
         results on Table 6-2: Psychic Phenomena or Table 6-3: Perils of the
         Warp (see pages 196 and 197 of the Dark Heresy Core Rulebook), tests
         to avoid gaining mutations, and tests to resist daemonic possession.'
@@ -1963,7 +1963,7 @@ type: talent
 ---
 data:
     aptitudes: Perception, Psyker
-    benefit: The Astropath may use his Psyniscience skill in place of his
+    benefit: The Astropath may use their Psyniscience skill in place of their
         Awareness skill for Awareness tests.
     cost: 0
     prerequisites: 'Warp Sense'

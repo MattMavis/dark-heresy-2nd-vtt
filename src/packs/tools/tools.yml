@@ -2,7 +2,7 @@ data:
     availability: Extremely Rare
     craftsmanship: Common
     description: Place it onto the alien computer, lock, or other interface device that
-        he wishes to crack, and make a Hard (20) Security (Int) test. If successful, the
+        they wish to crack, and make a Hard (20) Security (Int) test. If successful, the
         engine accesses the alien device, and treats it like any other electronic lock
         for the purposes of additional tests. An Adaptive Logis-Engine takes 5 minutes
         to access a basic alien system, less 30 seconds for each degree of success on
@@ -379,7 +379,7 @@ data:
     description: Dampen the powers of any psykers within 2d10 metres, causing them to
         take all tests to use any of their psychic powers with a 30 penalty. Also offer
         protection from psychic attacks by a +30 bonus to resist any psychic power that
-        directly affects him.
+        directly affects them.
     weight: 1
 img: 'systems/dark-heresy-2nd/icons/gen/tools/null-rod.webp'
 name: Null Rod

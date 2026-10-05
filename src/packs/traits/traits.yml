@@ -160,7 +160,7 @@ type: trait
 data:
     description: 'Bound to a particular group or creatures in exchange for certain benefits.
         Upon becoming soul-bound, the psyker must choose one of the following effects: 3d10
-        Insanity points, the permanent loss of his sight, permanent loss of 1d10 points
+        Insanity points, the permanent loss of their sight, permanent loss of 1d10 points
         from one characteristic, or a random mutation.'
     level: 0
 img: 'systems/dark-heresy-2nd/icons/gen/traits/soul-bound.webp'
@@ -209,8 +209,8 @@ type: trait
 data:
     description: 'Always has an associated rating (14). This is indicated by the number
         in parentheses (X). When a character encounters a creature with this trait, must
-        make a Willpower test with a penalty based on the creatures Fear rating. If he
-        succeeds, the character suffers no ill effects; if he fails, he must roll on Table
+        make a Willpower test with a penalty based on the creatures Fear rating. If they
+        succeeds, the character suffers no ill effects; if they fail, they must roll on Table
         8-11: Shock, adding +10 to the roll for every degree of failure on the test.'
     level: 0
 img: 'systems/dark-heresy-2nd/icons/gen/traits/fear.webp'
@@ -250,7 +250,7 @@ type: trait
 ---
 data:
     description: Gain poisonous attack. When damaged must make a Toughness test at the
-        end of his turn with a penalty equal to 10 times the number in parentheses (X),
+        end of their turn with a penalty equal to 10 times the number in parentheses (X),
         or suffer 1d10 points of Energy damage not reduced by Armour or Toughness.
     level: 0
 img: 'systems/dark-heresy-2nd/icons/gen/traits/toxic.webp'
@@ -572,7 +572,7 @@ data:
     choice:
         list: ''
         selected: ''
-    description: 'The character releases a deafening screech in the mysterious language of the Mechanicum that causes technology to shut down or malfunction. He chooses a point in line of sight within 30 metres and, as a Half Action, makes an Ordinary (+10) Tech-Use test. On a success a Haywire Field is created, centred at that point with a radius equal to the character''s Intelligence bonus in metres, as if the location had been struck by a weapon with the Haywire quality.'
+    description: 'The character releases a deafening screech in the mysterious language of the Mechanicum that causes technology to shut down or malfunction. They choose a point in line of sight within 30 metres and, as a Half Action, makes an Ordinary (+10) Tech-Use test. On a success a Haywire Field is created, centred at that point with a radius equal to the character''s Intelligence bonus in metres, as if the location had been struck by a weapon with the Haywire quality.'
     level: 0
     source: 'DH2 - Adversaries'
 img: 'systems/dark-heresy-2nd/icons/gen/traits/binaric-screech.webp'
@@ -594,7 +594,7 @@ data:
     choice:
         list: ''
         selected: ''
-    description: 'This creature can use its illicit connections to acquire hard-to-find items for player characters. If a PC uses this, he gains a +10 bonus to his next Requisition test; if that test fails, the warband''s Subtlety decreases by 2d10.'
+    description: 'This creature can use its illicit connections to acquire hard-to-find items for player characters. If a PC uses this, they gain a +10 bonus to their next Requisition test; if that test fails, the warband''s Subtlety decreases by 2d10.'
     level: 0
     source: 'DH2 - Adversaries'
 img: 'systems/dark-heresy-2nd/icons/gen/traits/shady-deals.webp'

@@ -2,7 +2,7 @@ data:
     description: >-
         The character has an abiding fear and loathing of corpses and the dead,
         and can't stand to be around them for any length of time. Perhaps this
-        is because they sometimes refuse to stay dead, or have inhabited his
+        is because they sometimes refuse to stay dead, or have inhabited their
         flesh...
     source: PG 288 CB
 img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/fear-of-the-dead.webp'
@@ -21,8 +21,8 @@ type: mentalDisorder
 ---
 data:
     description: >-
-        A character compulsively steals small objects if he has the opportunity.
-        Often the character attaches no value to the items, he just feels the
+        A character compulsively steals small objects if they have the opportunity.
+        Often the character attaches no value to the items, they just feel the
         need to steal them.
     source: PG 288 CB
 img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/kleptomania.webp'
@@ -31,8 +31,8 @@ type: mentalDisorder
 ---
 data:
     description: >-
-        The character feels the need to scourge and whip his flesh on a regular
-        basis in order to purge away the sin of his actions through pain. This
+        The character feels the need to scourge and whip their flesh on a regular
+        basis in order to purge away the sin of their actions through pain. This
         may be tied to a particular event, such as killing or thinking impure
         thoughts.
     source: PG 288 CB
@@ -42,8 +42,8 @@ type: mentalDisorder
 ---
 data:
     description: >-
-        The character blames the limitations of his own body for his failures
-        and problems. He becomes increasingly obsessed with surgical
+        The character blames the limitations of their own body for their failures
+        and problems. They become increasingly obsessed with surgical
         modification and bionic replacement.
     source: PG 288 CB
 img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/the-flesh-is-weak.webp'
@@ -53,9 +53,9 @@ type: mentalDisorder
 data:
     description: >-
         The character hears the voice of an old, now long-dead, perhaps a fellow
-        Acolyte that he was unable to save or who sacrificed his life for the
-        character. At a Severe level he may even have visions of his friend, or
-        converse with him if his condition becomes Acute.
+        Acolyte that they were unable to save or who sacrificed their life for the
+        character. At a Severe level they may even have visions of their friend, or
+        converse with them if their condition becomes Acute.
     source: PG 289 CB
 img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/dead-acolyte.webp'
 name: Dead Acolyte
@@ -63,10 +63,10 @@ type: mentalDisorder
 ---
 data:
     description: >-
-        The character relives traumatic moments from his life, often harkening
+        The character relives traumatic moments from their life, often harkening
         back to a particularly vicious or harrowing battle with foul cultists.
         The length and vividness of these episodes varies according to the
-        seriousness of his condition.
+        seriousness of their condition.
     source: PG 289 CB
 img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/flashbacks.webp'
 name: Flashbacks
@@ -74,7 +74,7 @@ type: mentalDisorder
 ---
 data:
     description: >-
-        The character believes that he will never get severely injured, possibly
+        The character believes that they will never get severely injured, possibly
         through luck or divine providence. Such a character would have to pass a
         Willpower test to avoid taking a vastly superior force instead of
         exercising due caution.
@@ -85,7 +85,7 @@ type: mentalDisorder
 ---
 data:
     description: >-
-        The character believes that his choices are right and justified, no
+        The character believes that their choices are right and justified, no
         matter the cost. Such a character may callously and needlessly send
         allies to their deaths in the pursuit of a failing attack plan, even
         when the evidence for a change in tactics is necessary becomes
@@ -99,9 +99,9 @@ data:
     description: >-
         The character suffers from vivid and recurring nightmares, like
         imagining the outcome of a failed Gellar Field, or being vivisected by
-        masked men while paralysed and helpless. After any stressful day, he
+        masked men while paralysed and helpless. After any stressful day, they
         must pass a Willpower test in order to not succumb to the terrors while
-        asleep. If he fails, he suffers 1 level of Fatigue (see page 233) on the
+        asleep. If they fail, they suffer 1 level of Fatigue (see page 233) on the
         following day.
     source: PG 289 CB
 img: 'systems/dark-heresy-2nd/icons/gen/mental-disorders/horrific-nightmares.webp'

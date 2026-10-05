@@ -12,8 +12,8 @@ type: gear
 data:
     availability: Rare
     craftsmanship: Common
-    description: +20 Stealth. If wearer stationary during his turn, BS tests against him
-        suffer -30 until start of his next turn.
+    description: +20 Stealth. If wearer stationary during their turn, BS tests against them
+        suffer -30 until start of their next turn.
     source: PG 170 CB
     weight: 0.5
 img: 'systems/dark-heresy-2nd/icons/gen/gear/chameleoline-cloak.webp'
@@ -224,7 +224,7 @@ data:
         "owner" gains a +30 bonus to Tech-Use tests, added at the GM's discretion, especially
         when success might have terrible or perverse consequences. The Animus Skull counts as
         having a Willpower of 60, and can be ordered to grant this bonus on command via an
-        Opposed Hard (-20) Willpower test. If the owner fails this test, he gains 1 Corruption
+        Opposed Hard (-20) Willpower test. If the owner fails this test, they gain 1 Corruption
         point and suffers 1 point of Intelligence damage per degree of failure on the test. The
         skull delights in other actions that cause death and destruction, such as corrupting
         other machine spirits to its bidding, or abruptly deactivating life-support or engines
@@ -246,9 +246,9 @@ data:
         Profane Object. The desecrated remains of a holy relic from the shrine world of
         Ossuar. If a bone suitable for combat is used to attack, it counts as a power axe;
         the user does not need a Weapon Training talent to wield it without penalty and adds
-        twice his Corruption bonus to the damage inflicted. The owner gains the Enemy
+        twice their Corruption bonus to the damage inflicted. The owner gains the Enemy
         (Adeptus Ministorum) (5) talent, and members of that organisation (or others at the
-        GM's discretion) gain the Hatred talent when fighting him. Smaller bones could also
+        GM's discretion) gain the Hatred talent when fighting them. Smaller bones could also
         be used to aid in dark rites, daemonic summonings or bindings, or even act as
         protection against holy weapons and psychic attacks.
     source: PG 52 EI
@@ -265,7 +265,7 @@ data:
         are dipped in the fresh blood of the owner. Lighting the candles does not require
         fresh blood, though the user is encouraged to perform similar obscene rites when
         setting each aflame. A user who does this gains 1d10 Corruption points, and an
-        additional 1d10 points if he did not have Corruption prior to the candles' use. When
+        additional 1d10 points if they did not have Corruption prior to the candles' use. When
         all eight are lit, they grant a +30 bonus to any activities within 9 metres that draw
         upon the Warp for power, and creatures in that range with the Warp Instability trait
         lose this trait while they remain in the affected area. The candles can have other
@@ -287,7 +287,7 @@ data:
         calling for Psychic Phenomena, the event instead automatically triggers a roll on
         Table 6-3: Perils of the Warp (see page 197 of the Dark Heresy Core Rulebook);
         whoever is nearest the object counts as the triggering psyker, if needed. Each
-        character who witnesses the event gains a number of Corruption points equal to his
+        character who witnesses the event gains a number of Corruption points equal to their
         Fate threshold. The item seems to bring ill-favour to those following the Imperial
         Creed, perhaps depressing the number of Fate points available for those loyal to the
         Emperor, or twisting Fate point usage into results that inflict horrific outcomes.
@@ -304,14 +304,14 @@ data:
     craftsmanship: Common
     description: >-
         Profane Object. An ornate metallic cup covered with elaborate filigree, whose waters
-        are said to be the tears of redeemed heretics. He who dares to drink from the
+        are said to be the tears of redeemed heretics. They who dares to drink from the
         chalice must spend a Half Action to make a Very Hard (-30) Willpower test, followed
-        by a Challenging (+0) Corruption test. He removes an amount of damage equal to the
+        by a Challenging (+0) Corruption test. They remove an amount of damage equal to the
         sum of the degrees of success from these tests or can remove 1 point of Critical
         damage, but also gains 1 Corruption point for each point of any type of damage
-        removed. Otherwise, he is overcome by the unnatural liquids and gains 1 Corruption
+        removed. Otherwise, they are overcome by the unnatural liquids and gains 1 Corruption
         point for each degree of failure suffered from the two tests; on three or more
-        degrees of failure, he also triggers a roll on Table 6-2: Psychic Phenomena (see
+        degrees of failure, they also trigger a roll on Table 6-2: Psychic Phenomena (see
         page 196 of the Dark Heresy Core Rulebook) and adds ten times the degrees of failure
         to the result.
     source: PG 53 EI
@@ -327,9 +327,9 @@ data:
         Profane Object. An eight-sided icon of spiked metal resembling other marks of Chaos,
         with a fleshy, closed eye at its centre. The correct rituals required to open the
         eye require a Very Hard (-30) Forbidden Lore (Daemonology) test. For every degree of
-        success, the user gains 2 Corruption points; for every degree of failure, he gains 2
+        success, the user gains 2 Corruption points; for every degree of failure, they gain 2
         Insanity points. Once opened, raw Warp energies rush through the icon and through
-        its wielder for 1d10 rounds; any psychic power he manifests during that time counts
+        its wielder for 1d10 rounds; any psychic power they manifest during that time counts
         as being used at twice the effective psy rating. A power strengthened this way
         always generates Psychic Phenomena, with a bonus to the roll equal to twice the
         effective psy rating the psyker chose. Even unopened, the icon is a powerful item,
@@ -370,7 +370,7 @@ data:
         Weapon Skill tests. The Hammer itself counts as a Best craftsmanship power fist with
         the Concussive (3) and Tearing qualities. At the end of combat, each other friendly
         character within 8 metres suffers one level of Fatigue and the user suffers +1d5
-        Corruption points for each adversary he killed using the Hammer.
+        Corruption points for each adversary they killed using the Hammer.
     source: PG 54 EI
     weight: 0
 img: 'systems/dark-heresy-2nd/icons/gen/gear/hammer-of-saint-lucillius.webp'
@@ -396,7 +396,7 @@ data:
         Inquisitor Belenos' original text, and Acolytes need only Linguistics (High Gothic)
         to study it. Best clearly bears the marks of the daemonic—simply being near it sends
         strange whispers into the Acolytes' heads—and an Acolyte also gains 1 Insanity point
-        for each Corruption point he gains as a result of reading this version.
+        for each Corruption point they gain as a result of reading this version.
     source: PG 55 EI
     weight: 0
 img: 'systems/dark-heresy-2nd/icons/gen/gear/libris-maleficarum.webp'
@@ -413,9 +413,9 @@ data:
         even turn away from the box's user without first passing an Arduous (-40) Willpower
         test. Additionally, those that fail the test suffer an Addiction (see page 173 of the
         Dark Heresy Core Rulebook) to the music box, where the afflicted character gains 1d5
-        Insanity points each day he goes without hearing the music. GMs might want to inflict
+        Insanity points each day they go without hearing the music. GMs might want to inflict
         Insanity depending on the size of the enraptured crowds, or even have a user gain
-        Corruption points as each note takes something away from his soul.
+        Corruption points as each note takes something away from their soul.
     source: PG 56 EI
     weight: 0
 img: 'systems/dark-heresy-2nd/icons/gen/gear/madani-s-music-box.webp'
@@ -428,12 +428,12 @@ data:
     description: >-
         Profane Object. One of six busts of Juno's most powerful leaders, sculpted by the
         master artificer Vocram from hand-quarried Desoleum quartz. A character who owns one
-        of the Effigies may use it to cleanse the taint from his soul, but at the price of
-        his sanity. After staring with total concentration at the disturbing marble for at
-        least an hour, he can remove any number of Corruption points. For each point removed,
-        however, he suffers the same amount of Willpower damage, and gains twice that number
-        of Insanity points. After each use he must roll on Table 8-15: Malignancies; should
-        he gain a Malignancy he already possesses, he then gains an additional 1d10 Insanity
+        of the Effigies may use it to cleanse the taint from their soul, but at the price of
+        their sanity. After staring with total concentration at the disturbing marble for at
+        least an hour, they can remove any number of Corruption points. For each point removed,
+        however, they suffer the same amount of Willpower damage, and gains twice that number
+        of Insanity points. After each use they must roll on Table 8-15: Malignancies; should
+        they gain a Malignancy they already possess, they then gain an additional 1d10 Insanity
         points instead. The GM can also impose an Addiction to the statue; its ownership
         could become a source of jealous friction within the warband, or it could inflict
         horrific facial deformities if used to remove too much Corruption.
@@ -466,7 +466,7 @@ data:
         Before making a Focus Power test, a character possessing one of these scrolls
         may choose to burn a single one as a Free Action; this destroys that scroll.
         Should the user have to roll on Table 6-2: Psychic Phenomena as a result of the
-        subsequent Focus Power test, he may re-roll the result.
+        subsequent Focus Power test, they may re-roll the result.
     source: PG 47 EB
     weight: 1
 img: 'systems/dark-heresy-2nd/icons/gen/gear/consecrated-scrolls.webp'
@@ -478,9 +478,9 @@ data:
     craftsmanship: Common
     description: >-
         A brain mine must be attached to an enemy through a successful Grapple action
-        in melee combat. At the start of his turn for the following 3 rounds, the
-        target must make a Hard (20) Agility test. If successful, he can perform a Half
-        Action; otherwise he is unable to perform any actions, including Reactions,
+        in melee combat. At the start of their turn for the following 3 rounds, the
+        target must make a Hard (20) Agility test. If successful, they can perform a Half
+        Action; otherwise they are unable to perform any actions, including Reactions,
         that round. The mine deals 1d10+5 Rending damage that is not reduced by armour
         if forcibly removed, but after 3 rounds, it burns out and dislodges from the
         target.
@@ -497,7 +497,7 @@ data:
         As a Half Action, the wearer may make a Challenging (+0) Awareness test to
         detect psykers and characters with the Daemonic trait without the need for
         normal lighting until the end of the encounter. While these targets are
-        illuminated in this way, the wearer gains a +10 bonus to his Ballistic Skill
+        illuminated in this way, the wearer gains a +10 bonus to their Ballistic Skill
         tests against them. The psyocculum distorts standard vision, however, imposing
         a 20 penalty to all other sight-based tests made while it is used. It also
         cannot be used at the same time as another piece of headgear, such as a helmet,
@@ -571,10 +571,10 @@ data:
         user to locate and track people through the Warp, much like Flesh Hounds
         themselves. It grants a +30 bonus to any Navigate and Psyniscience tests, and
         Survival tests for the Tracking special use. Each time the character makes such
-        a test, he gains 1d5 Corruption points, plus 1 additional Corruption point per
-        degree of success on the test. The GM can have it turn on its wearer should he
-        use it too much, sending packs of Flesh Hounds after him, or even turning
-        inwards to devour his hand whole. In melee combat, the gauntlet acts as a sword
+        a test, they gain 1d5 Corruption points, plus 1 additional Corruption point per
+        degree of success on the test. The GM can have it turn on its wearer should they
+        use it too much, sending packs of Flesh Hounds after them, or even turning
+        inwards to devour their hand whole. In melee combat, the gauntlet acts as a sword
         and has the Tainted and Unwieldy weapon qualities.
     source: PG 48 EB
     weight: 0
@@ -611,7 +611,7 @@ data:
     description: >-
         Daemonic Remnant. The first Daemon Hammer created for the Conclave of
         Illyricum; a towering Herald of Khorne killed the Inquisitor who bore it into
-        its only battle and plucked it from his grasp. Changed fundamentally by the
+        its only battle and plucked it from their grasp. Changed fundamentally by the
         Herald's touch, Realitus is no longer just a weapon but a shifting conduit of
         unholy malice. Characters wielding Realitus could gain the Baneful Presence
         (X), Daemonic (X), Phase, and Warp Instability traits, where X equals the
@@ -684,11 +684,11 @@ data:
         ground in a golden energy field. The cube creates whatever soothing reality
         the user desires, and an Acolyte can use this to both remove Fatigue and heal
         from injury; each hour of use counts as 24 hours of complete rest. However,
-        when the character attempts to leave the illusory field he must make a
+        when the character attempts to leave the illusory field they must make a
         Willpower test, with a -10 penalty for each hour spent inside (-10 for 1 hour,
-        -20 for 2 hours, etc.). If he fails, he gains 1d5 Insanity Points for every
-        degree of failure. If he fails by 4 or more degrees, the Aetheric Cube
-        collapses with him still inside.
+        -20 for 2 hours, etc.). If they fail, they gain 1d5 Insanity Points for every
+        degree of failure. If they fail by 4 or more degrees, the Aetheric Cube
+        collapses with them still inside.
     source: PG 58 EO
     weight: 0
 img: 'systems/dark-heresy-2nd/icons/gen/gear/aetheric-cube.webp'
@@ -702,7 +702,7 @@ data:
         Xenos Relic. Small, roughly spherical crystalline items that allow
         instantaneous communication between one crystal and any other, regardless of
         distance, using only a vox-caster and a message. The difficulty lies in the
-        fact that every crystal acts as a receiver, so anyone who has his own can
+        fact that every crystal acts as a receiver, so anyone who has their own can
         listen to any message sent through the network. A single stone is not much of
         a threat on its own, but the potential doom the crystals represent for the
         sector is what makes them so dangerous, as the network is known to extend as
@@ -721,11 +721,11 @@ data:
         tissue. A leech can be applied to a character's skin, and requires roughly 5
         minutes to agonisingly make its way into a brain and spread its tendrils
         across neural tissue. The host becomes highly suggestible, and carries out any
-        instructions without hesitation unless he makes a Hellish (-60) Willpower
-        test; he might also act oddly at the GM's discretion. Removing an implanted
+        instructions without hesitation unless they make a Hellish (-60) Willpower
+        test; they might also act oddly at the GM's discretion. Removing an implanted
         leech (without damaging the host) requires 6 degrees of success on an Extended
         Very Hard (-30) Medicae test; for every degree of failure, the leech instead
-        causes 1d10 Impact damage to his head location, which cannot be reduced for
+        causes 1d10 Impact damage to their head location, which cannot be reduced for
         any reason. If there is no concern for the host's well-being, a leech can be
         forcibly removed with no test required, but removed leeches die within
         seconds, no matter the means used, and cannot be used again.
@@ -812,14 +812,14 @@ data:
     description: >-
         Xenos Relic. A witch weapon of Eldar design, legends claim the Wounded Staff
         contains the collected souls of an entire craftworld lost during the Fall.
-        The first time a character moves within 5 metres of the staff, he must pass a
+        The first time a character moves within 5 metres of the staff, they must pass a
         Hard (-20) Willpower test or gain 1d10 Insanity points; for a psyker, this
         test is Arduous (-40) instead. If a psyker causes any Psychic Phenomena within
-        20 metres of the Wounded Staff, he automatically receives the Perils of the
+        20 metres of the Wounded Staff, they automatically receive the Perils of the
         Warp result, and rolls twice on Table 6-3: Perils of the Warp, applying both
         results. It can be used as a force staff, but while wielding it, the user
-        gains the Enemy (Eldar) (4) talent, and Eldar characters fighting him gain a
-        +20 Weapon Skill bonus against him.
+        gains the Enemy (Eldar) (4) talent, and Eldar characters fighting them gain a
+        +20 Weapon Skill bonus against them.
     source: PG 61 EO
     weight: 0
 img: 'systems/dark-heresy-2nd/icons/gen/gear/wounded-staff.webp'

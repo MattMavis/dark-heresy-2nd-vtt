@@ -129,8 +129,8 @@ data:
     description: Gains the Resistance (Psychic Powers) talent, or an additional +10
         to tests to resist psychic powers if the character already has this talent. Obsidian
         plate counts it's listed Armour points as triple against hits inflicted by Psychic
-        Bolts. A psyker wearing obsidian plate cannot push his psychic powers, and reduces
-        his psy-rating by 3 (to a minimum of 1)
+        Bolts. A psyker wearing obsidian plate cannot push their psychic powers, and reduces
+        their psy-rating by 3 (to a minimum of 1)
     maxAgility: 35
     type: Basic
     weight: 35
@@ -633,7 +633,7 @@ data:
     availability: Extremely Rare
     craftsmanship: Common
     description: Grants the wearer the Auto-Stabilised and Unnatural Strength (1) trait,
-        and increases the value of his Size (X) trait by 1. When used with the detachable
+        and increases the value of their Size (X) trait by 1. When used with the detachable
         helmet, it is environmentally sealed with its own oxygen supply and voxcaster
         systems. Its power supply can operate for 2d5 hours before recharging or refueling
         is needed, and while powered the suits weight does not count towards the users
@@ -696,10 +696,10 @@ data:
         rightLeg: 0
     availability: Near Unique
     craftsmanship: Common
-    description: The wearer of an active clone field doubles his degrees of success
+    description: The wearer of an active clone field doubles their degrees of success
         on successful Dodge tests. Once per round, a character wearing an active clone
         field may re-roll a failed Dodge test. Finally, a character wearing an active
-        clone field gains one extra reaction each round that he can only use to perform
+        clone field gains one extra reaction each round that they can only use to perform
         the Evasion reaction.
     maxAgility: 0
     type: Force Field

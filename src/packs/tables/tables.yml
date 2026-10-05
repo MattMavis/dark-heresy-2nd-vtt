@@ -11,7 +11,7 @@ results:
     drawn: false
     documentCollection: ''
     _id: SlQHcLOxfpX5IODN
-    text: 'Dark Foreboding: A faint breeze blows past the psyker and those near him,
+    text: 'Dark Foreboding: A faint breeze blows past the psyker and those near them,
     and everyone gets the feeling that somewhere in the galaxy something unfortunate
     just happened.'
     img: icons/svg/d20-black.svg
@@ -52,8 +52,8 @@ results:
     documentCollection: ''
     _id: 6CVUkyS2WlK5Ej0h
     text: 'Mind Warp: The psyker suffers a -5 penalty to Willpower tests until the start
-    of his next turn as his own inherent phobias, suspicions, and hatreds surge to
-    the surface of his mind in a wave of unbound emotion.'
+    of their next turn as their own inherent phobias, suspicions, and hatreds surge to
+    the surface of their mind in a wave of unbound emotion.'
     img: icons/svg/d20-black.svg
     documentId:
     flags: {}
@@ -169,7 +169,7 @@ results:
     documentCollection: ''
     _id: 0lkIUOhjG0hSmSHh
     text: 'Daemonic Mask: For a fleeting moment, the psyker takes on a daemonic appearance
-    and gains the Fear (1) trait until the start of the next turn. However, he also
+    and gains the Fear (1) trait until the start of the next turn. However, they also
     gains 1 Corruption point.'
     img: icons/svg/d20-black.svg
     documentId:
@@ -253,7 +253,7 @@ results:
     _id: E5gaZE9ftDKe4Z6q
     text: 'Warp Ghosts: Ghostly apparitions fill the air within 3d10 metres around the
     psyker, flying about and howling in pain for a few brief moments. Everyone in
-    the radius (except the psyker himself ) must test against a Fear rating of 1.'
+    the radius (except the psyker themselves ) must test against a Fear rating of 1.'
     img: icons/svg/d20-black.svg
     documentId:
     flags: {}
@@ -266,7 +266,7 @@ results:
     documentCollection: ''
     _id: crtoWgpBeN6A4J1s
     text: 'Falling Upwards: Everything within 2d10 metres of the psyker (including the
-    psyker himself ) rises 1d10 metres into the air as gravity briefly ceases. Almost
+    psyker themselves ) rises 1d10 metres into the air as gravity briefly ceases. Almost
     immediately, everything crashes back to earth, suffering falling Damage as appropriate
     for the distances fallen.'
     img: icons/svg/d20-black.svg
@@ -294,8 +294,8 @@ results:
     drawn: false
     documentCollection: ''
     _id: lQCr6jqUAYe5LpXe
-    text: 'The Furies: The Psyker is assailed by unseen horrors. He is slammed to the
-    ground and suffers 1d5 Damage (ignoring Armour, but not Toughness Bonus) and he
+    text: 'The Furies: The Psyker is assailed by unseen horrors. They are slammed to the
+    ground and suffers 1d5 Damage (ignoring Armour, but not Toughness Bonus) and they
     must test against Fear (2).'
     img: icons/svg/d20-black.svg
     documentId:
@@ -375,7 +375,7 @@ results:
     documentCollection: ''
     _id: p0pAdoBwfDlVLeSw
     text: 'The Gibbering: The psyker screams in pain as uncontrolled Warp energies surge
-    through his unprepared mind. He must make a Challenging (+0) Willpower Test or
+    through their unprepared mind. They must make a Challenging (+0) Willpower Test or
     be stunned for 1d5 Rounds.'
     img: icons/svg/d20-black.svg
     documentId:
@@ -389,7 +389,7 @@ results:
     documentCollection: ''
     _id: 3ZMQpn1Yxw3VzrQ8
     text: 'Warp Burn: A violent burst of energy from the Warp smashes into the psyker''s
-    mind, sending him reeling. He suffers 2d5 Damage, ignoring Toughness Bonus and
+    mind, sending them reeling. They suffer 2d5 Damage, ignoring Toughness Bonus and
     Armour, and is stunned for 1d5 Rounds.'
     img: icons/svg/d20-black.svg
     documentId:
@@ -429,7 +429,7 @@ results:
     drawn: false
     documentCollection: ''
     _id: VIv33rekWxr7wr1B
-    text: 'Soul Sear: Warp power courses through the psyker''s body, scorching his soul.
+    text: 'Soul Sear: Warp power courses through the psyker''s body, scorching their soul.
     The psyker cannot use any powers for the next hour and gains 2d5 Corruption Points.'
     img: icons/svg/d20-black.svg
     documentId:
@@ -444,8 +444,8 @@ results:
     _id: m9bfa0EFI3EEx3Yt
     text: 'Locked In: The power cages the psyker''s mind in an ethereal prison, tormented
     by visions of the Warp. The psyker falls to the ground in a catatonic state. Each
-    Round thereafter, he must spend a Full Action to make a Difficult (-10) Willpower
-    Test. On a success, his mind is freed and restored to his body, haunted by his
+    Round thereafter, they must spend a Full Action to make a Difficult (-10) Willpower
+    Test. On a success, their mind is freed and restored to their body, haunted by their
     experiences but otherwise unharmed.'
     img: icons/svg/d20-black.svg
     documentId:
@@ -458,10 +458,10 @@ results:
     drawn: false
     documentCollection: ''
     _id: EajyRnjGY6BtnjGm
-    text: 'Chronological Incontinence: Time warps around the psyker. He winks out of
+    text: 'Chronological Incontinence: Time warps around the psyker. They wink out of
     existence and reappears in 1d10 Rounds (or one minute in narrative time) in the
-    exact location. He suffers one point of permanent Toughness and Intelligence damage
-    as his body and mind rebel against the experience, and gains 1d5 Corruption Points.'
+    exact location. They suffer one point of permanent Toughness and Intelligence damage
+    as their body and mind rebel against the experience, and gains 1d5 Corruption Points.'
     img: icons/svg/d20-black.svg
     documentId:
     flags: {}
@@ -473,7 +473,7 @@ results:
     drawn: false
     documentCollection: ''
     _id: BOOJOBV5DdQMx5DT
-    text: 'Psychic Mirror: The psyker''s power is turned back on him. Resolve the power''s
+    text: 'Psychic Mirror: The psyker''s power is turned back on them. Resolve the power''s
     effects, but the power targets the psyker instead. If the power is beneficial,
     it deals 1d10+5 Energy Damage (ignoring Armour) to the psyker instead of its normal
     effect.'
@@ -492,7 +492,7 @@ results:
     psyker, whispering terrible secrets and shocking truths. Everyone in the area
     (including the psyker ) must make a Hard (-20) Willpower Test or suffer 1d5 Corruption
     Points and an equal amount of Willpower damage. In addition, whether or not the
-    psyker passes the Willpower Test, he suffers an additional 1d5+5 Willpower damage.'
+    psyker passes the Willpower Test, they suffer an additional 1d5+5 Willpower damage.'
     img: icons/svg/d20-black.svg
     documentId:
     flags: {}
@@ -504,7 +504,7 @@ results:
     drawn: false
     documentCollection: ''
     _id: iaPiEK4Dym9P7mmm
-    text: 'Vice Versa: The psyker''s mind is thrown out of his body and into another
+    text: 'Vice Versa: The psyker''s mind is thrown out of their body and into another
     nearby creature or person. The psyker and a random being (note, this cannot be
     a daemon, mindless xenos, or other soulless creature) within 50 metres swap consciousness
     for 1d10 rounds. This may be an ally or enemy. Each creature retains its Weapon
@@ -512,7 +512,7 @@ results:
     the swap, but all other Characteristics are of the new host body. If either body
     is slain, the effect ends immediately and both parties return to their original
     bodies. Both suffer 1d5 Intelligence damage from the experience. If there are
-    no creatures within range, the psyker becomes catatonic for 1d5 rounds while his
+    no creatures within range, the psyker becomes catatonic for 1d5 rounds while their
     mind wanders the Warp. This journey causes 1d10 Willpower Damage, 1d10 Intelligence
     Damage and 1d10 Corruption Points.'
     img: icons/svg/d20-black.svg
@@ -581,7 +581,7 @@ results:
     of Warp energy. Anyone within 1d10 metres (including the psyker) takes 1d10 Energy
     Damage with a Pen of 5. The psyker may not Dodge this, or stop the attack with
     a Field Save (see page 196). In addition, all of the psyker''s clothing and gear
-    is destroyed, leaving him naked and smoking on the ground. The psyker may use
+    is destroyed, leaving them naked and smoking on the ground. The psyker may use
     no further powers for 1d5 hours after the event.'
     img: icons/svg/d20-black.svg
     documentId:
@@ -611,7 +611,7 @@ results:
     documentCollection: ''
     _id: zrUN2nigqNQUG2rG
     text: 'Reality Quake: Reality buckles around the psyker, and an area radiating out
-    3d10 metres from him is sundered: solid objects alternately rot, burn, and freeze,
+    3d10 metres from them is sundered: solid objects alternately rot, burn, and freeze,
     and everyone and everything in the area takes 2d10 Rending Damage, ignoring Armour
     (and unable to be dodged). Warded objects, daemons, and untouchables halve the
     Damage rolled.'
@@ -632,7 +632,7 @@ results:
     Trait in Chapter IV: Talents and Traits). Use the Bloodletter from page 354, but
     increase all of its Characteristics by +20 and give it Fear 4. Even if the daemon
     fails, the psyker still suffers 2d10 Toughness Damage, and will forever add +10
-    to all rolls on the Psychic Phenomena and Perils of the Warp tables as his body
+    to all rolls on the Psychic Phenomena and Perils of the Warp tables as their body
     now serves as a conduit to the power of the Warp. If the character dies while
     possessed, the daemon manifests in the real world for a number of days equal to
     its Toughness Bonus or until it is destroyed.'
@@ -650,7 +650,7 @@ results:
     text: 'Annihilation: The psyker is immediately and irrevocably destroyed, burned
     to nothing by the screaming fires of the Immaterium or dragged into the deepest
     maelstrom of the Warp. The psyker may not spend Fate to recover from this death,
-    he is irrevocably destroyed. There is a chance that a daemonic entity of some
+    they are irrevocably destroyed. There is a chance that a daemonic entity of some
     sort appears in the psyker''s place. The type of daemon that appears is determined
     by the GM, based on how powerful the psyker was - more powerful psykers draw more
     powerful daemons. The percentage chance that the daemon appears is equal to the
@@ -665,7 +665,7 @@ displayRoll: true
 ---
 name: Fear
 img: 'systems/dark-heresy-2nd/icons/gen/tables/fear.webp'
-description: If a character fails a Fear test in a combat situation, he must immediately
+description: If a character fails a Fear test in a combat situation, they must immediately
   roll on this table adding +10 to the result for each degree of failure after the
   first.
 results:
@@ -677,8 +677,8 @@ results:
     drawn: false
     documentCollection: ''
     _id: DE8tA6mpg8bcFP06
-    text: The character is badly startled. He can only take a single Half Action during
-      his next turn, but afterward he acts normally.
+    text: The character is badly startled. They can only take a single Half Action during
+      their next turn, but afterward they act normally.
     img: icons/svg/d20-black.svg
     documentId:
     flags: {}
@@ -690,8 +690,8 @@ results:
     drawn: false
     documentCollection: ''
     _id: Ga6Y3aigiK6bKaPV
-    text: Fear grips the character and he begins to shake and tremble. He suffers a
-      -10 penalty on all tests for the rest of the encounter unless he can recover his
+    text: Fear grips the character and they begin to shake and tremble. They suffer a
+      -10 penalty on all tests for the rest of the encounter unless they can recover their
       wits (see Shock and Snapping Out of It, page 286).
     img: icons/svg/d20-black.svg
     documentId:
@@ -704,8 +704,8 @@ results:
     drawn: false
     documentCollection: ''
     _id: FyymiBhL6gLlzNF5
-    text: Reeling with shock, the character backs away from the source of his Fear.
-      He cannot willingly approach the object of his Fear, but can otherwise act normally,
+    text: Reeling with shock, the character backs away from the source of their Fear.
+      They cannot willingly approach the object of their Fear, but can otherwise act normally,
       with a -10 penalty on all tests until the end of the encounter.
     img: icons/svg/d20-black.svg
     documentId:
@@ -718,9 +718,9 @@ results:
     drawn: false
     documentCollection: ''
     _id: dNFDc5LGG00GWSYE
-    text: The character is frozen by terror. He can take no actions until he recovers
-      himself (see Shock and Snapping Out of It, page 286). After snapping out of it,
-      he makes all tests with a -10 penalty for the rest of the encounter.
+    text: The character is frozen by terror. They can take no actions until they recover
+      themselves (see Shock and Snapping Out of It, page 286). After snapping out of it,
+      they make all tests with a -10 penalty for the rest of the encounter.
     img: icons/svg/d20-black.svg
     documentId:
     flags: {}
@@ -732,9 +732,9 @@ results:
     drawn: false
     documentCollection: ''
     _id: ISeparr6F8NKoCHs
-    text: Panic grips the character. He must flee the source of his fear, if able, as
-      fast as he can, and if prevented from doing so, can only take Half Actions and
-      is at a -20 penalty to all tests. Once away from the danger, he must successfully
+    text: Panic grips the character. They must flee the source of their fear, if able, as
+      fast as they can, and if prevented from doing so, can only take Half Actions and
+      is at a -20 penalty to all tests. Once away from the danger, they must successfully
       Snap Out of It (see Shock and Snapping Out of It, page 286) to regain control.
     img: icons/svg/d20-black.svg
     documentId:
@@ -748,7 +748,7 @@ results:
     documentCollection: ''
     _id: YRBPuYE6DmaO1tnA
     text: Fainting dead away, the character keels over and remains Unconscious for 1d5
-      rounds. Once he regains consciousness, he is still shaken and takes all tests
+      rounds. Once they regain consciousness, they are still shaken and takes all tests
       with a -10 penalty until the end of the encounter.
     img: icons/svg/d20-black.svg
     documentId:
@@ -762,7 +762,7 @@ results:
     documentCollection: ''
     _id: PilDz6HMFSA0Xhr9
     text: Totally overcome, the character screams and vomits uncontrollably for 1d5
-      rounds. During this time he can do nothing, and drops anything he is holding.
+      rounds. During this time they can do nothing, and drops anything they are holding.
       Afterward, until the end of the encounter, the character can only take a single
       Half Action each turn.
     img: icons/svg/d20-black.svg
@@ -776,10 +776,10 @@ results:
     drawn: false
     documentCollection: ''
     _id: vIyCe7iMXBvB8cdX
-    text: The character laughs hysterically and randomly attacks anything near him in
-      a manic frenzy, firing wildly or attacking with whatever he has at hand. This
+    text: The character laughs hysterically and randomly attacks anything near them in
+      a manic frenzy, firing wildly or attacking with whatever they have at hand. This
       effect lasts until the character Snaps Out of It (see Shock and Snapping Out of
-      It, page 286), or until he is knocked Unconscious or otherwise incapacitated.
+      It, page 286), or until they are knocked Unconscious or otherwise incapacitated.
     img: icons/svg/d20-black.svg
     documentId:
     flags: {}
@@ -792,8 +792,8 @@ results:
     documentCollection: ''
     _id: 5lM94GDDkLWTBlEd
     text: The character crumples to the ground for 1d5+1 rounds and begins sobbing,
-      babbling, and tearing at his own flesh, and can do nothing else. Even after he
-      returns to his senses, he is a complete mess, and suffers a -20 penalty on all
+      babbling, and tearing at their own flesh, and can do nothing else. Even after they
+      returns to their senses, they are a complete mess, and suffers a -20 penalty on all
       tests until the end of the encounter.
     img: icons/svg/d20-black.svg
     documentId:
@@ -806,8 +806,8 @@ results:
     drawn: false
     documentCollection: ''
     _id: TINAshzyc9fHmIro
-    text: The character's mind snaps. He becomes catatonic for 1d5 hours; for that time,
-      he is Unconscious and cannot be roused.
+    text: The character's mind snaps. They become catatonic for 1d5 hours; for that time,
+      they are Unconscious and cannot be roused.
     img: icons/svg/d20-black.svg
     documentId:
     flags: {}
@@ -819,8 +819,8 @@ results:
     drawn: false
     documentCollection: ''
     _id: RGXRs76AooJTrG3G
-    text: 'The character is so overcome with terror that his heart stops: he must make
-    a Challenging (+0) Toughness test or die. If he succeeds, the character still
+    text: 'The character is so overcome with terror that their heart stops: they must make
+    a Challenging (+0) Toughness test or die. If they succeed, the character still
     falls Unconscious for 1d5 hours, and cannot be roused for that time.'
     img: icons/svg/d20-black.svg
     documentId:
