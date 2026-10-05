@@ -30,6 +30,11 @@
 //      called "@pr/2" unless the generator rewrites it. 31 psychic power and ammunition cells hit
 //      this. Only the index and the sidebar should contain `[[` at all; a pack page never should.
 //
+//   7. Truncation. Cells were once cut at 160 characters, which silently hid the back half of 427
+//      of the 925 prose fields -- worst on the roll tables, where the result text is the whole
+//      point. No source document contains an ellipsis, so one appearing in generated output can
+//      only have been inserted by a truncation step coming back.
+//
 // This spawns the real CLI (`node tools/generate-wiki.mjs <dir>`) rather than importing the
 // script, matching how it is actually invoked; generate-wiki.mjs is a program, not a library, and
 // exports nothing to import.
@@ -208,6 +213,14 @@ try {
         .filter((name) => readFileSync(join(dirA, name), 'utf8').includes('[['))
         .sort();
     check('no generated pack page contains raw [[ ]] that GitHub would read as a wiki link', pagesWithStrayLinks, []);
+
+    // Guards against truncation returning. Verified at the time of writing: no pack document
+    // contains an ellipsis, so its presence in output means a cell was cut.
+    const pagesWithEllipsis = readdirSync(dirA)
+        .filter((name) => name.endsWith('.md'))
+        .filter((name) => readFileSync(join(dirA, name), 'utf8').includes('\u2026'))
+        .sort();
+    check('no generated page truncates a cell', pagesWithEllipsis, []);
 } finally {
     rmSync(dirA, { recursive: true, force: true });
     rmSync(dirB, { recursive: true, force: true });
