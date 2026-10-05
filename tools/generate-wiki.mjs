@@ -39,33 +39,26 @@ function decodeEntities(text) {
     });
 }
 
-// Cut text to roughly `max` characters without severing a word, then mark the cut with an
-// ellipsis. Breaking on the last space keeps "Fate point, roll 1d10. On a result of 7-10, the…"
-// from turning into "...resul…".
-function truncate(text, max) {
-    if (text.length <= max) return text;
-    const cut = text.slice(0, max);
-    const lastSpace = cut.lastIndexOf(' ');
-    const trimmed = lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut;
-    return `${trimmed.trimEnd()}…`;
-}
 
 // The one pipeline every table cell goes through: strip any rich-text markup, decode entities,
 // fold embedded newlines/runs of whitespace down to single spaces (a YAML folded scalar already
-// does most of this, but nothing here should depend on that), optionally truncate long prose, and
-// only THEN escape pipes -- escaping first and truncating second risks slicing a `\|` pair in two.
+// does most of this, but nothing here should depend on that), and only THEN escape pipes.
+//
+// Cells are NOT truncated. An earlier version cut prose at 160 characters, which silently hid
+// the back half of 427 of the 925 prose fields -- including the roll tables, where the result
+// text is the entire point of the page. GitHub wraps long cells perfectly well; a tall table is
+// a far smaller problem than a reference that stops mid-sentence.
 // Foundry inline-roll syntax -- `[[@pr/2]]`, `[[1d10]]` -- is byte-identical to GitHub's
 // wiki-link syntax, so leaving it as written turns every formula in the pack text into a link to
 // a page called "@pr/2". It is rewritten to a code span instead: unambiguous on the wiki, and it
 // reads as the formula it is. Done after truncation, because truncating afterwards could slice a
 // code span and leave an unbalanced backtick.
-function cellText(raw, { longProse = false } = {}) {
+function cellText(raw) {
     if (raw === null || raw === undefined) return '';
     let text = String(raw);
     text = text.replace(/<[^>]*>/g, '');
     text = decodeEntities(text);
     text = text.replace(/\s+/g, ' ').trim();
-    if (longProse) text = truncate(text, 160);
     text = neutraliseInlineRolls(text);
     text = text.replace(/\|/g, '\\|');
     return text;
@@ -189,11 +182,9 @@ function formatPsychicTarget(target) {
 
 // `get` always receives (system, doc) -- `system` is the already-unwrapped system-data object
 // (`doc.system` for psychic-powers/vehicles, `doc.data` for everything else; see loadDocs below),
-// `doc` is the raw document for the rare column that needs a top-level field. `longProse: true`
-// marks the free-text columns that get the 160-character truncation; every other column is shown
-// in full.
-function col(header, get, { longProse = false } = {}) {
-    return { header, get, longProse };
+// `doc` is the raw document for the rare column that needs a top-level field.
+function col(header, get) {
+    return { header, get };
 }
 
 // Fields that only ever hold runtime/instance state -- not reference data -- are left out of
@@ -223,7 +214,7 @@ const PACKS = [
             // Every one of the 178 weapons ships with an empty `description` -- the flavour text
             // simply was not written for this pack. The column is dropped automatically because
             // it comes out empty for every row; it is not a bug in this generator.
-            col('Description', (sys) => sys.description, { longProse: true }),
+            col('Description', (sys) => sys.description),
         ],
     },
     {
@@ -237,7 +228,7 @@ const PACKS = [
             col('Aptitudes', (sys) => sys.aptitudes),
             col('Prerequisites', (sys) => sys.prerequisites),
             col('Source', (sys) => sys.source),
-            col('Benefit', (sys) => sys.benefit, { longProse: true }),
+            col('Benefit', (sys) => sys.benefit),
         ],
     },
     {
@@ -256,7 +247,7 @@ const PACKS = [
             col('Target', (sys) => formatPsychicTarget(sys.target)),
             col('Special', (sys) => formatFlags(sys.special)),
             col('Source', (sys) => sys.source),
-            col('Description', (sys) => sys.description, { longProse: true }),
+            col('Description', (sys) => sys.description),
         ],
     },
     {
@@ -269,7 +260,7 @@ const PACKS = [
             // Not in the pack-shape notes this generator started from, but present and populated
             // for 16 of 57 traits -- worth keeping rather than dropping.
             col('Source', (sys) => sys.source),
-            col('Description', (sys) => sys.description, { longProse: true }),
+            col('Description', (sys) => sys.description),
         ],
     },
     {
@@ -279,7 +270,7 @@ const PACKS = [
             col('Craftsmanship', (sys) => sys.craftsmanship),
             col('Weight', (sys) => sys.weight),
             col('Source', (sys) => sys.source),
-            col('Description', (sys) => sys.description, { longProse: true }),
+            col('Description', (sys) => sys.description),
         ],
     },
     {
@@ -291,7 +282,7 @@ const PACKS = [
             // Showing the literal 0 would be noise, so this column reports whether a level
             // applies rather than its always-zero compendium value.
             col('Level', (sys) => (sys.hasLevel ? '(set per weapon)' : '—')),
-            col('Description', (sys) => sys.description, { longProse: true }),
+            col('Description', (sys) => sys.description),
         ],
     },
     {
@@ -300,7 +291,7 @@ const PACKS = [
             col('Availability', (sys) => sys.availability),
             col('Craftsmanship', (sys) => sys.craftsmanship),
             col('Weight', (sys) => sys.weight),
-            col('Description', (sys) => sys.description, { longProse: true }),
+            col('Description', (sys) => sys.description),
         ],
     },
     {
@@ -312,7 +303,7 @@ const PACKS = [
             col('Availability', (sys) => sys.availability),
             col('Craftsmanship', (sys) => sys.craftsmanship),
             col('Weight', (sys) => sys.weight),
-            col('Description', (sys) => sys.description, { longProse: true }),
+            col('Description', (sys) => sys.description),
         ],
     },
     {
@@ -322,7 +313,7 @@ const PACKS = [
             col('Craftsmanship', (sys) => sys.craftsmanship),
             col('Weight', (sys) => sys.weight),
             col('Upgrades', (sys) => sys.upgrades),
-            col('Description', (sys) => sys.description, { longProse: true }),
+            col('Description', (sys) => sys.description),
         ],
     },
     {
@@ -332,7 +323,7 @@ const PACKS = [
             col('Availability', (sys) => sys.availability),
             col('Craftsmanship', (sys) => sys.craftsmanship),
             col('Weight', (sys) => sys.weight),
-            col('Description', (sys) => sys.description, { longProse: true }),
+            col('Description', (sys) => sys.description),
         ],
     },
     {
@@ -344,7 +335,7 @@ const PACKS = [
             // rather than silently normalised, since fixing data is out of scope here.
             col('Damage Type', (sys) => sys.damageType),
             col('Penetration', (sys) => sys.penetration),
-            col('Effect', (sys) => sys.effect, { longProse: true }),
+            col('Effect', (sys) => sys.effect),
             col('Special', (sys) => formatFlags(sys.special)),
             col('Availability', (sys) => sys.availability),
         ],
@@ -353,19 +344,19 @@ const PACKS = [
         dir: 'aptitudes',
         // No `source` field at all in this pack (unlike mutations/malignancies/mental-disorders,
         // which share the same two-field shape elsewhere) -- confirmed absent on all 19 entries.
-        columns: [col('Description', (sys) => sys.description, { longProse: true })],
+        columns: [col('Description', (sys) => sys.description)],
     },
     {
         dir: 'mutations',
-        columns: [col('Source', (sys) => sys.source), col('Description', (sys) => sys.description, { longProse: true })],
+        columns: [col('Source', (sys) => sys.source), col('Description', (sys) => sys.description)],
     },
     {
         dir: 'malignancies',
-        columns: [col('Source', (sys) => sys.source), col('Description', (sys) => sys.description, { longProse: true })],
+        columns: [col('Source', (sys) => sys.source), col('Description', (sys) => sys.description)],
     },
     {
         dir: 'mental-disorders',
-        columns: [col('Source', (sys) => sys.source), col('Description', (sys) => sys.description, { longProse: true })],
+        columns: [col('Source', (sys) => sys.source), col('Description', (sys) => sys.description)],
     },
     {
         dir: 'consumables',
@@ -377,7 +368,7 @@ const PACKS = [
             col('Availability', (sys) => sys.availability),
             col('Craftsmanship', (sys) => sys.craftsmanship),
             col('Weight', (sys) => sys.weight),
-            col('Description', (sys) => sys.description, { longProse: true }),
+            col('Description', (sys) => sys.description),
         ],
     },
     {
@@ -444,7 +435,7 @@ function renderPackPage(pack, docs) {
         const sys = systemOf(doc);
         return {
             name: cellText(doc.name),
-            cells: pack.columns.map((c) => cellText(c.get(sys, doc), { longProse: c.longProse })),
+            cells: pack.columns.map((c) => cellText(c.get(sys, doc))),
         };
     });
 
@@ -473,7 +464,7 @@ function renderTablesPage(docs) {
         const resultRows = results.map((r) => {
             const [low, high] = r.range ?? [];
             const range = high === undefined || high === low ? cellText(low) : `${cellText(low)}-${cellText(high)}`;
-            return [range, cellText(r.text, { longProse: true })];
+            return [range, cellText(r.text)];
         });
         return [
             `## ${cellText(table.name)}`,
