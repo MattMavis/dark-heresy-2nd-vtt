@@ -29,6 +29,7 @@ const FILES = [
     'test-combat-tables.mjs',
     'test-icons.mjs',
     'test-templates.mjs',
+    'test-wiki-generator.mjs',
 ];
 
 const rule = (s) => `${'='.repeat(78)}\n  ${s}\n${'='.repeat(78)}`;

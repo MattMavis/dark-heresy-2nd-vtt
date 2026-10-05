@@ -1,0 +1,115 @@
+# Publishes the GitHub wiki: the compendium pages generated from the packs, plus the
+# hand-written prose pages in `wiki/`.
+#
+# The wiki is a separate git repository (<repo>.wiki.git) that GITHUB_TOKEN cannot push to, so
+# this needs its own credential. It uses an SSH deploy key rather than a personal access token:
+# a deploy key reaches this one repository and nothing else on the account, and can be revoked
+# without touching anything the maintainer uses locally.
+#
+# ONE-TIME SETUP
+#   1. Create the wiki's first page through the web UI. Until a page exists the wiki repository
+#      is not created and any clone of it fails with "Repository not found".
+#   2. ssh-keygen -t ed25519 -N '' -f wiki_ci -C 'wiki publish CI'
+#   3. Add wiki_ci.pub as a deploy key on the repository, WITH write access.
+#   4. gh secret set WIKI_SSH_KEY < wiki_ci     (then delete the local copies)
+#
+# Until that secret exists this workflow succeeds and does nothing, rather than failing red on
+# every push to master.
+name: Publish wiki
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'src/packs/**'
+      - 'wiki/**'
+      - 'tools/generate-wiki.mjs'
+      - '.github/workflows/wiki.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read # the wiki is pushed with the deploy key, not with GITHUB_TOKEN
+
+concurrency:
+  group: wiki
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    name: Generate and push the wiki
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Check the publishing key is configured
+        id: key
+        env:
+          WIKI_SSH_KEY: ${{ secrets.WIKI_SSH_KEY }}
+        run: |
+          if [ -z "$WIKI_SSH_KEY" ]; then
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::WIKI_SSH_KEY is not set, so the wiki was not published. See the setup notes at the top of .github/workflows/wiki.yml."
+          else
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install dependencies
+        if: steps.key.outputs.present == 'true'
+        run: npm ci
+
+      - name: Generate the compendium pages
+        if: steps.key.outputs.present == 'true'
+        run: node tools/generate-wiki.mjs build/wiki
+
+      - name: Add the hand-written pages
+        if: steps.key.outputs.present == 'true'
+        # wiki/README.md documents this directory for people reading the repository; it is not a
+        # wiki page and must not be copied, or it would overwrite the wiki's own landing content.
+        run: |
+          shopt -s nullglob
+          for page in wiki/*.md; do
+            [ "$(basename "$page")" = 'README.md' ] && continue
+            cp "$page" build/wiki/
+          done
+          ls -1 build/wiki
+
+      - name: Load the deploy key
+        if: steps.key.outputs.present == 'true'
+        env:
+          WIKI_SSH_KEY: ${{ secrets.WIKI_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$WIKI_SSH_KEY" > ~/.ssh/wiki_key
+          chmod 600 ~/.ssh/wiki_key
+          ssh-keyscan -t rsa,ecdsa,ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Push to the wiki
+        if: steps.key.outputs.present == 'true'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/wiki_key -o IdentitiesOnly=yes
+        run: |
+          git clone "git@github.com:${GITHUB_REPOSITORY}.wiki.git" wiki-repo
+
+          # Replace the published pages wholesale rather than merging: a page deleted from
+          # `wiki/`, or a pack removed, should disappear from the wiki too. Anything the wiki
+          # holds that this build did not produce is left alone, so a page added by hand in the
+          # UI survives -- it simply is not managed here.
+          cp build/wiki/*.md wiki-repo/
+
+          cd wiki-repo
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo 'wiki already up to date, nothing to push'
+            exit 0
+          fi
+
+          git commit -m "Publish wiki from ${GITHUB_SHA::7}"
+          git push origin HEAD:master
