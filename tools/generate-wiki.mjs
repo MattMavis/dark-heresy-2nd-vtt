@@ -513,14 +513,39 @@ function renderCompendiumIndex(summaries) {
 /*
  * The hand-written pages the sidebar links alongside the generated ones. They live in `wiki/`
  * in the repo and are copied into the wiki beside this output, so the sidebar has to name them
- * even though nothing here produces them. Keep in step with the files in that directory.
+ * even though nothing here produces them. Keep in step with the files in that directory --
+ * tests/test-wiki-generator.mjs fails if the two disagree in either direction.
+ *
+ * `page` is the filename stem, which is what a wiki link actually resolves against; `label` is
+ * what the sidebar shows. They differ for the rules pages because "Rules: Combat Turn" cannot
+ * be a filename -- a colon is not legal in one on Windows.
  */
-const PROSE_PAGES = [
-    'Character Creation',
-    'Experience and Advancement',
-    'Playing a Psyker',
-    'Requisition and Influence',
+const PROSE_SECTIONS = [
+    {
+        heading: 'Automation',
+        pages: [
+            { page: 'Character-Creation', label: 'Character Creation' },
+            { page: 'Experience-and-Advancement', label: 'Experience and Advancement' },
+            { page: 'Playing-a-Psyker', label: 'Playing a Psyker' },
+            { page: 'Requisition-and-Influence', label: 'Requisition and Influence' },
+        ],
+    },
+    {
+        heading: 'Rules reference',
+        pages: [
+            { page: 'Rules-Tests-and-Difficulty', label: 'Tests and Difficulty' },
+            { page: 'Rules-Combat-Turn', label: 'Combat Turn' },
+            { page: 'Rules-Attacking', label: 'Attacking' },
+            { page: 'Rules-Damage-and-Injury', label: 'Damage and Injury' },
+            { page: 'Rules-Conditions', label: 'Conditions' },
+            { page: 'Rules-Psychic-Powers', label: 'Psychic Powers' },
+            { page: 'Rules-Corruption-and-Insanity', label: 'Corruption and Insanity' },
+        ],
+    },
 ];
+
+/** Every prose page across all sections, as filename stems. */
+const PROSE_PAGES = PROSE_SECTIONS.flatMap((section) => section.pages.map((p) => p.page));
 
 function renderSidebar(summaries) {
     return [
@@ -528,9 +553,11 @@ function renderSidebar(summaries) {
         '',
         '**[[Home]]**',
         '',
-        '**Automation**',
-        ...PROSE_PAGES.map((title) => `- [[${title}]]`),
-        '',
+        ...PROSE_SECTIONS.flatMap((section) => [
+            `**${section.heading}**`,
+            ...section.pages.map((p) => `- [[${p.label}|${p.page}]]`),
+            '',
+        ]),
         '**[[Compendium]]**',
         ...summaries.map((s) => `- [[${s.title}]]`),
         '',
