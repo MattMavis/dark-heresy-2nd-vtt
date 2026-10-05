@@ -5,10 +5,10 @@ system:
     damage: 0
     damageType: 'Energy'
     discipline: Minor
-    description: 'The psyker gains the Fear (1) trait as long as he sustains this power.
+    description: 'The psyker gains the Fear (1) trait as long as they sustain this power.
         Psychic Phenomena: Instead of rolling for Psychic Phenomena should the situation
         call for it, the psyker instead must take a Fear (4) test and also suffer Warp
-        Shock as per page 289 of the DARK HERESY Core Rulebook if he fails.'
+        Shock as per page 289 of the DARK HERESY Core Rulebook if they fail.'
     penetration: 0
     prerequisite: Fel 35, 5+ Insanity Points
     range: 0
@@ -31,7 +31,7 @@ system:
     damage: 0
     damageType: 'Energy'
     discipline: Minor
-    description: The target must repeat his last exploit, such as firing a gun at a target 
+    description: The target must repeat their last exploit, such as firing a gun at a target 
         who is no longer there or diving for cover from a grenade that has already detonated. 
         This repeated deed counts as the targets Action for the round. If the action would 
         be obviously harmful to the target (but not to an ally), the target automatically 
@@ -62,13 +62,13 @@ system:
     damageType: 'Energy'
     discipline: Minor
     description: The psyker chooses a single character or item within range and receives
-        a brief and unclear image of the future, giving him a rough idea of one thing
+        a brief and unclear image of the future, giving them a rough idea of one thing
         that will happen to the target within [[@pr]] minutes.
         The GM decides what information the psyker receives, with additional degrees of
         success on the Focus Power test yielding more important information. For example,
         the psyker might learn that the character will be the target of an attack or will
-        himself become violent, or that a cogitator will be accessed by an unknown individual.
-        The psyker cannot select himself as the target of this power.
+        themselves become violent, or that a cogitator will be accessed by an unknown individual.
+        The psyker cannot select themselves as the target of this power.
     penetration: 0
     prerequisite: Per 35
     range: '5*@pr'
@@ -97,9 +97,9 @@ system:
         inlict damage, but can illuminate roughly a 5 metre radius. It can also ignite
         combustible materials at the GMs discretion, with the chance of igniting an object
         increasing the longer the psyker sustains the power. If the target of this power
-        is a character, he must pass a Challenging (+0) Agility test each round the psyker
+        is a character, they must pass a Challenging (+0) Agility test each round the psyker
         sustains the power after the first, or catch fire. The target gains a +30 bonus
-        to this test on any round during which he performs an action with the Movement
+        to this test on any round during which they perform an action with the Movement
         subtype.
     penetration: 0
     prerequisite: WP 30
@@ -124,12 +124,12 @@ system:
     damageType: 'Energy'
     discipline: Minor
     description: If the power is used during structured
-        time and the target fails to resist, he suffers a 10 penalty to all tests for PR
+        time and the target fails to resist, they suffer a 10 penalty to all tests for PR
         rounds. If used during narrative time, the psyker instead chooses a time within
         the next PR hours for the target to experience the omen. The GM determines the
         effects on the targets behaviour, but a likely result is that the target rethinks
-        his current course of action or direction he is travelling. The GM should use
-        the psykers degrees of success and PR, as well as his suggestion for the form
+        their current course of action or direction they are travelling. The GM should use
+        the psykers degrees of success and PR, as well as their suggestion for the form
         of the omen, in determining the outcome.
     penetration: 0
     prerequisite: Rank 1 Psyniscience
@@ -157,11 +157,11 @@ system:
     damageType: 'Energy'
     discipline: Minor
     description: The psyker chooses a target, which can be an object or character, and pushes
-        it directly away from him [[@pr]] metres. To determine
+        it directly away from them [[@pr]] metres. To determine
         the maximum weight the psyker can push, consult the table on page 248 of the DARK
         HERESY Core Rulebook, substituting the psykers PR and WPB for SB and TB. If the
-        target is a character, he opposes the power with a Challenging (+0) Strength test.
-        If the target fails with two or more degrees of failure, he is also knocked Prone.
+        target is a character, they oppose the power with a Challenging (+0) Strength test.
+        If the target fails with two or more degrees of failure, they are also knocked Prone.
         If the psyker wins by 3 or more degrees of success, the target suffers 1d5+PR damage
         and 1 level of Fatigue.
     penetration: 0
@@ -187,10 +187,10 @@ system:
     damageType: 'Energy'
     discipline: Minor
     description: If the Focus Power test is successful, the psyker gains a bonus of 5 plus
-        his psy rating on the next test he attempts this round. If the psyker fails the
-        Focus Power test by 2 or more degrees of failure, his misguided attempt to call
+        their psy rating on the next test they attempt this round. If the psyker fails the
+        Focus Power test by 2 or more degrees of failure, their misguided attempt to call
         on the Warp backfires, and the resultant psychic ripples inflict a penalty equal
-        to twice his psy rating on his next test this round.
+        to twice their psy rating on their next test this round.
     penetration: 0
     prerequisite: Per 30
     range: 0
@@ -219,7 +219,7 @@ system:
         modify based on the credibility and scope of the lie. In the case of clearly impossible
         lies, the target succeeds automatically (scoring 1 more degree of success than
         the psyker). For instance, a human psyker might suggest that a guard has already
-        checked his identiication, but would have no possibility of convincing that same
+        checked their identiication, but would have no possibility of convincing that same
         guard that the psyker is a Space Marine.
     penetration: 0
     prerequisite: Rank 1 Deceive
@@ -277,7 +277,7 @@ system:
         purposes of this power. Affected weapons count as Poor craftsmanship until repaired.
         If the psykers degrees of success on the Focus Power test exceed the psy rating
         of the power, then the affected weapons also jam immediately. Should the psyker
-        fail the test with 2 or more degrees of failure, his own ranged weapons jam immediately.
+        fail the test with 2 or more degrees of failure, their own ranged weapons jam immediately.
     penetration: 0
     prerequisite: Int 35
     range: 5*@pr
@@ -301,7 +301,7 @@ system:
     damageType: 'Energy'
     discipline: Minor
     description: 'The psyker opens a limited telepathic link with an animal, which resists
-        the power with a Challenging (+0) Willpower test. If the psyker succeeds, he chooses
+        the power with a Challenging (+0) Willpower test. If the psyker succeeds, they choose
         one of the following effects:Impression Reading: The psyker receives a mental impression
         of the animals recent experiences. These are not thoughts in the sense of a sentient
         being, but merely vague impressions and unclear images. The GM determines the
@@ -309,8 +309,8 @@ system:
         and senses of the animal, as well as the PR of the psyker. The amount of information
         is based on the psykers degrees of success on the Focus Power test. Empathic Link:
         The psyker establishes a bond with the animal that persists after the telepathic
-        link ends. The animal follows the psyker and obeys his commands to the best of
-        its ability, exactly as if he had tamed and trained it with the Wrangling special
+        link ends. The animal follows the psyker and obeys their commands to the best of
+        its ability, exactly as if they had tamed and trained it with the Wrangling special
         use of the Survival skill (see page 116 of the DARK HERESY Core Rulebook)'
     penetration: 0
     prerequisite: Fel 35
@@ -368,7 +368,7 @@ system:
     damageType: 'Energy'
     discipline: Biomancy
     description: A number of allies in range equal to the psykers psy rating, plus the psyker
-        himself, recover wounds equal to half the psykers psy rating, rounded up. They
+        themselves, recover wounds equal to half the psykers psy rating, rounded up. They
         can also immediately overcome the effects of Pinning. This power is incredibly
         taxing and requires at least 12 hours of recovery before it may be used again.
     penetration: 0
@@ -424,8 +424,8 @@ system:
     damage: 0
     damageType: 'Energy'
     discipline: Biomancy
-    description: The psyker can remove a number of levels of Fatigue from himself and allies
-        within range. He can chose how many levels to reduce per character, but the sum
+    description: The psyker can remove a number of levels of Fatigue from themselves and allies
+        within range. They can chose how many levels to reduce per character, but the sum
         of all levels removed from all characters cannot [[@pr]]. This power
         is very taxing and requires at least 12 hours of recovery before it can be used
         again.
@@ -452,9 +452,9 @@ system:
     damageType: 'Energy'
     discipline: Biomancy
     description: While this power is in effect, the psyker gains the Unnatural Toughness
-        and Unnatural Strength traits with ratings equal to [[@pr/2]]. However, his 
-        fleshs sturdier form weighs the psyker down, causing him to suffer
-        a 10 penalty to his Agility characteristic while the power is in effect.
+        and Unnatural Strength traits with ratings equal to [[@pr/2]]. However, their 
+        fleshs sturdier form weighs the psyker down, causing them to suffer
+        a 10 penalty to their Agility characteristic while the power is in effect.
     penetration: 0
     prerequisite: Str 35, T 35, Shape Flesh
     range: 0
@@ -478,7 +478,7 @@ system:
     damageType: 'Energy'
     discipline: Biomancy
     description: The psyker nominates a single target in range and line of sight who opposes
-        this power with a Toughness test. If the target fails to resist the power, he
+        this power with a Toughness test. If the target fails to resist the power, they
         suffers 1d10 + psy rating Toughness damage, and the psyker gains Unnatural Toughness
         (1) trait, with its value increased by 1 for every full 5 points of Toughness
         damage the power inflicts. This Unnatural Toughness trait remains for as long
@@ -507,19 +507,19 @@ system:
     damage: 0
     damageType: 'Energy'
     discipline: Biomancy
-    description: 'The psyker chooses himself or an organic target that he can physically
+    description: 'The psyker chooses themselves or an organic target that they can physically
         touch. The targets physical appearance changes to a new form of the psykers choosing
         for the duration of the power. The amount and precision of the alterations depend
         on the final psy rating used. Following are some broad guidelines, but GMs can
         further alter the range of the power as needed.  PR 1-3: The psyker can alter subtle
-        flesh shapes, tones, and colours to distort the appearance of the target. He does
+        flesh shapes, tones, and colours to distort the appearance of the target. They do
         not have direct control over what the end result looks like.  PR 4-6: The psyker
-        can alter flesh, hair, eyes, and any other physical features. He can choose how
+        can alter flesh, hair, eyes, and any other physical features. They can choose how
         the features will be altered, but does not have the precision to mimic others.  PR
         7-9: The psyker can change any physical feature of the target to resemble another
         individual. However, the psyker must have a pic record of the individual, or have
-        seen him before.  PR 10+: The psyker can shape his target to exactly mimic another
-        individual. Additionally, he can use the power to morph the target into a form
+        seen them before.  PR 10+: The psyker can shape their target to exactly mimic another
+        individual. Additionally, they can use the power to morph the target into a form
         that no longer appears human. All tests to identify the targets true identity
         suffer a penalty equal to [[5*@pr]] for the duration of the power. The effects of
         the power on a target other than the psyker remain in effect for the duration
@@ -546,8 +546,8 @@ system:
     damage: '1d10+@pr'
     damageType: 'Energy'
     discipline: Biomancy
-    description: 'Drawing on the electric field of his own body, the psyker projects crackling
-        bolts of bio-lightning, transforming his very life force into destructive energy.
+    description: 'Drawing on the electric field of their own body, the psyker projects crackling
+        bolts of bio-lightning, transforming their very life force into destructive energy.
         Diviners often claim that one can tell much about the state of a biomancers soul
         from the colour and appearance of this power.'
     penetration: 4
@@ -597,9 +597,9 @@ system:
     damageType: 'Energy'
     discipline: Divination
     description: In any situation where the psyker would be called upon to make an Evasion
-        test, he may instead attempt to use this power. If the power is successful, the
-        psyker avoids the attack exactly as if he has passed an Evasion test with the
-        number of degrees of success he scored on the Focus Power test.
+        test, they may instead attempt to use this power. If the power is successful, the
+        psyker avoids the attack exactly as if they have passed an Evasion test with the
+        number of degrees of success they scored on the Focus Power test.
     penetration: 0
     prerequisite: Psyniscience rank 1, Warp Perception
     range: 0
@@ -623,7 +623,7 @@ system:
     damageType: 'Energy'
     discipline: Divination
     description: For the duration of this power, [[@pr]] allies within range, 
-        plus the psyker himself, gain a bonus to all Evasion tests
+        plus the psyker themselves, gain a bonus to all Evasion tests
         equal to [[2*@pr]]. Allies affected by this power lose its
         benefits as soon as they move out of range.
     penetration: 0
@@ -706,10 +706,10 @@ system:
     damageType: 'Energy'
     discipline: Divination
     description: The psyker gains [[@pr]] re-rolls that last
-        until the beginning of the his next turn. For the duration of that round, whenever
+        until the beginning of the their next turn. For the duration of that round, whenever
         the psyker or an ally in range makes a test or damage roll, the psyker may spend
         one of the rerolls to allow that ally to re-roll all dice involved in the roll.
-        If the psyker is killed or rendered Unconscious before the beginning of his next
+        If the psyker is killed or rendered Unconscious before the beginning of their next
         turn, all remaining re-rolls are lost.
     penetration: 0
     prerequisite: Per 45, WP 45, Scrier's Gaze
@@ -761,21 +761,21 @@ system:
     damageType: 'Energy'
     discipline: Divination
     description: "To begin the ritual, the psyker must spend at least thirty minutes using
-        assorted psychic foci to concentrate his vision drawing Tarot cards, casting runes,
+        assorted psychic foci to concentrate their vision drawing Tarot cards, casting runes,
         gazing deep into fire, or other methods as varied as the stars of the Imperium.
-        At the end of this time, he makes his Focus Power test to project his vision over
+        At the end of this time, they make their Focus Power test to project their vision over
         the area, with the GM revealing information based on the degrees of success, as
         described on Table 64: Scriers Gaze Results. DOS 1 Single Threat:
-        The psyker manages to focus his view on a single key action his foe is either
+        The psyker manages to focus their view on a single key action their foe is either
         planning or currently enacting. This could be launching an ambush, hiding a heretical
         tome, or enacting a bloodsoaked sacrifice. 2 Enemy Movements: The psyker's
         visions stretches over a wide area, able to see all activity within an entire
-        battlefield or hive level. However, he is unable to focus his vision enough to
+        battlefield or hive level. However, they are unable to focus their vision enough to
         see the exact details at an individual level. 3 Enemy Numbers: The psyker
-        controls the focus of his vision. He is aware of all previous effects and is also
+        controls the focus of their vision. They are aware of all previous effects and is also
         able to discern details as to individual activities and exact enemy numbers. 4+ Enemy
         Plans: The psyker breaks through the veil of time, seeing an area and the countless
-        possible outcomes of conflicts within it. He is aware of all previous effects,
+        possible outcomes of conflicts within it. They are aware of all previous effects,
         and also knows details of the plots any enemy leaders are planning."
     penetration: 0
     prerequisite: Psyniscience rank 2, Prescience
@@ -825,7 +825,7 @@ system:
     damageType: 'Energy'
     discipline: Divination
     description: The vision lasts for [[@pr*2]] seconds, and can be from the subjects future or past up to [[@pr]] days.
-        The higher the psy rating, the more the psyker can control what his flashes focus on (at the GMs discretion).
+        The higher the psy rating, the more the psyker can control what their flashes focus on (at the GMs discretion).
     penetration: 0
     prerequisite: Per 50, Scrier's Gaze
     range: 0
@@ -849,7 +849,7 @@ system:
     damage: 0
     damageType: 'Energy'
     discipline: Pyromancy
-    description: The psyker chooses himself or another character he can physically touch.
+    description: The psyker chooses themselves or another character they can physically touch.
         If the target is suffering from Blood Loss, successfully using the power removes
         that condition.
     penetration: 0
@@ -900,8 +900,8 @@ system:
     discipline: Pyromancy
     description: 'While this power is in effect, all of the psykers melee attacks deal [[@pr]] additional
         Energy damage and gain the Flame quality. In addition, at the end of each of the psykers turns in 
-        which he sustains this power, he emits a Psychic Blast centred on his location. Each character within 
-        the area of the blast, with the exception of the psyker himself, are struck. 
+        which they sustain this power, they emit a Psychic Blast centred on their location. Each character within 
+        the area of the blast, with the exception of the psyker themselves, are struck. 
         Type: Psychic Blast Range: (Self) DMG: 1d10 + PR (E) Pen: 0 Special: Blast (PR) Flame'
     penetration: 0
     prerequisite: Psy rating 4, Fire Shield
@@ -978,9 +978,9 @@ system:
     damageType: 'Energy'
     discipline: Pyromancy
     description: The psyker chooses a patch of fire in range and line of sight with a radius
-        no greater than [[@pr]] metres. Each round, he can either extinguish or control the
-        fire. If he extinguishes the fire, this power ends and the fire goes out. If he
-        controls the fire, he can move it up to [[@pr]] metres per round along a flammable surface.
+        no greater than [[@pr]] metres. Each round, they can either extinguish or control the
+        fire. If they extinguish the fire, this power ends and the fire goes out. If they
+        controls the fire, they can move it up to [[@pr]] metres per round along a flammable surface.
     penetration: 0
     prerequisite: WP 35
     range: 10*@pr
@@ -1129,10 +1129,10 @@ system:
     damage: 0
     damageType: 'Energy'
     discipline: Telekinesis
-    description: The psyker chooses a point anywhere within 5 metres times his psy rating,
-        and opens a gate to the Immaterium at that point. He then chooses a point within
+    description: The psyker chooses a point anywhere within 5 metres times their psy rating,
+        and opens a gate to the Immaterium at that point. They then choose a point within
         range of the power, and opens an exit to the gate at that location. The psyker
-        must be aware of the location in which he is opening the exit to the gate, either
+        must be aware of the location in which they are opening the exit to the gate, either
         having visited it before, seen it from afar, or simply studied it on a map. The
         gate lasts for a number of rounds equal to the psykers psy rating, and has a radius
         in metres equal to the psykers psy rating as well. For the duration of the power,
@@ -1188,7 +1188,7 @@ system:
     damageType: 'Explosive'
     discipline: Telekinesis
     description: 'Each character in the area of effect (other than the psyker) suffers the
-        damage below. He is also pushed directly away from the psyker a number of metres
+        damage below. They are also pushed directly away from the psyker a number of metres
         equal to the psykers psy rating.'
     penetration: 0
     prerequisite: WP 50, Crush
@@ -1269,7 +1269,7 @@ system:
     damageType: 'Energy'
     discipline: Telekinesis
     description: The psyker chooses an object in range and line of sight with a weight no
-        greater than [[@pr*2]] kilograms. At the beginning of each of his turns, he can move
+        greater than [[@pr*2]] kilograms. At the beginning of each of their turns, they can move
         the object in any direction up to [[@pr*2]] metres.
         If the object ever leaves the range of the power, the power ends.
     penetration: 0
@@ -1300,20 +1300,20 @@ system:
         below. Type: Psychic Blast Range: 5m x PR DMG: 2d10 + 2xPR (X) Pen: Current Radius         
         Special: Blast (2)
         The psyker cannot voluntarily stop sustaining this power. Instead, at the 
-        beginning of each turn the psyker is sustaining the vortex, he must make a
+        beginning of each turn the psyker is sustaining the vortex, they must make a
         Challenging (+0) Willpower test with a 5 penalty for each metre in the vortexs 
-        current radius. If he passes the test, he may perform one of the following actions: 
+        current radius. If they pass the test, they may perform one of the following actions: 
         Increase the vortexs radius by one metre.  Decrease the vortexs radius by one metre.  
         Move the vortex any direction
         a number of metres equal to the psykers psy rating. If the psyker fails the Willpower
-        test to sustain the vortex, or if he is unable to make the test due to other circumstances,
+        test to sustain the vortex, or if they are unable to make the test due to other circumstances,
         its radius increases by one metre and it moves a number of metres equal to the
         psykers psy rating in a random direction (see the Scatter Diagram on page 230).
         If the vortexs radius ever decreases to zero metres, the power ends and the vortex
         disappears. If the vortexs radius ever grows larger than the psykers psy rating,
         it explodes, ending the power, and destroying the vortex. The psyker is hit by
-        this damage regardless of his proximity to the exploding vortex as the energy
-        of the Warp he was channelling lashes back into him. 
+        this damage regardless of their proximity to the exploding vortex as the energy
+        of the Warp they were channelling lashes back into them. 
         Type: Psychic Blast Range:  DMG:2d10 + 4xPR (X) Pen: Current Radius Special: Blast (2xPR)'
     penetration: 0
     prerequisite: Psy rating 5, Shockwave OR Telekine Dome
@@ -1369,11 +1369,11 @@ system:
     damageType: 'Energy'
     discipline: Telepathy
     description: The psyker chooses a single foe in range and line of sight who opposes this
-        power with a Willpower test. If he fails, the psyker removes a memory of a recent
+        power with a Willpower test. If they fail, the psyker removes a memory of a recent
         event from the targets mind. The psyker can only remove an amount of time from
         the targets memory up to [[10*@pr]] minutes, and the event removed cannot have occurred
         more than PR hours prior to the use of this power. The enemy is left with a gap
-        in his memory, with no recollection of what occurred during that time.
+        in their memory, with no recollection of what occurred during that time.
     penetration: 0
     prerequisite: Fel 40, Telepathic Link
     range: 5*@pr
@@ -1427,11 +1427,11 @@ system:
     damageType: 'Energy'
     discipline: Telepathy
     description: The psyker nominates a single target within range and line of sight (this
-        can be the psyker himself). For the duration of the power, the target counts having
+        can be the psyker themselves). For the duration of the power, the target counts having
         the Stealth skill at Known (rank 1), and gains a bonus to Stealth tests equal
         to [[5*@pr]]. Additionally, all ranged attacks made against
         the target suffer a penalty equal to [[5*@pr]]. If the target
-        moves beyond the powers range, he loses this powers benefits.
+        moves beyond the powers range, they lose this powers benefits.
     penetration: 0
     prerequisite: Ag 30, psy rating 4, Terrify
     range: 10*@pr
@@ -1507,7 +1507,7 @@ system:
         wounds no greater than [[3*@pr]], who opposes this power
         with a Willpower test. If the target fails to resist the power, it is controlled
         by the psyker like a puppet. For the duration of the power, the psyker can divide
-        his Actions between himself and the target. The dominated target uses its own
+        their Actions between themselves and the target. The dominated target uses its own
         Characteristics, but at 10 due to the crudity of the control. If at any point
         the psyker would make the target perform a potentially suicidal action, the target
         can attempt a Challenging (+0) Opposed Willpower test to try to break free of
@@ -1538,14 +1538,14 @@ system:
     discipline: Telepathy
     description: 'The psyker chooses a person in range and line of sight who opposes this
         power with a Willpower test. If the target fails, the psyker can either read the
-        persons thoughts or send him a brief mental message.  Thought Reading: The psyker
+        persons thoughts or send them a brief mental message.  Thought Reading: The psyker
         reads the targets thoughts, with the GM determining the nature of the information
         gained. The more degrees of success scored on the Focus Power test, the more information
         is gained overall. The higher the PR of the power, the more secretive the information
         gained.  Thought Sending: The psyker causes a message to appear in the targets
-        mind as if he has just heard it spoken aloud. The message can be no longer than
+        mind as if they have just heard it spoken aloud. The message can be no longer than
         [[@pr*5]] seconds long. If the target of this power is aware of what the psyker is
-        trying to do, he can voluntarily fail the opposed Willpower test, counting as
+        trying to do, they can voluntarily fail the opposed Willpower test, counting as
         having rolled a 100.'
     penetration: 0
     prerequisite: WP 35
@@ -1571,10 +1571,10 @@ system:
     damage: 0
     damageType: 'Energy'
     discipline: Telepathy
-    description: 'Slithering deep into the mind of his victim, the psyker unearths their
+    description: 'Slithering deep into the mind of their victim, the psyker unearths their
         greatest failings, greatest weaknesses, and greatest fears. Using these as tools
-        against his opponent, the psyker can turn even the most courageous warriors into
-        pathetic, whimpering cowards before him. The psyker nominates a single target
+        against their opponent, the psyker can turn even the most courageous warriors into
+        pathetic, whimpering cowards before them. The psyker nominates a single target
         in range and line of sight who opposes this power with a Willpower test. If the
         target fails to resist the power, it must roll on Table 811: Shock on page 287,
         adding +10 times the psykers psy rating to the roll in place of the normal addition
@@ -1631,7 +1631,7 @@ system:
     damage: '1d10+@pr+@sourceActor.characteristics.willpower.bonus'
     damageType: 'Energy'
     discipline: Sanctic Daemonology
-    description: 'When a character is set on fire by this power, the damage he suffers from
+    description: 'When a character is set on fire by this power, the damage they suffer from
         the flames counts as having the Sanctified quality.'
     penetration: 0
     prerequisite: Psy rating 4, Purge Soul
@@ -1686,7 +1686,7 @@ system:
     damage: 0
     damageType: 'Energy'
     discipline: Sanctic Daemonology
-    description: The psyker selects a number of allies within range equal to his psy rating
+    description: The psyker selects a number of allies within range equal to their psy rating
         (which may include the psyker). While the power persists, the affected characters
         gain the Unnatural Strength ([[@pr]]) trait, or increases their existing traits value by 4. 
         This benefit ends if a character moves out of range.
@@ -1712,9 +1712,9 @@ system:
     damage: '1d10*@pr'
     damageType: 'Energy'
     discipline: Sanctic Daemonology
-    description: 'Each round the psyker sustains Holocaust, he emits a psychic blast centred
-        on himself. He is not affected by the blast, but each turn the psyker sustains
-        the power he suffers 1d10+psy rating Energy damage, ignoring armour and Toughness
+    description: 'Each round the psyker sustains Holocaust, they emit a psychic blast centred
+        on themselves. They are not affected by the blast, but each turn the psyker sustains
+        the power they suffer 1d10+psy rating Energy damage, ignoring armour and Toughness
         bonus.'
     penetration: 0
     prerequisite: Psy rating 5, Sanctuary OR Cleansing Flame
@@ -1742,7 +1742,7 @@ system:
     damageType: 'Energy'
     discipline: Sanctic Daemonology
     description: The psyker selects [[@pr]] allies within range. While
-        the power persists, the psyker and his affected allies add +2 to their Initiative.
+        the power persists, the psyker and their affected allies add +2 to their Initiative.
         This can change an already established Initiative order
     penetration: 0
     prerequisite: Per 35
@@ -1823,7 +1823,7 @@ system:
     discipline: Sanctic Daemonology
     description: Whilst the power remains in effect, whenever a character within range takes
         an Attack action targeting the psyker, the attacker must pass a Challenging (+0)
-        Willpower test or suffer a 5 penalty to his attack roll for each degree of failure.
+        Willpower test or suffer a 5 penalty to their attack roll for each degree of failure.
     penetration: 0
     prerequisite: Fel 30, Psychic Communion
     range: 10*@pr
@@ -1931,7 +1931,7 @@ system:
     damage: 0
     damageType: 'Energy'
     discipline: Malefic Daemonology
-    description: As long as this power remains in effect, the psyker gains a bonus to his
+    description: As long as this power remains in effect, the psyker gains a bonus to their
         Daemonic Mastery tests (see page 59) of [[10*@pr]].
     penetration: 0
     prerequisite: WP 45, Cursed Earth
@@ -1988,8 +1988,8 @@ system:
     damageType: 'Energy'
     discipline: Malefic Daemonology
     description: This power can only be used if the psyker has inflicted damage on a target
-        (possibly himself) since the beginning of the previous round. If the Focus Power
-        test succeeds, the psyker gains a +5 bonus to his next Focus Power test for each
+        (possibly themselves) since the beginning of the previous round. If the Focus Power
+        test succeeds, the psyker gains a +5 bonus to their next Focus Power test for each
         point of damage inflicted (after reductions for armour and Toughness bonus) with
         the preceding attack. This bonus must be used within 1 hour.
     penetration: 0
@@ -2038,11 +2038,11 @@ system:
     damage: 0
     damageType: 'Energy'
     discipline: Astropath
-    description: The psyker chooses a person he is aware of within range who resists the
+    description: The psyker chooses a person they are aware of within range who resists the
         power with a Willpower test. This can be someone the psyker has met personally,
-        or someone he is aware of by description. If the power succeeds, the psyker can
+        or someone they are aware of by description. If the power succeeds, the psyker can
         transmit a brief verbal message of no more than 5 seconds x psy rating. If the
-        target is aware of the psykers action, he may choose to fail the Willpower test,
+        target is aware of the psykers action, they may choose to fail the Willpower test,
         counting as having rolled a 100.
     penetration: 0
     prerequisite: Telepathic Link, WP 40
@@ -2069,13 +2069,13 @@ system:
     damageType: 'Energy'
     discipline: Astropath
     description: The psyker establishes a telepathic bond with a number of individuals up
-        to half his psy rating, who resist the power with a Willpower test. As long as
+        to half their psy rating, who resist the power with a Willpower test. As long as
         the bond is held, the psyker and targets can send and receive messages telepathically.
         This does not grant full awareness of all of the characters thoughts, but allows
         each character to choose what messages to send. All characters involved in the
-        bond receive all messages. If a target is aware of the psykers action, he may
+        bond receive all messages. If a target is aware of the psykers action, they may
         choose to fail the Willpower test, counting as having rolled a 100. If a character
-        moves out of range of the psyker, the power ceases to affect him.
+        moves out of range of the psyker, the power ceases to affect them.
     penetration: 0
     prerequisite: Telepathic Link, Fel 35
     range: 20*@pr
@@ -2102,16 +2102,16 @@ system:
     discipline: Astropath
     description: 'The psyker chooses a target within range and line of sight who resists
         the power with a Willpower test. The target may attempt to resist each round the
-        power is sustained. If the target wins, the psyker is repelled from his mind and
+        power is sustained. If the target wins, the psyker is repelled from their mind and
         gains no further information. The information the psyker learns corresponds to
-        the number of rounds he successfully sustains the power: First Round: The psyker
+        the number of rounds they successfully sustain the power: First Round: The psyker
         learns basic information, including the targets name, mood, and general state
         of health.  Second Round: The psyker accesses the targets surface thoughts and
-        learns his number of Insanity points and number of Corruption points.  Third Round:
+        learns their number of Insanity points and number of Corruption points.  Third Round:
         The psyker successfully gains access to the targets short-term memory and learns
         of any mental disorders.  Fourth Round: The targets subconscious is revealed.  Fifth
         Round: The targets mind is laid bare for the psyker to plunder at will, from the
-        targets happiest memories to his darkest secrets.'
+        targets happiest memories to their darkest secrets.'
     penetration: 0
     prerequisite: Fel 40, Telepathic Bond, WP 50
     range: 1*@pr
@@ -2136,10 +2136,10 @@ system:
     damage: 0
     damageType: 'Energy'
     discipline: Astropath
-    description: The psyker can choose to use this power when he is the target of a rival
-        psykers mind-influencing ability, a Daemons attempt to possess him, or any creatures
-        attempt to subvert his control of himself. If the power succeeds, the psyker successfully
-        shields his mind from the influence or possession attempt, which immediately fails.
+    description: The psyker can choose to use this power when they are the target of a rival
+        psykers mind-influencing ability, a Daemons attempt to possess them, or any creatures
+        attempt to subvert their control of themselves. If the power succeeds, the psyker successfully
+        shields their mind from the influence or possession attempt, which immediately fails.
     penetration: 0
     prerequisite: Strong Minded
     range: 0

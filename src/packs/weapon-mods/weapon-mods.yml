@@ -178,9 +178,9 @@ data:
     availability: Extremely Rare
     craftsmanship: Common
     description: Whenever a character with the Daemonic or Warp Instability trait
-        becomes engaged in melee with the warded armour's wearer or begins his turn
+        becomes engaged in melee with the warded armour's wearer or begins their turn
         engaged with the wearer, that character must make a Hard (20) Willpower test.
-        If the character fails, he suffers 1d5 Energy damage per degree of failure
+        If the character fails, they suffer 1d5 Energy damage per degree of failure
         (ignoring armour and Toughness bonus). If the character scores 4 or more
         degrees of success on the test, however, the pentagramatic ward shatters and
         the armour permanently loses this upgrade.
@@ -426,7 +426,7 @@ type: weaponModification
 data:
     availability: Rare
     craftsmanship: Common
-    description: With spoken commands, the operator can fire his gun, switch firing
+    description: With spoken commands, the operator can fire their gun, switch firing
         modes, and also change ammunition (should it be fitted with a fire selector).
     installed: false
     upgrades: Any Pistol, Basic, Launcher, or Heavy weapon that is not of the Low-Tech
