@@ -3,7 +3,7 @@
   "version": "1.8.6.6",
   "description": "Dark Heresy 2nd Edition Foundry VTT",
   "scripts": {
-    "version": "json -I -f package.json -e \"this.version='$npm_config_next'\" && json -I -f src/system.json -e \"this.version='$npm_config_next'\"",
+    "version": "node tools/set-version.mjs",
     "clean": "gulp clean",
     "build": "gulp build",
     "packs": "gulp packs",

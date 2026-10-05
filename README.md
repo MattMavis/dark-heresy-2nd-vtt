@@ -88,13 +88,36 @@ The original, unmodified system by Matt Keathley:
 
 ### Releasing (notes to self)
 
-`npx gulp build` writes `archive/dark-heresy-2nd-<version>.zip`. Publish a GitHub release tagged `v<version>` with both that zip and the built `system.json` attached. The `manifest` URL always resolves to the newest release, while `download` is pinned per release — so bump `version` and the version in `download` together in `src/system.json` before tagging.
+Bump the version, then push a tag. The rest is automated by `.github/workflows/release.yml`.
 
-Both assets matter: Foundry reads `system.json` from the release to discover the update, so a release with only the zip leaves everyone on the previous version.
+```
+npm run version 1.8.6.7          # package.json, src/system.json, and the download URL
+npm run verify                   # lint, test, build -- optional, CI does it too
+git commit -am "Release 1.8.6.7" && git push
+git tag v1.8.6.7 && git push origin v1.8.6.7
+```
 
-**Do not bump the version with `npm run version` on Windows.** The script is written for a POSIX shell; under PowerShell `$npm_config_next` never expands and the literal string is written into both files as the version. Use `npx json -I -f <file> -e "this.version='X.Y.Z'"` on `src/system.json` and `package.json`, and update `download` by hand — the script does not touch it.
+The workflow lints, runs the suite, builds, and creates a **draft** release with the zip and
+`system.json` attached. Write the notes into the draft and publish when ready.
 
-`displayReleaseNotes` shows only the case matching the target `worldVersion`, not every version in between, so the notes for a new `worldVersion` need to describe the whole release rather than just its own migration step.
+It is a draft on purpose: `manifest` resolves to `releases/latest/download/system.json`, so
+publishing offers the update to every installed copy at once. Drafting puts the notes before
+the users rather than after.
+
+Both assets matter. Foundry reads `system.json` from the release to discover the update, so a
+release with only the zip leaves everyone on the previous version.
+
+The workflow refuses a tag that disagrees with `src/system.json`, or a `system.json` that
+disagrees with `package.json`. `download` is pinned per release and built from the version
+field, so a mismatch ships a manifest whose download 404s -- which is what happened to v1.8.6.5.
+`npm run version` writes all three, so they cannot drift if you use it.
+
+`displayReleaseNotes` shows only the case matching the target `worldVersion`, not every version
+in between, so the notes for a new `worldVersion` need to describe the whole release rather than
+just its own migration step.
+
+To build a package without releasing anything, `npx gulp build` writes
+`archive/dark-heresy-2nd-<version>.zip`.
 
 ## Links
   - [Foundry VTT](https://foundryvtt.com/)
