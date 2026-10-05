@@ -177,9 +177,12 @@ try {
     const NOT_IN_SIDEBAR = new Set(['Home', 'README']);
 
     const generatorSource = readFileSync(join(ROOT, 'tools', 'generate-wiki.mjs'), 'utf8');
-    const proseBlock = (generatorSource.match(/const PROSE_PAGES = \[([\s\S]*?)\];/) ?? [])[1];
-    check('the test can still find the PROSE_PAGES declaration', typeof proseBlock, 'string');
-    const prosePages = [...(proseBlock ?? '').matchAll(/'([^']+)'/g)].map((m) => m[1]);
+    const proseBlock = (generatorSource.match(/const PROSE_SECTIONS = \[([\s\S]*?)\n\];/) ?? [])[1];
+    check('the test can still find the PROSE_SECTIONS declaration', typeof proseBlock, 'string');
+
+    // Every `page:` in the declaration is a filename stem; `label:` is only display text.
+    const prosePages = [...(proseBlock ?? '').matchAll(/\bpage: '([^']+)'/g)].map((m) => m[1]);
+    check('PROSE_SECTIONS actually yielded some pages', prosePages.length > 0, true);
     const sidebar = readFileSync(join(dirA, '_Sidebar.md'), 'utf8');
 
     const proseFiles = readdirSync(join(ROOT, 'wiki'))
@@ -188,11 +191,11 @@ try {
         .filter((title) => !NOT_IN_SIDEBAR.has(title))
         .sort();
 
-    // PROSE_PAGES carries display titles with spaces; the files are hyphenated.
-    const proseAsFilenames = prosePages.map((title) => title.replace(/ /g, '-')).sort();
+    // `page` is already the filename stem, so these compare directly.
+    const proseAsFilenames = [...prosePages].sort();
     check('every page in wiki/ is linked from the sidebar, and every sidebar prose link has a file', proseAsFilenames, proseFiles);
 
-    const unlinked = prosePages.filter((title) => !sidebar.includes(`[[${title}]]`));
+    const unlinked = prosePages.filter((page) => !sidebar.includes(`|${page}]]`));
     check('the generated sidebar actually renders a link for each prose page', unlinked, []);
 
     /*
