@@ -1,0 +1,30 @@
+# The repository already stores every text file with LF (verified: no blob in the index has
+# CRLF). This makes that explicit rather than leaving it to each clone's core.autocrlf, so a
+# checkout on Windows, a CI runner and a second machine cannot disagree and produce a diff
+# that is nothing but line endings.
+
+# Normalise anything Git recognises as text; working-tree endings stay per-platform.
+* text=auto
+
+# Files read by tooling rather than by Foundry, where a CRLF would be actively wrong.
+*.sh         text eol=lf
+*.yml        text eol=lf
+*.yaml       text eol=lf
+
+# The compendium packs. A stray CRLF here shows up as a whole-file diff on 800+ documents and
+# buries the one entry that actually changed.
+src/packs/**/*.yml text eol=lf
+
+# Explicitly binary, so Git never tries to normalise or diff them as text.
+*.png  binary
+*.webp binary
+*.jpg  binary
+*.jpeg binary
+*.svg  text
+*.zip  binary
+*.db   binary
+*.ogg  binary
+*.wav  binary
+*.ttf  binary
+*.woff binary
+*.woff2 binary

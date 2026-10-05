@@ -1,0 +1,81 @@
+# Push a v* tag and this builds the package and creates the release with both assets.
+#
+#     npm run version --next=1.8.6.7      # bumps package.json and src/system.json together
+#     git commit -am "Release 1.8.6.7" && git push
+#     git tag v1.8.6.7 && git push origin v1.8.6.7
+#
+# It creates a DRAFT. Nothing reaches users until you press Publish, which matters because
+# system.json's manifest URL points at `releases/latest/download/system.json` -- a published
+# release is offered to every installed copy immediately. Write the notes into the draft, then
+# publish. To skip that gate, set `draft: false` below.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write # creates the release and uploads its assets
+
+jobs:
+  release:
+    name: Build and draft the release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # A release is the worst place to find out the suite is red, so it runs here too rather
+      # than trusting that CI passed on whatever commit the tag happens to point at.
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      # The download URL in system.json is built from its own version field, so a tag that
+      # disagrees with it ships a manifest whose download 404s -- the exact trap that bit
+      # v1.8.6.5. Caught here, before anything is built or uploaded.
+      - name: Check the tag matches system.json
+        run: |
+          tag_version="${GITHUB_REF_NAME#v}"
+          file_version="$(node -p "require('./src/system.json').version")"
+          pkg_version="$(node -p "require('./package.json').version")"
+          echo "tag=$tag_version  system.json=$file_version  package.json=$pkg_version"
+          if [ "$tag_version" != "$file_version" ]; then
+            echo "::error::Tag ${GITHUB_REF_NAME} does not match src/system.json version ${file_version}."
+            exit 1
+          fi
+          if [ "$file_version" != "$pkg_version" ]; then
+            echo "::error::src/system.json ($file_version) and package.json ($pkg_version) disagree. Use 'npm run version --next=...' to bump both."
+            exit 1
+          fi
+
+      - name: Build
+        run: npm run build
+
+      # Named from system.json's version by gulp's createArchive, which the check above has
+      # already tied to the tag.
+      - name: Confirm the archive was built
+        run: |
+          zip="archive/dark-heresy-2nd-${GITHUB_REF_NAME#v}.zip"
+          test -f "$zip" || { echo "::error::Expected $zip, which the build did not produce."; exit 1; }
+          echo "built $zip ($(du -h "$zip" | cut -f1))"
+
+      - name: Draft the release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Dark Heresy 2nd Edition: Expanded — ${{ github.ref_name }}"
+          draft: true
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          files: |
+            archive/dark-heresy-2nd-*.zip
+            src/system.json

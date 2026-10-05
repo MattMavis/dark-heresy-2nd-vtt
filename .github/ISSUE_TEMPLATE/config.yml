@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Bug in the original system, not this fork
+    url: https://github.com/mrkeathley/dark-heresy-2nd-vtt/issues
+    about: >-
+      This is a fork. If you are running Matt Keathley's original system, or the problem is in
+      the character sheets, roll pipeline or combat automation that this fork inherits, report
+      it upstream where the author can see it.
+  - name: Foundry VTT itself
+    url: https://foundryvtt.com/community/
+    about: For problems that happen with no system-specific involvement.

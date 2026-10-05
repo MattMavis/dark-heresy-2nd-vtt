@@ -1,0 +1,37 @@
+name: Feature request
+description: Suggest automation or a change to how something works.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a fork maintained for one table, so the honest answer to some requests will be
+        no. A request grounded in a specific book rule has a much better chance than a general
+        preference, so cite the page if there is one.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is awkward today
+      description: The bookkeeping or friction at the table that this would remove.
+      placeholder: |
+        Tracking Psy Rating and the Corruption from sanctioning by hand every time someone
+        takes the Psyker advance.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you would like it to do
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Book and page
+      description: Where the rule is printed, if this implements one.
+      placeholder: "Core Rulebook p.78, or Enemies Within p.42"
+    validations:
+      required: false
