@@ -1,6 +1,6 @@
 # Push a v* tag and this builds the package and creates the release with both assets.
 #
-#     npm run version --next=1.8.6.7      # bumps package.json and src/system.json together
+#     npm run version 1.8.6.7             # package.json, src/system.json, and the download URL
 #     git commit -am "Release 1.8.6.7" && git push
 #     git tag v1.8.6.7 && git push origin v1.8.6.7
 #
@@ -54,7 +54,7 @@ jobs:
             exit 1
           fi
           if [ "$file_version" != "$pkg_version" ]; then
-            echo "::error::src/system.json ($file_version) and package.json ($pkg_version) disagree. Use 'npm run version --next=...' to bump both."
+            echo "::error::src/system.json ($file_version) and package.json ($pkg_version) disagree. Use 'npm run version <x.y.z>' to write both."
             exit 1
           fi
 
