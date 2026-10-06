@@ -28,6 +28,13 @@ DarkHeresy.bio = {
     }
 };
 
+/** NPC types, Core Rulebook p.380. Keys are what `system.type` stores on `npc` and `xenos` actors. */
+DarkHeresy.npcTypes = {
+    troop: 'Troop',
+    elite: 'Elite',
+    master: 'Master',
+};
+
 DarkHeresy.items = {
     availability: ['Ubiquitous', 'Abundant', 'Plentiful', 'Common', 'Average', 'Scarce', 'Rare', 'Very Rare', 'Extremely Rare', 'Near Unique', 'Unique'],
     craftsmanship: ['Poor', 'Common', 'Good', 'Best'],

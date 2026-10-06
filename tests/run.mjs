@@ -29,6 +29,7 @@ const FILES = [
     'test-combat-tables.mjs',
     'test-icons.mjs',
     'test-templates.mjs',
+    'test-encounter-budget.mjs',
     'test-wiki-generator.mjs',
 ];
 

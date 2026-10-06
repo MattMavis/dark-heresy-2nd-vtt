@@ -1,0 +1,21 @@
+<div class="dh-panel spacer dh-grid-col-2">
+    <h1 class="dh-panel__header">Threat</h1>
+    <div class="dh-field__wrapper">
+        <span class="dh-field__header">Type</span>
+        <select class="dh-field__input" name="system.type">
+            {{selectOptions dh.npcTypes selected=actor.system.type}}
+        </select>
+    </div>
+    <div class="dh-field__wrapper">
+        <span class="dh-field__header">Threat</span>
+        <input class="dh-field__input" data-dtype="Number" type="number" name="system.threatLevel" value="{{actor.system.threatLevel}}" />
+    </div>
+    <div class="dh-field__wrapper">
+        <span class="dh-field__header">Faction</span>
+        <input class="dh-field__input" type="text" name="system.faction" value="{{actor.system.faction}}" />
+    </div>
+    <div class="dh-field__wrapper">
+        <span class="dh-field__header">Subfaction</span>
+        <input class="dh-field__input" type="text" name="system.subfaction" value="{{actor.system.subfaction}}" />
+    </div>
+</div>

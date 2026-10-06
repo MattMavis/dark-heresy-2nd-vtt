@@ -8,7 +8,7 @@ import { DhPromptDialog } from './prompt-dialog.mjs';
  * actually inspects. Recomputed on every call rather than cached, so the recipient list in the
  * dialog is always live against the current world state.
  */
-function partyActors() {
+export function partyActors() {
     return game.actors.filter(
         (actor) =>
             actor.type === 'acolyte' &&
