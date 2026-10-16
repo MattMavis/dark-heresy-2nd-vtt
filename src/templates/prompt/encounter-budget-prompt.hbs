@@ -1,0 +1,157 @@
+{{dhlog this}}
+<div class="dh-prompt">
+    <div class="dh-wrapper">
+        <div class="dh-attack">
+            <!-- Header: the derived budget -->
+            <div class="dh-panel dh-grid-col-full">
+                <div class="dh-header">
+                    <div class="dh-header__prompt dh-header__logo">
+                        <div class="dh-header__item-wrapper--span-4 dh-header__borderless">
+                            <span class="dh-header__title">Encounter Budget</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dh-field__wrapper">
+                    <span class="dh-field__span">Characters</span>
+                    <span class="dh-field__span">{{pcCount}}</span>
+                </div>
+                <div class="dh-field__wrapper">
+                    <span class="dh-field__span">Encounter Level (avg spent XP)</span>
+                    <span class="dh-field__span">{{level}}</span>
+                </div>
+                <div class="dh-field__wrapper">
+                    <span class="dh-field__span">Band (Table 12-1)</span>
+                    <span class="dh-field__span">{{bandLabel}}</span>
+                </div>
+                <div class="dh-field__wrapper">
+                    <span class="dh-field__span">Multiplier</span>
+                    <span class="dh-field__span">x{{multiplier}}</span>
+                </div>
+                <div class="dh-field__wrapper">
+                    <span class="dh-field__header">Threat Threshold</span>
+                    <span class="dh-field__span">{{threshold}}</span>
+                </div>
+                {{#if noParty}}
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">No characters selected -- there is no budget to spend.</span>
+                    </div>
+                {{else}}
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">Recommended: {{advice.leaders.min}}-{{advice.leaders.max}} Elites/Masters, remainder in Troops.</span>
+                    </div>
+                {{/if}}
+            </div>
+
+            <!-- Party -->
+            <div class="dh-panel dh-grid-col-full">
+                <div class="dh-header">
+                    <div class="dh-header__info">
+                        <div class="dh-header__item-wrapper--span-4 dh-header__borderless">
+                            <span class="dh-header__subtitle">Party</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dh-table--border dh-attackprompttable--border">
+                    <div class="table-row--head">
+                        <div class="table-cell"></div>
+                        <div class="table-cell">Name</div>
+                        <div class="table-cell--last">Spent XP</div>
+                    </div>
+                    {{#each acolytes}}
+                        <div class="table-row">
+                            <div class="table-cell--left">
+                                <input class="table-cell--checkbox encounter-pc" type="checkbox" data-dtype="Boolean" data-actor-id="{{this.id}}" {{checked this.selected}} />
+                            </div>
+                            <div class="table-cell">{{this.name}}</div>
+                            <div class="table-cell--last">{{this.spent}}</div>
+                        </div>
+                    {{else}}
+                        <div class="table-row">
+                            <div class="table-cell">No acolyte actors in this world.</div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <!-- Build against the budget -->
+            <div class="dh-panel dh-grid-col-full">
+                <div class="dh-header">
+                    <div class="dh-header__info">
+                        <div class="dh-header__item-wrapper--span-4 dh-header__borderless">
+                            <span class="dh-header__subtitle">Threat Used</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dh-field__wrapper">
+                    <span class="dh-field__header">Used / Threshold</span>
+                    <span class="dh-field__span">{{used}} / {{threshold}}</span>
+                </div>
+                <div class="dh-field__wrapper">
+                    <span class="dh-field__header">Remaining</span>
+                    <span class="dh-field__span {{#if over}}cost--short{{/if}}">{{remaining}}</span>
+                </div>
+                {{#if over}}
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span cost--short">OVER BUDGET by {{overBy}}.</span>
+                    </div>
+                {{/if}}
+                {{#if leadersOutOfRange}}
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">{{leaders}} Elites/Masters chosen; the guideline is {{guideMin}}-{{guideMax}} ({{troops}} Troops).</span>
+                    </div>
+                {{/if}}
+
+                {{#each groups}}
+                    <div class="dh-table--border dh-encounternpctable--border">
+                        <div class="table-row--head">
+                            <div class="table-cell">{{this.label}}</div>
+                            <div class="table-cell">Threat</div>
+                            <div class="table-cell">Qty</div>
+                            <div class="table-cell--last">Total</div>
+                        </div>
+                        {{#each this.npcs}}
+                            <div class="table-row">
+                                <div class="table-cell">{{this.name}}</div>
+                                <div class="table-cell">{{this.threat}}</div>
+                                <div class="table-cell">
+                                    <input class="dh-field__input encounter-quantity" type="number" min="0" step="1" data-actor-id="{{this.id}}" value="{{this.quantity}}" />
+                                </div>
+                                <div class="table-cell--last">{{this.subtotal}}</div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{else}}
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">No NPCs with a threat value above 0 exist in this world.</span>
+                    </div>
+                {{/each}}
+
+                {{#if unbudgetable.length}}
+                    <div class="dh-table--border dh-experiencetable--border">
+                        <div class="table-row--head">
+                            <div class="table-cell">Threat not set -- cannot be budgeted</div>
+                            <div class="table-cell--last">Type</div>
+                        </div>
+                        {{#each unbudgetable}}
+                            <div class="table-row">
+                                <div class="table-cell">{{this.name}}</div>
+                                <div class="table-cell--last">{{this.typeLabel}}</div>
+                            </div>
+                        {{/each}}
+                    </div>
+                    <div class="dh-field__wrapper">
+                        <span class="dh-field__span">Set a Threat value on these NPC sheets to include them.</span>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <footer class="form-footer">
+        <button type="button" class="dh-prompt__button" data-action="cancel" id="encounter-budget-close">
+            <i class="dh-material">close</i>
+            <span>Close</span>
+        </button>
+    </footer>
+</div>

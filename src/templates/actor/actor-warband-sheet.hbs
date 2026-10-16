@@ -11,5 +11,12 @@
                 <input class="dh-settings__input" data-dtype="Number" type="number" name="system.subtlety.max" value="{{subtlety.max}}" />
             </div>
         </div>
+        {{#if @root.isGM}}
+            <div class="dh-panel spacer">
+                <div class="dh-control-button">
+                    <button type="button" class="combat-control" data-action="encounterBudget">Encounter Budget</button>
+                </div>
+            </div>
+        {{/if}}
     </div>
 {{/with}}

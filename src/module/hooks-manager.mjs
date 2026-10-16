@@ -100,7 +100,11 @@ Enable Debug with: game.dh.debug = true
         // Actor sheets are ApplicationV2. Foundry V14 registers no `core` default sheet for Actor, so there is
         // nothing to unregister -- `makeDefault` alone makes these the defaults for their types.
         Actors.registerSheet(SYSTEM_ID, AcolyteSheet, {types: ["acolyte"], makeDefault: true });
-        Actors.registerSheet(SYSTEM_ID, NpcSheet, {types: ['npc'], makeDefault: true });
+        // `xenos` shares every template `npc` does and adds only `species`, which no sheet has ever
+        // displayed -- so it had no registered sheet at all and fell back to Foundry's. It needs one
+        // to reach the threat panel, without which a xenos can never be given a threat value to
+        // budget with.
+        Actors.registerSheet(SYSTEM_ID, NpcSheet, {types: ['npc', 'xenos'], makeDefault: true });
         Actors.registerSheet(SYSTEM_ID, VehicleSheet, {types: ['vehicle'], makeDefault: true });
         Actors.registerSheet(SYSTEM_ID, WarbandSheet, {types: ['warband'], makeDefault: true });
 

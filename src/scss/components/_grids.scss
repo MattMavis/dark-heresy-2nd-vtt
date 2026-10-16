@@ -39,6 +39,8 @@ $grid-tables: (
     experiencelog: 1fr 1fr 0.5fr 2.5rem,
     // Requisition's candidate list: checkbox, name, availability, craftsmanship, modifier, qty.
     requisition: 2rem 1.9fr 0.8fr 0.95fr 0.6fr 3.5rem,
+    // Encounter Budget's NPC list: name, threat each, quantity, threat subtotal.
+    encounternpc: 1fr 3.5rem 4rem 3.5rem,
 );
 
 .dh {

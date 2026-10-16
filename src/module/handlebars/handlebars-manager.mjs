@@ -34,6 +34,7 @@ export class HandlebarManager {
             'systems/dark-heresy-2nd/templates/actor/panel/insanity-panel.hbs',
             'systems/dark-heresy-2nd/templates/actor/panel/journal-panel.hbs',
             'systems/dark-heresy-2nd/templates/actor/panel/movement-panel.hbs',
+            'systems/dark-heresy-2nd/templates/actor/panel/npc-threat-panel.hbs',
             'systems/dark-heresy-2nd/templates/actor/panel/peer-panel.hbs',
             'systems/dark-heresy-2nd/templates/actor/panel/psychic-powers-panel.hbs',
             'systems/dark-heresy-2nd/templates/actor/panel/psy-panel.hbs',
