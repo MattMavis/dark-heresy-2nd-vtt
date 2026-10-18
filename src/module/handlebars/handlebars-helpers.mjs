@@ -1,3 +1,4 @@
+import { sortIndicator } from '../rules/table-sort.mjs';
 export function capitalize(text) {
     if (!text) return '';
     return text[0].toUpperCase() + text.substring(1);
@@ -87,6 +88,12 @@ export function registerHandlebarsHelpers() {
     // and one that came back through a <select> as a string (e.g. a stored selection with no
     // data-dtype, or before it round-trips through recursiveUpdate's own coercion) must still
     // compare equal here, or a "currently selected" check silently reads as false forever.
+    // Arrow for a sortable column header: shown only on the column currently sorted.
+    // Tolerates a missing sort object so a table can use the same partial without sorting.
+    Handlebars.registerHelper('sortArrow', function(sort, key) {
+        return sortIndicator(sort, key);
+    });
+
     Handlebars.registerHelper('eq', function(a, b) {
         return String(a) === String(b);
     });

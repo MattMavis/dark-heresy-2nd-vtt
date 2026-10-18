@@ -30,6 +30,7 @@ const FILES = [
     'test-icons.mjs',
     'test-templates.mjs',
     'test-encounter-budget.mjs',
+    'test-table-sort.mjs',
     'test-wiki-generator.mjs',
 ];
 

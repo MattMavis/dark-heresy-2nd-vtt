@@ -7,13 +7,13 @@
 
       `is-prereq-unmet` reflects the raw prerequisite state, so a GM overriding it still sees which
       rows they are pushing past even while the Buy button is live. --}}
-<div class="dh-table--border dh-advancementtable--border">
+<div class="dh-table--border dh-advancementtable--border" data-sort-state="{{sortState}}">
     <div class="table-row--head">
-        <div class="table-cell--span2">Name</div>
-        <div class="table-cell">Tier</div>
+        <div class="table-cell--span2 is-sortable" data-sort-key="name">Name {{sortArrow sort 'name'}}</div>
+        <div class="table-cell is-sortable" data-sort-key="tier">Tier {{sortArrow sort 'tier'}}</div>
         <div class="table-cell">Prerequisites</div>
         <div class="table-cell">Matches</div>
-        <div class="table-cell">Cost</div>
+        <div class="table-cell is-sortable" data-sort-key="cost">Cost {{sortArrow sort 'cost'}}</div>
         <div class="table-cell--last">Buy</div>
     </div>
     {{#each rows}}
