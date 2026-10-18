@@ -7,6 +7,7 @@ import { calculateAmmoAttackBonuses, calculateAmmoInformation } from '../rules/a
 import { calculateWeaponModifiersAttackBonuses, updateWeaponModifiers } from '../rules/weapon-modifiers.mjs';
 import { hitDropdown } from '../rules/hit-locations.mjs';
 import { DarkHeresy } from '../rules/config.mjs';
+import { sortRows } from '../rules/table-sort.mjs';
 
 export class RollData {
     difficulties = rollDifficulties();
@@ -54,6 +55,11 @@ export class RollData {
     modifierTotal = 0;
     hasEyeOfVengeanceAvailable = false;
     eyeOfVengeance = false;
+
+    /** Set when a melee attack misses and the character has Blademaster. See action-data.mjs. */
+    blademasterAvailable = false;
+    blademasterUsed = false;
+
 
     attackSpecials = [];
     roll;
@@ -262,7 +268,19 @@ export class WeaponRollData extends RollData {
             this.usesAmmo = true;
             calculateAmmoInformation(this);
         } else {
+            /*
+             * Reset the ammo figures, do not merely stop updating them. calculateAmmoInformation
+             * sets fireRate to 0 for an empty weapon, and update() re-runs on every weapon
+             * switch -- so selecting an empty lasgun first and then a sword left fireRate at 0,
+             * and the roll was refused with "Not enough ammo. Do you need to reload?" about a
+             * weapon the player had already switched away from. It reads as the weapon selector
+             * being broken, because the complaint names the wrong weapon.
+             */
             this.usesAmmo = false;
+            this.fireRate = 1;
+            this.ammoPerShot = 1;
+            this.ammoUsed = 0;
+            this.ammoText = '';
         }
         await calculateWeaponRange(this);
 
@@ -510,7 +528,7 @@ export class RequisitionRollData extends RollData {
         const tiers = DarkHeresy.items.availability;
         const filterIndex = tiers.indexOf(this.availabilityFilter || this.maxAvailability);
         const search = this.search.trim().toLowerCase();
-        return this.candidates
+        const rows = this.candidates
             .filter((c) => {
                 if (tiers.indexOf(c.availability) > filterIndex) return false;
                 if (search && !c.name.toLowerCase().includes(search)) return false;
@@ -520,7 +538,11 @@ export class RequisitionRollData extends RollData {
                 const selectedEntry = this.selectedCandidates.find((s) => s.pack === c.pack && s.itemId === c.itemId);
                 return { ...c, selected: !!selectedEntry, quantity: selectedEntry?.quantity ?? 1 };
             });
+        return sortRows(rows, this.sort.key, this.sort.direction);
     }
+
+    /** Which column the candidate list is sorted by, and which way. */
+    sort = { key: 'name', direction: 'asc' };
 
     toggleCandidate(candidate) {
         const idx = this.selectedCandidates.findIndex((c) => c.pack === candidate.pack && c.itemId === candidate.itemId);

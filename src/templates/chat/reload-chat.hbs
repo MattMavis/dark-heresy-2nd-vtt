@@ -1,0 +1,48 @@
+{{!--
+    Reload card. Covers three moments with one template, because they are the same event at
+    different points: started, progressed a turn, finished.
+
+    A multi-action reload spans turns, and a notification that vanishes after a few seconds is
+    exactly the wrong medium for something the table needs to remember is still happening.
+--}}
+<div class="dh-wrapper">
+    <div class="dh-chat">
+        <div class="dh-roll">
+            <h1>{{actor.name}}</h1>
+            <h2>{{#if complete}}Reloaded{{else}}Reloading{{/if}}</h2>
+            <div class="dh-roll__divider"></div>
+
+            <div class="dh-roll__row dh-roll__row--number">
+                <div class="dh-roll__label">Weapon</div>
+                <div class="dh-roll__value">{{weapon.name}}</div>
+            </div>
+
+            <div class="dh-roll__row dh-roll__row--number">
+                <div class="dh-roll__label">Ammunition</div>
+                <div class="dh-roll__value">{{weapon.system.clip.value}} / {{weapon.system.clip.max}}</div>
+            </div>
+
+            {{#if multiAction}}
+                <div class="dh-roll__row dh-roll__row--number">
+                    <div class="dh-roll__label">Actions</div>
+                    <div class="dh-roll__value">{{spent}} / {{required}}</div>
+                </div>
+            {{/if}}
+
+            {{#if complete}}
+                <div class="dh-roll__success">
+                    <span>{{weapon.system.clip.max}}</span>
+                    <span>Rounds Loaded</span>
+                </div>
+            {{else}}
+                <div class="dh-roll__fail">
+                    <span>{{remaining}}</span>
+                    <span>{{#if (eq remaining 1)}}Action Left{{else}}Actions Left{{/if}}</span>
+                </div>
+                <div class="dh-roll__label">
+                    Continues at the start of {{actor.name}}'s next turn. Firing the weapon cancels it.
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { recursiveUpdate } from '../rolls/roll-helpers.mjs';
 import { WeaponActionData } from '../rolls/action-data.mjs';
+import { reloadWeapon } from '../rules/ammo.mjs';
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -86,7 +87,32 @@ export class WeaponAttackDialog extends HandlebarsApplicationMixin(ApplicationV2
 
     static async onRoll() {
         if(this.data.fireRate === 0) {
-            ui.notifications.warn(`Not enough ammo to perform action. Do you need to reload?`);
+            /*
+             * Offer the reload rather than only naming it. The previous behaviour was a warning
+             * reading "Do you need to reload?" with no way to answer it -- the only route to a
+             * full clip was editing the item sheet by hand, mid-turn.
+             *
+             * Reloading does NOT then fire. Reload is an action in its own right in Dark Heresy,
+             * and rolling the attack straight afterwards would quietly spend a turn the player
+             * did not agree to. The dialog stays open with the clip refilled so they can decide.
+             */
+            const weapon = this.data.weapon;
+            const reload = await foundry.applications.api.DialogV2.confirm({
+                window: { title: 'Out of Ammunition' },
+                content: `<p><strong>${foundry.utils.escapeHTML(weapon?.name ?? 'This weapon')}</strong> `
+                    + `has no ammunition left. Reload it?</p>`
+                    + `<p class="notes">Reloading takes ${foundry.utils.escapeHTML(weapon?.system?.reload || 'an action')}. `
+                    + `The attack will not be rolled.</p>`,
+                yes: { default: true },
+                no: { default: false },
+                rejectClose: false,
+            });
+
+            if (reload) {
+                await reloadWeapon(weapon);
+                await this.data.update();
+                this.render();
+            }
             return;
         }
 
