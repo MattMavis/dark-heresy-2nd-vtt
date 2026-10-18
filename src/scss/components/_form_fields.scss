@@ -159,3 +159,41 @@ button {
         flex-grow: 1;
     }
 }
+
+// Search bar for the pickable-item tables (requisition, spend experience).
+//
+// Deliberately NOT a `dh-field__wrapper` with a label: those are for editing a value, and read
+// as one row of a form. This is a control over the table beneath it, so it is full width, sits
+// directly above its own table, and carries a magnifier rather than a caption.
+.dh-searchbar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0.25rem 0 0.4rem;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--color-border-dark-5, rgba(0, 0, 0, 0.35));
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.35);
+
+    &:focus-within {
+        border-color: var(--color-shadow-primary, #782e22);
+    }
+
+    &__icon {
+        opacity: 0.55;
+        font-size: 14px;
+    }
+
+    &__input {
+        flex: 1 1 auto;
+        min-width: 0;
+        border: 0;
+        background: transparent;
+        height: 1.6rem;
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+}
