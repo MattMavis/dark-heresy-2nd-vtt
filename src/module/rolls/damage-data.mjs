@@ -20,6 +20,81 @@ export class DamageData {
     }
 }
 
+/** Are there live dice at or below `threshold` still available to re-roll? */
+export function rollHasDiceBelow(roll, threshold) {
+    if (!roll?.terms) return false;
+    return roll.terms.some(
+        (term) => term instanceof foundry.dice.terms.Die
+            && term.results.some((r) => r.active && !r.discarded && r.result <= threshold),
+    );
+}
+
+/**
+ * Every damage re-roll this character could use on this hit.
+ *
+ * Built as a LIST rather than a flag per ability. Three of these exist already and they differ
+ * only in which dice qualify and what has to be true to offer them, so a flag each would be
+ * three copies of the same machinery in the data, the template and the handler.
+ *
+ * All of them are offered AFTER the roll, per hit. "May re-roll" is a decision made once the
+ * dice are visible, and with burst fire each hit has its own dice -- a pre-roll toggle would
+ * force a blind commitment across all of them.
+ *
+ * `condition` is prose, not enforcement: where the rule depends on something the system cannot
+ * see -- whether an ally has already attacked this target, whether the character is genuinely
+ * unarmed -- it is stated in the tooltip and left to the player. Guessing would be worse than
+ * asking.
+ *
+ * @returns {Array<{key, label, threshold, condition, used}>}
+ */
+export function availableDamageRerolls(actor, weapon, roll) {
+    if (!actor) return [];
+    const options = [];
+
+    // Imperial Guard background: re-roll damage results of 1 or 2.
+    if (actor.bio?.background === 'Imperial Guard') {
+        options.push({
+            key: 'hammer',
+            label: 'Hammer of the Emperor',
+            threshold: 2,
+            condition: 'Needs an ally to have attacked this target since your last turn',
+        });
+    }
+
+    // Cleanse with Fire: re-roll damage below Willpower bonus, with a Flame weapon.
+    // The Flame condition IS checkable, so this one carries no caveat.
+    if (actor.hasTalent?.('Cleanse with Fire') && weaponHasFlame(weapon)) {
+        options.push({
+            key: 'cleanse',
+            label: 'Cleanse with Fire',
+            threshold: actor.getCharacteristicFuzzy?.('Willpower')?.bonus ?? 0,
+            condition: null,
+        });
+    }
+
+    // Unarmed Specialist: re-roll damage when fighting unarmed. The whole roll, not selected
+    // dice, so the threshold is the die size -- every result qualifies.
+    if (actor.hasTalent?.('Unarmed Specialist') && weapon?.isMelee) {
+        options.push({
+            key: 'unarmed',
+            label: 'Unarmed Specialist',
+            threshold: Infinity,
+            condition: 'Only when fighting unarmed',
+        });
+    }
+
+    return options
+        .filter((o) => o.threshold > 0 && rollHasDiceBelow(roll, o.threshold))
+        .map((o) => ({ ...o, used: false }));
+}
+
+/** Does this weapon have the Flame quality? */
+function weaponHasFlame(weapon) {
+    if (!weapon) return false;
+    if (String(weapon.system?.type ?? '').toLowerCase() === 'flame') return true;
+    return [...(weapon.items ?? [])].some((i) => i.name === 'Flame');
+}
+
 export class Hit {
     location = 'Body';
 
@@ -43,6 +118,18 @@ export class Hit {
     effects = [];
     righteousFury = [];
     scatter = {};
+
+    /*
+     * Hammer of the Emperor (Imperial Guard background): re-roll damage results of 1 or 2.
+     *
+     * Offered per hit on the chat card AFTER the roll, not as a checkbox before it. "May
+     * re-roll" is a decision made once you can see the dice, and with burst fire each hit is its
+     * own damage roll with its own 1s and 2s -- a single pre-roll toggle would apply to all of
+     * them indiscriminately and force the player to commit while knowing nothing.
+     */
+    /** Damage re-rolls offered on this hit; see `availableDamageRerolls`. */
+    rerolls = [];
+    righteousFuryThreshold = 10;
 
     /**
      * @param attackData
@@ -154,6 +241,9 @@ export class Hit {
                 }
             }
         }
+
+        this.righteousFuryThreshold = righteousFuryThreshold;
+        this.rerolls = availableDamageRerolls(sourceActor, actionItem, this.damageRoll);
 
         if (actionItem.isMelee) {
             this.modifiers['strength bonus'] = sourceActor.getCharacteristicFuzzy('Strength').bonus;

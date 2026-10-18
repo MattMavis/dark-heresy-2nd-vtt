@@ -1,5 +1,5 @@
 import { refundAmmo } from '../rules/ammo.mjs';
-import { uuid } from '../rolls/roll-helpers.mjs';
+import { updateActionDataChat, uuid } from '../rolls/roll-helpers.mjs';
 import { AssignDamageData } from '../rolls/assign-damage-data.mjs';
 import { prepareAssignDamageRoll } from '../prompts/assign-damage-prompt.mjs';
 import { DHTargetedActionManager } from './targeted-action-manager.mjs';
@@ -41,6 +41,20 @@ export class BasicActionManager {
     }
 
     /**
+     * Ids of damage panels the user has opened.
+     *
+     * The template always emits the panel collapsed, so any re-render of a card closes it. That
+     * is fine for a card being posted, and irritating for one being UPDATED in place -- clicking
+     * a per-hit re-roll would shut the very panel the button lives in, hiding the result of the
+     * thing just pressed. Remembering the open ones survives the re-render.
+     *
+     * Keyed on the action id, which an in-place update deliberately preserves. A fate re-roll
+     * generates a NEW id and posts a new card, so it correctly starts collapsed again.
+     * @type {Set<string>}
+     */
+    expandedPanels = new Set();
+
+    /**
      * Wire up the chat-card controls for a single rendered chat message.
      * @param {HTMLElement} element The rendered chat message element.
      */
@@ -53,9 +67,25 @@ export class BasicActionManager {
         bind('.roll-control__hide-control', async (ev) => await this._toggleExpandChatMessage(ev));
         bind('.roll-control__refund', async (ev) => await this._refundResources(ev));
         bind('.roll-control__fate-reroll', async (ev) => await this._fateReroll(ev));
+        bind('.roll-control__damage-reroll', async (ev) => await this._damageReroll(ev));
+        bind('.roll-control__blademaster', async (ev) => await this._blademasterReroll(ev));
         bind('.roll-control__assign-damage', async (ev) => await this._assignDamage(ev));
         bind('.roll-control__apply-damage', async (ev) => await this._applyDamage(ev));
         bind('.roll-control__apply-critical-effect', async (ev) => await this._applyCriticalEffect(ev));
+
+        this._restoreExpandedPanels(element);
+    }
+
+    /** Re-open any panel this user had expanded before the card re-rendered. */
+    _restoreExpandedPanels(element) {
+        for (const control of element.querySelectorAll('.roll-control__hide-control')) {
+            const id = control.dataset.toggle;
+            if (!id || !this.expandedPanels.has(id)) continue;
+            const panel = element.querySelector(`#${CSS.escape(id)}`) ?? document.getElementById(id);
+            if (!panel) continue;
+            panel.style.display = '';
+            for (const span of control.querySelectorAll('span')) span.classList.add('active');
+        }
     }
 
     /**
@@ -91,6 +121,8 @@ export class BasicActionManager {
         if (!panel) return;
         const isHidden = panel.style.display === 'none' || getComputedStyle(panel).display === 'none';
         panel.style.display = isHidden ? '' : 'none';
+        if (isHidden) this.expandedPanels.add(target);
+        else this.expandedPanels.delete(target);
     }
 
     async _refundResources(event) {
@@ -149,6 +181,115 @@ export class BasicActionManager {
         // Reset
         actionData.reset();
         // Run it back
+        await actionData.performActionAndSendToChat();
+    }
+
+    /**
+     * Re-roll the qualifying dice in ONE hit's damage roll.
+     *
+     * Shared by every damage re-roll ability -- Hammer of the Emperor, Cleanse with Fire,
+     * Unarmed Specialist -- which differ only in which dice qualify. The threshold comes from
+     * the option the player clicked.
+     *
+     * Only qualifying dice are re-rolled and the originals are kept as discarded results, so
+     * the dice tooltip still shows what was thrown away. Re-rolling the whole formula would be
+     * a different, more generous rule and would hide the evidence.
+     *
+     * A re-rolled die can land on the Righteous Fury threshold, which is a real rules
+     * consequence, so that is checked again rather than treated as settled by the first roll.
+     */
+    async _damageReroll(event) {
+        event.preventDefault();
+        const dataset = event.currentTarget.dataset;
+        const actionData = this.getActionData(dataset.rollId);
+
+        if (!actionData) {
+            ui.notifications.warn(`Action data expired. Unable to re-roll.`);
+            return;
+        }
+
+        const hit = actionData.damageData?.hits?.[this._datasetNumber(dataset.hitIndex)];
+        const option = hit?.rerolls?.find((r) => r.key === dataset.rerollKey);
+        if (!hit || !option || option.used) return;
+
+        const roll = hit.damageRoll;
+        let delta = 0;
+        let rerolled = 0;
+
+        for (const term of roll.terms) {
+            if (!(term instanceof foundry.dice.terms.Die)) continue;
+            // Snapshot: replacement results are appended to this same array as we go.
+            for (const result of [...term.results]) {
+                if (!result.active || result.discarded || result.result > option.threshold) continue;
+
+                const fresh = new Roll(`1d${term.faces}`);
+                await fresh.evaluate();
+                const value = fresh.total;
+
+                result.active = false;
+                result.discarded = true;
+                result.rerolled = true;
+                term.results.push({ result: value, active: true });
+
+                delta += value - result.result;
+                rerolled++;
+
+                if (value >= hit.righteousFuryThreshold) {
+                    const furyRoll = new Roll('1d5');
+                    await furyRoll.evaluate();
+                    hit.righteousFury.push({ roll: furyRoll, effect: null, resolved: null });
+                    ui.notifications.info('Righteous Fury on the re-roll!');
+                }
+            }
+        }
+
+        if (!rerolled) return;
+
+        roll._total += delta;
+        hit.damage += delta;
+        hit._totalDamage();
+        option.used = true;
+
+        const message = game.messages.get(event.currentTarget.closest('[data-message-id]')?.dataset?.messageId);
+        await updateActionDataChat(actionData, message);
+    }
+
+    /**
+     * Blademaster: re-roll one missed melee attack, once per round.
+     *
+     * Re-runs the whole action rather than patching the card, because a successful re-roll
+     * changes everything downstream -- degrees of success, hits, damage. That is the same
+     * reason the fate re-roll re-runs rather than editing in place.
+     *
+     * The once-per-round limit is tracked on the ACTOR against the current combat round, since
+     * that is the only part of the rule the system can actually enforce. Out of combat there is
+     * no round to count, so it is unrestricted and left to the GM.
+     */
+    async _blademasterReroll(event) {
+        event.preventDefault();
+        const actionData = this.getActionData(event.currentTarget.dataset.rollId);
+
+        if (!actionData) {
+            ui.notifications.warn(`Action data expired. Unable to re-roll.`);
+            return;
+        }
+
+        const actor = actionData.rollData?.sourceActor;
+        const round = game.combat?.round ?? null;
+
+        if (round !== null) {
+            const used = actor?.getFlag(SYSTEM_ID, 'blademasterRound');
+            if (used === round) {
+                ui.notifications.warn(`Blademaster has already been used this round.`);
+                return;
+            }
+            await actor?.setFlag(SYSTEM_ID, 'blademasterRound', round);
+        }
+
+        actionData.id = uuid();
+        await actionData.refundResources();
+        actionData.reset();
+        actionData.rollData.blademasterUsed = true;
         await actionData.performActionAndSendToChat();
     }
 

@@ -67,6 +67,22 @@ export async function sendActionDataToChat(actionData) {
     ChatMessage.create(chatData);
 }
 
+/**
+ * Re-render an action's card into the message it already occupies.
+ *
+ * Used where the result CHANGES after the fact -- a re-rolled damage die -- as opposed to a
+ * fate re-roll, which re-runs the whole action and posts a fresh card. Posting a second card for
+ * a single re-rolled die would leave two contradictory damage totals in the log with nothing to
+ * say which one counts.
+ *
+ * @param actionData
+ * @param {ChatMessage} message
+ */
+export async function updateActionDataChat(actionData, message) {
+    if (!message) return;
+    const html = await foundry.applications.handlebars.renderTemplate(actionData.template, actionData);
+    await message.update({ content: html });
+}
 export function recursiveUpdate(targetObject, updateObject) {
     for (const key of Object.keys(updateObject)) {
         handleDotNotationUpdate(targetObject, key, updateObject[key]);

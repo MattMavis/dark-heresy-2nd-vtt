@@ -101,6 +101,13 @@
                                 <span class="dh-control-button__span material-icons">casino</span>
                                 <span class="dh-control-button__label">Re-roll</span>
                             </div>
+                            {{#if rollData.blademasterAvailable}}
+                                <div class="dh-control-button roll-control__blademaster" data-roll-id="{{@root.id}}"
+                                     data-tooltip="Bladed weapons only, once per round. Re-rolls the attack.">
+                                    <span class="dh-control-button__span material-icons">replay</span>
+                                    <span class="dh-control-button__label">Blademaster</span>
+                                </div>
+                            {{/if}}
                         </div>
                     {{/unless}}
                 </div>
@@ -123,6 +130,24 @@
                                 <div class="dh-roll__label">Base Damage:</div>
                                 <div class="dh-roll__value">{{hit.damageRoll.result}}</div>
                             </div>
+                            {{#each hit.rerolls as |reroll|}}
+                                {{#if reroll.used}}
+                                    <div class="dh-roll__row dh-roll__row--number">
+                                        <div class="dh-roll__label">{{reroll.label}}:</div>
+                                        <div class="dh-roll__value">re-rolled</div>
+                                    </div>
+                                {{else}}
+                                    <div class='dh-roll__controls-1'>
+                                        <div class="dh-control-button roll-control__damage-reroll"
+                                             data-roll-id="{{@root.id}}" data-hit-index="{{@../index}}"
+                                             data-reroll-key="{{reroll.key}}"
+                                             data-tooltip="{{#if reroll.condition}}{{reroll.condition}}{{else}}Re-roll damage dice of {{reroll.threshold}} or less{{/if}}">
+                                            <span class="dh-control-button__span material-icons">replay</span>
+                                            <span class="dh-control-button__label">{{reroll.label}}</span>
+                                        </div>
+                                    </div>
+                                {{/if}}
+                            {{/each}}
                             {{#each modifiers}}
                                 <div class="dh-roll__row dh-roll__row--number">
                                     <div class="dh-roll__label">Modifier: {{@key}}</div>
