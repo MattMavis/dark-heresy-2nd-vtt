@@ -2,6 +2,7 @@ import { toggleUIExpanded } from '../../rules/config.mjs';
 import { DHBasicActionManager } from '../../actions/basic-action-manager.mjs';
 import { prepareCreateSpecialistSkillPrompt } from '../../prompts/simple-prompt.mjs';
 import { DH_CONTAINED_BY } from '../../documents/item-container.mjs';
+import { reloadWeapon } from '../../rules/ammo.mjs';
 import { SYSTEM_ID } from '../../hooks-manager.mjs';
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -61,6 +62,9 @@ export class ActorContainerSheet extends HandlebarsApplicationMixin(ActorSheetV2
             },
             itemEdit(event, target) {
                 return this._onItemEdit(event, target);
+            },
+            itemReload(event, target) {
+                return this._onItemReload(event, target);
             },
             itemRoll(event, target) {
                 return this._onItemRoll(event, target);
@@ -275,6 +279,15 @@ export class ActorContainerSheet extends HandlebarsApplicationMixin(ActorSheetV2
     async _onItemRoll(event, target) {
         event.preventDefault();
         await this.actor.rollItem(target.dataset.itemId);
+    }
+
+    /** Refill a ranged weapon's clip. The control only renders on weapons that use ammunition. */
+    async _onItemReload(event, target) {
+        event.preventDefault();
+        const item = this.actor.items.get(target.dataset.itemId);
+        if (!item) return;
+        await reloadWeapon(item);
+        this.render();
     }
 
     async _onItemUse(event, target) {

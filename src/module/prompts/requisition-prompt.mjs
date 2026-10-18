@@ -1,6 +1,7 @@
 import { roll1d100, getDegree } from '../rolls/roll-helpers.mjs';
 import { grantRequisitionedItem } from '../rules/requisition.mjs';
 import { DhPromptDialog } from './prompt-dialog.mjs';
+import { nextSortState } from '../rules/table-sort.mjs';
 
 export class RequisitionDialog extends DhPromptDialog {
     static DEFAULT_OPTIONS = {
@@ -36,6 +37,15 @@ export class RequisitionDialog extends DhPromptDialog {
         }
         for (const input of this.element.querySelectorAll('.requisition-quantity')) {
             input.addEventListener('change', (event) => this._updateQuantity(event));
+        }
+        for (const header of this.element.querySelectorAll('.is-sortable[data-sort-key]')) {
+            header.addEventListener('click', (event) => {
+                // Same reason as _toggleCandidate: keep this out of ApplicationV2's own
+                // submitOnChange handler, whose render would race this one.
+                event.stopPropagation();
+                this.data.sort = nextSortState(this.data.sort, header.dataset.sortKey);
+                this.render();
+            });
         }
     }
 

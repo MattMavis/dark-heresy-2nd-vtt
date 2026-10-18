@@ -39,6 +39,27 @@
                         <label class="dh-control-button item-damage" data-item-id="{{item.id}}" data-action="itemDamage">
                             <span class="dh-control-button__span material-icons">{{defaultVal icon 'bolt'}}</span>
                         </label>
+                        {{!-- Reload sits on EVERY weapon row, greyed where it does not apply, so
+                              the control column stays the same width and the rows line up. --}}
+                        {{#if item.needsReload}}
+                            <label class="dh-control-button item-reload" data-item-id="{{item.id}}"
+                                   data-action="itemReload"
+                                   data-tooltip="{{#if item.isReloading}}Reloading — {{item.reloadProgress}}/{{item.reloadActions}} actions spent{{else}}Reload — {{item.system.clip.value}}/{{item.system.clip.max}}, takes {{item.system.reload}}{{/if}}">
+                                <span class="dh-control-button__span material-icons">{{defaultVal icon 'autorenew'}}</span>
+                                {{#if item.isReloading}}
+                                    <span class="dh-control-button__counter">{{item.reloadProgress}}/{{item.reloadActions}}</span>
+                                {{/if}}
+                            </label>
+                        {{else if item.usesAmmo}}
+                            <span class="dh-control-button__muted"
+                                  data-tooltip="Fully loaded — {{item.system.clip.value}}/{{item.system.clip.max}}">
+                                <span class="dh-control-button__span material-icons">{{defaultVal icon 'autorenew'}}</span>
+                            </span>
+                        {{else}}
+                            <span class="dh-control-button__muted" data-tooltip="Does not use ammunition">
+                                <span class="dh-control-button__span material-icons">{{defaultVal icon 'block'}}</span>
+                            </span>
+                        {{/if}}
                         <label class="dh-control-button item-delete" data-item-id="{{item.id}}" data-action="itemDelete">
                             <span class="dh-control-button__span material-icons">{{defaultVal icon 'delete'}}</span>
                         </label>

@@ -46,9 +46,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="dh-field__wrapper">
-                    <span class="dh-field__span">Search</span>
-                    <input class="dh-field__input" type="search" name="search" value="{{search}}" />
+                <div class="dh-searchbar">
+                    <i class="dh-searchbar__icon dh-material">search</i>
+                    <input class="dh-searchbar__input" type="search" name="search"
+                           placeholder="Search equipment…" value="{{search}}" autocomplete="off" />
                 </div>
                 <div class="dh-field__wrapper">
                     <span class="dh-field__span">Max Availability</span>
@@ -61,12 +62,13 @@
             <!-- Candidate list -->
             <div class="dh-panel dh-grid-col-full">
                 <div class="dh-table--border dh-requisitiontable--border">
+                    {{!-- Sortable headers. Qty is per-row input, not a property worth ordering by. --}}
                     <div class="table-row--head">
                         <div class="table-cell"></div>
-                        <div class="table-cell">Name</div>
-                        <div class="table-cell">Availability</div>
-                        <div class="table-cell">Craftsmanship</div>
-                        <div class="table-cell">Modifier</div>
+                        <div class="table-cell is-sortable" data-sort-key="name">Name {{sortArrow sort 'name'}}</div>
+                        <div class="table-cell is-sortable" data-sort-key="availability">Availability {{sortArrow sort 'availability'}}</div>
+                        <div class="table-cell is-sortable" data-sort-key="craftsmanship">Craftsmanship {{sortArrow sort 'craftsmanship'}}</div>
+                        <div class="table-cell is-sortable" data-sort-key="modifier">Modifier {{sortArrow sort 'modifier'}}</div>
                         <div class="table-cell--last">Qty</div>
                     </div>
                     {{#each visibleCandidates}}

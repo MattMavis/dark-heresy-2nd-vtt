@@ -1,6 +1,10 @@
 import { DarkHeresyItemContainer } from './item-container.mjs';
 import { capitalize } from '../handlebars/handlebars-helpers.mjs';
 import { DarkHeresy } from '../rules/config.mjs';
+import { SYSTEM_ID } from '../hooks-manager.mjs';
+
+/** Flag holding how many actions of a multi-action reload have been spent so far. */
+export const RELOAD_PROGRESS = 'reloadProgress';
 
 export class DarkHeresyItem extends DarkHeresyItemContainer {
     get totalWeight() {
@@ -81,6 +85,63 @@ export class DarkHeresyItem extends DarkHeresyItemContainer {
 
     get usesAmmo() {
         return this.isRanged && this.system.reload && this.system.reload !== 'N/A';
+    }
+
+    /**
+     * How many actions a full reload costs.
+     *
+     * Dark Heresy reloads are not uniform: most weapons are a Half or Full Action, but some take
+     * "2 Full Actions" or "3 Full Actions", which span turns. Anything that is not a plain
+     * number of Full Actions counts as one, including "Special" -- a weapon with bespoke rules
+     * should not silently behave as if it took three turns.
+     */
+    get reloadActions() {
+        if (!this.usesAmmo) return 0;
+        const text = String(this.system.reload ?? '');
+        const match = text.match(/^(\d+)\s+Full Actions?$/i);
+        return match ? Number(match[1]) : 1;
+    }
+
+    /** Actions already spent on an in-progress reload. */
+    get reloadProgress() {
+        return Number(this.getFlag(SYSTEM_ID, RELOAD_PROGRESS)) || 0;
+    }
+
+    /** True while a multi-action reload is part-finished. */
+    get isReloading() {
+        return this.reloadProgress > 0;
+    }
+
+    /**
+     * Record one action spent reloading.
+     *
+     * The flag is read and written only here, so nothing outside this class needs to know the
+     * system id or the flag name. That matters more than it sounds: reaching for SYSTEM_ID from
+     * the rules layer meant importing hooks-manager, which imports every sheet in the system,
+     * which drags Foundry globals into the pure rules modules and breaks the headless tests.
+     */
+    async advanceReload() {
+        return this.setFlag(SYSTEM_ID, RELOAD_PROGRESS, this.reloadProgress + 1);
+    }
+
+    /** Abandon a part-finished reload. */
+    async clearReload() {
+        if (!this.isReloading) return;
+        return this.unsetFlag(SYSTEM_ID, RELOAD_PROGRESS);
+    }
+
+    /**
+     * Is there anything a reload would actually do?
+     *
+     * False for a full clip, so the sheet can show the control greyed rather than inviting a
+     * click that does nothing. Hiding it entirely would be worse -- the row would change shape
+     * depending on how much ammunition is left.
+     */
+    get needsReload() {
+        if (!this.usesAmmo) return false;
+        const max = Number(this.system.clip?.max) || 0;
+        const value = Number(this.system.clip?.value) || 0;
+        return max > 0 && value < max;
     }
 
     get isMelee() {

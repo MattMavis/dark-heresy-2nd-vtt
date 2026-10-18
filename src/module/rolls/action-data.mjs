@@ -145,14 +145,25 @@ export class ActionData {
             }
 
             if (actionItem.isMelee) {
-                if (!this.rollData.success) {
-                    // Re-Roll Attack for Blademaster
-                    if (this.rollData.sourceActor.hasTalent('Blademaster')) {
-                        this.effects.push('blademaster');
-                        this.rollData.previousRolls.push(this.rollData.roll);
-                        await this._calculateHit();
-                    }
-                }
+                /*
+                 * Blademaster: offered on the card, not taken automatically.
+                 *
+                 * It used to re-roll silently on ANY missed melee attack. Three things were
+                 * wrong with that. The talent applies to BLADED weapons only, so a shock maul
+                 * or a club was getting free re-rolls it is not entitled to; it is limited to
+                 * ONE per round, which nothing enforced; and "can re-roll" is the player's
+                 * choice, which the automatic version took away.
+                 *
+                 * "Bladed" is not a property the system records and cannot be derived reliably
+                 * -- a sword, a chainsword and a power sword share no field that a shock maul
+                 * lacks. So the button is offered on any missed melee attack and the player
+                 * decides, with the restriction stated in the tooltip. Once per round IS
+                 * enforceable, and is.
+                 */
+                if (this.rollData.blademasterUsed) this.effects.push('blademaster');
+                this.rollData.blademasterAvailable = !this.rollData.success
+                    && !this.rollData.blademasterUsed
+                    && this.rollData.sourceActor.hasTalent('Blademaster');
             } else if (actionItem.isRanged) {
                 // Suppressing Fire
                 if (this.rollData.action === 'Suppressing Fire - Semi') {
@@ -259,7 +270,7 @@ export class ActionData {
                     this.addEffect('Auto Failure', `The roll resulted in an automatic failure!`);
                     break;
                 case 'blademaster':
-                    this.addEffect('Blademaster', `Original roll of ${this.rollData.previousRolls[0].total} rerolled.`);
+                    this.addEffect('Blademaster', `Attack re-rolled.`);
                     break;
                 case 'overheat':
                     this.addEffect('Overheats', `The weapon overheats forcing it to be dropped on the ground!`);

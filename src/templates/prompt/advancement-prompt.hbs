@@ -42,9 +42,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="dh-field__wrapper">
-                    <span class="dh-field__span">Search</span>
-                    <input class="dh-field__input" type="search" name="search" value="{{search}}" />
+                {{!-- Search sits directly above its own table, as a bar rather than a labelled
+                      field, so it reads as a control on the list below it. --}}
+                <div class="dh-searchbar">
+                    <i class="dh-searchbar__icon dh-material">search</i>
+                    <input class="dh-searchbar__input" type="search" name="search"
+                           placeholder="Search talents…" value="{{search}}" autocomplete="off" />
                 </div>
                 {{#if isGM}}
                     <div class="dh-field__wrapper">
@@ -54,7 +57,7 @@
                         </label>
                     </div>
                 {{/if}}
-                {{> "systems/dark-heresy-2nd/templates/prompt/partial/talent-table.hbs" rows=visibleTalents}}
+                {{> "systems/dark-heresy-2nd/templates/prompt/partial/talent-table.hbs" rows=visibleTalents sort=talentSort sortState="talentSort"}}
             </div>
 
             {{!-- Psychic Powers -- only psykers can learn them, so the section is hidden entirely
@@ -68,9 +71,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="dh-field__wrapper">
-                    <span class="dh-field__span">Search</span>
-                    <input class="dh-field__input" type="search" name="powerSearch" value="{{powerSearch}}" />
+                <div class="dh-searchbar">
+                    <i class="dh-searchbar__icon dh-material">search</i>
+                    <input class="dh-searchbar__input" type="search" name="powerSearch"
+                           placeholder="Search psychic powers…" value="{{powerSearch}}" autocomplete="off" />
                 </div>
                 <div class="dh-field__wrapper">
                     <span class="dh-field__span">Discipline</span>
@@ -81,7 +85,7 @@
                         {{/each}}
                     </select>
                 </div>
-                {{> "systems/dark-heresy-2nd/templates/prompt/partial/psychic-power-table.hbs" rows=visiblePsychicPowers}}
+                {{> "systems/dark-heresy-2nd/templates/prompt/partial/psychic-power-table.hbs" rows=visiblePsychicPowers sort=powerSort sortState="powerSort"}}
             </div>
             {{/if}}
         </div>

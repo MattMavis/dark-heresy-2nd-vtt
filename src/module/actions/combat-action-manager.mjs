@@ -1,4 +1,5 @@
 import { handleBleeding, handleOnFire } from '../rules/active-effects.mjs';
+import { reloadWeapon } from '../rules/ammo.mjs';
 
 export class CombatActionManager {
     combatTurnHook;
@@ -23,6 +24,7 @@ export class CombatActionManager {
         if(game.userId === this.getFirstGM()) {
             game.dh.log('updateCombat - this should only be running on first GM');
             this.processCombatActiveEffects(combat, data);
+            this.processReloads(combat, data);
         }
     }
 
@@ -42,6 +44,29 @@ export class CombatActionManager {
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * Advance any multi-action reload belonging to the combatant whose turn just started.
+     *
+     * A Full Action is effectively one turn, so a weapon listed as "2 Full Actions" finishes at
+     * the start of the reloader's NEXT turn rather than needing the button pressed again. Half
+     * and Free Actions complete immediately on the click and never reach here -- they fit inside
+     * a turn the character is taking anyway.
+     *
+     * Progress advances on its own because a character who began reloading is assumed to carry
+     * on. Firing the weapon cancels it (see `cancelReload`), which is the one interruption the
+     * system can detect reliably; the rest is left to the GM, as it was before any of this.
+     */
+    async processReloads(combat, data) {
+        const combatant = combat.turns?.[data.turn];
+        const actor = combatant?.actor;
+        if (!actor) return;
+
+        for (const item of actor.items) {
+            if (!item.isReloading) continue;
+            await reloadWeapon(item);
         }
     }
 

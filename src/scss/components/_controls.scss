@@ -18,6 +18,7 @@
     // Settings Cog
     &-control-button {
         cursor: pointer;
+        position: relative; // anchors __counter, which overlays rather than displaces
 
         .active {
             opacity: 1;
@@ -31,6 +32,33 @@
             cursor: unset;
             opacity: 1;
             text-decoration: line-through;
+        }
+
+        // A control that exists but has nothing to do right now -- reload on a full clip, or on
+        // a melee weapon. Distinct from __disabled, whose strike-through reads as "forbidden"
+        // rather than "not applicable", and looks wrong over an icon glyph.
+        //
+        // Rendered rather than omitted so every weapon row has the same controls and the column
+        // keeps its width; otherwise rows shuffle as weapons are fired and reloaded.
+        &__muted {
+            cursor: default;
+            opacity: 0.3;
+        }
+
+        // Progress through a multi-action reload, e.g. "1/2".
+        //
+        // Absolutely positioned as a badge over the icon rather than placed beside it: in flow
+        // it wrapped to a second line inside the control cell and made that one weapon row
+        // taller than its neighbours. As an overlay it costs no layout at all, so every row
+        // keeps the same height whether or not a reload is in progress.
+        &__counter {
+            position: absolute;
+            right: -0.35rem;
+            bottom: -0.2rem;
+            font-size: 0.6em;
+            line-height: 1;
+            white-space: nowrap;
+            opacity: 0.9;
         }
 
         &__label {

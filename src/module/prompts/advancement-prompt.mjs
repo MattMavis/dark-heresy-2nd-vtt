@@ -1,4 +1,5 @@
 import { DhPromptDialog } from './prompt-dialog.mjs';
+import { nextSortState, sortRows } from '../rules/table-sort.mjs';
 import {
     fetchGrantData,
     grantItems,
@@ -106,6 +107,10 @@ class AdvancementData {
     actor;
     /** Narrows the talent list by name. Bound to form data like requisition-prompt's search box. */
     search = '';
+
+    /** Column sort for each table. Kept separate so sorting one does not disturb the other. */
+    talentSort = { key: 'name', direction: 'asc' };
+    powerSort = { key: 'name', direction: 'asc' };
     /** Talents this actor doesn't already own, tier 1-3, loaded once (async compendium fetch) by
      * {@link openAdvancementMenu} before the dialog renders -- see buildTalentCandidates. */
     talentCandidates = [];
@@ -197,7 +202,7 @@ class AdvancementData {
         const search = this.search.trim().toLowerCase();
         const aptitudes = ownedAptitudeNames(this.actor);
         const snapshot = buildPrerequisiteSnapshot(this.actor);
-        return this.talentCandidates
+        const rows = this.talentCandidates
             .filter((t) => !search || t.name.toLowerCase().includes(search))
             .map((t) =>
                 talentRow(t, {
@@ -207,6 +212,7 @@ class AdvancementData {
                     ignorePrerequisites: this.ignorePrerequisites,
                 }),
             );
+        return sortRows(rows, this.talentSort.key, this.talentSort.direction);
     }
 
     /** Every discipline represented among this actor's buyable powers, for the filter dropdown.
@@ -223,7 +229,7 @@ class AdvancementData {
     get visiblePsychicPowers() {
         const search = this.powerSearch.trim().toLowerCase();
         const snapshot = buildPrerequisiteSnapshot(this.actor);
-        return this.psychicPowerCandidates
+        const rows = this.psychicPowerCandidates
             .filter((p) => !search || p.name.toLowerCase().includes(search))
             .filter((p) => !this.disciplineFilter || p.discipline === this.disciplineFilter)
             .map((p) =>
@@ -233,6 +239,7 @@ class AdvancementData {
                     ignorePrerequisites: this.ignorePrerequisites,
                 }),
             );
+        return sortRows(rows, this.powerSort.key, this.powerSort.direction);
     }
 }
 
@@ -422,6 +429,27 @@ export class AdvancementDialog extends DhPromptDialog {
     static PARTS = {
         body: DhPromptDialog.promptPart('systems/dark-heresy-2nd/templates/prompt/advancement-prompt.hbs'),
     };
+
+    /**
+     * Column sorting for the talent and psychic-power tables.
+     *
+     * Each header carries the name of the state it drives, so the two tables sort independently
+     * -- sorting talents by cost should not silently reorder the powers below them.
+     */
+    _onRender(context, options) {
+        super._onRender(context, options);
+        for (const header of this.element.querySelectorAll('.is-sortable[data-sort-key]')) {
+            const table = header.closest('[data-sort-state]')?.dataset?.sortState;
+            if (!table) continue;
+            header.addEventListener('click', (event) => {
+                // Keep this out of ApplicationV2's submitOnChange handler, whose own render
+                // would race this one.
+                event.stopPropagation();
+                this.data[table] = nextSortState(this.data[table], header.dataset.sortKey);
+                this.render();
+            });
+        }
+    }
 
     static async onBuyCharacteristic(event, target) {
         event.preventDefault();

@@ -1,4 +1,5 @@
 import { WeaponRollData } from '../rolls/roll-data.mjs';
+import { sendActiveEffectMessage } from './active-effects.mjs';
 
 export function ammoText(item) {
     game.dh.log('ammoText', item);
@@ -27,6 +28,8 @@ export async function useAmmo(actionData) {
                 }
             }
         });
+
+        await cancelReload(actionItem);
 
         if (actionItem.system.clip.value === 0) {
             ui.notifications.warn(`Clip is now empty. Ammo should be removed or reloaded.`);
@@ -224,4 +227,85 @@ export function calculateAmmoInformation(rollData) {
     rollData.fireRate = fireRate;
     rollData.ammoUsed = fireRate * ammoPerShot;
     rollData.ammoText = ammoText(rollData.weapon);
+}
+
+/**
+ * Post a reload card.
+ *
+ * A multi-action reload spans turns, and a notification that fades after a few seconds is the
+ * wrong medium for something the table needs to remember is still happening -- especially when
+ * it resolves on a later turn, by which point the toast that announced it is long gone.
+ */
+async function sendReloadCard(item, { spent, required, complete }) {
+    const actor = item.actor;
+    if (!actor) return;
+    await sendActiveEffectMessage({
+        template: 'systems/dark-heresy-2nd/templates/chat/reload-chat.hbs',
+        actor,
+        weapon: item,
+        spent,
+        required,
+        complete,
+        multiAction: required > 1,
+        remaining: Math.max(0, required - spent),
+    });
+}
+
+/**
+ * Spend one action towards reloading, refilling the clip when the last one is spent.
+ *
+ * Most weapons reload in a single action and fill immediately. Some take "2 Full Actions" or
+ * "3 Full Actions", which span turns -- those accumulate progress on a flag so the sheet can
+ * show how far along it is, because a reload you cannot see the end of is one players forget
+ * they started.
+ *
+ * Deliberately does NOT check for ammunition in inventory: Dark Heresy tracks clips abstractly
+ * and the system has no reserve-ammo model, so requiring one would block reloading outright
+ * rather than add realism.
+ *
+ * @param item {Item} a ranged weapon
+ * @returns {Promise<boolean>} whether anything changed
+ */
+export async function reloadWeapon(item) {
+    if (!item?.usesAmmo) {
+        ui.notifications.warn(`${item?.name ?? 'That item'} does not use ammunition.`);
+        return false;
+    }
+
+    const max = Number(item.system.clip?.max) || 0;
+    const value = Number(item.system.clip?.value) || 0;
+    if (max <= 0) {
+        ui.notifications.warn(`${item.name} has no clip size set, so there is nothing to reload to.`);
+        return false;
+    }
+    if (value >= max && !item.isReloading) {
+        ui.notifications.info(`${item.name} is already loaded (${value}/${max}).`);
+        return false;
+    }
+
+    const required = item.reloadActions;
+    const spent = item.reloadProgress + 1;
+
+    if (spent < required) {
+        await item.advanceReload();
+        await sendReloadCard(item, { spent, required, complete: false });
+        return true;
+    }
+
+    await item.update({ system: { clip: { value: max } } });
+    await item.clearReload();
+    await sendReloadCard(item, { spent, required, complete: true });
+    return true;
+}
+
+/**
+ * Abandon a part-finished reload.
+ *
+ * Called when the weapon is fired, since firing it is proof the reload did not complete. Other
+ * interruptions -- moving, being hit, switching weapons -- are not detected; nothing in the
+ * system tracks the action economy closely enough to know, so the counter is a reminder rather
+ * than an enforced rule.
+ */
+export async function cancelReload(item) {
+    await item?.clearReload?.();
 }

@@ -5,12 +5,12 @@
 
       Parameter: `rows`. `is-prereq-unmet` reflects the raw prerequisite state, same as the talent
       table, so a GM overriding it still sees which rows they are pushing past. --}}
-<div class="dh-table--border dh-psychicpowertable--border">
+<div class="dh-table--border dh-psychicpowertable--border" data-sort-state="{{sortState}}">
     <div class="table-row--head">
-        <div class="table-cell--span2">Name</div>
-        <div class="table-cell">Discipline</div>
+        <div class="table-cell--span2 is-sortable" data-sort-key="name">Name {{sortArrow sort 'name'}}</div>
+        <div class="table-cell is-sortable" data-sort-key="discipline">Discipline {{sortArrow sort 'discipline'}}</div>
         <div class="table-cell">Prerequisites</div>
-        <div class="table-cell">Cost</div>
+        <div class="table-cell is-sortable" data-sort-key="cost">Cost {{sortArrow sort 'cost'}}</div>
         <div class="table-cell--last">Buy</div>
     </div>
     {{#each rows}}

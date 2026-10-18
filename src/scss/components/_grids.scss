@@ -10,7 +10,9 @@ $grid-tables: (
     criticalinjury: 1.5rem 1fr 3rem,
     armour: 1.5rem 1.5fr 1fr 1fr 0.75fr 3rem,
     armourmod: 1.5rem 1.5fr 1fr 0.75fr 3rem,
-    weapon: 1.5rem 1.5fr 1fr 1fr 0.75fr 4rem,
+    // Control column is 5rem, not the usual 3rem: weapons carry FOUR controls (attack,
+    // damage, reload, delete) where most tables carry one.
+    weapon: 1.5rem 1.5fr 1fr 1fr 0.75fr 5rem,
     psychic: 1.5rem 1.5fr 1fr 0.75fr 5rem,
     weaponmod: 1.5rem 1.5fr 1fr 0.75fr 3rem,
     attackspecial: 1.5rem 1.5fr 1fr 1fr 3rem,
@@ -396,5 +398,52 @@ $grid-tables: (
 
     > .display {
         text-align: left;
+    }
+}
+
+// Keep a row's control cluster on ONE line.
+//
+// The weapons table gained a fourth control when Reload was added, and the buttons began
+// wrapping onto a second line -- which made every weapon row roughly twice as tall and pushed
+// the whole Combat tab out of shape. Scoped to the tables that actually carry a stack of
+// controls rather than applied to every `--last` cell in the system, since most of them hold a
+// single button and are fine as they are.
+.dh-weapontable--border,
+.dh-armourtable--border {
+    .table-cell--last {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        // flex-start, not center: the cell clips its overflow, and centred content is clipped
+        // at BOTH ends, so an overrun hides the first control as well as the last. Starting at
+        // the left means an overrun is at least visibly an overrun.
+        justify-content: flex-start;
+        gap: 0.2rem;
+        padding-left: 0.2rem;
+
+        /*
+         * Size each control to its glyph.
+         *
+         * `_reset.scss` sets `label { width: 100% }` for form controls, and these icon buttons
+         * are labels. As flex items they therefore claimed the FULL cell width each -- measured
+         * at 108px apiece against a 112px cell, for 350px of content in a box that clips its
+         * overflow. The result was a row showing one icon and no indication the others existed.
+         * The sibling `<span>` controls were 14px, which is what gave it away.
+         */
+        > * {
+            flex: 0 0 auto;
+            width: auto;
+            min-width: 0;
+        }
+    }
+}
+
+// Clickable column header on a sortable table.
+.is-sortable {
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+        text-decoration: underline;
     }
 }
